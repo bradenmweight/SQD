@@ -1,0 +1,12 @@
+.underline:after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 8px;
+  border-radius: 5px;
+  background: #da0048;
+  z-index: -1;
+}
+

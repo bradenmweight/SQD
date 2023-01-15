@@ -1,0 +1,3 @@
+ Entering Gaussian System, Link 0=g16
+ Initial command:
+ /software/gaussian/g16-c01/avx/g16/l1.exe "/gpfs/fs2/scratch/bweight/software/many_molecule_many_mode_NAMD/src/NAMD/test_output/G16/GS_NEW/Gau-31543.inp" -scrdir="/gpfs/fs2/scratch/bweight/software/many_molecule_many_mode_NAMD/src/NAMD/test_output/G16/GS_NEW/"

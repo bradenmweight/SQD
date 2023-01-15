@@ -1,0 +1,2095 @@
+MANDATORY INPUT VARIABLES:
+  NStates =
+		 3
+  NSteps =
+		 1000
+  dtI =
+		 0.25 (fs)
+  ESTEPS =
+		 50
+  ISTATE =
+		 0
+  FUNCTIONAL =
+		 WB97XD
+  BASIS_SET =
+		 6-311G
+  CHARGE =
+		 0
+  MULTIPLICITY =
+		 1
+  MEMORY =
+		 5 (GB)
+  PARALLEL_FORCES =
+		 True
+  NAMD_METHOD =
+		 EH
+  EL_PROP =
+		 VV
+  MD_ENSEMBLE =
+		 NVT
+  VELOC =
+		 MB
+Input looks good.
+Submitting electronic structure for step 0.
+	Gaussian terminated normally in 77.25 s. (GS_NEW)
+	Gaussian terminated normally in 15.42 s. (TD_NEW_S1)
+Starting forces for state 2
+	Gaussian terminated normally in 9.87 s. (TD_NEW_S2)
+Submitting electronic structure for step 1.
+	Gaussian terminated normally in 5.61 s. (GS_NEW)
+	Gaussian terminated normally in 12.23 s. (TD_NEW_S1)
+Starting forces for state 2
+	Gaussian terminated normally in 11.97 s. (TD_NEW_S2)
+	Gaussian terminated normally in 3.15 s. (DIMER)
+OVERLAP Extracted.
+Original Overlap
+[[ 9.99474282e-01  1.29957747e-03  3.92054547e-03]
+ [-3.92200981e-03 -1.80963959e-05  9.99415873e-01]
+ [-1.80360759e-06 -4.97170749e-05 -6.97212689e-04]]
+Orthogonalized OVERLAP:
+[[ 9.99991464e-01  1.29564347e-03  3.92343144e-03]
+ [-3.92250648e-03 -7.15671718e-04  9.99992051e-01]
+ [ 1.29844106e-03 -9.99998905e-01 -7.10583439e-04]]
+Phase Factor f(S0) = 1.000000
+Phase Factor f(S1) = -1.000000
+Phase Factor f(S2) = -1.000000
+Phase-corrected OVERLAP:
+[[ 9.99991464e-01 -1.29564347e-03 -3.92343144e-03]
+ [-3.92250648e-03  7.15671718e-04 -9.99992051e-01]
+ [ 1.29844106e-03  9.99998905e-01  7.10583439e-04]]
+Total QM took 44.98 s.
+Electronic propagation took 0.00 s.
+Electronic Norm.: 1.0 1.0
+Submitting electronic structure for step 2.
+	Gaussian terminated normally in 5.91 s. (GS_NEW)
+	Gaussian terminated normally in 11.94 s. (TD_NEW_S1)
+	Gaussian terminated normally in 2.95 s. (DIMER)
+OVERLAP Extracted.
+Original Overlap
+[[ 9.99554153e-01  1.30936857e-03  3.96886363e-03]
+ [-1.31281570e-03  9.99531245e-01  8.94672411e-05]
+ [-3.97708517e-03 -7.38404006e-05  9.99490927e-01]]
+Orthogonalized OVERLAP:
+[[ 9.99991240e-01  1.31150241e-03  3.97488593e-03]
+ [-1.31182713e-03  9.99999136e-01  7.90869408e-05]
+ [-3.97477877e-03 -8.43006112e-05  9.99992097e-01]]
+Phase Factor f(S0) = 1.000000
+Phase Factor f(S1) = 1.000000
+Phase Factor f(S2) = 1.000000
+Phase-corrected OVERLAP:
+[[ 9.99991240e-01  1.31150241e-03  3.97488593e-03]
+ [-1.31182713e-03  9.99999136e-01  7.90869408e-05]
+ [-3.97477877e-03 -8.43006112e-05  9.99992097e-01]]
+Total QM took 41.38 s.
+Electronic propagation took 0.00 s.
+Electronic Norm.: 1.0 1.0
+Submitting electronic structure for step 3.
+	Gaussian terminated normally in 6.19 s. (GS_NEW)
+	Gaussian terminated normally in 11.77 s. (TD_NEW_S1)
+	Gaussian terminated normally in 3.10 s. (DIMER)
+OVERLAP Extracted.
+Original Overlap
+[[ 9.99517851e-01  1.32315265e-03  3.92118992e-03]
+ [-1.30815168e-03  9.99504152e-01  1.36651433e-04]
+ [-3.91618907e-03 -1.14308438e-04  9.99462033e-01]]
+Orthogonalized OVERLAP:
+[[ 9.99991448e-01  1.31601673e-03  3.92073050e-03]
+ [-1.31650889e-03  9.99999126e-01  1.22950379e-04]
+ [-3.92056527e-03 -1.28111004e-04  9.99992306e-01]]
+Phase Factor f(S0) = 1.000000
+Phase Factor f(S1) = 1.000000
+Phase Factor f(S2) = 1.000000
+Phase-corrected OVERLAP:
+[[ 9.99991448e-01  1.31601673e-03  3.92073050e-03]
+ [-1.31650889e-03  9.99999126e-01  1.22950379e-04]
+ [-3.92056527e-03 -1.28111004e-04  9.99992306e-01]]
+Total QM took 40.21 s.
+Electronic propagation took 0.00 s.
+Electronic Norm.: 1.0 1.0
+Submitting electronic structure for step 4.
+	Gaussian terminated normally in 5.75 s. (GS_NEW)
+	Gaussian terminated normally in 72.28 s. (TD_NEW_S1)
+Starting forces for state 2
+	Gaussian terminated normally in 9.46 s. (TD_NEW_S2)
+	Gaussian terminated normally in 3.03 s. (DIMER)
+OVERLAP Extracted.
+Original Overlap
+[[ 9.99502814e-01  1.33015822e-03  3.74577551e-03]
+ [-1.30645848e-03  9.99495526e-01  1.61168088e-04]
+ [-3.89745365e-03 -1.64389014e-04  9.57322034e-01]]
+Orthogonalized OVERLAP:
+[[ 9.99991502e-01  1.31862988e-03  3.90601070e-03]
+ [-1.31927941e-03  9.99999116e-01  1.63718645e-04]
+ [-3.90579136e-03 -1.68870373e-04  9.99992358e-01]]
+Phase Factor f(S0) = 1.000000
+Phase Factor f(S1) = 1.000000
+Phase Factor f(S2) = 1.000000
+Phase-corrected OVERLAP:
+[[ 9.99991502e-01  1.31862988e-03  3.90601070e-03]
+ [-1.31927941e-03  9.99999116e-01  1.63718645e-04]
+ [-3.90579136e-03 -1.68870373e-04  9.99992358e-01]]
+Total QM took 100.18 s.
+Electronic propagation took 0.00 s.
+Electronic Norm.: 1.0 1.0
+Submitting electronic structure for step 5.
+	Gaussian terminated normally in 5.92 s. (GS_NEW)
+	Gaussian terminated normally in 12.00 s. (TD_NEW_S1)
+	Gaussian terminated normally in 2.76 s. (DIMER)
+OVERLAP Extracted.
+Original Overlap
+[[ 9.99499762e-01  1.31711352e-03 -2.72859695e-03]
+ [-1.31553777e-03  9.99501248e-01 -1.27712537e-04]
+ [-3.72592203e-03 -1.82351794e-04 -8.78917046e-01]]
+Orthogonalized OVERLAP:
+[[ 9.99993229e-01  1.31669765e-03 -3.43625258e-03]
+ [-1.31726363e-03  9.99999119e-01 -1.62451854e-04]
+ [-3.43603565e-03 -1.66977204e-04 -9.99994083e-01]]
+Phase Factor f(S0) = 1.000000
+Phase Factor f(S1) = 1.000000
+Phase Factor f(S2) = -1.000000
+Phase-corrected OVERLAP:
+[[ 9.99993229e-01  1.31669765e-03  3.43625258e-03]
+ [-1.31726363e-03  9.99999119e-01  1.62451854e-04]
+ [-3.43603565e-03 -1.66977204e-04  9.99994083e-01]]
+Total QM took 40.76 s.
+Electronic propagation took 0.00 s.
+Electronic Norm.: 1.0 1.0
+Submitting electronic structure for step 6.
+	Gaussian terminated normally in 6.14 s. (GS_NEW)
+	Gaussian terminated normally in 12.41 s. (TD_NEW_S1)
+Starting forces for state 2
+	Gaussian terminated normally in 9.48 s. (TD_NEW_S2)
+	Gaussian terminated normally in 3.17 s. (DIMER)
+OVERLAP Extracted.
+Original Overlap
+[[ 9.99498833e-01  1.31801104e-03 -1.24074256e-03]
+ [-1.33033556e-03  9.99493713e-01 -3.96508394e-05]
+ [ 2.74858353e-03  1.39581379e-04  8.91723217e-01]]
+Orthogonalized OVERLAP:
+[[ 9.99996898e-01  1.32475439e-03 -2.10948178e-03]
+ [-1.32495320e-03  9.99999118e-01 -9.28519362e-05]
+ [ 2.10935691e-03  9.56466127e-05  9.99997771e-01]]
+Phase Factor f(S0) = 1.000000
+Phase Factor f(S1) = 1.000000
+Phase Factor f(S2) = 1.000000
+I found a sign error upon phase correcting.
+Index Flip: 0 <--> 2
+Phase-corrected OVERLAP:
+[[ 9.99996898e-01  1.32475439e-03  2.10948178e-03]
+ [-1.32495320e-03  9.99999118e-01 -9.28519362e-05]
+ [-2.10935691e-03  9.56466127e-05  9.99997771e-01]]
+Total QM took 40.43 s.
+Electronic propagation took 0.00 s.
+Electronic Norm.: 1.0 1.0
+Submitting electronic structure for step 7.
+	Gaussian terminated normally in 5.53 s. (GS_NEW)
+	Gaussian terminated normally in 11.58 s. (TD_NEW_S1)
+Starting forces for state 2
+	Gaussian terminated normally in 10.98 s. (TD_NEW_S2)
+	Gaussian terminated normally in 3.08 s. (DIMER)
+OVERLAP Extracted.
+Original Overlap
+[[ 9.99551129e-01  1.33813621e-03 -6.99154951e-04]
+ [-1.34628726e-03  9.99533115e-01 -3.01260489e-06]
+ [ 1.21228727e-03  3.95843698e-05  9.90256205e-01]]
+Orthogonalized OVERLAP:
+[[ 9.99998637e-01  1.34282062e-03 -9.60642066e-04]
+ [-1.34284102e-03  9.99999098e-01 -2.05915926e-05]
+ [ 9.60613549e-04  2.18815541e-05  9.99999538e-01]]
+Phase Factor f(S0) = 1.000000
+Phase Factor f(S1) = 1.000000
+Phase Factor f(S2) = 1.000000
+I found a sign error upon phase correcting.
+Index Flip: 0 <--> 2
+Phase-corrected OVERLAP:
+[[ 9.99998637e-01  1.34282062e-03  9.60642066e-04]
+ [-1.34284102e-03  9.99999098e-01 -2.05915926e-05]
+ [-9.60613549e-04  2.18815541e-05  9.99999538e-01]]
+Total QM took 40.21 s.
+Electronic propagation took 0.00 s.
+Electronic Norm.: 1.0 1.0
+Submitting electronic structure for step 8.
+	Gaussian terminated normally in 5.45 s. (GS_NEW)
+	Gaussian terminated normally in 99.41 s. (TD_NEW_S1)
+Starting forces for state 2
+	Gaussian terminated normally in 11.16 s. (TD_NEW_S2)
+	Gaussian terminated normally in 3.12 s. (DIMER)
+OVERLAP Extracted.
+Original Overlap
+[[ 9.99571746e-01  1.35063935e-03  3.05271932e-05]
+ [-1.34263289e-03  9.99549578e-01  5.16699037e-05]
+ [ 7.06349015e-04 -4.08567624e-06  9.80166768e-01]]
+Orthogonalized OVERLAP:
+[[ 9.99999034e-01  1.34724086e-03 -3.41366011e-04]
+ [-1.34723116e-03  9.99999092e-01  2.86447740e-05]
+ [ 3.41404292e-04 -2.81848474e-05  9.99999941e-01]]
+Phase Factor f(S0) = 1.000000
+Phase Factor f(S1) = 1.000000
+Phase Factor f(S2) = 1.000000
+I found a sign error upon phase correcting.
+Index Flip: 0 <--> 2
+Phase-corrected OVERLAP:
+[[ 9.99999034e-01  1.34724086e-03  3.41366011e-04]
+ [-1.34723116e-03  9.99999092e-01  2.86447740e-05]
+ [-3.41404292e-04 -2.81848474e-05  9.99999941e-01]]
+Total QM took 128.34 s.
+Electronic propagation took 0.00 s.
+Electronic Norm.: 1.0 1.0
+Submitting electronic structure for step 9.
+	Gaussian terminated normally in 5.69 s. (GS_NEW)
+	Gaussian terminated normally in 12.14 s. (TD_NEW_S1)
+Starting forces for state 2
+	Gaussian terminated normally in 10.03 s. (TD_NEW_S2)
+	Gaussian terminated normally in 3.23 s. (DIMER)
+OVERLAP Extracted.
+Original Overlap
+[[ 9.99500110e-01  1.34946130e-03  5.09549256e-05]
+ [-1.34059234e-03  9.99482354e-01  3.41556386e-05]
+ [-4.49513132e-05 -4.56620861e-05  9.99495711e-01]]
+Orthogonalized OVERLAP:
+[[ 9.99999093e-01  1.34570949e-03  4.80078171e-05]
+ [-1.34571141e-03  9.99999094e-01  3.98988588e-05]
+ [-4.79540813e-05 -3.99634273e-05  9.99999998e-01]]
+Phase Factor f(S0) = 1.000000
+Phase Factor f(S1) = 1.000000
+Phase Factor f(S2) = 1.000000
+Phase-corrected OVERLAP:
+[[ 9.99999093e-01  1.34570949e-03  4.80078171e-05]
+ [-1.34571141e-03  9.99999094e-01  3.98988588e-05]
+ [-4.79540813e-05 -3.99634273e-05  9.99999998e-01]]
+Total QM took 40.11 s.
+Electronic propagation took 0.00 s.
+Electronic Norm.: 1.0 1.0
+Submitting electronic structure for step 10.
+	Gaussian terminated normally in 6.14 s. (GS_NEW)
+	Gaussian terminated normally in 11.95 s. (TD_NEW_S1)
+Starting forces for state 2
+	Gaussian terminated normally in 11.00 s. (TD_NEW_S2)
+	Gaussian terminated normally in 2.88 s. (DIMER)
+OVERLAP Extracted.
+Original Overlap
+[[ 9.99373033e-01  1.34895155e-03  3.76714878e-05]
+ [-1.35347664e-03  9.99361855e-01  3.90412928e-05]
+ [-3.21625008e-05 -5.80174882e-05  9.99366944e-01]]
+Orthogonalized OVERLAP:
+[[ 9.99999085e-01  1.35206750e-03  3.49782772e-05]
+ [-1.35206920e-03  9.99999085e-01  4.85384895e-05]
+ [-3.49126179e-05 -4.85857381e-05  9.99999998e-01]]
+Phase Factor f(S0) = 1.000000
+Phase Factor f(S1) = 1.000000
+Phase Factor f(S2) = 1.000000
+Phase-corrected OVERLAP:
+[[ 9.99999085e-01  1.35206750e-03  3.49782772e-05]
+ [-1.35206920e-03  9.99999085e-01  4.85384895e-05]
+ [-3.49126179e-05 -4.85857381e-05  9.99999998e-01]]
+Total QM took 41.37 s.
+Electronic propagation took 0.00 s.
+Electronic Norm.: 1.0 1.0
+Submitting electronic structure for step 11.
+	Gaussian terminated normally in 5.86 s. (GS_NEW)
+	Gaussian terminated normally in 13.89 s. (TD_NEW_S1)
+Starting forces for state 2
+	Gaussian terminated normally in 10.07 s. (TD_NEW_S2)
+	Gaussian terminated normally in 3.08 s. (DIMER)
+OVERLAP Extracted.
+Original Overlap
+[[ 9.99367543e-01  1.36225438e-03  2.94175229e-05]
+ [-1.36023572e-03  9.99352940e-01  2.09834241e-05]
+ [-4.71783687e-05 -4.29842692e-05  9.99357136e-01]]
+Orthogonalized OVERLAP:
+[[ 9.99999072e-01  1.36211466e-03  3.83516202e-05]
+ [-1.36211589e-03  9.99999072e-01  3.19722824e-05]
+ [-3.83080347e-05 -3.20244921e-05  9.99999999e-01]]
+Phase Factor f(S0) = 1.000000
+Phase Factor f(S1) = 1.000000
+Phase Factor f(S2) = 1.000000
+Phase-corrected OVERLAP:
+[[ 9.99999072e-01  1.36211466e-03  3.83516202e-05]
+ [-1.36211589e-03  9.99999072e-01  3.19722824e-05]
+ [-3.83080347e-05 -3.20244921e-05  9.99999999e-01]]
+Total QM took 43.01 s.
+Electronic propagation took 0.00 s.
+Electronic Norm.: 1.0 1.0
+Submitting electronic structure for step 12.
+	Gaussian terminated normally in 5.45 s. (GS_NEW)
+	Gaussian terminated normally in 13.04 s. (TD_NEW_S1)
+Starting forces for state 2
+	Gaussian terminated normally in 12.70 s. (TD_NEW_S2)
+	Gaussian terminated normally in 3.02 s. (DIMER)
+OVERLAP Extracted.
+Original Overlap
+[[ 9.99427057e-01  1.37731355e-03  3.77669406e-05]
+ [-1.37315292e-03  9.99410348e-01  3.56309122e-05]
+ [-5.06479593e-05 -3.88159830e-05  9.99422346e-01]]
+Orthogonalized OVERLAP:
+[[ 9.99999052e-01  1.37603091e-03  4.42595349e-05]
+ [-1.37603256e-03  9.99999053e-01  3.72102371e-05]
+ [-4.42082905e-05 -3.72711044e-05  9.99999998e-01]]
+Phase Factor f(S0) = 1.000000
+Phase Factor f(S1) = 1.000000
+Phase Factor f(S2) = 1.000000
+Phase-corrected OVERLAP:
+[[ 9.99999052e-01  1.37603091e-03  4.42595349e-05]
+ [-1.37603256e-03  9.99999053e-01  3.72102371e-05]
+ [-4.42082905e-05 -3.72711044e-05  9.99999998e-01]]
+Total QM took 43.22 s.
+Electronic propagation took 0.00 s.
+Electronic Norm.: 1.0 1.0
+Submitting electronic structure for step 13.
+	Gaussian terminated normally in 5.36 s. (GS_NEW)
+	Gaussian terminated normally in 12.15 s. (TD_NEW_S1)
+Starting forces for state 2
+	Gaussian terminated normally in 10.95 s. (TD_NEW_S2)
+	Gaussian terminated normally in 3.23 s. (DIMER)
+OVERLAP Extracted.
+Original Overlap
+[[ 9.99466890e-01  1.37211389e-03  4.87856176e-05]
+ [-1.39236789e-03  9.99449717e-01  2.80588710e-05]
+ [-4.45515420e-05 -2.18021664e-05  9.99465198e-01]]
+Orthogonalized OVERLAP:
+[[ 9.99999043e-01  1.38298810e-03  4.67086792e-05]
+ [-1.38298926e-03  9.99999043e-01  2.49134424e-05]
+ [-4.66741795e-05 -2.49780162e-05  9.99999999e-01]]
+Phase Factor f(S0) = 1.000000
+Phase Factor f(S1) = 1.000000
+Phase Factor f(S2) = 1.000000
+Phase-corrected OVERLAP:
+[[ 9.99999043e-01  1.38298810e-03  4.67086792e-05]
+ [-1.38298926e-03  9.99999043e-01  2.49134424e-05]
+ [-4.66741795e-05 -2.49780162e-05  9.99999999e-01]]
+Total QM took 40.89 s.
+Electronic propagation took 0.00 s.
+Electronic Norm.: 1.0 1.0
+Submitting electronic structure for step 14.
+	Gaussian terminated normally in 5.85 s. (GS_NEW)
+	Gaussian terminated normally in 12.05 s. (TD_NEW_S1)
+Starting forces for state 2
+	Gaussian terminated normally in 9.91 s. (TD_NEW_S2)
+	Gaussian terminated normally in 3.04 s. (DIMER)
+OVERLAP Extracted.
+Original Overlap
+[[ 9.99446623e-01  1.40032385e-03  2.56250646e-05]
+ [-1.41069192e-03  9.99437294e-01  1.20433850e-05]
+ [-3.48306721e-05 -1.58858155e-05  9.89298191e-01]]
+Orthogonalized OVERLAP:
+[[ 9.99999011e-01  1.40629105e-03  3.04101788e-05]
+ [-1.40629148e-03  9.99999011e-01  1.40191327e-05]
+ [-3.03904337e-05 -1.40618844e-05  9.99999999e-01]]
+Phase Factor f(S0) = 1.000000
+Phase Factor f(S1) = 1.000000
+Phase Factor f(S2) = 1.000000
+Phase-corrected OVERLAP:
+[[ 9.99999011e-01  1.40629105e-03  3.04101788e-05]
+ [-1.40629148e-03  9.99999011e-01  1.40191327e-05]
+ [-3.03904337e-05 -1.40618844e-05  9.99999999e-01]]
+Total QM took 40.08 s.
+Electronic propagation took 0.00 s.
+Electronic Norm.: 1.0 1.0
+Submitting electronic structure for step 15.
+	Gaussian terminated normally in 6.16 s. (GS_NEW)
+	Gaussian terminated normally in 11.34 s. (TD_NEW_S1)
+Starting forces for state 2
+	Gaussian terminated normally in 10.30 s. (TD_NEW_S2)
+	Gaussian terminated normally in 3.01 s. (DIMER)
+OVERLAP Extracted.
+Original Overlap
+[[ 9.99375466e-01  1.39952381e-03  2.61716482e-05]
+ [-1.38950616e-03  9.99382395e-01  8.79613939e-06]
+ [-2.41158129e-05  3.97681959e-07  9.99383097e-01]]
+Orthogonalized OVERLAP:
+[[ 9.99999026e-01  1.39538015e-03  2.51590352e-05]
+ [-1.39538025e-03  9.99999026e-01  4.18492161e-06]
+ [-2.51531711e-05 -4.22002396e-06  1.00000000e+00]]
+Phase Factor f(S0) = 1.000000
+Phase Factor f(S1) = 1.000000
+Phase Factor f(S2) = 1.000000
+Phase-corrected OVERLAP:
+[[ 9.99999026e-01  1.39538015e-03  2.51590352e-05]
+ [-1.39538025e-03  9.99999026e-01  4.18492161e-06]
+ [-2.51531711e-05 -4.22002396e-06  1.00000000e+00]]
+Total QM took 39.98 s.
+Electronic propagation took 0.00 s.
+Electronic Norm.: 1.0 1.0
+Submitting electronic structure for step 16.
+	Gaussian terminated normally in 5.68 s. (GS_NEW)
+	Gaussian terminated normally in 12.42 s. (TD_NEW_S1)
+Starting forces for state 2
+	Gaussian terminated normally in 9.72 s. (TD_NEW_S2)
+	Gaussian terminated normally in 2.86 s. (DIMER)
+OVERLAP Extracted.
+Original Overlap
+[[ 9.99343072e-01  1.42426668e-03  1.46401425e-05]
+ [-1.42919560e-03  9.99342007e-01  3.69585024e-06]
+ [-2.59467742e-05 -4.15679412e-06  9.99342772e-01]]
+Orthogonalized OVERLAP:
+[[ 9.99998981e-01  1.42766827e-03  2.03097520e-05]
+ [-1.42766835e-03  9.99998981e-01  3.91039292e-06]
+ [-2.03041486e-05 -3.93938452e-06  1.00000000e+00]]
+Phase Factor f(S0) = 1.000000
+Phase Factor f(S1) = 1.000000
+Phase Factor f(S2) = 1.000000
+Phase-corrected OVERLAP:
+[[ 9.99998981e-01  1.42766827e-03  2.03097520e-05]
+ [-1.42766835e-03  9.99998981e-01  3.91039292e-06]
+ [-2.03041486e-05 -3.93938452e-06  1.00000000e+00]]
+Total QM took 39.76 s.
+Electronic propagation took 0.00 s.
+Electronic Norm.: 1.0 1.0
+Submitting electronic structure for step 17.
+	Gaussian terminated normally in 5.89 s. (GS_NEW)
+	Gaussian terminated normally in 11.59 s. (TD_NEW_S1)
+Starting forces for state 2
+	Gaussian terminated normally in 9.71 s. (TD_NEW_S2)
+	Gaussian terminated normally in 3.22 s. (DIMER)
+OVERLAP Extracted.
+Original Overlap
+[[ 9.99364612e-01  1.44718604e-03  3.60887712e-05]
+ [-1.44332445e-03  9.99347653e-01 -6.39512299e-06]
+ [-3.32422191e-05 -2.38442002e-06  9.99354511e-01]]
+Orthogonalized OVERLAP:
+[[ 9.99998954e-01  1.44618499e-03  3.46894021e-05]
+ [-1.44618492e-03  9.99998954e-01 -2.03073993e-06]
+ [-3.46923027e-05  1.98057052e-06  9.99999999e-01]]
+Phase Factor f(S0) = 1.000000
+Phase Factor f(S1) = 1.000000
+Phase Factor f(S2) = 1.000000
+Phase-corrected OVERLAP:
+[[ 9.99998954e-01  1.44618499e-03  3.46894021e-05]
+ [-1.44618492e-03  9.99998954e-01 -2.03073993e-06]
+ [-3.46923027e-05  1.98057052e-06  9.99999999e-01]]
+Total QM took 39.51 s.
+Electronic propagation took 0.00 s.
+Electronic Norm.: 1.0 1.0
+Submitting electronic structure for step 18.
+	Gaussian terminated normally in 5.84 s. (GS_NEW)
+	Gaussian terminated normally in 11.39 s. (TD_NEW_S1)
+Starting forces for state 2
+	Gaussian terminated normally in 9.42 s. (TD_NEW_S2)
+	Gaussian terminated normally in 3.24 s. (DIMER)
+OVERLAP Extracted.
+Original Overlap
+[[ 9.99359223e-01  1.45978692e-03  3.38241919e-05]
+ [-1.43443353e-03  9.99344213e-01 -2.14327034e-08]
+ [-1.97820146e-05  8.77455762e-06  9.99353167e-01]]
+Orthogonalized OVERLAP:
+[[ 9.99998951e-01  1.44804744e-03  2.68140166e-05]
+ [-1.44804732e-03  9.99998952e-01 -4.41535651e-06]
+ [-2.68203821e-05  4.37652391e-06  1.00000000e+00]]
+Phase Factor f(S0) = 1.000000
+Phase Factor f(S1) = 1.000000
+Phase Factor f(S2) = 1.000000
+Phase-corrected OVERLAP:
+[[ 9.99998951e-01  1.44804744e-03  2.68140166e-05]
+ [-1.44804732e-03  9.99998952e-01 -4.41535651e-06]
+ [-2.68203821e-05  4.37652391e-06  1.00000000e+00]]
+Total QM took 38.95 s.
+Electronic propagation took 0.00 s.
+Electronic Norm.: 1.0 1.0
+Submitting electronic structure for step 19.
+	Gaussian terminated normally in 6.28 s. (GS_NEW)
+	Gaussian terminated normally in 12.30 s. (TD_NEW_S1)
+Starting forces for state 2
+	Gaussian terminated normally in 11.17 s. (TD_NEW_S2)
+	Gaussian terminated normally in 2.85 s. (DIMER)
+OVERLAP Extracted.
+Original Overlap
+[[ 9.99311729e-01  1.48495703e-03  1.58999877e-05]
+ [-1.45788372e-03  9.99297638e-01  4.56022952e-06]
+ [-1.69680898e-05  6.60693958e-06  9.99305660e-01]]
+Orthogonalized OVERLAP:
+[[ 9.99998916e-01  1.47244255e-03  1.64405288e-05]
+ [-1.47244254e-03  9.99998916e-01 -1.03667832e-06]
+ [-1.64420374e-05  1.01246946e-06  1.00000000e+00]]
+Phase Factor f(S0) = 1.000000
+Phase Factor f(S1) = 1.000000
+Phase Factor f(S2) = 1.000000
+Phase-corrected OVERLAP:
+[[ 9.99998916e-01  1.47244255e-03  1.64405288e-05]
+ [-1.47244254e-03  9.99998916e-01 -1.03667832e-06]
+ [-1.64420374e-05  1.01246946e-06  1.00000000e+00]]
+Total QM took 41.84 s.
+Electronic propagation took 0.00 s.
+Electronic Norm.: 1.0 1.0
+Submitting electronic structure for step 20.
+	Gaussian terminated normally in 6.11 s. (GS_NEW)
+	Gaussian terminated normally in 11.25 s. (TD_NEW_S1)
+Starting forces for state 2
+	Gaussian terminated normally in 9.55 s. (TD_NEW_S2)
+	Gaussian terminated normally in 3.28 s. (DIMER)
+OVERLAP Extracted.
+Original Overlap
+[[ 9.99304823e-01  1.49982167e-03  1.61085949e-05]
+ [-1.48256032e-03  9.99290448e-01 -1.45699380e-05]
+ [-3.11928970e-05  1.54236362e-05  9.99300933e-01]]
+Orthogonalized OVERLAP:
+[[ 9.99998886e-01  1.49223766e-03  2.36557632e-05]
+ [-1.49223730e-03  9.99998887e-01 -1.50307321e-05]
+ [-2.36781662e-05  1.49954153e-05  1.00000000e+00]]
+Phase Factor f(S0) = 1.000000
+Phase Factor f(S1) = 1.000000
+Phase Factor f(S2) = 1.000000
+Phase-corrected OVERLAP:
+[[ 9.99998886e-01  1.49223766e-03  2.36557632e-05]
+ [-1.49223730e-03  9.99998887e-01 -1.50307321e-05]
+ [-2.36781662e-05  1.49954153e-05  1.00000000e+00]]
+Total QM took 39.29 s.
+Electronic propagation took 0.00 s.
+Electronic Norm.: 1.0 1.0
+Submitting electronic structure for step 21.
+	Gaussian terminated normally in 5.29 s. (GS_NEW)
+	Gaussian terminated normally in 11.65 s. (TD_NEW_S1)
+Starting forces for state 2
+	Gaussian terminated normally in 9.61 s. (TD_NEW_S2)
+	Gaussian terminated normally in 3.29 s. (DIMER)
+OVERLAP Extracted.
+Original Overlap
+[[ 9.99292321e-01  3.02597454e-05  1.51906133e-03]
+ [-1.50090346e-03 -2.84123096e-05  9.99283786e-01]
+ [-3.82273501e-05  9.99278152e-01  1.52977960e-05]]
+Orthogonalized OVERLAP:
+[[ 9.99998858e-01  3.42565328e-05  1.51105699e-03]
+ [-1.51105624e-03 -2.18998156e-05  9.99998858e-01]
+ [-3.42895856e-05  9.99999999e-01  2.18480270e-05]]
+Phase Factor f(S0) = 1.000000
+Phase Factor f(S1) = -1.000000
+Phase Factor f(S2) = 1.000000
+I found a sign error upon phase correcting.
+Index Flip: 0 <--> 1
+I found a sign error upon phase correcting.
+Index Flip: 1 <--> 2
+Phase-corrected OVERLAP:
+[[ 9.99998858e-01  3.42565328e-05  1.51105699e-03]
+ [ 1.51105624e-03  2.18998156e-05 -9.99998858e-01]
+ [-3.42895856e-05  9.99999999e-01  2.18480270e-05]]
+Total QM took 38.99 s.
+Electronic propagation took 0.00 s.
+Electronic Norm.: 1.0 1.0
+Submitting electronic structure for step 22.
+	Gaussian terminated normally in 5.87 s. (GS_NEW)
+	Gaussian terminated normally in 13.27 s. (TD_NEW_S1)
+Starting forces for state 2
+	Gaussian terminated normally in 9.92 s. (TD_NEW_S2)
+	Gaussian terminated normally in 2.94 s. (DIMER)
+OVERLAP Extracted.
+Original Overlap
+[[ 9.99236247e-01  1.67377645e-05  1.53265596e-03]
+ [-2.08324253e-05  9.99225719e-01  8.38171895e-06]
+ [-1.51601752e-03 -1.48122365e-05  9.99226343e-01]]
+Orthogonalized OVERLAP:
+[[ 9.99998836e-01  1.87931791e-05  1.52550778e-03]
+ [-1.88108866e-05  1.00000000e+00  1.15932466e-05]
+ [-1.52550756e-03 -1.16219293e-05  9.99998836e-01]]
+Phase Factor f(S0) = 1.000000
+Phase Factor f(S1) = 1.000000
+Phase Factor f(S2) = 1.000000
+I found a sign error upon phase correcting.
+Index Flip: 1 <--> 2
+Phase-corrected OVERLAP:
+[[ 9.99998836e-01  1.87931791e-05  1.52550778e-03]
+ [-1.88108866e-05  1.00000000e+00 -1.15932466e-05]
+ [-1.52550756e-03  1.16219293e-05  9.99998836e-01]]
+Total QM took 41.04 s.
+Electronic propagation took 0.00 s.
+Electronic Norm.: 1.0 1.0
+Submitting electronic structure for step 23.
+	Gaussian terminated normally in 6.19 s. (GS_NEW)
+	Gaussian terminated normally in 13.52 s. (TD_NEW_S1)
+Starting forces for state 2
+	Gaussian terminated normally in 10.79 s. (TD_NEW_S2)
+	Gaussian terminated normally in 3.03 s. (DIMER)
+OVERLAP Extracted.
+Original Overlap
+[[ 9.99253227e-01  2.66695055e-05  1.53009941e-03]
+ [-2.91633636e-05  9.99256682e-01  1.71105879e-05]
+ [-1.52084340e-03 -1.31038903e-05  9.99251676e-01]]
+Orthogonalized OVERLAP:
+[[ 9.99998834e-01  2.79241804e-05  1.52661103e-03]
+ [-2.79472621e-05  9.99999999e-01  1.50981909e-05]
+ [-1.52661061e-03 -1.51408379e-05  9.99998835e-01]]
+Phase Factor f(S0) = 1.000000
+Phase Factor f(S1) = 1.000000
+Phase Factor f(S2) = 1.000000
+Phase-corrected OVERLAP:
+[[ 9.99998834e-01  2.79241804e-05  1.52661103e-03]
+ [-2.79472621e-05  9.99999999e-01  1.50981909e-05]
+ [-1.52661061e-03 -1.51408379e-05  9.99998835e-01]]
+Total QM took 42.68 s.
+Electronic propagation took 0.00 s.
+Electronic Norm.: 1.0 1.0
+Submitting electronic structure for step 24.
+	Gaussian terminated normally in 6.26 s. (GS_NEW)
+	Gaussian terminated normally in 12.99 s. (TD_NEW_S1)
+	Gaussian terminated normally in 3.41 s. (DIMER)
+OVERLAP Extracted.
+Original Overlap
+[[ 9.99274198e-01  1.40806560e-05  1.55624118e-03]
+ [-1.81022546e-05  9.99277261e-01  1.64752289e-05]
+ [-1.55339243e-03 -2.94833919e-05  9.99274040e-01]]
+Orthogonalized OVERLAP:
+[[ 9.99998789e-01  1.60902874e-05  1.55594462e-03]
+ [-1.61260703e-05  1.00000000e+00  2.29849849e-05]
+ [-1.55594425e-03 -2.30100483e-05  9.99998789e-01]]
+Phase Factor f(S0) = 1.000000
+Phase Factor f(S1) = 1.000000
+Phase Factor f(S2) = 1.000000
+Phase-corrected OVERLAP:
+[[ 9.99998789e-01  1.60902874e-05  1.55594462e-03]
+ [-1.61260703e-05  1.00000000e+00  2.29849849e-05]
+ [-1.55594425e-03 -2.30100483e-05  9.99998789e-01]]
+Total QM took 42.32 s.
+Electronic propagation took 0.00 s.
+Electronic Norm.: 1.0 1.0
+Submitting electronic structure for step 25.
+	Gaussian terminated normally in 5.78 s. (GS_NEW)
+	Gaussian terminated normally in 9.29 s. (TD_NEW_S1)
+Starting forces for state 2
+	Gaussian terminated normally in 7.62 s. (TD_NEW_S2)
+	Gaussian terminated normally in 3.04 s. (DIMER)
+OVERLAP Extracted.
+Original Overlap
+[[ 9.99283773e-01  2.59141653e-05  1.56712438e-03]
+ [-2.99403118e-05  9.99281076e-01  1.54265125e-05]
+ [-1.55976055e-03 -2.97608899e-05  9.99272578e-01]]
+Orthogonalized OVERLAP:
+[[ 9.99998776e-01  2.79352223e-05  1.56457033e-03]
+ [-2.79705998e-05  9.99999999e-01  2.25897848e-05]
+ [-1.56456970e-03 -2.26335191e-05  9.99998776e-01]]
+Phase Factor f(S0) = 1.000000
+Phase Factor f(S1) = 1.000000
+Phase Factor f(S2) = 1.000000
+Phase-corrected OVERLAP:
+[[ 9.99998776e-01  2.79352223e-05  1.56457033e-03]
+ [-2.79705998e-05  9.99999999e-01  2.25897848e-05]
+ [-1.56456970e-03 -2.26335191e-05  9.99998776e-01]]
+Total QM took 34.91 s.
+Electronic propagation took 0.00 s.
+Electronic Norm.: 1.0 1.0
+Submitting electronic structure for step 26.
+	Gaussian terminated normally in 5.30 s. (GS_NEW)
+	Gaussian terminated normally in 13.99 s. (TD_NEW_S1)
+Starting forces for state 2
+	Gaussian terminated normally in 9.97 s. (TD_NEW_S2)
+	Gaussian terminated normally in 3.13 s. (DIMER)
+OVERLAP Extracted.
+Original Overlap
+[[ 9.99298798e-01  2.73174356e-05  1.58911120e-03]
+ [-1.46266564e-05  9.99295016e-01  1.77633982e-05]
+ [-1.58239849e-03 -2.42508915e-05  9.99292236e-01]]
+Orthogonalized OVERLAP:
+[[ 9.99998741e-01  2.09727104e-05  1.58687096e-03]
+ [-2.10060616e-05  1.00000000e+00  2.10003110e-05]
+ [-1.58687052e-03 -2.10336185e-05  9.99998741e-01]]
+Phase Factor f(S0) = 1.000000
+Phase Factor f(S1) = 1.000000
+Phase Factor f(S2) = 1.000000
+Phase-corrected OVERLAP:
+[[ 9.99998741e-01  2.09727104e-05  1.58687096e-03]
+ [-2.10060616e-05  1.00000000e+00  2.10003110e-05]
+ [-1.58687052e-03 -2.10336185e-05  9.99998741e-01]]
+Total QM took 41.48 s.
+Electronic propagation took 0.00 s.
+Electronic Norm.: 1.0 1.0
+Submitting electronic structure for step 27.
+	Gaussian terminated normally in 5.79 s. (GS_NEW)
+	Gaussian terminated normally in 12.68 s. (TD_NEW_S1)
+Starting forces for state 2
+	Gaussian terminated normally in 8.77 s. (TD_NEW_S2)
+	Gaussian terminated normally in 3.13 s. (DIMER)
+OVERLAP Extracted.
+Original Overlap
+[[ 9.99277324e-01  2.12043117e-05  1.59600878e-03]
+ [-5.19092588e-06  9.99261608e-01  1.63955122e-05]
+ [-1.58943836e-03 -2.52126136e-05  9.99276388e-01]]
+Orthogonalized OVERLAP:
+[[ 9.99998730e-01  1.31942139e-05  1.59387423e-03]
+ [-1.32273871e-05  1.00000000e+00  2.08023634e-05]
+ [-1.59387395e-03 -2.08234198e-05  9.99998730e-01]]
+Phase Factor f(S0) = 1.000000
+Phase Factor f(S1) = 1.000000
+Phase Factor f(S2) = 1.000000
+Phase-corrected OVERLAP:
+[[ 9.99998730e-01  1.31942139e-05  1.59387423e-03]
+ [-1.32273871e-05  1.00000000e+00  2.08023634e-05]
+ [-1.59387395e-03 -2.08234198e-05  9.99998730e-01]]
+Total QM took 39.44 s.
+Electronic propagation took 0.00 s.
+Electronic Norm.: 1.0 1.0
+Submitting electronic structure for step 28.
+	Gaussian terminated normally in 5.97 s. (GS_NEW)
+	Gaussian terminated normally in 13.79 s. (TD_NEW_S1)
+Starting forces for state 2
+	Gaussian terminated normally in 11.61 s. (TD_NEW_S2)
+	Gaussian terminated normally in 2.91 s. (DIMER)
+OVERLAP Extracted.
+Original Overlap
+[[ 9.99230553e-01  3.54443659e-05  1.62694337e-03]
+ [-2.12653910e-05  9.99209437e-01  1.25328387e-05]
+ [-1.62182847e-03 -3.26258835e-05  9.99231481e-01]]
+Orthogonalized OVERLAP:
+[[ 9.99998678e-01  2.83668139e-05  1.62563424e-03]
+ [-2.84035389e-05  9.99999999e-01  2.25681439e-05]
+ [-1.62563360e-03 -2.26142878e-05  9.99998678e-01]]
+Phase Factor f(S0) = 1.000000
+Phase Factor f(S1) = 1.000000
+Phase Factor f(S2) = 1.000000
+Phase-corrected OVERLAP:
+[[ 9.99998678e-01  2.83668139e-05  1.62563424e-03]
+ [-2.84035389e-05  9.99999999e-01  2.25681439e-05]
+ [-1.62563360e-03 -2.26142878e-05  9.99998678e-01]]
+Total QM took 43.38 s.
+Electronic propagation took 0.00 s.
+Electronic Norm.: 1.0 1.0
+Submitting electronic structure for step 29.
+	Gaussian terminated normally in 6.49 s. (GS_NEW)
+	Gaussian terminated normally in 12.03 s. (TD_NEW_S1)
+Starting forces for state 2
+	Gaussian terminated normally in 9.36 s. (TD_NEW_S2)
+	Gaussian terminated normally in 2.92 s. (DIMER)
+OVERLAP Extracted.
+Original Overlap
+[[ 9.99246613e-01  1.79085891e-05  1.62576995e-03]
+ [ 4.33853683e-06  9.99242750e-01  1.21253154e-05]
+ [-1.64290716e-03 -1.81362388e-05  9.99250863e-01]]
+Orthogonalized OVERLAP:
+[[ 9.99998662e-01  6.78016503e-06  1.63556509e-03]
+ [-6.80491610e-06  1.00000000e+00  1.51274744e-05]
+ [-1.63556498e-03 -1.51385841e-05  9.99998662e-01]]
+Phase Factor f(S0) = 1.000000
+Phase Factor f(S1) = 1.000000
+Phase Factor f(S2) = 1.000000
+Phase-corrected OVERLAP:
+[[ 9.99998662e-01  6.78016503e-06  1.63556509e-03]
+ [-6.80491610e-06  1.00000000e+00  1.51274744e-05]
+ [-1.63556498e-03 -1.51385841e-05  9.99998662e-01]]
+Total QM took 40.21 s.
+Electronic propagation took 0.00 s.
+Electronic Norm.: 1.0 1.0
+Submitting electronic structure for step 30.
+	Gaussian terminated normally in 5.53 s. (GS_NEW)
+	Gaussian terminated normally in 13.48 s. (TD_NEW_S1)
+	Gaussian terminated normally in 3.03 s. (DIMER)
+OVERLAP Extracted.
+Original Overlap
+[[ 9.99235711e-01  1.23653689e-05  1.64981387e-03]
+ [-4.82134358e-06  9.99239928e-01  3.44305894e-05]
+ [-1.67069579e-03 -2.47907643e-05  9.99248185e-01]]
+Orthogonalized OVERLAP:
+[[ 9.99998620e-01  8.57112185e-06  1.66151210e-03]
+ [-8.62035225e-06  1.00000000e+00  2.96227150e-05]
+ [-1.66151185e-03 -2.96369969e-05  9.99998619e-01]]
+Phase Factor f(S0) = 1.000000
+Phase Factor f(S1) = 1.000000
+Phase Factor f(S2) = 1.000000
+Phase-corrected OVERLAP:
+[[ 9.99998620e-01  8.57112185e-06  1.66151210e-03]
+ [-8.62035225e-06  1.00000000e+00  2.96227150e-05]
+ [-1.66151185e-03 -2.96369969e-05  9.99998619e-01]]
+Total QM took 40.12 s.
+Electronic propagation took 0.00 s.
+Electronic Norm.: 1.0 1.0
+Submitting electronic structure for step 31.
+	Gaussian terminated normally in 5.51 s. (GS_NEW)
+	Gaussian terminated normally in 12.01 s. (TD_NEW_S1)
+Starting forces for state 2
+	Gaussian terminated normally in 9.39 s. (TD_NEW_S2)
+	Gaussian terminated normally in 2.83 s. (DIMER)
+OVERLAP Extracted.
+Original Overlap
+[[ 9.99235596e-01  8.15969965e-06  1.67135935e-03]
+ [-2.17012929e-05  9.99235031e-01  2.70284706e-05]
+ [-1.67482994e-03 -2.61566021e-05  9.99246383e-01]]
+Orthogonalized OVERLAP:
+[[ 9.99998598e-01  1.49192284e-05  1.67436344e-03]
+ [-1.49637973e-05  1.00000000e+00  2.66058568e-05]
+ [-1.67436304e-03 -2.66308744e-05  9.99998598e-01]]
+Phase Factor f(S0) = 1.000000
+Phase Factor f(S1) = 1.000000
+Phase Factor f(S2) = 1.000000
+Phase-corrected OVERLAP:
+[[ 9.99998598e-01  1.49192284e-05  1.67436344e-03]
+ [-1.49637973e-05  1.00000000e+00  2.66058568e-05]
+ [-1.67436304e-03 -2.66308744e-05  9.99998598e-01]]
+Total QM took 38.82 s.
+Electronic propagation took 0.00 s.
+Electronic Norm.: 1.0 1.0
+Submitting electronic structure for step 32.
+	Gaussian terminated normally in 5.56 s. (GS_NEW)
+	Gaussian terminated normally in 12.50 s. (TD_NEW_S1)
+Starting forces for state 2
+	Gaussian terminated normally in 10.89 s. (TD_NEW_S2)
+	Gaussian terminated normally in 3.55 s. (DIMER)
+OVERLAP Extracted.
+Original Overlap
+[[ 9.99275601e-01 -6.19028546e-06  1.69226755e-03]
+ [-8.75598970e-06  9.99272951e-01  2.57920938e-05]
+ [-1.68765735e-03 -2.61785209e-05  9.99279731e-01]]
+Orthogonalized OVERLAP:
+[[ 9.99998570e-01  1.26198127e-06  1.69118175e-03]
+ [-1.30596964e-06  1.00000000e+00  2.60093278e-05]
+ [-1.69118171e-03 -2.60114992e-05  9.99998570e-01]]
+Phase Factor f(S0) = 1.000000
+Phase Factor f(S1) = 1.000000
+Phase Factor f(S2) = 1.000000
+Phase-corrected OVERLAP:
+[[ 9.99998570e-01  1.26198127e-06  1.69118175e-03]
+ [-1.30596964e-06  1.00000000e+00  2.60093278e-05]
+ [-1.69118171e-03 -2.60114992e-05  9.99998570e-01]]
+Total QM took 41.58 s.
+Electronic propagation took 0.00 s.
+Electronic Norm.: 1.0 1.0
+Submitting electronic structure for step 33.
+	Gaussian terminated normally in 5.35 s. (GS_NEW)
+	Gaussian terminated normally in 13.70 s. (TD_NEW_S1)
+Starting forces for state 2
+	Gaussian terminated normally in 10.84 s. (TD_NEW_S2)
+	Gaussian terminated normally in 3.41 s. (DIMER)
+OVERLAP Extracted.
+Original Overlap
+[[ 9.99293821e-01 -1.03101813e-05 -1.70226547e-03]
+ [-1.16951216e-05 -9.99283436e-01 -1.84228550e-05]
+ [-1.70577874e-03  1.79557883e-05 -9.99283535e-01]]
+Orthogonalized OVERLAP:
+[[ 9.99998546e-01 -1.09947326e-05 -1.70523270e-03]
+ [-1.10257728e-05 -1.00000000e+00 -1.81935311e-05]
+ [-1.70523250e-03  1.82123061e-05 -9.99998546e-01]]
+Phase Factor f(S0) = 1.000000
+Phase Factor f(S1) = -1.000000
+Phase Factor f(S2) = -1.000000
+Phase-corrected OVERLAP:
+[[ 9.99998546e-01  1.09947326e-05  1.70523270e-03]
+ [-1.10257728e-05  1.00000000e+00  1.81935311e-05]
+ [-1.70523250e-03 -1.82123061e-05  9.99998546e-01]]
+Total QM took 42.56 s.
+Electronic propagation took 0.00 s.
+Electronic Norm.: 1.0 1.0
+Submitting electronic structure for step 34.
+	Gaussian terminated normally in 6.40 s. (GS_NEW)
+	Gaussian terminated normally in 12.85 s. (TD_NEW_S1)
+Starting forces for state 2
+	Gaussian terminated normally in 10.00 s. (TD_NEW_S2)
+	Gaussian terminated normally in 3.23 s. (DIMER)
+OVERLAP Extracted.
+Original Overlap
+[[ 9.99307736e-01 -2.31751221e-06 -1.71611039e-03]
+ [ 1.50234862e-06  9.99292225e-01  2.21925071e-05]
+ [ 1.71807468e-03 -1.52474192e-05  9.99292358e-01]]
+Orthogonalized OVERLAP:
+[[ 9.99998524e-01 -1.89217654e-06 -1.71829274e-03]
+ [ 1.92436507e-06  1.00000000e+00  1.87312023e-05]
+ [ 1.71829270e-03 -1.87344813e-05  9.99998524e-01]]
+Phase Factor f(S0) = 1.000000
+Phase Factor f(S1) = 1.000000
+Phase Factor f(S2) = 1.000000
+I found a sign error upon phase correcting.
+Index Flip: 0 <--> 2
+Phase-corrected OVERLAP:
+[[ 9.99998524e-01 -1.89217654e-06  1.71829274e-03]
+ [ 1.92436507e-06  1.00000000e+00  1.87312023e-05]
+ [-1.71829270e-03 -1.87344813e-05  9.99998524e-01]]
+Total QM took 41.49 s.
+Electronic propagation took 0.00 s.
+Electronic Norm.: 1.0 1.0
+Submitting electronic structure for step 35.
+	Gaussian terminated normally in 5.33 s. (GS_NEW)
+	Gaussian terminated normally in 11.77 s. (TD_NEW_S1)
+	Gaussian terminated normally in 3.22 s. (DIMER)
+OVERLAP Extracted.
+Original Overlap
+[[ 9.99289243e-01 -1.22543210e-05 -1.75176563e-03]
+ [ 1.79819524e-06  9.99289066e-01  1.44404317e-05]
+ [ 1.73808574e-03 -1.38701037e-05  9.99285889e-01]]
+Orthogonalized OVERLAP:
+[[ 9.99998475e-01 -7.01868131e-06 -1.74616706e-03]
+ [ 7.04340844e-06  1.00000000e+00  1.41546568e-05]
+ [ 1.74616697e-03 -1.41669342e-05  9.99998475e-01]]
+Phase Factor f(S0) = 1.000000
+Phase Factor f(S1) = 1.000000
+Phase Factor f(S2) = 1.000000
+I found a sign error upon phase correcting.
+Index Flip: 0 <--> 2
+Phase-corrected OVERLAP:
+[[ 9.99998475e-01 -7.01868131e-06  1.74616706e-03]
+ [ 7.04340844e-06  1.00000000e+00  1.41546568e-05]
+ [-1.74616697e-03 -1.41669342e-05  9.99998475e-01]]
+Total QM took 39.26 s.
+Electronic propagation took 0.00 s.
+Electronic Norm.: 1.0 1.0
+Submitting electronic structure for step 36.
+	Gaussian terminated normally in 5.61 s. (GS_NEW)
+	Gaussian terminated normally in 11.27 s. (TD_NEW_S1)
+Starting forces for state 2
+	Gaussian terminated normally in 11.40 s. (TD_NEW_S2)
+	Gaussian terminated normally in 3.13 s. (DIMER)
+OVERLAP Extracted.
+Original Overlap
+[[ 9.99350787e-01  6.38192773e-07 -1.77519045e-03]
+ [-1.21350938e-05  9.99349835e-01  1.56441026e-05]
+ [ 1.76110781e-03 -2.74531719e-05  9.99339589e-01]]
+Orthogonalized OVERLAP:
+[[ 9.99998435e-01  6.40455351e-06 -1.76930477e-03]
+ [-6.36641148e-06  1.00000000e+00  2.15632710e-05]
+ [ 1.76930491e-03 -2.15519732e-05  9.99998435e-01]]
+Phase Factor f(S0) = 1.000000
+Phase Factor f(S1) = 1.000000
+Phase Factor f(S2) = 1.000000
+I found a sign error upon phase correcting.
+Index Flip: 0 <--> 2
+Phase-corrected OVERLAP:
+[[ 9.99998435e-01  6.40455351e-06  1.76930477e-03]
+ [-6.36641148e-06  1.00000000e+00  2.15632710e-05]
+ [-1.76930491e-03 -2.15519732e-05  9.99998435e-01]]
+Total QM took 40.68 s.
+Electronic propagation took 0.00 s.
+Electronic Norm.: 1.0 1.0
+Submitting electronic structure for step 37.
+	Gaussian terminated normally in 5.59 s. (GS_NEW)
+	Gaussian terminated normally in 14.87 s. (TD_NEW_S1)
+Starting forces for state 2
+	Gaussian terminated normally in 10.34 s. (TD_NEW_S2)
+	Gaussian terminated normally in 3.03 s. (DIMER)
+OVERLAP Extracted.
+Original Overlap
+[[ 9.99355967e-01 -1.21907784e-05 -1.77614862e-03]
+ [ 9.65468006e-06  9.99343543e-01  1.30309662e-05]
+ [ 1.75676962e-03 -2.25358282e-05  9.99345512e-01]]
+Orthogonalized OVERLAP:
+[[ 9.99998438e-01 -1.09183821e-05 -1.76760411e-03]
+ [ 1.09498348e-05  1.00000000e+00  1.77843016e-05]
+ [ 1.76760391e-03 -1.78036287e-05  9.99998438e-01]]
+Phase Factor f(S0) = 1.000000
+Phase Factor f(S1) = 1.000000
+Phase Factor f(S2) = 1.000000
+I found a sign error upon phase correcting.
+Index Flip: 0 <--> 2
+Phase-corrected OVERLAP:
+[[ 9.99998438e-01 -1.09183821e-05  1.76760411e-03]
+ [ 1.09498348e-05  1.00000000e+00  1.77843016e-05]
+ [-1.76760391e-03 -1.78036287e-05  9.99998438e-01]]
+Total QM took 42.86 s.
+Electronic propagation took 0.00 s.
+Electronic Norm.: 1.0 1.0
+Submitting electronic structure for step 38.
+	Gaussian terminated normally in 5.28 s. (GS_NEW)
+	Gaussian terminated normally in 12.78 s. (TD_NEW_S1)
+	Gaussian terminated normally in 2.68 s. (DIMER)
+OVERLAP Extracted.
+Original Overlap
+[[ 9.99268784e-01 -9.60588869e-06 -1.78855010e-03]
+ [ 1.54871933e-07  9.99253136e-01  1.60145921e-05]
+ [ 1.77552539e-03 -1.14759435e-05  9.99273589e-01]]
+Orthogonalized OVERLAP:
+[[ 9.99998410e-01 -4.86974035e-06 -1.78333462e-03]
+ [ 4.89426332e-06  1.00000000e+00  1.37468248e-05]
+ [ 1.78333456e-03 -1.37555310e-05  9.99998410e-01]]
+Phase Factor f(S0) = 1.000000
+Phase Factor f(S1) = 1.000000
+Phase Factor f(S2) = 1.000000
+I found a sign error upon phase correcting.
+Index Flip: 0 <--> 2
+Phase-corrected OVERLAP:
+[[ 9.99998410e-01 -4.86974035e-06  1.78333462e-03]
+ [ 4.89426332e-06  1.00000000e+00  1.37468248e-05]
+ [-1.78333456e-03 -1.37555310e-05  9.99998410e-01]]
+Total QM took 40.11 s.
+Electronic propagation took 0.00 s.
+Electronic Norm.: 1.0 1.0
+Submitting electronic structure for step 39.
+	Gaussian terminated normally in 4.92 s. (GS_NEW)
+	Gaussian terminated normally in 11.90 s. (TD_NEW_S1)
+Starting forces for state 2
+	Gaussian terminated normally in 9.87 s. (TD_NEW_S2)
+	Gaussian terminated normally in 3.23 s. (DIMER)
+OVERLAP Extracted.
+Original Overlap
+[[ 9.99238668e-01  1.61791837e-06 -1.79712187e-03]
+ [-9.24212349e-06  9.99221580e-01  1.63691481e-05]
+ [ 1.79706472e-03 -7.14260397e-06  9.99231784e-01]]
+Orthogonalized OVERLAP:
+[[ 9.99998383e-01  5.44892360e-06 -1.79846576e-03]
+ [-5.42777088e-06  1.00000000e+00  1.17664147e-05]
+ [ 1.79846583e-03 -1.17566340e-05  9.99998383e-01]]
+Phase Factor f(S0) = 1.000000
+Phase Factor f(S1) = 1.000000
+Phase Factor f(S2) = 1.000000
+I found a sign error upon phase correcting.
+Index Flip: 0 <--> 2
+Phase-corrected OVERLAP:
+[[ 9.99998383e-01  5.44892360e-06  1.79846576e-03]
+ [-5.42777088e-06  1.00000000e+00  1.17664147e-05]
+ [-1.79846583e-03 -1.17566340e-05  9.99998383e-01]]
+Total QM took 39.01 s.
+Electronic propagation took 0.00 s.
+Electronic Norm.: 1.0 1.0
+Submitting electronic structure for step 40.
+	Gaussian terminated normally in 5.77 s. (GS_NEW)
+	Gaussian terminated normally in 11.68 s. (TD_NEW_S1)
+Starting forces for state 2
+	Gaussian terminated normally in 10.96 s. (TD_NEW_S2)
+	Gaussian terminated normally in 3.00 s. (DIMER)
+OVERLAP Extracted.
+Original Overlap
+[[ 9.99297196e-01  1.26565362e-05  1.80208102e-03]
+ [ 2.91579143e-06 -9.99283347e-01 -9.88696590e-06]
+ [ 1.79787401e-03  1.34630846e-05 -9.99287837e-01]]
+Orthogonalized OVERLAP:
+[[ 9.99998378e-01  7.78278661e-06  1.80124898e-03]
+ [ 7.80382336e-06 -1.00000000e+00 -1.16719529e-05]
+ [ 1.80124889e-03  1.16859905e-05 -9.99998378e-01]]
+Phase Factor f(S0) = 1.000000
+Phase Factor f(S1) = -1.000000
+Phase Factor f(S2) = -1.000000
+I found a sign error upon phase correcting.
+Index Flip: 0 <--> 2
+Phase-corrected OVERLAP:
+[[ 9.99998378e-01 -7.78278661e-06  1.80124898e-03]
+ [ 7.80382336e-06  1.00000000e+00  1.16719529e-05]
+ [-1.80124889e-03 -1.16859905e-05  9.99998378e-01]]
+Total QM took 40.48 s.
+Electronic propagation took 0.00 s.
+Electronic Norm.: 1.0 1.0
+Submitting electronic structure for step 41.
+	Gaussian terminated normally in 5.55 s. (GS_NEW)
+	Gaussian terminated normally in 12.22 s. (TD_NEW_S1)
+Starting forces for state 2
+	Gaussian terminated normally in 10.72 s. (TD_NEW_S2)
+	Gaussian terminated normally in 3.14 s. (DIMER)
+OVERLAP Extracted.
+Original Overlap
+[[ 9.99308941e-01  1.46284503e-05  1.81508000e-03]
+ [-4.52510414e-06  9.99302093e-01  1.40430845e-06]
+ [-1.81146922e-03 -1.44392338e-05  9.99311665e-01]]
+Orthogonalized OVERLAP:
+[[ 9.99998354e-01  9.58215336e-06  1.81452315e-03]
+ [-9.59652925e-06  1.00000000e+00  7.91397488e-06]
+ [-1.81452307e-03 -7.93137498e-06  9.99998354e-01]]
+Phase Factor f(S0) = 1.000000
+Phase Factor f(S1) = 1.000000
+Phase Factor f(S2) = 1.000000
+Phase-corrected OVERLAP:
+[[ 9.99998354e-01  9.58215336e-06  1.81452315e-03]
+ [-9.59652925e-06  1.00000000e+00  7.91397488e-06]
+ [-1.81452307e-03 -7.93137498e-06  9.99998354e-01]]
+Total QM took 40.67 s.
+Electronic propagation took 0.00 s.
+Electronic Norm.: 1.0 1.0
+Submitting electronic structure for step 42.
+	Gaussian terminated normally in 6.48 s. (GS_NEW)
+	Gaussian terminated normally in 14.10 s. (TD_NEW_S1)
+Starting forces for state 2
+	Gaussian terminated normally in 11.67 s. (TD_NEW_S2)
+	Gaussian terminated normally in 3.12 s. (DIMER)
+OVERLAP Extracted.
+Original Overlap
+[[ 9.99283658e-01  6.19942370e-06  1.81933453e-03]
+ [-1.06462034e-06  9.99286502e-01  9.59184638e-06]
+ [-1.81038083e-03 -7.93945645e-06  9.99286919e-01]]
+Orthogonalized OVERLAP:
+[[ 9.99998351e-01  3.62591990e-06  1.81615271e-03]
+ [-3.64184679e-06  1.00000000e+00  8.76626909e-06]
+ [-1.81615268e-03 -8.77286879e-06  9.99998351e-01]]
+Phase Factor f(S0) = 1.000000
+Phase Factor f(S1) = 1.000000
+Phase Factor f(S2) = 1.000000
+Phase-corrected OVERLAP:
+[[ 9.99998351e-01  3.62591990e-06  1.81615271e-03]
+ [-3.64184679e-06  1.00000000e+00  8.76626909e-06]
+ [-1.81615268e-03 -8.77286879e-06  9.99998351e-01]]
+Total QM took 44.49 s.
+Electronic propagation took 0.00 s.
+Electronic Norm.: 1.0 1.0
+Submitting electronic structure for step 43.
+	Gaussian terminated normally in 5.63 s. (GS_NEW)
+	Gaussian terminated normally in 11.95 s. (TD_NEW_S1)
+Starting forces for state 2
+	Gaussian terminated normally in 10.05 s. (TD_NEW_S2)
+	Gaussian terminated normally in 2.91 s. (DIMER)
+OVERLAP Extracted.
+Original Overlap
+[[ 9.99259048e-01  7.49555566e-06  1.84704743e-03]
+ [ 2.50880203e-07  9.99265358e-01  6.36751411e-06]
+ [-1.82744787e-03  7.23777281e-06  9.99264152e-01]]
+Orthogonalized OVERLAP:
+[[ 9.99998310e-01  3.61914925e-06  1.83860215e-03]
+ [-3.61834212e-06  1.00000000e+00 -4.42321025e-07]
+ [-1.83860215e-03  4.35667586e-07  9.99998310e-01]]
+Phase Factor f(S0) = 1.000000
+Phase Factor f(S1) = 1.000000
+Phase Factor f(S2) = 1.000000
+Phase-corrected OVERLAP:
+[[ 9.99998310e-01  3.61914925e-06  1.83860215e-03]
+ [-3.61834212e-06  1.00000000e+00 -4.42321025e-07]
+ [-1.83860215e-03  4.35667586e-07  9.99998310e-01]]
+Total QM took 39.61 s.
+Electronic propagation took 0.00 s.
+Electronic Norm.: 1.0 1.0
+Submitting electronic structure for step 44.
+	Gaussian terminated normally in 5.68 s. (GS_NEW)
+	Gaussian terminated normally in 10.78 s. (TD_NEW_S1)
+Starting forces for state 2
+	Gaussian terminated normally in 10.06 s. (TD_NEW_S2)
+	Gaussian terminated normally in 2.89 s. (DIMER)
+OVERLAP Extracted.
+Original Overlap
+[[ 9.99219114e-01  1.94947671e-05  1.82179591e-03]
+ [-8.35183489e-06  9.99235509e-01  1.57842838e-05]
+ [-1.80539015e-03 -1.24186477e-06  9.99229328e-01]]
+Orthogonalized OVERLAP:
+[[ 9.99998353e-01  1.39197490e-05  1.81499807e-03]
+ [-1.39352029e-05  1.00000000e+00  8.50195773e-06]
+ [-1.81499795e-03 -8.52723609e-06  9.99998353e-01]]
+Phase Factor f(S0) = 1.000000
+Phase Factor f(S1) = 1.000000
+Phase Factor f(S2) = 1.000000
+Phase-corrected OVERLAP:
+[[ 9.99998353e-01  1.39197490e-05  1.81499807e-03]
+ [-1.39352029e-05  1.00000000e+00  8.50195773e-06]
+ [-1.81499795e-03 -8.52723609e-06  9.99998353e-01]]
+Total QM took 38.47 s.
+Electronic propagation took 0.00 s.
+Electronic Norm.: 1.0 1.0
+Submitting electronic structure for step 45.
+	Gaussian terminated normally in 5.77 s. (GS_NEW)
+	Gaussian terminated normally in 14.58 s. (TD_NEW_S1)
+Starting forces for state 2
+	Gaussian terminated normally in 10.12 s. (TD_NEW_S2)
+	Gaussian terminated normally in 2.89 s. (DIMER)
+OVERLAP Extracted.
+Original Overlap
+[[ 9.99262935e-01  2.76058262e-04  1.79906069e-03]
+ [-1.74747780e-05  9.88946277e-01 -1.43695733e-01]
+ [-1.81597300e-03  1.43253091e-01  9.88879889e-01]]
+Orthogonalized OVERLAP:
+[[ 9.99998345e-01  2.77448991e-04  1.79820549e-03]
+ [-1.63884816e-05  9.89638756e-01 -1.43579709e-01]
+ [-1.81940989e-03  1.43579442e-01  9.89637122e-01]]
+Phase Factor f(S0) = 1.000000
+Phase Factor f(S1) = 1.000000
+Phase Factor f(S2) = 1.000000
+I found a sign error upon phase correcting.
+Index Flip: 1 <--> 2
+Phase-corrected OVERLAP:
+[[ 9.99998345e-01  2.77448991e-04  1.79820549e-03]
+ [-1.63884816e-05  9.89638756e-01  1.43579709e-01]
+ [-1.81940989e-03 -1.43579442e-01  9.89637122e-01]]
+Total QM took 42.57 s.
+Electronic propagation took 0.00 s.
+Electronic Norm.: 1.0 1.0
+Electronic Norm.: 1.0
+Mapping norm is wrong.
+Submitting electronic structure for step 46.
+	Gaussian terminated normally in 5.77 s. (GS_NEW)
+	Gaussian terminated normally in 13.13 s. (TD_NEW_S1)
+Starting forces for state 2
+	Gaussian terminated normally in 10.36 s. (TD_NEW_S2)
+	Gaussian terminated normally in 3.36 s. (DIMER)
+OVERLAP Extracted.
+Original Overlap
+[[ 9.99288751e-01 -5.59138321e-04  1.74628029e-03]
+ [-2.75031236e-04 -9.86042360e-01 -1.62888753e-01]
+ [-1.81500439e-03 -1.61636004e-01  9.85992196e-01]]
+Orthogonalized OVERLAP:
+[[ 9.99998314e-01 -5.63587264e-04  1.74762499e-03]
+ [-2.72329261e-04 -9.86728321e-01 -1.62379638e-01]
+ [-1.81594617e-03 -1.62378888e-01  9.86726811e-01]]
+Phase Factor f(S0) = 1.000000
+Phase Factor f(S1) = -1.000000
+Phase Factor f(S2) = 1.000000
+I found a sign error upon phase correcting.
+Index Flip: 1 <--> 2
+Phase-corrected OVERLAP:
+[[ 9.99998314e-01  5.63587264e-04  1.74762499e-03]
+ [-2.72329261e-04  9.86728321e-01  1.62379638e-01]
+ [-1.81594617e-03 -1.62378888e-01  9.86726811e-01]]
+Total QM took 41.66 s.
+Electronic propagation took 0.00 s.
+Electronic Norm.: 1.0 1.0
+Electronic Norm.: 1.0
+Mapping norm is wrong.
+Submitting electronic structure for step 47.
+	Gaussian terminated normally in 6.52 s. (GS_NEW)
+	Gaussian terminated normally in 13.15 s. (TD_NEW_S1)
+	Gaussian terminated normally in 3.02 s. (DIMER)
+OVERLAP Extracted.
+Original Overlap
+[[ 9.99213613e-01  1.37890553e-03  1.20053369e-03]
+ [ 5.63019538e-04 -8.56438341e-01  5.15623707e-01]
+ [-1.73563515e-03  5.13990428e-01  8.56312766e-01]]
+Orthogonalized OVERLAP:
+[[ 9.99998328e-01  1.37962145e-03  1.20023243e-03]
+ [ 5.64035825e-04 -8.57058768e-01  5.15218351e-01]
+ [-1.73947602e-03  5.15216813e-01  8.57058114e-01]]
+Phase Factor f(S0) = 1.000000
+Phase Factor f(S1) = -1.000000
+Phase Factor f(S2) = 1.000000
+I found a sign error upon phase correcting.
+Index Flip: 0 <--> 1
+Phase-corrected OVERLAP:
+[[ 9.99998328e-01  1.37962145e-03  1.20023243e-03]
+ [-5.64035825e-04  8.57058768e-01  5.15218351e-01]
+ [-1.73947602e-03 -5.15216813e-01  8.57058114e-01]]
+Total QM took 43.19 s.
+Electronic propagation took 0.00 s.
+Electronic Norm.: 1.0 1.0
+Electronic Norm.: 1.0
+Mapping norm is wrong.
+Submitting electronic structure for step 48.
+	Gaussian terminated normally in 6.24 s. (GS_NEW)
+	Gaussian terminated normally in 13.57 s. (TD_NEW_S1)
+Starting forces for state 2
+	Gaussian terminated normally in 11.79 s. (TD_NEW_S2)
+	Gaussian terminated normally in 3.23 s. (DIMER)
+OVERLAP Extracted.
+Original Overlap
+[[ 9.99209575e-01  1.71958632e-03  5.03060419e-04]
+ [-1.36467065e-03  9.10003643e-01 -4.12984275e-01]
+ [-1.17143609e-03  4.11665619e-01  9.10316432e-01]]
+Orthogonalized OVERLAP:
+[[ 9.99998385e-01  1.72488360e-03  5.04242376e-04]
+ [-1.36309717e-03  9.10886426e-01 -4.12654894e-01]
+ [-1.17108919e-03  4.12653541e-01  9.10887306e-01]]
+Phase Factor f(S0) = 1.000000
+Phase Factor f(S1) = 1.000000
+Phase Factor f(S2) = 1.000000
+I found a sign error upon phase correcting.
+Index Flip: 1 <--> 2
+Phase-corrected OVERLAP:
+[[ 9.99998385e-01  1.72488360e-03  5.04242376e-04]
+ [-1.36309717e-03  9.10886426e-01  4.12654894e-01]
+ [-1.17108919e-03 -4.12653541e-01  9.10887306e-01]]
+Total QM took 44.02 s.
+Electronic propagation took 0.00 s.
+Electronic Norm.: 0.9999 0.9999
+Electronic Norm.: 0.9999
+Mapping norm is wrong.
+Submitting electronic structure for step 49.
+	Gaussian terminated normally in 6.50 s. (GS_NEW)
+	Gaussian terminated normally in 13.75 s. (TD_NEW_S1)
+Starting forces for state 2
+	Gaussian terminated normally in 10.83 s. (TD_NEW_S2)
+	Gaussian terminated normally in 3.13 s. (DIMER)
+OVERLAP Extracted.
+Original Overlap
+[[ 9.99219818e-01  1.78527627e-03  2.79125904e-04]
+ [-1.73872648e-03  9.90209650e-01 -1.33850290e-01]
+ [-5.16627431e-04  1.33476119e-01  9.90256593e-01]]
+Orthogonalized OVERLAP:
+[[ 9.99998358e-01  1.79021047e-03  2.79636751e-04]
+ [-1.73671460e-03  9.91011064e-01 -1.33768665e-01]
+ [-5.16597178e-04  1.33767960e-01  9.91012546e-01]]
+Phase Factor f(S0) = 1.000000
+Phase Factor f(S1) = 1.000000
+Phase Factor f(S2) = 1.000000
+I found a sign error upon phase correcting.
+Index Flip: 1 <--> 2
+Phase-corrected OVERLAP:
+[[ 9.99998358e-01  1.79021047e-03  2.79636751e-04]
+ [-1.73671460e-03  9.91011064e-01  1.33768665e-01]
+ [-5.16597178e-04 -1.33767960e-01  9.91012546e-01]]
+Total QM took 43.26 s.
+Electronic propagation took 0.00 s.
+Electronic Norm.: 0.9999 0.9999
+Electronic Norm.: 0.9999
+Mapping norm is wrong.
+Submitting electronic structure for step 50.
+	Gaussian terminated normally in 5.05 s. (GS_NEW)
+	Gaussian terminated normally in 12.38 s. (TD_NEW_S1)
+Starting forces for state 2
+	Gaussian terminated normally in 10.74 s. (TD_NEW_S2)
+	Gaussian terminated normally in 3.31 s. (DIMER)
+OVERLAP Extracted.
+Original Overlap
+[[ 9.99164006e-01  1.79763483e-03 -2.43275575e-05]
+ [-1.76882417e-03  9.85901691e-01 -1.62234777e-01]
+ [-2.68080735e-04  1.62222202e-01  9.85899146e-01]]
+Orthogonalized OVERLAP:
+[[ 9.99998389e-01  1.79475966e-03 -2.35136351e-05]
+ [-1.77476234e-03  9.86729155e-01 -1.62365099e-01]
+ [-2.68204741e-04  1.62364879e-01  9.86730751e-01]]
+Phase Factor f(S0) = 1.000000
+Phase Factor f(S1) = 1.000000
+Phase Factor f(S2) = 1.000000
+I found a sign error upon phase correcting.
+Index Flip: 1 <--> 2
+Phase-corrected OVERLAP:
+[[ 9.99998389e-01  1.79475966e-03 -2.35136351e-05]
+ [-1.77476234e-03  9.86729155e-01  1.62365099e-01]
+ [-2.68204741e-04 -1.62364879e-01  9.86730751e-01]]
+Total QM took 40.58 s.
+Electronic propagation took 0.00 s.
+Electronic Norm.: 0.9999 0.9999
+Electronic Norm.: 0.9999
+Mapping norm is wrong.
+Submitting electronic structure for step 51.
+	Gaussian terminated normally in 5.67 s. (GS_NEW)
+	Gaussian terminated normally in 13.23 s. (TD_NEW_S1)
+Starting forces for state 2
+	Gaussian terminated normally in 11.36 s. (TD_NEW_S2)
+	Gaussian terminated normally in 2.60 s. (DIMER)
+OVERLAP Extracted.
+Original Overlap
+[[ 9.99177848e-01  1.78282237e-03 -1.96599500e-05]
+ [-1.77461138e-03  9.99170811e-01 -1.04068328e-04]
+ [ 1.91978811e-05  1.02499296e-04  9.99170822e-01]]
+Orthogonalized OVERLAP:
+[[ 9.99998415e-01  1.78018289e-03 -1.95360369e-05]
+ [-1.78018490e-03  9.99998410e-01 -1.03352219e-04]
+ [ 1.93520200e-05  1.03386833e-04  9.99999994e-01]]
+Phase Factor f(S0) = 1.000000
+Phase Factor f(S1) = 1.000000
+Phase Factor f(S2) = 1.000000
+I found a sign error upon phase correcting.
+Index Flip: 1 <--> 2
+Phase-corrected OVERLAP:
+[[ 9.99998415e-01  1.78018289e-03 -1.95360369e-05]
+ [-1.78018490e-03  9.99998410e-01  1.03352219e-04]
+ [ 1.93520200e-05 -1.03386833e-04  9.99999994e-01]]
+Total QM took 41.89 s.
+Electronic propagation took 0.00 s.
+Electronic Norm.: 0.9999 0.9999
+Electronic Norm.: 0.9999
+Mapping norm is wrong.
+Submitting electronic structure for step 52.
+	Gaussian terminated normally in 5.44 s. (GS_NEW)
+	Gaussian terminated normally in 11.93 s. (TD_NEW_S1)
+Starting forces for state 2
+	Gaussian terminated normally in 11.76 s. (TD_NEW_S2)
+	Gaussian terminated normally in 3.63 s. (DIMER)
+OVERLAP Extracted.
+Original Overlap
+[[ 9.99186578e-01  1.76874813e-03 -2.56700147e-05]
+ [-1.76754826e-03  9.99178002e-01 -1.15300489e-04]
+ [ 2.70412474e-05  1.26037302e-04  9.99177245e-01]]
+Orthogonalized OVERLAP:
+[[ 9.99998434e-01  1.76959086e-03 -2.64887406e-05]
+ [-1.76959405e-03  9.99998427e-01 -1.20744065e-04]
+ [ 2.62750314e-05  1.20790750e-04  9.99999992e-01]]
+Phase Factor f(S0) = 1.000000
+Phase Factor f(S1) = 1.000000
+Phase Factor f(S2) = 1.000000
+Phase-corrected OVERLAP:
+[[ 9.99998434e-01  1.76959086e-03 -2.64887406e-05]
+ [-1.76959405e-03  9.99998427e-01 -1.20744065e-04]
+ [ 2.62750314e-05  1.20790750e-04  9.99999992e-01]]
+Total QM took 41.77 s.
+Electronic propagation took 0.00 s.
+Electronic Norm.: 0.9999 0.9999
+Electronic Norm.: 0.9999
+Mapping norm is wrong.
+Submitting electronic structure for step 53.
+	Gaussian terminated normally in 5.80 s. (GS_NEW)
+	Gaussian terminated normally in 13.06 s. (TD_NEW_S1)
+	Gaussian terminated normally in 3.11 s. (DIMER)
+OVERLAP Extracted.
+Original Overlap
+[[ 9.99132372e-01  1.74631336e-03 -1.39482592e-05]
+ [-1.75494153e-03  9.99121214e-01 -1.02402985e-04]
+ [ 2.15360431e-05  1.16122530e-04  9.99133049e-01]]
+Orthogonalized OVERLAP:
+[[ 9.99998465e-01  1.75215362e-03 -1.78595790e-05]
+ [-1.75215557e-03  9.99998459e-01 -1.09339194e-04]
+ [ 1.76679724e-05  1.09370319e-04  9.99999994e-01]]
+Phase Factor f(S0) = 1.000000
+Phase Factor f(S1) = 1.000000
+Phase Factor f(S2) = 1.000000
+Phase-corrected OVERLAP:
+[[ 9.99998465e-01  1.75215362e-03 -1.78595790e-05]
+ [-1.75215557e-03  9.99998459e-01 -1.09339194e-04]
+ [ 1.76679724e-05  1.09370319e-04  9.99999994e-01]]
+Total QM took 41.07 s.
+Electronic propagation took 0.00 s.
+Electronic Norm.: 0.9999 0.9999
+Electronic Norm.: 0.9999
+Mapping norm is wrong.
+Submitting electronic structure for step 54.
+	Gaussian terminated normally in 5.37 s. (GS_NEW)
+	Gaussian terminated normally in 12.93 s. (TD_NEW_S1)
+Starting forces for state 2
+	Gaussian terminated normally in 9.72 s. (TD_NEW_S2)
+	Gaussian terminated normally in 3.15 s. (DIMER)
+OVERLAP Extracted.
+Original Overlap
+[[ 9.99116102e-01  1.73410284e-03 -2.26468286e-05]
+ [-1.74924394e-03  9.99101793e-01 -1.04206802e-04]
+ [ 3.10012465e-05  1.12752278e-04  9.99114357e-01]]
+Orthogonalized OVERLAP:
+[[ 9.99998480e-01  1.74322241e-03 -2.69465228e-05]
+ [-1.74322532e-03  9.99998475e-01 -1.08549270e-04]
+ [ 2.67572562e-05  1.08596078e-04  9.99999994e-01]]
+Phase Factor f(S0) = 1.000000
+Phase Factor f(S1) = 1.000000
+Phase Factor f(S2) = 1.000000
+Phase-corrected OVERLAP:
+[[ 9.99998480e-01  1.74322241e-03 -2.69465228e-05]
+ [-1.74322532e-03  9.99998475e-01 -1.08549270e-04]
+ [ 2.67572562e-05  1.08596078e-04  9.99999994e-01]]
+Total QM took 40.45 s.
+Electronic propagation took 0.00 s.
+Electronic Norm.: 0.9999 0.9999
+Electronic Norm.: 0.9999
+Mapping norm is wrong.
+Submitting electronic structure for step 55.
+	Gaussian terminated normally in 5.35 s. (GS_NEW)
+	Gaussian terminated normally in 11.20 s. (TD_NEW_S1)
+	Gaussian terminated normally in 3.11 s. (DIMER)
+OVERLAP Extracted.
+Original Overlap
+[[ 9.99112531e-01  1.70880844e-03 -3.02427014e-05]
+ [-1.72373411e-03  9.99097182e-01 -1.00811795e-04]
+ [ 4.24200504e-05  1.14647222e-04  9.99097258e-01]]
+Orthogonalized OVERLAP:
+[[ 9.99998524e-01  1.71780425e-03 -3.64628296e-05]
+ [-1.71780817e-03  9.99998519e-01 -1.07790356e-04]
+ [ 3.62776128e-05  1.07852833e-04  9.99999994e-01]]
+Phase Factor f(S0) = 1.000000
+Phase Factor f(S1) = 1.000000
+Phase Factor f(S2) = 1.000000
+Phase-corrected OVERLAP:
+[[ 9.99998524e-01  1.71780425e-03 -3.64628296e-05]
+ [-1.71780817e-03  9.99998519e-01 -1.07790356e-04]
+ [ 3.62776128e-05  1.07852833e-04  9.99999994e-01]]
+Total QM took 39.11 s.
+Electronic propagation took 0.00 s.
+Electronic Norm.: 0.9999 0.9999
+Electronic Norm.: 0.9999
+Mapping norm is wrong.
+Submitting electronic structure for step 56.
+	Gaussian terminated normally in 5.34 s. (GS_NEW)
+	Gaussian terminated normally in 12.71 s. (TD_NEW_S1)
+Starting forces for state 2
+	Gaussian terminated normally in 9.13 s. (TD_NEW_S2)
+	Gaussian terminated normally in 3.24 s. (DIMER)
+OVERLAP Extracted.
+Original Overlap
+[[ 9.99090878e-01  1.69941354e-03 -1.68487576e-05]
+ [-1.71330589e-03  9.99085956e-01 -1.10362440e-04]
+ [ 2.71229249e-05  1.09219372e-04  9.99085067e-01]]
+Orthogonalized OVERLAP:
+[[ 9.99998541e-01  1.70791262e-03 -2.20996113e-05]
+ [-1.70791504e-03  9.99998535e-01 -1.09868133e-04]
+ [ 2.19119337e-05  1.09905717e-04  9.99999994e-01]]
+Phase Factor f(S0) = 1.000000
+Phase Factor f(S1) = 1.000000
+Phase Factor f(S2) = 1.000000
+Phase-corrected OVERLAP:
+[[ 9.99998541e-01  1.70791262e-03 -2.20996113e-05]
+ [-1.70791504e-03  9.99998535e-01 -1.09868133e-04]
+ [ 2.19119337e-05  1.09905717e-04  9.99999994e-01]]
+Total QM took 39.48 s.
+Electronic propagation took 0.00 s.
+Electronic Norm.: 0.9999 0.9999
+Electronic Norm.: 0.9999
+Mapping norm is wrong.
+Submitting electronic structure for step 57.
+	Gaussian terminated normally in 5.70 s. (GS_NEW)
+	Gaussian terminated normally in 10.91 s. (TD_NEW_S1)
+	Gaussian terminated normally in 2.70 s. (DIMER)
+OVERLAP Extracted.
+Original Overlap
+[[ 9.99032958e-01  1.68352696e-03 -2.41497617e-05]
+ [-1.70253900e-03  9.99031967e-01 -1.12320604e-04]
+ [ 1.59281932e-05  9.40234926e-05  9.99038003e-01]]
+Orthogonalized OVERLAP:
+[[ 9.99998564e-01  1.69466928e-03 -2.01385359e-05]
+ [-1.69467136e-03  9.99998559e-01 -1.03258150e-04]
+ [ 1.99635184e-05  1.03292130e-04  9.99999994e-01]]
+Phase Factor f(S0) = 1.000000
+Phase Factor f(S1) = 1.000000
+Phase Factor f(S2) = 1.000000
+Phase-corrected OVERLAP:
+[[ 9.99998564e-01  1.69466928e-03 -2.01385359e-05]
+ [-1.69467136e-03  9.99998559e-01 -1.03258150e-04]
+ [ 1.99635184e-05  1.03292130e-04  9.99999994e-01]]
+Total QM took 122.28 s.
+Electronic propagation took 0.00 s.
+Electronic Norm.: 0.9999 0.9999
+Electronic Norm.: 0.9999
+Mapping norm is wrong.
+Submitting electronic structure for step 58.
+	Gaussian terminated normally in 6.11 s. (GS_NEW)
+	Gaussian terminated normally in 11.35 s. (TD_NEW_S1)
+	Gaussian terminated normally in 2.86 s. (DIMER)
+OVERLAP Extracted.
+Original Overlap
+[[ 9.99055152e-01  1.65811673e-03 -2.70897766e-05]
+ [-1.66251684e-03  9.99039219e-01 -1.00252689e-04]
+ [ 1.85109690e-05  9.20056729e-05  9.99053001e-01]]
+Orthogonalized OVERLAP:
+[[ 9.99998619e-01  1.66189702e-03 -2.28985630e-05]
+ [-1.66189922e-03  9.99998614e-01 -9.62054634e-05]
+ [ 2.27386477e-05  9.62433857e-05  9.99999995e-01]]
+Phase Factor f(S0) = 1.000000
+Phase Factor f(S1) = 1.000000
+Phase Factor f(S2) = 1.000000
+Phase-corrected OVERLAP:
+[[ 9.99998619e-01  1.66189702e-03 -2.28985630e-05]
+ [-1.66189922e-03  9.99998614e-01 -9.62054634e-05]
+ [ 2.27386477e-05  9.62433857e-05  9.99999995e-01]]
+Total QM took 39.10 s.
+Electronic propagation took 0.00 s.
+Electronic Norm.: 0.9999 0.9999
+Electronic Norm.: 0.9999
+Mapping norm is wrong.
+Submitting electronic structure for step 59.
+	Gaussian terminated normally in 5.51 s. (GS_NEW)
+	Gaussian terminated normally in 12.85 s. (TD_NEW_S1)
+	Gaussian terminated normally in 3.07 s. (DIMER)
+OVERLAP Extracted.
+Original Overlap
+[[ 9.99070904e-01  1.63511117e-03 -1.85614115e-05]
+ [-1.65671115e-03  9.99052499e-01 -8.91232539e-05]
+ [ 1.88425537e-05  9.68240135e-05  9.99057628e-01]]
+Orthogonalized OVERLAP:
+[[ 9.99998643e-01  1.64745388e-03 -1.87998085e-05]
+ [-1.64745562e-03  9.99998639e-01 -9.30460068e-05]
+ [ 1.86464939e-05  9.30768524e-05  9.99999995e-01]]
+Phase Factor f(S0) = 1.000000
+Phase Factor f(S1) = 1.000000
+Phase Factor f(S2) = 1.000000
+Phase-corrected OVERLAP:
+[[ 9.99998643e-01  1.64745388e-03 -1.87998085e-05]
+ [-1.64745562e-03  9.99998639e-01 -9.30460068e-05]
+ [ 1.86464939e-05  9.30768524e-05  9.99999995e-01]]
+Total QM took 109.49 s.
+Electronic propagation took 0.00 s.
+Electronic Norm.: 0.9999 0.9999
+Electronic Norm.: 0.9999
+Mapping norm is wrong.
+Submitting electronic structure for step 60.
+	Gaussian terminated normally in 5.33 s. (GS_NEW)
+	Gaussian terminated normally in 12.70 s. (TD_NEW_S1)
+	Gaussian terminated normally in 3.31 s. (DIMER)
+OVERLAP Extracted.
+Original Overlap
+[[ 9.99033982e-01  1.61288766e-03 -2.33542069e-05]
+ [-1.65041156e-03  9.99037739e-01 -8.87326969e-05]
+ [ 2.79942790e-05  8.76495002e-05  9.99026257e-01]]
+Orthogonalized OVERLAP:
+[[ 9.99998666e-01  1.63322084e-03 -2.57716061e-05]
+ [-1.63322310e-03  9.99998662e-01 -8.82537907e-05]
+ [ 2.56274337e-05  8.82957637e-05  9.99999996e-01]]
+Phase Factor f(S0) = 1.000000
+Phase Factor f(S1) = 1.000000
+Phase Factor f(S2) = 1.000000
+Phase-corrected OVERLAP:
+[[ 9.99998666e-01  1.63322084e-03 -2.57716061e-05]
+ [-1.63322310e-03  9.99998662e-01 -8.82537907e-05]
+ [ 2.56274337e-05  8.82957637e-05  9.99999996e-01]]
+Total QM took 40.93 s.
+Electronic propagation took 0.00 s.
+Electronic Norm.: 0.9999 0.9999
+Electronic Norm.: 0.9999
+Mapping norm is wrong.
+Submitting electronic structure for step 61.
+	Gaussian terminated normally in 5.37 s. (GS_NEW)
+	Gaussian terminated normally in 12.78 s. (TD_NEW_S1)
+	Gaussian terminated normally in 3.06 s. (DIMER)
+OVERLAP Extracted.
+Original Overlap
+[[ 9.99092283e-01 -1.60466590e-03  1.30411596e-05]
+ [-1.61974769e-03 -9.99091539e-01  9.05080456e-05]
+ [ 2.38706807e-05 -9.26455261e-05 -9.99077169e-01]]
+Orthogonalized OVERLAP:
+[[ 9.99998698e-01 -1.61366896e-03  1.85479643e-05]
+ [-1.61367066e-03 -9.99998694e-01  9.16413863e-05]
+ [ 1.84000612e-05 -9.16711972e-05 -9.99999996e-01]]
+Phase Factor f(S0) = 1.000000
+Phase Factor f(S1) = -1.000000
+Phase Factor f(S2) = -1.000000
+Phase-corrected OVERLAP:
+[[ 9.99998698e-01  1.61366896e-03 -1.85479643e-05]
+ [-1.61367066e-03  9.99998694e-01 -9.16413863e-05]
+ [ 1.84000612e-05  9.16711972e-05  9.99999996e-01]]
+Total QM took 39.60 s.
+Electronic propagation took 0.00 s.
+Electronic Norm.: 0.9999 0.9999
+Electronic Norm.: 0.9999
+Mapping norm is wrong.
+Submitting electronic structure for step 62.
+	Gaussian terminated normally in 6.05 s. (GS_NEW)
+	Gaussian terminated normally in 11.52 s. (TD_NEW_S1)
+Starting forces for state 2
+	Gaussian terminated normally in 9.54 s. (TD_NEW_S2)
+	Gaussian terminated normally in 2.86 s. (DIMER)
+OVERLAP Extracted.
+Original Overlap
+[[ 9.99075947e-01 -1.58603306e-03  1.50589192e-05]
+ [ 1.58530947e-03  9.99056388e-01 -7.04764516e-05]
+ [-2.77219360e-05  6.71746334e-05  9.99055830e-01]]
+Orthogonalized OVERLAP:
+[[ 9.99998740e-01 -1.58715043e-03  2.14637423e-05]
+ [ 1.58715190e-03  9.99998738e-01 -6.88684579e-05]
+ [-2.13544107e-05  6.89024374e-05  9.99999997e-01]]
+Phase Factor f(S0) = 1.000000
+Phase Factor f(S1) = 1.000000
+Phase Factor f(S2) = 1.000000
+I found a sign error upon phase correcting.
+Index Flip: 0 <--> 1
+Phase-corrected OVERLAP:
+[[ 9.99998740e-01  1.58715043e-03  2.14637423e-05]
+ [-1.58715190e-03  9.99998738e-01 -6.88684579e-05]
+ [-2.13544107e-05  6.89024374e-05  9.99999997e-01]]
+Total QM took 39.01 s.
+Electronic propagation took 0.00 s.
+Electronic Norm.: 0.9999 0.9999
+Electronic Norm.: 0.9999
+Mapping norm is wrong.
+Submitting electronic structure for step 63.
+	Gaussian terminated normally in 6.02 s. (GS_NEW)
+	Gaussian terminated normally in 11.38 s. (TD_NEW_S1)
+	Gaussian terminated normally in 2.97 s. (DIMER)
+OVERLAP Extracted.
+Original Overlap
+[[ 9.99161664e-01 -1.56951376e-03 -7.07242368e-07]
+ [ 1.58529866e-03  9.99143894e-01 -7.90131951e-05]
+ [-1.32621752e-05  7.97551678e-05  9.99142858e-01]]
+Orthogonalized OVERLAP:
+[[ 9.99998754e-01 -1.57874125e-03  6.34610452e-06]
+ [ 1.57874175e-03  9.99998751e-01 -7.94416895e-05]
+ [-6.22067872e-06  7.94516094e-05  9.99999997e-01]]
+Phase Factor f(S0) = 1.000000
+Phase Factor f(S1) = 1.000000
+Phase Factor f(S2) = 1.000000
+I found a sign error upon phase correcting.
+Index Flip: 0 <--> 1
+Phase-corrected OVERLAP:
+[[ 9.99998754e-01  1.57874125e-03  6.34610452e-06]
+ [-1.57874175e-03  9.99998751e-01 -7.94416895e-05]
+ [-6.22067872e-06  7.94516094e-05  9.99999997e-01]]
+Total QM took 39.79 s.
+Electronic propagation took 0.00 s.
+Electronic Norm.: 0.9999 0.9999
+Electronic Norm.: 0.9999
+Mapping norm is wrong.
+Submitting electronic structure for step 64.
+	Gaussian terminated normally in 6.26 s. (GS_NEW)
+	Gaussian terminated normally in 12.28 s. (TD_NEW_S1)
+Starting forces for state 2
+	Gaussian terminated normally in 9.73 s. (TD_NEW_S2)
+	Gaussian terminated normally in 2.91 s. (DIMER)
+OVERLAP Extracted.
+Original Overlap
+[[ 9.99165655e-01 -1.53870340e-03  2.04564831e-06]
+ [ 1.55564573e-03  9.99147203e-01 -7.45379263e-05]
+ [-2.22836570e-05  7.18786981e-05  9.89050962e-01]]
+Orthogonalized OVERLAP:
+[[ 9.99998801e-01 -1.54847812e-03  1.22930223e-05]
+ [ 1.54847903e-03  9.99998798e-01 -7.36254815e-05]
+ [-1.21790001e-05  7.36444288e-05  9.99999997e-01]]
+Phase Factor f(S0) = 1.000000
+Phase Factor f(S1) = 1.000000
+Phase Factor f(S2) = 1.000000
+I found a sign error upon phase correcting.
+Index Flip: 0 <--> 1
+Phase-corrected OVERLAP:
+[[ 9.99998801e-01  1.54847812e-03  1.22930223e-05]
+ [-1.54847903e-03  9.99998798e-01 -7.36254815e-05]
+ [-1.21790001e-05  7.36444288e-05  9.99999997e-01]]
+Total QM took 40.49 s.
+Electronic propagation took 0.00 s.
+Electronic Norm.: 0.9999 0.9999
+Electronic Norm.: 0.9999
+Mapping norm is wrong.
+Submitting electronic structure for step 65.
+	Gaussian terminated normally in 5.93 s. (GS_NEW)
+	Gaussian terminated normally in 13.59 s. (TD_NEW_S1)
+Starting forces for state 2
+	Gaussian terminated normally in 9.93 s. (TD_NEW_S2)
+	Gaussian terminated normally in 3.17 s. (DIMER)
+OVERLAP Extracted.
+Original Overlap
+[[ 9.99101413e-01 -1.53930692e-03  1.66258490e-05]
+ [ 1.53912615e-03  9.99090649e-01 -8.72111722e-05]
+ [-2.00460164e-05  6.51322568e-05  9.99087115e-01]]
+Orthogonalized OVERLAP:
+[[ 9.99998813e-01 -1.54060650e-03  1.84027463e-05]
+ [ 1.54060790e-03  9.99998810e-01 -7.62256387e-05]
+ [-1.82852907e-05  7.62538996e-05  9.99999997e-01]]
+Phase Factor f(S0) = 1.000000
+Phase Factor f(S1) = 1.000000
+Phase Factor f(S2) = 1.000000
+I found a sign error upon phase correcting.
+Index Flip: 0 <--> 1
+Phase-corrected OVERLAP:
+[[ 9.99998813e-01  1.54060650e-03  1.84027463e-05]
+ [-1.54060790e-03  9.99998810e-01 -7.62256387e-05]
+ [-1.82852907e-05  7.62538996e-05  9.99999997e-01]]
+Total QM took 41.87 s.
+Electronic propagation took 0.00 s.
+Electronic Norm.: 0.9999 0.9999
+Electronic Norm.: 0.9999
+Mapping norm is wrong.
+Submitting electronic structure for step 66.
+	Gaussian terminated normally in 5.67 s. (GS_NEW)
+	Gaussian terminated normally in 11.18 s. (TD_NEW_S1)
+Starting forces for state 2
+	Gaussian terminated normally in 10.95 s. (TD_NEW_S2)
+	Gaussian terminated normally in 3.03 s. (DIMER)
+OVERLAP Extracted.
+Original Overlap
+[[ 9.99172879e-01 -1.52135167e-03  1.32498919e-05]
+ [ 1.53165148e-03  9.99153552e-01 -9.24214411e-05]
+ [-1.27196667e-05  5.88650095e-05  9.99159810e-01]]
+Orthogonalized OVERLAP:
+[[ 9.99998833e-01 -1.52777762e-03  1.30407977e-05]
+ [ 1.52777861e-03  9.99998830e-01 -7.56973005e-05]
+ [-1.29251338e-05  7.57171356e-05  9.99999997e-01]]
+Phase Factor f(S0) = 1.000000
+Phase Factor f(S1) = 1.000000
+Phase Factor f(S2) = 1.000000
+I found a sign error upon phase correcting.
+Index Flip: 0 <--> 1
+Phase-corrected OVERLAP:
+[[ 9.99998833e-01  1.52777762e-03  1.30407977e-05]
+ [-1.52777861e-03  9.99998830e-01 -7.56973005e-05]
+ [-1.29251338e-05  7.57171356e-05  9.99999997e-01]]
+Total QM took 39.87 s.
+Electronic propagation took 0.00 s.
+Electronic Norm.: 0.9999 0.9999
+Electronic Norm.: 0.9999
+Mapping norm is wrong.
+Submitting electronic structure for step 67.
+	Gaussian terminated normally in 5.95 s. (GS_NEW)
+	Gaussian terminated normally in 11.34 s. (TD_NEW_S1)
+Starting forces for state 2
+	Gaussian terminated normally in 9.88 s. (TD_NEW_S2)
+	Gaussian terminated normally in 2.90 s. (DIMER)
+OVERLAP Extracted.
+Original Overlap
+[[ 9.99188922e-01 -1.51050646e-03  1.30226608e-05]
+ [ 1.51610325e-03  9.99166352e-01 -8.07175856e-05]
+ [-1.90951306e-05  5.50010363e-05  9.99180761e-01]]
+Orthogonalized OVERLAP:
+[[ 9.99998853e-01 -1.51454787e-03  1.61137572e-05]
+ [ 1.51454897e-03  9.99998851e-01 -6.79009189e-05]
+ [-1.60108995e-05  6.79252461e-05  9.99999998e-01]]
+Phase Factor f(S0) = 1.000000
+Phase Factor f(S1) = 1.000000
+Phase Factor f(S2) = 1.000000
+I found a sign error upon phase correcting.
+Index Flip: 0 <--> 1
+Phase-corrected OVERLAP:
+[[ 9.99998853e-01  1.51454787e-03  1.61137572e-05]
+ [-1.51454897e-03  9.99998851e-01 -6.79009189e-05]
+ [-1.60108995e-05  6.79252461e-05  9.99999998e-01]]
+Total QM took 39.11 s.
+Electronic propagation took 0.00 s.
+Electronic Norm.: 0.9999 0.9999
+Electronic Norm.: 0.9999
+Mapping norm is wrong.
+Submitting electronic structure for step 68.
+	Gaussian terminated normally in 5.58 s. (GS_NEW)
+	Gaussian terminated normally in 12.72 s. (TD_NEW_S1)
+Starting forces for state 2
+	Gaussian terminated normally in 9.54 s. (TD_NEW_S2)
+	Gaussian terminated normally in 3.08 s. (DIMER)
+OVERLAP Extracted.
+Original Overlap
+[[ 9.99151389e-01 -1.48572447e-03  2.15983471e-05]
+ [ 1.48725836e-03  9.99143017e-01 -6.87787515e-05]
+ [-1.82558770e-05  4.67993943e-05  9.99140525e-01]]
+Orthogonalized OVERLAP:
+[[ 9.99998893e-01 -1.48775789e-03  1.99789893e-05]
+ [ 1.48775904e-03  9.99998892e-01 -5.78250696e-05]
+ [-1.98929374e-05  5.78547295e-05  9.99999998e-01]]
+Phase Factor f(S0) = 1.000000
+Phase Factor f(S1) = 1.000000
+Phase Factor f(S2) = 1.000000
+I found a sign error upon phase correcting.
+Index Flip: 0 <--> 1
+Phase-corrected OVERLAP:
+[[ 9.99998893e-01  1.48775789e-03  1.99789893e-05]
+ [-1.48775904e-03  9.99998892e-01 -5.78250696e-05]
+ [-1.98929374e-05  5.78547295e-05  9.99999998e-01]]
+Total QM took 39.99 s.
+Electronic propagation took 0.00 s.
+Electronic Norm.: 0.9999 0.9999
+Electronic Norm.: 0.9999
+Mapping norm is wrong.
+Submitting electronic structure for step 69.
+	Gaussian terminated normally in 5.87 s. (GS_NEW)
+	Gaussian terminated normally in 13.63 s. (TD_NEW_S1)
+	Gaussian terminated normally in 2.96 s. (DIMER)
+OVERLAP Extracted.
+Original Overlap
+[[ 9.99142757e-01 -1.46331950e-03  2.61253313e-05]
+ [ 1.47422842e-03  9.99131290e-01 -6.50862710e-05]
+ [-2.20701077e-05  5.77089385e-05  9.99128968e-01]]
+Orthogonalized OVERLAP:
+[[ 9.99998919e-01 -1.47004026e-03  2.41611582e-05]
+ [ 1.47004174e-03  9.99998918e-01 -6.14348244e-05]
+ [-2.40708204e-05  6.14702759e-05  9.99999998e-01]]
+Phase Factor f(S0) = 1.000000
+Phase Factor f(S1) = 1.000000
+Phase Factor f(S2) = 1.000000
+I found a sign error upon phase correcting.
+Index Flip: 0 <--> 1
+Phase-corrected OVERLAP:
+[[ 9.99998919e-01  1.47004026e-03  2.41611582e-05]
+ [-1.47004174e-03  9.99998918e-01 -6.14348244e-05]
+ [-2.40708204e-05  6.14702759e-05  9.99999998e-01]]
+Total QM took 42.39 s.
+Electronic propagation took 0.00 s.
+Electronic Norm.: 0.9999 0.9999
+Electronic Norm.: 0.9999
+Mapping norm is wrong.
+Submitting electronic structure for step 70.
+	Gaussian terminated normally in 5.48 s. (GS_NEW)
+	Gaussian terminated normally in 13.00 s. (TD_NEW_S1)
+Starting forces for state 2
+	Gaussian terminated normally in 9.34 s. (TD_NEW_S2)
+	Gaussian terminated normally in 2.88 s. (DIMER)
+OVERLAP Extracted.
+Original Overlap
+[[ 9.99196592e-01 -1.45289084e-03  1.56712404e-05]
+ [ 1.47705465e-03  9.99179141e-01 -3.44358610e-05]
+ [-1.55640570e-05  4.68641247e-05  9.99184676e-01]]
+Orthogonalized OVERLAP:
+[[ 9.99998925e-01 -1.46616162e-03  1.56649119e-05]
+ [ 1.46616225e-03  9.99998924e-01 -4.06719038e-05]
+ [-1.56052634e-05  4.06948273e-05  9.99999999e-01]]
+Phase Factor f(S0) = 1.000000
+Phase Factor f(S1) = 1.000000
+Phase Factor f(S2) = 1.000000
+I found a sign error upon phase correcting.
+Index Flip: 0 <--> 1
+Phase-corrected OVERLAP:
+[[ 9.99998925e-01  1.46616162e-03  1.56649119e-05]
+ [-1.46616225e-03  9.99998924e-01 -4.06719038e-05]
+ [-1.56052634e-05  4.06948273e-05  9.99999999e-01]]
+Total QM took 39.86 s.
+Electronic propagation took 0.00 s.
+Electronic Norm.: 0.9999 0.9999
+Electronic Norm.: 0.9999
+Mapping norm is wrong.
+Submitting electronic structure for step 71.
+	Gaussian terminated normally in 5.52 s. (GS_NEW)
+	Gaussian terminated normally in 12.07 s. (TD_NEW_S1)
+	Gaussian terminated normally in 2.89 s. (DIMER)
+OVERLAP Extracted.
+Original Overlap
+[[ 9.99210110e-01 -1.43102867e-03  9.85057924e-06]
+ [ 1.46148538e-03  9.99189666e-01 -2.33329400e-05]
+ [-1.98251697e-05  4.08038907e-05  9.99185641e-01]]
+Orthogonalized OVERLAP:
+[[ 9.99998952e-01 -1.44741335e-03  1.48795663e-05]
+ [ 1.44741382e-03  9.99998952e-01 -3.20802029e-05]
+ [-1.48331174e-05  3.21017062e-05  9.99999999e-01]]
+Phase Factor f(S0) = 1.000000
+Phase Factor f(S1) = 1.000000
+Phase Factor f(S2) = 1.000000
+I found a sign error upon phase correcting.
+Index Flip: 0 <--> 1
+Phase-corrected OVERLAP:
+[[ 9.99998952e-01  1.44741335e-03  1.48795663e-05]
+ [-1.44741382e-03  9.99998952e-01 -3.20802029e-05]
+ [-1.48331174e-05  3.21017062e-05  9.99999999e-01]]
+Total QM took 39.42 s.
+Electronic propagation took 0.00 s.
+Electronic Norm.: 0.9999 0.9999
+Electronic Norm.: 0.9999
+Mapping norm is wrong.
+Submitting electronic structure for step 72.
+	Gaussian terminated normally in 5.79 s. (GS_NEW)
+	Gaussian terminated normally in 12.02 s. (TD_NEW_S1)
+Starting forces for state 2
+	Gaussian terminated normally in 9.13 s. (TD_NEW_S2)
+	Gaussian terminated normally in 2.96 s. (DIMER)
+OVERLAP Extracted.
+Original Overlap
+[[ 9.99209758e-01 -1.43425531e-03  1.16709556e-05]
+ [ 1.44874353e-03  9.99202959e-01 -2.63785787e-05]
+ [-2.01907456e-05  2.90510114e-05  9.99191282e-01]]
+Orthogonalized OVERLAP:
+[[ 9.99998959e-01 -1.44264259e-03  1.59646509e-05]
+ [ 1.44264303e-03  9.99998959e-01 -2.77225170e-05]
+ [-1.59246406e-05  2.77455195e-05  9.99999999e-01]]
+Phase Factor f(S0) = 1.000000
+Phase Factor f(S1) = 1.000000
+Phase Factor f(S2) = 1.000000
+I found a sign error upon phase correcting.
+Index Flip: 0 <--> 1
+Phase-corrected OVERLAP:
+[[ 9.99998959e-01  1.44264259e-03  1.59646509e-05]
+ [-1.44264303e-03  9.99998959e-01 -2.77225170e-05]
+ [-1.59246406e-05  2.77455195e-05  9.99999999e-01]]
+Total QM took 39.01 s.
+Electronic propagation took 0.00 s.
+Electronic Norm.: 0.9999 0.9999
+Electronic Norm.: 0.9999
+Mapping norm is wrong.
+Submitting electronic structure for step 73.
+	Gaussian terminated normally in 6.08 s. (GS_NEW)
+	Gaussian terminated normally in 11.01 s. (TD_NEW_S1)
+Starting forces for state 2
+	Gaussian terminated normally in 9.93 s. (TD_NEW_S2)
+	Gaussian terminated normally in 3.08 s. (DIMER)
+OVERLAP Extracted.
+Original Overlap
+[[ 9.99208453e-01 -1.44653118e-03  2.97064330e-05]
+ [ 1.44276582e-03  9.99197558e-01 -2.74511467e-05]
+ [-1.04035736e-05  3.16506338e-05  9.99206333e-01]]
+Orthogonalized OVERLAP:
+[[ 9.99998955e-01 -1.44579915e-03  2.00937663e-05]
+ [ 1.44579974e-03  9.99998954e-01 -2.95669148e-05]
+ [-2.00509975e-05  2.95959354e-05  9.99999999e-01]]
+Phase Factor f(S0) = 1.000000
+Phase Factor f(S1) = 1.000000
+Phase Factor f(S2) = 1.000000
+I found a sign error upon phase correcting.
+Index Flip: 0 <--> 1
+Phase-corrected OVERLAP:
+[[ 9.99998955e-01  1.44579915e-03  2.00937663e-05]
+ [-1.44579974e-03  9.99998954e-01 -2.95669148e-05]
+ [-2.00509975e-05  2.95959354e-05  9.99999999e-01]]
+Total QM took 39.20 s.
+Electronic propagation took 0.00 s.
+Electronic Norm.: 0.9999 0.9999
+Electronic Norm.: 0.9999
+Mapping norm is wrong.
+Submitting electronic structure for step 74.
+	Gaussian terminated normally in 5.71 s. (GS_NEW)
+	Gaussian terminated normally in 13.68 s. (TD_NEW_S1)
+	Gaussian terminated normally in 3.04 s. (DIMER)
+OVERLAP Extracted.
+Original Overlap
+[[ 9.99220473e-01 -1.40957829e-03  1.87394817e-05]
+ [ 1.41129378e-03  9.99196413e-01 -1.31942976e-06]
+ [-1.87745654e-06  2.76086357e-05  9.99228349e-01]]
+Orthogonalized OVERLAP:
+[[ 9.99999004e-01 -1.41155201e-03  1.03359714e-05]
+ [ 1.41155216e-03  9.99999004e-01 -1.44740913e-05]
+ [-1.03155301e-05  1.44886666e-05  1.00000000e+00]]
+Phase Factor f(S0) = 1.000000
+Phase Factor f(S1) = 1.000000
+Phase Factor f(S2) = 1.000000
+I found a sign error upon phase correcting.
+Index Flip: 0 <--> 1
+Phase-corrected OVERLAP:
+[[ 9.99999004e-01  1.41155201e-03  1.03359714e-05]
+ [-1.41155216e-03  9.99999004e-01 -1.44740913e-05]
+ [-1.03155301e-05  1.44886666e-05  1.00000000e+00]]
+Total QM took 41.35 s.
+Electronic propagation took 0.00 s.
+Electronic Norm.: 0.9999 0.9999
+Electronic Norm.: 0.9999
+Mapping norm is wrong.
+Submitting electronic structure for step 75.
+	Gaussian terminated normally in 5.15 s. (GS_NEW)
+	Gaussian terminated normally in 10.87 s. (TD_NEW_S1)
+Starting forces for state 2
+	Gaussian terminated normally in 8.86 s. (TD_NEW_S2)
+	Gaussian terminated normally in 2.81 s. (DIMER)
+OVERLAP Extracted.
+Original Overlap
+[[ 9.99277159e-01 -1.40703413e-03  8.75004509e-06]
+ [ 1.41598597e-03  9.99253468e-01  5.04788333e-06]
+ [-1.53485734e-05  1.68815167e-05  9.99280425e-01]]
+Orthogonalized OVERLAP:
+[[ 9.99999002e-01 -1.41254644e-03  1.20699368e-05]
+ [ 1.41254651e-03  9.99999002e-01 -5.91032469e-06]
+ [-1.20615761e-05  5.92736814e-06  1.00000000e+00]]
+Phase Factor f(S0) = 1.000000
+Phase Factor f(S1) = 1.000000
+Phase Factor f(S2) = 1.000000
+I found a sign error upon phase correcting.
+Index Flip: 0 <--> 1
+Phase-corrected OVERLAP:
+[[ 9.99999002e-01  1.41254644e-03  1.20699368e-05]
+ [-1.41254651e-03  9.99999002e-01 -5.91032469e-06]
+ [-1.20615761e-05  5.92736814e-06  1.00000000e+00]]
+Total QM took 36.79 s.
+Electronic propagation took 0.00 s.
+Electronic Norm.: 0.9999 0.9999
+Electronic Norm.: 0.9999
+Mapping norm is wrong.
+Submitting electronic structure for step 76.
+	Gaussian terminated normally in 6.25 s. (GS_NEW)
+	Gaussian terminated normally in 12.40 s. (TD_NEW_S1)
+	Gaussian terminated normally in 3.22 s. (DIMER)
+OVERLAP Extracted.
+Original Overlap
+[[ 9.99335331e-01 -1.39811909e-03  6.08769458e-06]
+ [ 1.40491043e-03  9.99321846e-01 -1.03032202e-05]
+ [-1.47861426e-05  6.75944051e-06  9.99325243e-01]]
+Orthogonalized OVERLAP:
+[[ 9.99999017e-01 -1.40245494e-03  1.04486583e-05]
+ [ 1.40245502e-03  9.99999017e-01 -8.52674010e-06]
+ [-1.04366896e-05  8.54138549e-06  1.00000000e+00]]
+Phase Factor f(S0) = 1.000000
+Phase Factor f(S1) = 1.000000
+Phase Factor f(S2) = 1.000000
+I found a sign error upon phase correcting.
+Index Flip: 0 <--> 1
+Phase-corrected OVERLAP:
+[[ 9.99999017e-01  1.40245494e-03  1.04486583e-05]
+ [-1.40245502e-03  9.99999017e-01 -8.52674010e-06]
+ [-1.04366896e-05  8.54138549e-06  1.00000000e+00]]
+Total QM took 41.49 s.
+Electronic propagation took 0.00 s.
+Electronic Norm.: 0.9999 0.9999
+Electronic Norm.: 0.9999
+Mapping norm is wrong.
+Submitting electronic structure for step 77.
+	Gaussian terminated normally in 5.65 s. (GS_NEW)
+	Gaussian terminated normally in 11.67 s. (TD_NEW_S1)
+Starting forces for state 2
+	Gaussian terminated normally in 10.72 s. (TD_NEW_S2)
+	Gaussian terminated normally in 2.91 s. (DIMER)
+OVERLAP Extracted.
+Original Overlap
+[[ 9.99298339e-01 -1.40577448e-03  1.13583797e-05]
+ [ 1.41244088e-03  9.99298663e-01 -3.31314781e-06]
+ [ 1.70849366e-06  7.30337557e-06  9.99286950e-01]]
+Orthogonalized OVERLAP:
+[[ 9.99999006e-01 -1.41009546e-03  4.83351858e-06]
+ [ 1.41009549e-03  9.99999006e-01 -5.31322551e-06]
+ [-4.82602162e-06  5.32003595e-06  1.00000000e+00]]
+Phase Factor f(S0) = 1.000000
+Phase Factor f(S1) = 1.000000
+Phase Factor f(S2) = 1.000000
+I found a sign error upon phase correcting.
+Index Flip: 0 <--> 1
+Phase-corrected OVERLAP:
+[[ 9.99999006e-01  1.41009546e-03  4.83351858e-06]
+ [-1.41009549e-03  9.99999006e-01 -5.31322551e-06]
+ [-4.82602162e-06  5.32003595e-06  1.00000000e+00]]
+Total QM took 40.08 s.
+Electronic propagation took 0.00 s.
+Electronic Norm.: 0.9999 0.9999
+Electronic Norm.: 0.9999
+Mapping norm is wrong.
+Submitting electronic structure for step 78.
+	Gaussian terminated normally in 5.07 s. (GS_NEW)
+	Gaussian terminated normally in 10.70 s. (TD_NEW_S1)
+Starting forces for state 2
+	Gaussian terminated normally in 9.98 s. (TD_NEW_S2)
+	Gaussian terminated normally in 2.90 s. (DIMER)
+OVERLAP Extracted.
+Original Overlap
+[[ 9.99292465e-01 -1.38173868e-03  5.46238445e-07]
+ [ 1.38171245e-03  9.99295642e-01  1.11016262e-05]
+ [ 6.39151126e-06  4.36932275e-06  9.99287316e-01]]
+Orthogonalized OVERLAP:
+[[ 9.99999044e-01 -1.38270033e-03 -2.92168592e-06]
+ [ 1.38270034e-03  9.99999044e-01  3.36411697e-06]
+ [ 2.91703156e-06 -3.36815357e-06  1.00000000e+00]]
+Phase Factor f(S0) = 1.000000
+Phase Factor f(S1) = 1.000000
+Phase Factor f(S2) = 1.000000
+I found a sign error upon phase correcting.
+Index Flip: 0 <--> 1
+Phase-corrected OVERLAP:
+[[ 9.99999044e-01  1.38270033e-03 -2.92168592e-06]
+ [-1.38270034e-03  9.99999044e-01  3.36411697e-06]
+ [ 2.91703156e-06 -3.36815357e-06  1.00000000e+00]]
+Total QM took 37.77 s.
+Electronic propagation took 0.00 s.
+Electronic Norm.: 0.9999 0.9999
+Electronic Norm.: 0.9999
+Mapping norm is wrong.
+Submitting electronic structure for step 79.
+	Gaussian terminated normally in 6.32 s. (GS_NEW)
+	Gaussian terminated normally in 11.49 s. (TD_NEW_S1)
+Starting forces for state 2
+	Gaussian terminated normally in 9.61 s. (TD_NEW_S2)
+slurmstepd: error: *** JOB 14322064 ON bhg0001 CANCELLED AT 2023-01-12T17:02:33 DUE TO TIME LIMIT ***

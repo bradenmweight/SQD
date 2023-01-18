@@ -25,8 +25,8 @@ def do_Langevin_XStep(DYN_PROPERTIES):
     LANGEVIN_LAMBDA = DYN_PROPERTIES["LANGEVIN_LAMBDA"] / 1000 / 27.2114 # meV --> a.u. # TODO Change units in read_input.py
     TEMP  = DYN_PROPERTIES["TEMP"] * (0.025 / 300) / 27.2114 # K -> KT (a.u.) # TODO Change units in read_input.py
 
-    DYN_PROPERTIES["G_RAND_EPSILON"] = gauss(0,1) # Gaussian random number
-    DYN_PROPERTIES["G_RAND_THETA"]   = gauss(0,1) # Gaussian random number
+    DYN_PROPERTIES["G_RAND_EPSILON"] = np.array([gauss(0,1) for dof in range(3*NAtoms)], dtype=float).reshape((NAtoms,3)) # Gaussian random number
+    DYN_PROPERTIES["G_RAND_THETA"]   = np.array([gauss(0,1) for dof in range(3*NAtoms)], dtype=float).reshape((NAtoms,3)) # Gaussian random number
 
     # Difference in acceleration and damped velocity
     a_ORIG = DYN_PROPERTIES["FORCE_NEW"]/masses  # Original acceleration

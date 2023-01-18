@@ -29,15 +29,12 @@ def do_Langevin_XStep(DYN_PROPERTIES):
     DYN_PROPERTIES["G_RAND_THETA"]   = gauss(0,1) # Gaussian random number
 
     # Difference in acceleration and damped velocity
-    a_ORIG = DYN_PROPERTIES["FORCE_NEW"]/masses - LANGEVIN_LAMBDA * DYN_PROPERTIES["Atom_velocs_new"] # a(0) - \gamma * V(0)
-    a_DAMP = LANGEVIN_LAMBDA * DYN_PROPERTIES["Atom_velocs_new"] # a(0) - \gamma * V(0)
+    a_ORIG = DYN_PROPERTIES["FORCE_NEW"]/masses  # Original acceleration
+    a_DAMP = LANGEVIN_LAMBDA * DYN_PROPERTIES["Atom_velocs_new"] # Acceleration due to damping
     SIGMA = np.sqrt(2 * TEMP * LANGEVIN_LAMBDA / masses) # Gaussian Width
     RANDOM_FAC = 0.5 * DYN_PROPERTIES["G_RAND_EPSILON"] + 1/(2*np.sqrt(3)) * DYN_PROPERTIES["G_RAND_THETA"]
 
-    print( dtI * DYN_PROPERTIES["Atom_velocs_new"] )
-    print( SIGMA * dtI**(3/2) * RANDOM_FAC )
-
-    # Units of a(t)*dt**2, where a(t) is the usual acceleration.
+    # A(t) has units of position
     # Store this for VStep without changing.
     DYN_PROPERTIES["LANGEVIN_A"] = 0.5 * dtI**2 * (a_ORIG - a_DAMP) + SIGMA * dtI**(3/2) * RANDOM_FAC
     
@@ -91,13 +88,11 @@ def Nuclear_X_Step(DYN_PROPERTIES):
     # Save previous step
     DYN_PROPERTIES["Atom_coords_old"] = DYN_PROPERTIES["Atom_coords_new"] * 1.0
 
-    # Propagate nuclear coordinates
+    # Get the new force
     DYN_PROPERTIES["FORCE_NEW"] = get_Force(DYN_PROPERTIES)
     a = DYN_PROPERTIES["FORCE_NEW"] / masses
 
-    #DYN_PROPERTIES["Atom_coords_new"] += DYN_PROPERTIES["Atom_velocs_new"] * dtI + 0.5000000 * a[:,:] * dtI*dtI
-
-    # FUNCTIONALITY FOR LANGEVIN DYNAMICS
+    # FUNCTIONALITY FOR CANONICAL ENSEMBLE
     if ( DYN_PROPERTIES["MD_ENSEMBLE"] == "NVT" ):
         if ( DYN_PROPERTIES["NVT_TYPE"] == "LANGEVIN" ):
             DYN_PROPERTIES = do_Langevin_XStep(DYN_PROPERTIES)
@@ -129,8 +124,6 @@ def Nuclear_V_Step(DYN_PROPERTIES):
     # Compute accelerations
     anew = DYN_PROPERTIES["FORCE_NEW"] / masses 
     aold = DYN_PROPERTIES["FORCE_OLD"] / masses
-
-    #DYN_PROPERTIES["Atom_velocs_new"] += 0.5000000 * (aold[:,:] + anew[:,:]) * dtI
 
     # FUNCTIONALITY FOR CANONICAL ENSEMBLE
     if ( DYN_PROPERTIES["MD_ENSEMBLE"] == "NVT" ):

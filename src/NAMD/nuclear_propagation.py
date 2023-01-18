@@ -14,34 +14,70 @@ def get_Force(DYN_PROPERTIES):
         print("No NAMD_METHOD found.")
         exit()
 
+def do_Langevin_XStep(DYN_PROPERTIES):
+    """
+    Mark Tuckerman -- Stat. Mech.: Theory and Mol. Simulation
+    Chapter 15.5 Page 594 Eq. 15.5.18
+    """
+    masses  = np.array([ np.array([m,m,m]) for m in DYN_PROPERTIES["MASSES"] ])
+    dtI     = DYN_PROPERTIES["dtI"]
+    NAtoms  = DYN_PROPERTIES["NAtoms"]
+    LANGEVIN_LAMBDA = DYN_PROPERTIES["LANGEVIN_LAMBDA"] / 1000 / 27.2114 # meV --> a.u. # TODO Change units in read_input.py
+    TEMP  = DYN_PROPERTIES["TEMP"] * (0.025 / 300) / 27.2114 # K -> KT (a.u.) # TODO Change units in read_input.py
 
-# def get_random_XStep( DYN_PROPERTIES ):
-#     LANGEVIN_LAMBDA = DYN_PROPERTIES["LANGEVIN_LAMBDA"] / 1000 / 27.2114 # meV --> a.u. # TODO Change units in read_input.py
-#     TEMP  = DYN_PROPERTIES["TEMP"] * (0.025 / 300) / 27.2114 # K -> KT (a.u.) # TODO Change units in read_input.py
-#     NAtoms  = DYN_PROPERTIES["NAtoms"]
-#     masses = np.array([ np.array([m,m,m]) for m in DYN_PROPERTIES["MASSES"] ]) # TODO Change the shape in read_input.py
-#     dtI     = DYN_PROPERTIES["dtI"]
+    DYN_PROPERTIES["G_RAND_EPSILON"] = gauss(0,1) # Gaussian random number
+    DYN_PROPERTIES["G_RAND_THETA"]   = gauss(0,1) # Gaussian random number
 
+    # Difference in acceleration and damped velocity
+    a_ORIG = DYN_PROPERTIES["FORCE_NEW"]/masses - LANGEVIN_LAMBDA * DYN_PROPERTIES["Atom_velocs_new"] # a(0) - \gamma * V(0)
+    a_DAMP = LANGEVIN_LAMBDA * DYN_PROPERTIES["Atom_velocs_new"] # a(0) - \gamma * V(0)
+    SIGMA = np.sqrt(2 * TEMP * LANGEVIN_LAMBDA / masses) # Gaussian Width
+    RANDOM_FAC = 0.5 * DYN_PROPERTIES["G_RAND_EPSILON"] + 1/(2*np.sqrt(3)) * DYN_PROPERTIES["G_RAND_THETA"]
 
+    print( dtI * DYN_PROPERTIES["Atom_velocs_new"] )
+    print( SIGMA * dtI**(3/2) * RANDOM_FAC )
+
+    # Units of a(t)*dt**2, where a(t) is the usual acceleration.
+    # Store this for VStep without changing.
+    DYN_PROPERTIES["LANGEVIN_A"] = 0.5 * dtI**2 * (a_ORIG - a_DAMP) + SIGMA * dtI**(3/2) * RANDOM_FAC
     
-#     return DYN_PROPERTIES, R_RAND
+    DYN_PROPERTIES["Atom_coords_new"] += dtI * DYN_PROPERTIES["Atom_velocs_new"] + DYN_PROPERTIES["LANGEVIN_A"]
 
-# def get_damped_XStep( DYN_PROPERTIES ):
-#     V       = DYN_PROPERTIES["Atom_velocs_new"]
-#     LANGEVIN_LAMBDA = DYN_PROPERTIES["LANGEVIN_LAMBDA"] / 1000 / 27.2114 # meV --> a.u. # TODO Change units in read_input.py
-#     masses = np.array([ np.array([m,m,m]) for m in DYN_PROPERTIES["MASSES"] ])
-#     F_DAMP          = -1.0 * LANGEVIN_LAMBDA * DYN_PROPERTIES["Atom_velocs_new"] * masses
-#     cL = 2*M*dtI/(2*M+dtI*LANGEVIN_LAMBDA) # Langevin constant
-#     R_DAMP += cL * (1-dtI/cL) * V # updated nuclear position
-#     return DYN_PROPERTIES, R_DAMP
+    return DYN_PROPERTIES
 
-# def get_damped_VStep( DYN_PROPERTIES ):
-#     V       = DYN_PROPERTIES["Atom_velocs_new"]
-#     LANGEVIN_LAMBDA = DYN_PROPERTIES["LANGEVIN_LAMBDA"] / 1000 / 27.2114 # meV --> a.u. # TODO Change units in read_input.py
-#     masses = np.array([ np.array([m,m,m]) for m in DYN_PROPERTIES["MASSES"] ])
-#     dtI     = DYN_PROPERTIES["dtI"]
-#     aL = (2*masses-dtI*LANGEVIN_LAMBDA)/(2*masses+dtI*LANGEVIN_LAMBDA) # Langevin constant
-#     v += aL * ((1 - 1/aL) * (v - 0.5 * (F1 + F2) * dtN / M) + (1 - 1/aL) * 0.5 * F1 * dtI / M + (bL + bL/aL) * η)
+
+
+def do_Langevin_VStep(DYN_PROPERTIES):
+    """
+    Mark Tuckerman -- Stat. Mech.: Theory and Mol. Simulation
+    Chapter 15.5 Page 594 Eq. 15.5.18
+    """
+    masses  = np.array([ np.array([m,m,m]) for m in DYN_PROPERTIES["MASSES"] ])
+    dtI     = DYN_PROPERTIES["dtI"]
+    NAtoms  = DYN_PROPERTIES["NAtoms"]
+    LANGEVIN_LAMBDA = DYN_PROPERTIES["LANGEVIN_LAMBDA"] / 1000 / 27.2114 # meV --> a.u. # TODO Change units in read_input.py
+    TEMP  = DYN_PROPERTIES["TEMP"] * (0.025 / 300) / 27.2114 # K -> KT (a.u.) # TODO Change units in read_input.py
+
+    SIGMA = np.sqrt(2 * TEMP * LANGEVIN_LAMBDA / masses) # Gaussian Width
+
+    F0 = DYN_PROPERTIES["FORCE_OLD"]
+    F1 = DYN_PROPERTIES["FORCE_NEW"]
+    LANGEVIN_A = DYN_PROPERTIES["LANGEVIN_A"]
+
+    DYN_PROPERTIES["Atom_velocs_new"] += 0.5000000 * dtI * ( F0 + F1 ) / masses - \
+                                         dtI * LANGEVIN_LAMBDA * DYN_PROPERTIES["Atom_velocs_new"] + \
+                                         SIGMA * np.sqrt(dtI) * DYN_PROPERTIES["G_RAND_EPSILON"] - \
+                                         LANGEVIN_LAMBDA * LANGEVIN_A
+
+    return DYN_PROPERTIES
+
+
+def do_VELOC_RESCALE(DYN_PROPERTIES):
+    TEMP_GOAL      = DYN_PROPERTIES["TEMP"] * (0.025 / 300) / 27.2114 # K -> KT (a.u.) # TODO Change units in read_input.py
+    TEMP_NOW       = properties.compute_Temperature(DYN_PROPERTIES)* (0.025 / 300) / 27.2114  # K -> KT (a.u.)
+    scale_factor   = np.sqrt( TEMP_GOAL / TEMP_NOW )
+    DYN_PROPERTIES["Atom_velocs_new"] *= scale_factor
+    return DYN_PROPERTIES
 
 
 def Nuclear_X_Step(DYN_PROPERTIES):
@@ -59,27 +95,20 @@ def Nuclear_X_Step(DYN_PROPERTIES):
     DYN_PROPERTIES["FORCE_NEW"] = get_Force(DYN_PROPERTIES)
     a = DYN_PROPERTIES["FORCE_NEW"] / masses
 
-    DYN_PROPERTIES["Atom_coords_new"] += DYN_PROPERTIES["Atom_velocs_new"] * dtI + 0.5000000 * a[:,:] * dtI*dtI
+    #DYN_PROPERTIES["Atom_coords_new"] += DYN_PROPERTIES["Atom_velocs_new"] * dtI + 0.5000000 * a[:,:] * dtI*dtI
 
     # FUNCTIONALITY FOR LANGEVIN DYNAMICS
     if ( DYN_PROPERTIES["MD_ENSEMBLE"] == "NVT" ):
         if ( DYN_PROPERTIES["NVT_TYPE"] == "LANGEVIN" ):
-
-            LANGEVIN_LAMBDA = DYN_PROPERTIES["LANGEVIN_LAMBDA"] / 1000 / 27.2114 # meV --> a.u. # TODO Change units in read_input.py
-            TEMP  = DYN_PROPERTIES["TEMP"] * (0.025 / 300) / 27.2114 # K -> KT (a.u.) # TODO Change units in read_input.py
-
-            DYN_PROPERTIES["G_RAND"] = gauss(0,1) # Gaussian random number
-            SIGMA = np.sqrt(LANGEVIN_LAMBDA*dtI*TEMP/(2*masses**2)) # Langevin constant
-            cL = 2*masses*dtI/(2*masses+dtI*LANGEVIN_LAMBDA) # Langevin constant
-            R_RAND = (1-dtI/cL) * 0.5 * DYN_PROPERTIES["FORCE_NEW"] * dtI / masses + SIGMA * DYN_PROPERTIES["G_RAND"]
-            R_DAMP = cL * (1-dtI/cL) * DYN_PROPERTIES["Atom_velocs_new"]
-
-            DYN_PROPERTIES["Atom_coords_new"] += R_DAMP + R_RAND
-
-        #elif ( DYN_PROPERTIES["NVT_TYPE"] == "RESCALE" ):
-            # Do nothing for atomic positions
+            DYN_PROPERTIES = do_Langevin_XStep(DYN_PROPERTIES)
+        
+        # IF DYN_PROPERTIES["NVT_TYPE"] == "RESCALE", POSITION IS UNAFFECTED
+    
+    elif ( DYN_PROPERTIES["MD_ENSEMBLE"] == "NVE" ):
+        DYN_PROPERTIES["Atom_coords_new"] += DYN_PROPERTIES["Atom_velocs_new"] * dtI + 0.5000000 * a[:,:] * dtI*dtI
 
     return DYN_PROPERTIES
+
 
 def Nuclear_V_Step(DYN_PROPERTIES):
 
@@ -101,30 +130,18 @@ def Nuclear_V_Step(DYN_PROPERTIES):
     anew = DYN_PROPERTIES["FORCE_NEW"] / masses 
     aold = DYN_PROPERTIES["FORCE_OLD"] / masses
 
-    DYN_PROPERTIES["Atom_velocs_new"] += 0.5000000 * (aold[:,:] + anew[:,:]) * dtI
+    #DYN_PROPERTIES["Atom_velocs_new"] += 0.5000000 * (aold[:,:] + anew[:,:]) * dtI
 
-    # FUNCTIONALITY FOR LANGEVIN DYNAMICS
+    # FUNCTIONALITY FOR CANONICAL ENSEMBLE
     if ( DYN_PROPERTIES["MD_ENSEMBLE"] == "NVT" ):
         if ( DYN_PROPERTIES["NVT_TYPE"] == "LANGEVIN" ):
+            DYN_PROPERTIES = do_Langevin_VStep(DYN_PROPERTIES)
 
-            LANGEVIN_LAMBDA = DYN_PROPERTIES["LANGEVIN_LAMBDA"] / 1000 / 27.2114 # meV --> a.u. # TODO Change units in read_input.py
-            TEMP  = DYN_PROPERTIES["TEMP"] * (0.025 / 300) / 27.2114 # K -> KT (a.u.) # TODO Change units in read_input.py
-
-            SIGMA = np.sqrt(LANGEVIN_LAMBDA*dtI*TEMP/(2*masses**2)) # Langevin constant
-            F1 = DYN_PROPERTIES["FORCE_NEW"]
-            F2 = DYN_PROPERTIES["FORCE_NEW"]
-            aL = (2*masses-dtI*LANGEVIN_LAMBDA)/(2*masses+dtI*LANGEVIN_LAMBDA) # Langevin constant
-
-            V_DAMP = aL * (1 - 1/aL) * (DYN_PROPERTIES["Atom_velocs_new"] - 0.5 * (F1 + F2) * dtI / masses)
-            V_RAND = (1 - 1/aL) * 0.5 * F1 * dtI / masses + (SIGMA + SIGMA/aL) * DYN_PROPERTIES["G_RAND"]
-
-            DYN_PROPERTIES["Atom_velocs_new"] += V_DAMP + V_RAND
-
-        if ( DYN_PROPERTIES["NVT_TYPE"] == "RESCALE" ):
+        elif ( DYN_PROPERTIES["NVT_TYPE"] == "RESCALE" ):
             if ( DYN_PROPERTIES["MD_STEP"] % DYN_PROPERTIES["RESCALE_FREQ"] == 0 ):
-                TEMP_GOAL      = DYN_PROPERTIES["TEMP"] * (0.025 / 300) / 27.2114 # K -> KT (a.u.) # TODO Change units in read_input.py
-                TEMP_NOW       = properties.computer_Temperature(DYN_PROPERTIES)* (0.025 / 300) / 27.2114  # K -> KT (a.u.)
-                scale_factor   = np.sqrt( TEMP_GOAL / TEMP_NOW )
-                DYN_PROPERTIES["Atom_velocs_new"] *= scale_factor
+                DYN_PROPERTIES = do_VELOC_RESCALE(DYN_PROPERTIES)
+
+    elif ( DYN_PROPERTIES["MD_ENSEMBLE"] == "NVE" ):
+        DYN_PROPERTIES["Atom_velocs_new"] += 0.5000000 * (aold[:,:] + anew[:,:]) * dtI
 
     return DYN_PROPERTIES

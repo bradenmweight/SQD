@@ -33,7 +33,7 @@ def compute_PE(DYN_PROPERTIES):
 
     return DYN_PROPERTIES
 
-def computer_Temperature(DYN_PROPERTIES):
+def compute_Temperature(DYN_PROPERTIES):
     DYN_PROPERTIES = compute_KE(DYN_PROPERTIES)
     NAtoms = DYN_PROPERTIES['NAtoms']
 

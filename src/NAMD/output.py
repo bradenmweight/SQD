@@ -56,14 +56,7 @@ def save_data(DYN_PROPERTIES):
         file01.write(f"{DYN_PROPERTIES['MD_STEP']}  " + "%2.6f  %2.6f  %2.6f\n" % (KE,PE,TE))
 
     with open("MD_OUTPUT/Temperature.dat","a") as file01:
-        
-        DYN_PROPERTIES = properties.compute_KE(DYN_PROPERTIES)
-        NAtoms = DYN_PROPERTIES['NAtoms']
-
-        KE = DYN_PROPERTIES["KE"] * 27.2114 # a.u. --> eV
-
-        T = (2/3) * KE / NAtoms * (300 / 0.025) # eV --> K
-
+        T = properties.compute_Temperature(DYN_PROPERTIES) # k
         file01.write(f"{DYN_PROPERTIES['MD_STEP']}  " + "%2.4f\n" % (T))
 
 

@@ -201,7 +201,18 @@ def read():
                 except ValueError:
                     print(f"\t'TEMP' must be a float: '{t[1]}'")
                     exit()
-                assert( DYN_PROPERTIES["TEMP"] > 0 ), f"'TEMP' must be greater than 0.0: {DYN_PROPERTIES['TEMP']}"
+                assert( DYN_PROPERTIES["TEMP"] >= 0 ), f"'TEMP' must be greater than or equal to 0.0: {DYN_PROPERTIES['TEMP']}"
+
+
+            # Look for DATA_SAVE_FREQ
+            if ( t[0].lower() == "DATA_SAVE_FREQ".lower() ):
+                try:
+                    DYN_PROPERTIES["DATA_SAVE_FREQ"] = int( t[1] )
+                except ValueError:
+                    print(f"\t'DATA_SAVE_FREQ' must be an integer: '{t[1]}'")
+                    exit()
+
+
 
 
             # Look for CPA
@@ -497,7 +508,15 @@ def initialize_MD_variables(DYN_PROPERTIES):
         tmp = DYN_PROPERTIES["FORCE_MAP_NORM"]
     except KeyError:
         DYN_PROPERTIES["FORCE_MAP_NORM"] = False # Default is not to do classical path approximation
-    assert( DYN_PROPERTIES["FORCE_MAP_NORM"] == False ), "FORCE_MAP_NORM is False by default."
+
+    try:
+        tmp = DYN_PROPERTIES["DATA_SAVE_FREQ"]
+    except KeyError:
+        DYN_PROPERTIES["DATA_SAVE_FREQ"] = 1 # Default is to save every step. Might make large output files for NVT
+
+
+
+
 
 
     # TODO

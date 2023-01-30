@@ -30,16 +30,18 @@ def read_Gradients(DIAG_GRADIENTS,DYN_PROPERTIES):
     DIAG_GRADIENTS[0,:,:] = read_FCHK_GRAD( DYN_PROPERTIES["NAtoms"] )
     os.chdir("../")
 
-    if ( NStates >= 2 ):
-        os.chdir("TD_NEW_S1/")
-        DIAG_GRADIENTS[1,:,:] = read_FCHK_GRAD( DYN_PROPERTIES["NAtoms"] )
-        os.chdir("../")
+    if ( DYN_PROPERTIES["CPA"] == False ):
 
-    if ( NStates >= 3 ):
-        for state in range( 2, NStates ):
-            os.chdir(f"TD_NEW_S{state}/")
-            DIAG_GRADIENTS[state,:,:] = read_FCHK_GRAD( DYN_PROPERTIES["NAtoms"] )
+        if ( NStates >= 2 ):
+            os.chdir("TD_NEW_S1/")
+            DIAG_GRADIENTS[1,:,:] = read_FCHK_GRAD( DYN_PROPERTIES["NAtoms"] )
             os.chdir("../")
+
+        if ( NStates >= 3 ):
+            for state in range( 2, NStates ):
+                os.chdir(f"TD_NEW_S{state}/")
+                DIAG_GRADIENTS[state,:,:] = read_FCHK_GRAD( DYN_PROPERTIES["NAtoms"] )
+                os.chdir("../")
     
     return DIAG_GRADIENTS
 

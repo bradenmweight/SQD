@@ -45,24 +45,26 @@ def get_Force(DYN_PROPERTIES):
     dEad    = DYN_PROPERTIES["DIAG_GRADIENTS"] # NStates x NAtoms x 3 (a.u.)
     NAtoms  = DYN_PROPERTIES["NAtoms"]
     NStates = DYN_PROPERTIES["NStates"]
+    MD_STEP = DYN_PROPERTIES["MD_STEP"]
     Ead     = DYN_PROPERTIES["DIAG_ENERGIES_NEW"]
-
-    if ( DYN_PROPERTIES["MD_STEP"] >= 1 ):
-        NACR    = DYN_PROPERTIES["NACR_APPROX_NEW"] # NStates x NStates x NAtoms x 3 (a.u.)
-    else:
-        NACR    = np.zeros(( NStates, NStates, NAtoms, 3 )) # NStates x NStates x NAtoms x 3 (a.u.)
-
     z = DYN_PROPERTIES["MAPPING_VARS"]
+
 
     F = np.zeros(( NAtoms, 3 ))
     rho = np.real( properties.get_density_matrix(DYN_PROPERTIES) )
-    for j in range( NStates ):
-        for k in range( j, NStates ):
-            if ( j == k ):
-                F[:,:] -= dEad[j,:,:] * rho[j,j]
-            else:
-                Ejk = Ead[j] - Ead[k]
-                F[:,:] -= 2 * rho[j,k] * NACR[j,k,:,:] * Ejk  # Double count upper triangle
+    if ( DYN_PROPERTIES["CPA"] == True ):
+        print("Using CPA forces. F = F(G.S.)")
+        F[:,:] = -dEad[0,:,:] # G.S. Forces Only -- For Classical Path Approximation
+    else:
+        for j in range( NStates ):
+            for k in range( j, NStates ):
+                if ( j == k ):
+                    F[:,:] -= dEad[j,:,:] * rho[j,j]
+                else:
+                    if ( MD_STEP >= 1 ):
+                        NACR    = DYN_PROPERTIES["NACR_APPROX_NEW"] # NStates x NStates x NAtoms x 3 (a.u.)
+                        Ejk = Ead[j] - Ead[k]
+                        F[:,:] -= 2 * rho[j,k] * NACR[j,k,:,:] * Ejk  # Double count upper triangle
 
     return F
 
@@ -84,7 +86,6 @@ def rotate_t1_to_t0(S, A): # Recall, we perform TD-DFT with one additional state
         print("Shape of rotating object not correct." )
         print(f"Needs to be either 1D or 2D numpy array. Received {len(A.shape)}D array.")
 
-
 def propagage_Mapping(DYN_PROPERTIES):
     NStates = DYN_PROPERTIES["NStates"]
     z       = DYN_PROPERTIES["MAPPING_VARS"]
@@ -92,30 +93,24 @@ def propagage_Mapping(DYN_PROPERTIES):
     Zreal = np.real(z) * 1.0
     Zimag = np.imag(z) * 1.0
 
-    OVERLAP  = (DYN_PROPERTIES["OVERLAP_NEW"]) # Recall, we perform TD-DFT with one additional state. Already removed.
+    OVERLAP  = (DYN_PROPERTIES["OVERLAP_NEW"])
 
     Hamt0 = np.zeros(( NStates, NStates )) # t0 basis
     Hamt1 = np.zeros(( NStates, NStates )) # t1 basis
 
     #### t0 Ham ####
-    if ( DYN_PROPERTIES["MD_STEP"] >= 2 ): 
-        NACR_OLD  = DYN_PROPERTIES["NACR_APPROX_OLD"]
-        VELOC_OLD = DYN_PROPERTIES["Atom_velocs_old"]
     Ead_old    = DYN_PROPERTIES["DIAG_ENERGIES_OLD"]
     E_GS_t0    = Ead_old[0] * 1.0
     Hamt0[:,:] = np.diag(Ead_old) 
     Hamt0     -= np.identity(NStates) * E_GS_t0
 
     #### t1 Ham in t0 basis ####
-    NACR_NEW   = DYN_PROPERTIES["NACR_APPROX_NEW"]
-    VELOC_NEW  = DYN_PROPERTIES["Atom_velocs_new"]
     Ead_new    = DYN_PROPERTIES["DIAG_ENERGIES_NEW"]
     Hamt1[:,:] = np.diag(Ead_new)
         
-    # TODO Check the direction of this rotation
     Hamt1 = rotate_t1_to_t0( DYN_PROPERTIES["OVERLAP_NEW"] , Hamt1 ) # Rotate to t0 basis
 
-    Hamt1 -= np.identity(NStates) * E_GS_t0 # Subtract t0 reference 'after' rotation to t0 basis
+    Hamt1 -= np.identity(NStates) * E_GS_t0 # Subtract t0 reference energy 'after' rotation to t0 basis
 
     dtE    = DYN_PROPERTIES["dtE"]
     ESTEPS = DYN_PROPERTIES["ESTEPS"]
@@ -124,18 +119,22 @@ def propagage_Mapping(DYN_PROPERTIES):
         """
         Propagate with second-order symplectic (Velocity-Verlet-like)
         """
-
+        print("Propagation Norm (0):")
+        POP = np.sum((0.500000 * np.outer( np.conjugate(z), z ))[np.diag_indices(len(z))])
+        print(np.real(np.round(POP,8)))
         for step in range( ESTEPS ):
             """
             ARK: Do we need linear interpolation ? 
             # If we ignore it, we can analytically evolve the MVs in the diagonal basis.
             # BMW, ~ time-saved is probably too small to implement this. 
-            #      ~ Although, it would be more accurate overeall.
+            #      ~ Although, it would be more accurate overall.
             """
 
             # Linear interpolation betwen t0 and t1
-            H = Hamt0 + (step)/(ESTEPS) * ( Hamt1 - Hamt0 )
-
+            if ( DYN_PROPERTIES["EL_INTERPOLATION"] ):
+                H = Hamt0 + (step)/(ESTEPS) * ( Hamt1 - Hamt0 )
+            else:
+                H = Hamt1
             # Propagate Imaginary first by dt/2
             Zimag -= 0.5000000 * H @ Zreal * dtE
 
@@ -173,13 +172,23 @@ def propagage_Mapping(DYN_PROPERTIES):
 
     DYN_PROPERTIES["MAPPING_VARS"] = z
 
+    print("Propagation Norm (1):")
+    POP = np.sum((0.500000 * np.outer( np.conjugate(z), z ))[np.diag_indices(len(z))])
+    print(np.real(np.round(POP,8)))
+
     return DYN_PROPERTIES
 
 def rotate_Mapping(DYN_PROPERTIES):
     z = DYN_PROPERTIES["MAPPING_VARS"]
     S = DYN_PROPERTIES["OVERLAP_NEW"]
 
+    print("Rotation Norm (0):")
+    POP = np.sum((0.500000 * np.outer( np.conjugate(z), z ))[np.diag_indices(len(z))])
+    print(np.real(np.round(POP,8)))
     z = rotate_t0_to_t1( S, z )
+    print("Rotation Norm (1):")
+    POP = np.sum((0.500000 * np.outer( np.conjugate(z), z ))[np.diag_indices(len(z))])
+    print(np.real(np.round(POP,8)))
 
     DYN_PROPERTIES["MAPPING_VARS"] = z
     

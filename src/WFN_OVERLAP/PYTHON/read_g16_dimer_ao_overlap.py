@@ -13,7 +13,10 @@ def get_AO_Matrix(filename):
     for count, line in enumerate(OUT_LINES):
         t = line.split()
         if ( N_AO_BASIS_TOTAL == 0 and len(t) >= 2 and t[0] == "NBasis"):
-            N_AO_BASIS_TOTAL = int(t[2])
+            try:
+                N_AO_BASIS_TOTAL = int(t[2])
+            except ValueError: # Not sure why this happens, but "= 1234" --> "=1234" sometimes.... ~BMW
+                N_AO_BASIS_TOTAL = int(t[1].split("=")[1])
             N_MO_BASIS_TOTAL = N_AO_BASIS_TOTAL
             AO_overlap = np.zeros(( N_AO_BASIS_TOTAL, N_AO_BASIS_TOTAL ), dtype=float)
         

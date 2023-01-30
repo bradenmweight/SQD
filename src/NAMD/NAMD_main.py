@@ -13,8 +13,8 @@ import Eh
 import spinLSC
 
 # HOW TO HANDLE THESE PATHS BETTER ?
-sys.path.append("/scratch/bweight/software/many_molecule_many_mode_NAMD/src/ELECTRONIC_STRUCTURE_CONTROL/")
-sys.path.append("/scratch/bweight/software/many_molecule_many_mode_NAMD/src/WFN_OVERLAP/PYTHON/")
+sys.path.append("/scratch/bweight/software/SQD/src/ELECTRONIC_STRUCTURE_CONTROL/")
+sys.path.append("/scratch/bweight/software/SQD/src/WFN_OVERLAP/PYTHON/")
 
 import G16_TD
 
@@ -113,7 +113,8 @@ def main( ):
         if ( DYN_PROPERTIES["REMOVE_ANGULAR_VELOCITY"] == True ):
             DYN_PROPERTIES = rotation.remove_rotations(DYN_PROPERTIES)
 
-        output.save_data(DYN_PROPERTIES)
+        if ( DYN_PROPERTIES["MD_STEP"] % DYN_PROPERTIES["DATA_SAVE_FREQ"]  == 0 ):
+            output.save_data(DYN_PROPERTIES)
 
         print( "Total MD Step took %2.2f s." % (time() - T_STEP_START) )
 

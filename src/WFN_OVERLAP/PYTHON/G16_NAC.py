@@ -234,17 +234,24 @@ class gau_log_parser():
         # nothing done
         return
         
-    def get_dim_info_BRADEN(self):
+    def get_dim_info_BRADEN(self,DYN_PROPERTIES):
         if ( not os.path.isfile(self.files['mo']) ):
             print("DFT & TD calculation results do not exist!")
             print("Check the DFT calculation!", self.files['mo'])
             exit(1)
 
         #print("HERE:", os.getcwd())
-        NAtoms, NActive = np.array(sp.check_output("grep 'NActive=' geometry.out | tail -n 1 | awk '{print $2,$4}'", shell=True).split(), dtype=int)
-        NBasis, NAE, NBE, NFC, NFV = np.array(sp.check_output("grep 'NFC' geometry.out | tail -n 1 | awk '{print $2,$4,$6,$8,$10}'", shell=True).split(), dtype=int)
-        NOA,NOB,NVA,NVB = np.array(sp.check_output("grep 'NVA=' geometry.out | tail -n 1 | awk '{print $4,$6,$8,$10}'", shell=True).split(), dtype=int)
-        NRoots = int(sp.check_output("grep 'Excited State' geometry.out | wc -l", shell=True)) + 1 # Plus ground state
+        if ( DYN_PROPERTIES["FUNCTIONAL"] in ["AM1", "PM6", "PM7", "DFTB", "DFTBA"] ): # Semi-empirical uses all MOs for correlation
+            NAtoms = DYN_PROPERTIES["NAtoms"]
+            NBasis, NAE, NBE, NFC, NFV = np.array(sp.check_output("grep 'NFC' geometry.out | tail -n 1 | awk '{print $2,$4,$6,$8,$10}'", shell=True).split(), dtype=int)
+            NOA,NOB,NVA,NVB = np.array(sp.check_output("grep 'NVA=' geometry.out | tail -n 1 | awk '{print $4,$6,$8,$10}'", shell=True).split(), dtype=int)
+            NRoots = int(sp.check_output("grep 'Excited State' geometry.out | wc -l", shell=True)) + 1 # Plus ground state
+            NActive = NBasis
+        else:
+            NAtoms, NActive = np.array(sp.check_output("grep 'NActive=' geometry.out | tail -n 1 | awk '{print $2,$4}'", shell=True).split(), dtype=int)
+            NBasis, NAE, NBE, NFC, NFV = np.array(sp.check_output("grep 'NFC' geometry.out | tail -n 1 | awk '{print $2,$4,$6,$8,$10}'", shell=True).split(), dtype=int)
+            NOA,NOB,NVA,NVB = np.array(sp.check_output("grep 'NVA=' geometry.out | tail -n 1 | awk '{print $4,$6,$8,$10}'", shell=True).split(), dtype=int)
+            NRoots = int(sp.check_output("grep 'Excited State' geometry.out | wc -l", shell=True)) + 1 # Plus ground state
         NORB = NOA + NVA # Alpha occupied + unoccupied
         NOCC,NVIR = NAE, NBasis-NAE
 
@@ -1029,7 +1036,7 @@ def main(DYN_PROPERTIES):
 
         if ( dir1 == "TD_NEW_S1" ): 
             T0 = time.time()
-            ao.get_dim_info_BRADEN()
+            ao.get_dim_info_BRADEN(DYN_PROPERTIES)
             print( f"\t{dir1} DIM_INFO TIME (BRADEN):", round(time.time() - T0,2), "s" )
             #T0 = time.time()
             #ao.get_dim_info_old()

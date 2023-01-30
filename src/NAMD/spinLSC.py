@@ -40,27 +40,21 @@ def get_Force(DYN_PROPERTIES):
     NStates = DYN_PROPERTIES["NStates"]
     Ead     = DYN_PROPERTIES["DIAG_ENERGIES_NEW"]
 
-    if ( DYN_PROPERTIES["MD_STEP"] >= 1 ):
-        NACR    = DYN_PROPERTIES["NACR_APPROX_NEW"] # NStates x NStates x NAtoms x 3 (a.u.)
-    else:
-        NACR    = np.zeros(( NStates, NStates, NAtoms, 3 )) # NStates x NStates x NAtoms x 3 (a.u.)
-
-    z = DYN_PROPERTIES["MAPPING_VARS"]
-
-    # Do we need to find the state-independent force ?
-    # It will already be included in the dEad terms at this point...
-    #F0 = np.einsum("jad->ad", dEad[:,:,:]) / NStates
-
     F = np.zeros(( NAtoms, 3 ))
     rho = np.real( properties.get_density_matrix(DYN_PROPERTIES) )
-    for j in range( NStates ):
-        for k in range( j, NStates ):
-            if ( j == k ):
-                F[:,:] -= dEad[j,:,:] * rho[j,j]
-            else:
-                Ejk = Ead[j] - Ead[k]
-                F[:,:] -= 2 * rho[j,k] * NACR[j,k,:,:] * Ejk  # Double count upper triangle
-
+    if ( DYN_PROPERTIES["CPA"] == True ):
+        print("Using CPA forces. F = F(G.S.)")
+        F[:,:] = -dEad[0,:,:] # G.S. Forces Only -- For Classical Path Approximation
+    else:
+        for j in range( NStates ):
+            for k in range( j, NStates ):
+                if ( j == k ):
+                    F[:,:] -= dEad[j,:,:] * rho[j,j]
+                else:
+                    if ( MD_STEP >= 1 ):
+                        NACR    = DYN_PROPERTIES["NACR_APPROX_NEW"] # NStates x NStates x NAtoms x 3 (a.u.)
+                        Ejk = Ead[j] - Ead[k]
+                        F[:,:] -= 2 * rho[j,k] * NACR[j,k,:,:] * Ejk  # Double count upper triangle
 
     return F
 
@@ -99,17 +93,12 @@ def propagage_Mapping(DYN_PROPERTIES):
 
     #### t0 Ham ####
     # ADD NACT = dR/dt.NACR TO OFF-DIAGONALS
-    if ( DYN_PROPERTIES["MD_STEP"] >= 2 ): 
-        NACR_OLD  = DYN_PROPERTIES["NACR_APPROX_OLD"]
-        VELOC_OLD = DYN_PROPERTIES["Atom_velocs_old"]
     Ead_old    = DYN_PROPERTIES["DIAG_ENERGIES_OLD"]
     E_GS_t0    = Ead_old[0] * 1.0
     Hamt0      = np.diag(Ead_old) 
     Hamt0     -= np.identity(NStates) * E_GS_t0
 
     #### t1 Ham in t0 basis ####
-    NACR_NEW   = DYN_PROPERTIES["NACR_APPROX_NEW"]
-    VELOC_NEW  = DYN_PROPERTIES["Atom_velocs_new"]
     Ead_new    = DYN_PROPERTIES["DIAG_ENERGIES_NEW"]
     Hamt1[:,:] = np.diag(Ead_new) #- np.identity(NStates) * E_GS_t0 # Is it okay to subtract this here ? Identity will also rotate, no ? Maybe bad.
         

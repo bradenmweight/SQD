@@ -128,7 +128,7 @@ def read():
 
             # Look for SBATCH_G16
             if ( t[0].lower() == "SBATCH_G16".lower() ):
-                DYN_PROPERTIES["SBATCH_G16"] = t[1].lower()
+                DYN_PROPERTIES["SBATCH_G16"] = t[1] # DO NOT CHANGE CASE
                 # The accuracy of input is up to the user...scary!
 
             # Look for PARALLEL_FORCES
@@ -213,6 +213,21 @@ def read():
                     exit()
 
 
+            # Look for DATA_SAVE_FREQ
+            if ( t[0].lower() == "EL_INTERPOLATION".lower() ):
+                try:
+                    DYN_PROPERTIES["EL_INTERPOLATION"] = bool( t[1] )
+                except ValueError:
+                    print(f"\t'EL_INTERPOLATION' must be a bool: '{t[1]}'")
+                    exit()
+
+            # Look for DATA_SAVE_FREQ
+            if ( t[0].lower() == "CHECK_TRIVIAL_CROSSING".lower() ):
+                try:
+                    DYN_PROPERTIES["CHECK_TRIVIAL_CROSSING"] = bool( t[1] )
+                except ValueError:
+                    print(f"\t'CHECK_TRIVIAL_CROSSING' must be a bool: '{t[1]}'")
+                    exit()
 
 
             # Look for CPA
@@ -236,7 +251,7 @@ def read():
         print( "  ESTEPS ="); print("\t\t", DYN_PROPERTIES["ESTEPS"] )
         print( "  ISTATE ="); print("\t\t", DYN_PROPERTIES["ISTATE"] )
         print( "  FUNCTIONAL ="); print("\t\t", DYN_PROPERTIES["FUNCTIONAL"] )
-        print( "  BASIS_SET ="); print("\t\t", DYN_PROPERTIES["BASIS_SET"] )
+        if( DYN_PROPERTIES["FUNCTIONAL"] not in ["DFTB", "DFTBA"] ): print( "  BASIS_SET ="); print("\t\t", DYN_PROPERTIES["BASIS_SET"] )
         print( "  CHARGE ="); print("\t\t", DYN_PROPERTIES["CHARGE"] )
         print( "  MULTIPLICITY ="); print("\t\t", DYN_PROPERTIES["MULTIPLICITY"] )
         print( "  MEMORY ="); print("\t\t", DYN_PROPERTIES["MEMORY"], "(GB)" )
@@ -514,8 +529,28 @@ def initialize_MD_variables(DYN_PROPERTIES):
     except KeyError:
         DYN_PROPERTIES["DATA_SAVE_FREQ"] = 1 # Default is to save every step. Might make large output files for NVT
 
+    try:
+        tmp = DYN_PROPERTIES["EL_INTERPOLATION"]
+    except KeyError:
+        DYN_PROPERTIES["EL_INTERPOLATION"] = False # Default is to not perform linear interpolation
 
+    try:
+        tmp = DYN_PROPERTIES["CHECK_TRIVIAL_CROSSING"]
+    except KeyError:
+        DYN_PROPERTIES["CHECK_TRIVIAL_CROSSING"] = False # Default is not to check for trivial crossings
 
+    #if ( DYN_PROPERTIES["FUNCTIONAL"] in ["DFTB", "DFTBA"] ):
+    #    try:
+    #        tmp = DYN_PROPERTIES["BASIS_SET"]
+    #    except KeyError:
+    #        # For DFTB, we do not use a BASIS_SET definition.
+    #        DYN_PROPERTIES["BASIS_SET"] = None
+    #    if ( DYN_PROPERTIES["BASIS_SET"] != None ):
+    #        # We could also just set to None anyway and continue the calculation. 
+    #        #    The current way, however, keeps the user accountable for what they are doing. I like this. ~BMW
+    #        print("'BASIS_SET' must not be specified for DFTB or DFTBA Hamiltonians.")
+    #        exit()
+            
 
 
 
@@ -524,7 +559,7 @@ def initialize_MD_variables(DYN_PROPERTIES):
         tmp = DYN_PROPERTIES["CPA"]
     except KeyError:
         DYN_PROPERTIES["CPA"] = False # Default is not to do classical path approximation
-    assert( DYN_PROPERTIES["CPA"] == False ), "CPA is not yet implemented. Do not use."
+    #assert( DYN_PROPERTIES["CPA"] == False ), "CPA is not yet implemented. Do not use."
 
 
 

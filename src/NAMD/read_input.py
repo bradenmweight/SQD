@@ -233,10 +233,13 @@ def read():
             # Look for CPA
             if ( t[0].lower() == "CPA".lower() ):
                 try:
-                    DYN_PROPERTIES["CPA"] = bool( t[1] )
-                except ValueError:
-                    print("Input for 'CPA' must be a boolean. (True or False)")
-                    exit()
+                    if ( t[1].upper() == "TRUE" ):
+                        DYN_PROPERTIES["CPA"] = True
+                    elif ( t[1].upper() == "FALSE" ):
+                        DYN_PROPERTIES["CPA"] = False
+                    else:
+                        print("Input for 'CPA' must be a boolean. (True or False)")
+                        exit()
 
         else:
             print( f"Error: Input is wrong at line {count+1}: {line}" )

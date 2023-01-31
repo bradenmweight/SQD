@@ -1,0 +1,17 @@
+#!/bin/bash
+#SBATCH -p debug
+#SBATCH -J TEST
+#SBATCH -o output.slurm
+#SBATCH -t 1:00:00
+#SBATCH -N 1
+#SBATCH --ntasks-per-node=12
+#SBATCH --mem 5GB
+
+module load gaussian
+
+g16 < geometry.com > geometry.out
+formchk geometry.chk
+
+#python3 ~/Gaussain_scripts/Excited_States/Gen_spectra_gaus16.py
+#../get_dipole_matrix_from_multiwfn.sh
+

@@ -1,0 +1,21 @@
+#!/bin/bash
+#SBATCH -p action
+#SBATCH -J FULL_DYE
+#SBATCH -o output.slurm
+#SBATCH --mem 60GB
+#SBATCH -t 5-00:00:00
+#SBATCH -N 1
+#SBATCH --ntasks-per-node=24
+
+export OMP_NUM_THREADS=24
+export MKL_NUM_THREADS=24
+
+MAIN_DIR="/scratch/bweight/software/SQD/src/"
+
+module load gaussian
+module load intel
+
+python3 $MAIN_DIR/NAMD/NAMD_main.py > MD.out
+
+
+

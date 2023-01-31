@@ -1,0 +1,18 @@
+#!/bin/bash
+#SBATCH -p action
+#SBATCH -J DMABN_DYN
+#SBATCH -o output.slurm
+#SBATCH --mem 30GB
+#SBATCH -t 5-00:00:00
+#SBATCH -N 1
+#SBATCH --ntasks-per-node=24
+
+MAIN_DIR="/scratch/bweight/software/many_molecule_many_mode_NAMD/src/"
+
+module load gaussian
+module load intel
+
+python3 $MAIN_DIR/NAMD/NAMD_main.py | tee MD.out
+
+
+

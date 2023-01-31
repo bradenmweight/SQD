@@ -1,0 +1,33 @@
+#!/bin/bash
+#SBATCH -p action
+#SBATCH -J NTOs
+#SBATCH -o output.slurm
+#SBATCH -t 12:00:00
+#SBATCH -N 1
+#SBATCH --ntasks-per-node=1
+#SBATCH --mem 5GB
+
+# Run this inside new directory (e.g. NTOs) just inside the TD directory.
+
+module load gaussian
+
+for state in {1..15}; do
+
+    # Make input file
+    cp ~/Gaussain_scripts/NTOs/NTO_header.com S_${state}.com
+    sed -i "s/BASH_STATE/$state/g" S_${state}.com
+
+    # Run Gaussian
+    g16 < S_${state}.com > S_${state}.out
+
+    # Make formchk file
+    formchk S_${state}.chk
+
+    # Make cube files for HOTO and LUTO
+    # -2 = coarse, -4 = fine
+    cubegen 4 MO=HOMO S_${state}.fchk S_${state}.HOTO.cube -2 h
+    cubegen 4 MO=LUMO S_${state}.fchk S_${state}.LUTO.cube -2 h
+
+    rm S_${state}.chk
+
+done

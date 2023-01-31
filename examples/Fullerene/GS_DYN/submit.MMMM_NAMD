@@ -1,14 +1,14 @@
 #!/bin/bash
-#SBATCH -p action
-#SBATCH -J DMABN_DYN
+#SBATCH -p exciton -A exciton
+#SBATCH -J FULLERENE
 #SBATCH -o output.slurm
 #SBATCH --mem 30GB
 #SBATCH -t 5-00:00:00
 #SBATCH -N 1
-#SBATCH --ntasks-per-node=24
+#SBATCH --ntasks-per-node=12
 
-export OMP_NUM_THREADS=24
-export MKL_NUM_THREADS=24
+export OMP_NUM_THREADS=12
+export MKL_NUM_THREADS=12
 
 SQD_MAIN="/scratch/bweight/software/SQD/src/"
 

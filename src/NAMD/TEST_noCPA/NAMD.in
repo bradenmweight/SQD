@@ -16,7 +16,7 @@ VELOC = READ # {MB} {READ} -> read from "velocity_input.xyz",
 # Optional
 PARALLEL_FORCES = True # Uses 'NCPUS_NAMD' for distribution [Boolean] 
 NCPUS_NAMD  = 1 # NCPUS, Dictates parallization across excited state forces. [int]
-NCPUS_G16   = 12 # [int]
+NCPUS_G16   = 1 # [int]
 RUN_ELEC_STRUC = USE_CURRENT_NODE # USE_CURRENT_NODE, SUBMIT_SBATCH [str]
 SBATCH_G16 = /scratch/bweight/software/SQD/src/NAMD/TEST_TRIVIAL_CROSSING/submit.gaussian # [str]
 EL_PROP = VV # RK (4th-order explicit Runge-Kutta), VV (Velocity-Verlet-like, second-order symplectic) [str]

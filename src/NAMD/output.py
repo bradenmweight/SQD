@@ -3,7 +3,6 @@ import subprocess as sp
 
 import properties
 
-# MOVE THIS FUNCTION TO NEW FILE OUTPUT.py
 def save_data(DYN_PROPERTIES):
 
     NStates = DYN_PROPERTIES["NStates"]
@@ -71,7 +70,13 @@ def save_data(DYN_PROPERTIES):
         with open("MD_OUTPUT/Population.dat","a") as file01:
             POP = np.real(properties.get_density_matrix( DYN_PROPERTIES )[np.diag_indices(NStates)])
             PSUM = np.sum(POP)
-            file01.write( f"{DYN_PROPERTIES['MD_STEP']}  " +  " ".join(map("{:2.8f}".format,POP )) + "  %2.8f" % (PSUM) + "\n" )
+            AS = DYN_PROPERTIES['ACTIVE_STATE']
+            if ( DYN_PROPERTIES['NAMD_METHOD'] in ["GFSH"] ):
+                file01.write( f"%d\t%d\t" % (DYN_PROPERTIES['MD_STEP'], AS) +  " ".join(map("{:2.8f}".format,POP )) + "  %2.8f" % (PSUM) + "\n" )
+            else:
+                file01.write( f"{DYN_PROPERTIES['MD_STEP']}  " +  " ".join(map("{:2.8f}".format,POP )) + "  %2.8f" % (PSUM) + "\n" )
+
+
 
         with open("MD_OUTPUT/Coherence_re.dat","a") as file01:
             if ( DYN_PROPERTIES['MD_STEP'] == 0 ): 
@@ -126,3 +131,4 @@ def save_data(DYN_PROPERTIES):
         #    Atom_NACR = DYN_PROPERTIES["NACR_APPROX_NEW"] / 0.529 # 0.529 Ang./Bohr
         #    for count, atom in enumerate( Atom_labels ):
         #        file01.write(f"{atom}  " + " ".join(map("{:2.8f}".format,Atom_NACR[count,:]))  + "\n") # Ang / fs
+

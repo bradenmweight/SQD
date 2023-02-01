@@ -23,7 +23,7 @@ def initialize_mapping(DYN_PROPERTIES):
     r = np.zeros(( NStates )) # np.ones(( NStates )) * np.sqrt(gw)
     r[ISTATE] = np.sqrt( 2 )
 
-    # Set real mapping variables
+    # Set mapping variables
     z = np.zeros(( NStates ),dtype=complex)
     for i in range(NStates):
         phi = random.random() * 2 * np.pi # Azimuthal Angle -- Always Random

@@ -11,6 +11,7 @@ import rotation
 ### NAMD METHODS ###
 import Eh
 import spinLSC
+import GFSH
 
 # HOW TO HANDLE THESE PATHS BETTER ?
 sys.path.append("/scratch/bweight/software/SQD/src/ELECTRONIC_STRUCTURE_CONTROL/")
@@ -33,6 +34,8 @@ def initialize_mapping(DYN_PROPERTIES):
         return Eh.initialize_mapping(DYN_PROPERTIES)
     elif ( DYN_PROPERTIES["NAMD_METHOD"] == "SPINLSC" ):
         return spinLSC.initialize_mapping(DYN_PROPERTIES)
+    elif ( DYN_PROPERTIES["NAMD_METHOD"] == "GFSH" ):
+        return GFSH.initialize_mapping(DYN_PROPERTIES)
 
 def propagage_Mapping(DYN_PROPERTIES):
     """
@@ -42,6 +45,8 @@ def propagage_Mapping(DYN_PROPERTIES):
         return Eh.propagage_Mapping(DYN_PROPERTIES)
     elif ( DYN_PROPERTIES["NAMD_METHOD"] == "SPINLSC" ):
         return spinLSC.propagage_Mapping(DYN_PROPERTIES)
+    elif ( DYN_PROPERTIES["NAMD_METHOD"] == "GFSH" ):
+        return GFSH.propagage_Mapping(DYN_PROPERTIES)
 
 def rotate_Mapping(DYN_PROPERTIES):
     """
@@ -51,13 +56,15 @@ def rotate_Mapping(DYN_PROPERTIES):
         return Eh.rotate_Mapping(DYN_PROPERTIES)
     if ( DYN_PROPERTIES["NAMD_METHOD"] == "SPINLSC" ):
         return spinLSC.rotate_Mapping(DYN_PROPERTIES)
-
+    if ( DYN_PROPERTIES["NAMD_METHOD"] == "GFSH" ):
+        return GFSH.rotate_Mapping(DYN_PROPERTIES)
 
 
 
 def main( ):
     DYN_PROPERTIES = read_input.read()
     DYN_PROPERTIES = read_input.initialize_MD_variables(DYN_PROPERTIES)
+
 
     # Remove COM motion and angular velocity
     # Do we need to do this at every step. Probably should at least remove COM.

@@ -1,18 +1,11 @@
 import numpy as np
 from random import gauss
+
 import properties
 
-import Eh
-import spinLSC
-
 def get_Force(DYN_PROPERTIES):
-    if ( DYN_PROPERTIES["NAMD_METHOD"] == "EH" ):
-        return Eh.get_Force(DYN_PROPERTIES)
-    elif ( DYN_PROPERTIES["NAMD_METHOD"] == "SPINLSC" ):
-        return spinLSC.get_Force(DYN_PROPERTIES)
-    else:
-        print("No NAMD_METHOD found.")
-        exit()
+    return properties.get_Force(DYN_PROPERTIES)
+
 
 def do_Langevin_XStep(DYN_PROPERTIES):
     """

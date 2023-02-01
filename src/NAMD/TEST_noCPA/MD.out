@@ -5421,3 +5421,1313 @@ Starting forces for state 2
 	Gaussian terminated normally in 4.75 s. (TD_NEW_S2)
 Starting forces for state 3
 	Gaussian terminated normally in 4.73 s. (TD_NEW_S3)
+	Gaussian terminated normally in 14.79 s. (DIMER)
+	TD_NEW_S1 DIM_INFO TIME (BRADEN): 0.07 s
+	TD_NEW_S1 GET_MO TIME: 0.01 s
+	TD_NEW_S1 GET_CI TIME: 0.03 s
+	TD_OLD_S1 GET_MO TIME: 0.01 s
+	TD_OLD_S1 GET_CI TIME: 0.04 s
+	DIMER TIME: 2.42 s
+	G16_NAC.py main: 2.58 s
+	gau_nac() (G16_NAC.py): 0.0 s
+gau_nac prepare 0.01 s
+WFN OVERLAP FORTRAN TOOK 0.12 s
+gau_nac dump 1.11 s
+	gau_nac.worker() (G16_NAC.py): 1.24 s
+	GET_OVERLAP OVERALL TIME (G16_TD.py): 3.88 s
+Orthogonalized [S.T @ S] :
+[[ 1.  0.  0.  0.]
+ [ 0.  1. -0.  0.]
+ [ 0. -0.  1.  0.]
+ [ 0.  0.  0.  1.]]
+	GET_NACT OVERALL TIME (G16_TD.py): 0.0 s
+	GET_APPROX NACR OVERALL TIME (G16_TD.py): 0.0 s
+Total QM took 37.35 s.
+Propagation Norm (0):
+1.0
+Propagation Norm (1):
+1.0
+Electronic propagation took 0.00 s.
+Rotation Norm (0):
+1.0
+Rotation Norm (1):
+1.0
+Electronic Norm.: 1.0
+Total MD Step took 37.36 s.
+Submitting electronic structure for step 126.
+	Gaussian terminated normally in 3.66 s. (GS_NEW)
+Starting forces for state 1
+	Gaussian terminated normally in 4.09 s. (TD_NEW_S1)
+Starting forces for state 2
+	Gaussian terminated normally in 4.14 s. (TD_NEW_S2)
+Starting forces for state 3
+	Gaussian terminated normally in 4.33 s. (TD_NEW_S3)
+	Gaussian terminated normally in 15.00 s. (DIMER)
+	TD_NEW_S1 DIM_INFO TIME (BRADEN): 0.07 s
+	TD_NEW_S1 GET_MO TIME: 0.01 s
+	TD_NEW_S1 GET_CI TIME: 0.03 s
+	TD_OLD_S1 GET_MO TIME: 0.01 s
+	TD_OLD_S1 GET_CI TIME: 0.04 s
+	DIMER TIME: 2.39 s
+	G16_NAC.py main: 2.56 s
+	gau_nac() (G16_NAC.py): 0.0 s
+gau_nac prepare 0.01 s
+WFN OVERLAP FORTRAN TOOK 0.12 s
+gau_nac dump 1.16 s
+	gau_nac.worker() (G16_NAC.py): 1.28 s
+	GET_OVERLAP OVERALL TIME (G16_TD.py): 3.91 s
+Orthogonalized [S.T @ S] :
+[[ 1.  0.  0. -0.]
+ [ 0.  1. -0. -0.]
+ [ 0. -0.  1.  0.]
+ [-0. -0.  0.  1.]]
+	GET_NACT OVERALL TIME (G16_TD.py): 0.0 s
+	GET_APPROX NACR OVERALL TIME (G16_TD.py): 0.0 s
+Total QM took 36.09 s.
+Propagation Norm (0):
+1.0
+Propagation Norm (1):
+1.0
+Electronic propagation took 0.00 s.
+Rotation Norm (0):
+1.0
+Rotation Norm (1):
+1.0
+Electronic Norm.: 1.0
+Total MD Step took 36.10 s.
+Submitting electronic structure for step 127.
+	Gaussian terminated normally in 3.38 s. (GS_NEW)
+Starting forces for state 1
+	Gaussian terminated normally in 4.27 s. (TD_NEW_S1)
+Starting forces for state 2
+	Gaussian terminated normally in 4.16 s. (TD_NEW_S2)
+Starting forces for state 3
+	Gaussian terminated normally in 4.17 s. (TD_NEW_S3)
+	Gaussian terminated normally in 14.86 s. (DIMER)
+	TD_NEW_S1 DIM_INFO TIME (BRADEN): 0.06 s
+	TD_NEW_S1 GET_MO TIME: 0.01 s
+	TD_NEW_S1 GET_CI TIME: 0.03 s
+	TD_OLD_S1 GET_MO TIME: 0.01 s
+	TD_OLD_S1 GET_CI TIME: 0.04 s
+	DIMER TIME: 2.39 s
+	G16_NAC.py main: 2.54 s
+	gau_nac() (G16_NAC.py): 0.0 s
+gau_nac prepare 0.01 s
+WFN OVERLAP FORTRAN TOOK 0.12 s
+gau_nac dump 1.1 s
+	gau_nac.worker() (G16_NAC.py): 1.24 s
+	GET_OVERLAP OVERALL TIME (G16_TD.py): 3.83 s
+Orthogonalized [S.T @ S] :
+[[ 1. -0. -0. -0.]
+ [-0.  1.  0. -0.]
+ [-0.  0.  1. -0.]
+ [-0. -0. -0.  1.]]
+	GET_NACT OVERALL TIME (G16_TD.py): 0.0 s
+	GET_APPROX NACR OVERALL TIME (G16_TD.py): 0.0 s
+Total QM took 35.63 s.
+Propagation Norm (0):
+1.0
+Propagation Norm (1):
+1.0
+Electronic propagation took 0.00 s.
+Rotation Norm (0):
+1.0
+Rotation Norm (1):
+1.0
+Electronic Norm.: 1.0
+Total MD Step took 35.64 s.
+Submitting electronic structure for step 128.
+	Gaussian terminated normally in 3.49 s. (GS_NEW)
+Starting forces for state 1
+	Gaussian terminated normally in 4.24 s. (TD_NEW_S1)
+Starting forces for state 2
+	Gaussian terminated normally in 4.57 s. (TD_NEW_S2)
+Starting forces for state 3
+	Gaussian terminated normally in 4.30 s. (TD_NEW_S3)
+	Gaussian terminated normally in 14.91 s. (DIMER)
+	TD_NEW_S1 DIM_INFO TIME (BRADEN): 0.06 s
+	TD_NEW_S1 GET_MO TIME: 0.01 s
+	TD_NEW_S1 GET_CI TIME: 0.03 s
+	TD_OLD_S1 GET_MO TIME: 0.01 s
+	TD_OLD_S1 GET_CI TIME: 0.03 s
+	DIMER TIME: 2.39 s
+	G16_NAC.py main: 2.54 s
+	gau_nac() (G16_NAC.py): 0.0 s
+gau_nac prepare 0.01 s
+WFN OVERLAP FORTRAN TOOK 0.12 s
+gau_nac dump 1.11 s
+	gau_nac.worker() (G16_NAC.py): 1.24 s
+	GET_OVERLAP OVERALL TIME (G16_TD.py): 3.83 s
+Orthogonalized [S.T @ S] :
+[[ 1. -0.  0. -0.]
+ [-0.  1. -0. -0.]
+ [ 0. -0.  1.  0.]
+ [-0. -0.  0.  1.]]
+	GET_NACT OVERALL TIME (G16_TD.py): 0.0 s
+	GET_APPROX NACR OVERALL TIME (G16_TD.py): 0.0 s
+Total QM took 36.36 s.
+Propagation Norm (0):
+1.0
+Propagation Norm (1):
+1.0
+Electronic propagation took 0.00 s.
+Rotation Norm (0):
+1.0
+Rotation Norm (1):
+1.0
+Electronic Norm.: 1.0
+Total MD Step took 36.37 s.
+Submitting electronic structure for step 129.
+	Gaussian terminated normally in 3.27 s. (GS_NEW)
+Starting forces for state 1
+	Gaussian terminated normally in 4.51 s. (TD_NEW_S1)
+Starting forces for state 2
+	Gaussian terminated normally in 4.35 s. (TD_NEW_S2)
+Starting forces for state 3
+	Gaussian terminated normally in 4.33 s. (TD_NEW_S3)
+	Gaussian terminated normally in 15.06 s. (DIMER)
+	TD_NEW_S1 DIM_INFO TIME (BRADEN): 0.07 s
+	TD_NEW_S1 GET_MO TIME: 0.01 s
+	TD_NEW_S1 GET_CI TIME: 0.03 s
+	TD_OLD_S1 GET_MO TIME: 0.01 s
+	TD_OLD_S1 GET_CI TIME: 0.03 s
+	DIMER TIME: 2.38 s
+	G16_NAC.py main: 2.53 s
+	gau_nac() (G16_NAC.py): 0.0 s
+gau_nac prepare 0.01 s
+WFN OVERLAP FORTRAN TOOK 0.12 s
+gau_nac dump 1.11 s
+	gau_nac.worker() (G16_NAC.py): 1.24 s
+	GET_OVERLAP OVERALL TIME (G16_TD.py): 3.83 s
+Orthogonalized [S.T @ S] :
+[[ 1.  0. -0.  0.]
+ [ 0.  1.  0. -0.]
+ [-0.  0.  1. -0.]
+ [ 0. -0. -0.  1.]]
+	GET_NACT OVERALL TIME (G16_TD.py): 0.0 s
+	GET_APPROX NACR OVERALL TIME (G16_TD.py): 0.0 s
+Total QM took 36.32 s.
+Propagation Norm (0):
+1.0
+Propagation Norm (1):
+1.0
+Electronic propagation took 0.00 s.
+Rotation Norm (0):
+1.0
+Rotation Norm (1):
+1.0
+Electronic Norm.: 1.0
+Total MD Step took 36.33 s.
+Submitting electronic structure for step 130.
+	Gaussian terminated normally in 3.41 s. (GS_NEW)
+Starting forces for state 1
+	Gaussian terminated normally in 4.41 s. (TD_NEW_S1)
+Starting forces for state 2
+	Gaussian terminated normally in 4.84 s. (TD_NEW_S2)
+Starting forces for state 3
+	Gaussian terminated normally in 4.60 s. (TD_NEW_S3)
+	Gaussian terminated normally in 15.12 s. (DIMER)
+	TD_NEW_S1 DIM_INFO TIME (BRADEN): 0.07 s
+	TD_NEW_S1 GET_MO TIME: 0.01 s
+	TD_NEW_S1 GET_CI TIME: 0.03 s
+	TD_OLD_S1 GET_MO TIME: 0.01 s
+	TD_OLD_S1 GET_CI TIME: 0.03 s
+	DIMER TIME: 2.45 s
+	G16_NAC.py main: 2.6 s
+	gau_nac() (G16_NAC.py): 0.0 s
+gau_nac prepare 0.01 s
+WFN OVERLAP FORTRAN TOOK 0.12 s
+gau_nac dump 1.1 s
+	gau_nac.worker() (G16_NAC.py): 1.23 s
+	GET_OVERLAP OVERALL TIME (G16_TD.py): 3.89 s
+Orthogonalized [S.T @ S] :
+[[ 1.  0.  0.  0.]
+ [ 0.  1. -0. -0.]
+ [ 0. -0.  1.  0.]
+ [ 0. -0.  0.  1.]]
+	GET_NACT OVERALL TIME (G16_TD.py): 0.0 s
+	GET_APPROX NACR OVERALL TIME (G16_TD.py): 0.0 s
+Total QM took 37.22 s.
+Propagation Norm (0):
+1.0
+Propagation Norm (1):
+1.0
+Electronic propagation took 0.00 s.
+Rotation Norm (0):
+1.0
+Rotation Norm (1):
+1.0
+Electronic Norm.: 1.0
+Total MD Step took 37.23 s.
+Submitting electronic structure for step 131.
+	Gaussian terminated normally in 3.41 s. (GS_NEW)
+Starting forces for state 1
+	Gaussian terminated normally in 4.40 s. (TD_NEW_S1)
+Starting forces for state 2
+	Gaussian terminated normally in 4.33 s. (TD_NEW_S2)
+Starting forces for state 3
+	Gaussian terminated normally in 4.46 s. (TD_NEW_S3)
+	Gaussian terminated normally in 14.88 s. (DIMER)
+	TD_NEW_S1 DIM_INFO TIME (BRADEN): 0.06 s
+	TD_NEW_S1 GET_MO TIME: 0.01 s
+	TD_NEW_S1 GET_CI TIME: 0.03 s
+	TD_OLD_S1 GET_MO TIME: 0.01 s
+	TD_OLD_S1 GET_CI TIME: 0.03 s
+	DIMER TIME: 2.39 s
+	G16_NAC.py main: 2.54 s
+	gau_nac() (G16_NAC.py): 0.0 s
+gau_nac prepare 0.01 s
+WFN OVERLAP FORTRAN TOOK 0.12 s
+gau_nac dump 1.1 s
+	gau_nac.worker() (G16_NAC.py): 1.23 s
+	GET_OVERLAP OVERALL TIME (G16_TD.py): 3.82 s
+Orthogonalized [S.T @ S] :
+[[ 1.  0.  0.  0.]
+ [ 0.  1. -0.  0.]
+ [ 0. -0.  1. -0.]
+ [ 0.  0. -0.  1.]]
+	GET_NACT OVERALL TIME (G16_TD.py): 0.0 s
+	GET_APPROX NACR OVERALL TIME (G16_TD.py): 0.0 s
+Total QM took 36.23 s.
+Propagation Norm (0):
+1.0
+Propagation Norm (1):
+1.0
+Electronic propagation took 0.00 s.
+Rotation Norm (0):
+1.0
+Rotation Norm (1):
+1.0
+Electronic Norm.: 1.0
+Total MD Step took 36.24 s.
+Submitting electronic structure for step 132.
+	Gaussian terminated normally in 3.40 s. (GS_NEW)
+Starting forces for state 1
+	Gaussian terminated normally in 4.90 s. (TD_NEW_S1)
+Starting forces for state 2
+	Gaussian terminated normally in 4.45 s. (TD_NEW_S2)
+Starting forces for state 3
+	Gaussian terminated normally in 4.56 s. (TD_NEW_S3)
+	Gaussian terminated normally in 14.88 s. (DIMER)
+	TD_NEW_S1 DIM_INFO TIME (BRADEN): 0.08 s
+	TD_NEW_S1 GET_MO TIME: 0.01 s
+	TD_NEW_S1 GET_CI TIME: 0.03 s
+	TD_OLD_S1 GET_MO TIME: 0.01 s
+	TD_OLD_S1 GET_CI TIME: 0.03 s
+	DIMER TIME: 2.4 s
+	G16_NAC.py main: 2.56 s
+	gau_nac() (G16_NAC.py): 0.0 s
+gau_nac prepare 0.01 s
+WFN OVERLAP FORTRAN TOOK 0.12 s
+gau_nac dump 1.11 s
+	gau_nac.worker() (G16_NAC.py): 1.24 s
+	GET_OVERLAP OVERALL TIME (G16_TD.py): 3.85 s
+Orthogonalized [S.T @ S] :
+[[ 1.  0.  0. -0.]
+ [ 0.  1. -0. -0.]
+ [ 0. -0.  1. -0.]
+ [-0. -0. -0.  1.]]
+	GET_NACT OVERALL TIME (G16_TD.py): 0.0 s
+	GET_APPROX NACR OVERALL TIME (G16_TD.py): 0.0 s
+Total QM took 37.03 s.
+Propagation Norm (0):
+1.0
+Propagation Norm (1):
+1.0
+Electronic propagation took 0.00 s.
+Rotation Norm (0):
+1.0
+Rotation Norm (1):
+1.0
+Electronic Norm.: 1.0
+Total MD Step took 37.04 s.
+Submitting electronic structure for step 133.
+	Gaussian terminated normally in 3.36 s. (GS_NEW)
+	Gaussian terminated normally in 15.06 s. (DIMER)
+	TD_NEW_S1 DIM_INFO TIME (BRADEN): 0.07 s
+	TD_NEW_S1 GET_MO TIME: 0.01 s
+	TD_NEW_S1 GET_CI TIME: 0.03 s
+	TD_OLD_S1 GET_MO TIME: 0.01 s
+	TD_OLD_S1 GET_CI TIME: 0.03 s
+	DIMER TIME: 2.4 s
+	G16_NAC.py main: 2.55 s
+	gau_nac() (G16_NAC.py): 0.0 s
+gau_nac prepare 0.01 s
+WFN OVERLAP FORTRAN TOOK 0.12 s
+gau_nac dump 1.11 s
+	gau_nac.worker() (G16_NAC.py): 1.24 s
+	GET_OVERLAP OVERALL TIME (G16_TD.py): 3.83 s
+Orthogonalized [S.T @ S] :
+[[ 1.  0. -0. -0.]
+ [ 0.  1. -0.  0.]
+ [-0. -0.  1.  0.]
+ [-0.  0.  0.  1.]]
+	GET_NACT OVERALL TIME (G16_TD.py): 0.0 s
+	GET_APPROX NACR OVERALL TIME (G16_TD.py): 0.0 s
+Total QM took 38.64 s.
+Propagation Norm (0):
+1.0
+Propagation Norm (1):
+1.0
+Electronic propagation took 0.00 s.
+Rotation Norm (0):
+1.0
+Rotation Norm (1):
+1.0
+Electronic Norm.: 1.0
+Total MD Step took 38.65 s.
+Submitting electronic structure for step 134.
+	Gaussian terminated normally in 3.39 s. (GS_NEW)
+Starting forces for state 1
+	Gaussian terminated normally in 5.27 s. (TD_NEW_S1)
+Starting forces for state 2
+	Gaussian terminated normally in 4.96 s. (TD_NEW_S2)
+Starting forces for state 3
+	Gaussian terminated normally in 4.86 s. (TD_NEW_S3)
+	Gaussian terminated normally in 15.08 s. (DIMER)
+	TD_NEW_S1 DIM_INFO TIME (BRADEN): 0.06 s
+	TD_NEW_S1 GET_MO TIME: 0.01 s
+	TD_NEW_S1 GET_CI TIME: 0.03 s
+	TD_OLD_S1 GET_MO TIME: 0.01 s
+	TD_OLD_S1 GET_CI TIME: 0.03 s
+	DIMER TIME: 2.6 s
+	G16_NAC.py main: 2.75 s
+	gau_nac() (G16_NAC.py): 0.0 s
+gau_nac prepare 0.01 s
+WFN OVERLAP FORTRAN TOOK 0.12 s
+gau_nac dump 1.1 s
+	gau_nac.worker() (G16_NAC.py): 1.23 s
+	GET_OVERLAP OVERALL TIME (G16_TD.py): 4.03 s
+Orthogonalized [S.T @ S] :
+[[ 1.  0. -0. -0.]
+ [ 0.  1. -0.  0.]
+ [-0. -0.  1.  0.]
+ [-0.  0.  0.  1.]]
+	GET_NACT OVERALL TIME (G16_TD.py): 0.0 s
+	GET_APPROX NACR OVERALL TIME (G16_TD.py): 0.0 s
+Total QM took 38.56 s.
+Propagation Norm (0):
+1.0
+Propagation Norm (1):
+1.0
+Electronic propagation took 0.00 s.
+Rotation Norm (0):
+1.0
+Rotation Norm (1):
+1.0
+Electronic Norm.: 1.0
+Total MD Step took 38.57 s.
+Submitting electronic structure for step 135.
+	Gaussian terminated normally in 3.38 s. (GS_NEW)
+Starting forces for state 1
+	Gaussian terminated normally in 4.80 s. (TD_NEW_S1)
+Starting forces for state 2
+	Gaussian terminated normally in 4.29 s. (TD_NEW_S2)
+Starting forces for state 3
+	Gaussian terminated normally in 4.38 s. (TD_NEW_S3)
+	Gaussian terminated normally in 14.77 s. (DIMER)
+	TD_NEW_S1 DIM_INFO TIME (BRADEN): 0.07 s
+	TD_NEW_S1 GET_MO TIME: 0.01 s
+	TD_NEW_S1 GET_CI TIME: 0.03 s
+	TD_OLD_S1 GET_MO TIME: 0.01 s
+	TD_OLD_S1 GET_CI TIME: 0.04 s
+	DIMER TIME: 2.43 s
+	G16_NAC.py main: 2.59 s
+	gau_nac() (G16_NAC.py): 0.0 s
+gau_nac prepare 0.01 s
+WFN OVERLAP FORTRAN TOOK 0.12 s
+gau_nac dump 1.1 s
+	gau_nac.worker() (G16_NAC.py): 1.23 s
+	GET_OVERLAP OVERALL TIME (G16_TD.py): 3.88 s
+Orthogonalized [S.T @ S] :
+[[ 1.  0.  0.  0.]
+ [ 0.  1. -0.  0.]
+ [ 0. -0.  1.  0.]
+ [ 0.  0.  0.  1.]]
+OLD:
+ [[ 9.9999821e-01 -1.3680000e-05  6.7802000e-04 -1.7662100e-03]
+ [-1.6469300e-03  1.1310000e-05  7.7141336e-01 -6.3633224e-01]
+ [-1.3670000e-05 -1.0000000e+00  2.6820000e-05  1.4780000e-05]
+ [ 9.3103000e-04  2.8450000e-05  6.3633401e-01  7.7141309e-01]]
+I found a sign error upon phase correcting.
+Index Flip: 1 <--> 2
+NEW:
+ [[ 9.9999821e-01 -1.3680000e-05  6.7802000e-04 -1.7662100e-03]
+ [-1.6469300e-03  1.1310000e-05 -7.7141336e-01 -6.3633224e-01]
+ [-1.3670000e-05  1.0000000e+00  2.6820000e-05  1.4780000e-05]
+ [ 9.3103000e-04  2.8450000e-05  6.3633401e-01  7.7141309e-01]]
+[S.T @ S] after sign fix:
+[[ 1.0000000e+00 -2.7340000e-05  2.5409300e-03  0.0000000e+00]
+ [-2.7340000e-05  1.0000000e+00  3.6200000e-05  2.9560000e-05]
+ [ 2.5409300e-03  3.6200000e-05  1.0000000e+00  9.8175038e-01]
+ [ 0.0000000e+00  2.9560000e-05  9.8175038e-01  1.0000000e+00]]
+Orthogonalized [S.T @ S] :
+[[ 1. -0. -0. -0.]
+ [-0.  1. -0.  0.]
+ [-0. -0.  1. -0.]
+ [-0.  0. -0.  1.]]
+[S.T @ S] after sign fix and second orthogonalization:
+[[ 1. -0. -0. -0.]
+ [-0.  1. -0.  0.]
+ [-0. -0.  1. -0.]
+ [-0.  0. -0.  1.]]
+	GET_NACT OVERALL TIME (G16_TD.py): 0.0 s
+	GET_APPROX NACR OVERALL TIME (G16_TD.py): 0.0 s
+Total QM took 36.46 s.
+Propagation Norm (0):
+1.0
+Propagation Norm (1):
+1.0
+Electronic propagation took 0.00 s.
+Rotation Norm (0):
+1.0
+Rotation Norm (1):
+1.0
+Electronic Norm.: 1.0
+Total MD Step took 36.47 s.
+Submitting electronic structure for step 136.
+	Gaussian terminated normally in 3.46 s. (GS_NEW)
+Starting forces for state 1
+	Gaussian terminated normally in 4.97 s. (TD_NEW_S1)
+Starting forces for state 2
+	Gaussian terminated normally in 5.03 s. (TD_NEW_S2)
+Starting forces for state 3
+	Gaussian terminated normally in 4.95 s. (TD_NEW_S3)
+	Gaussian terminated normally in 14.90 s. (DIMER)
+	TD_NEW_S1 DIM_INFO TIME (BRADEN): 0.06 s
+	TD_NEW_S1 GET_MO TIME: 0.01 s
+	TD_NEW_S1 GET_CI TIME: 0.03 s
+	TD_OLD_S1 GET_MO TIME: 0.01 s
+	TD_OLD_S1 GET_CI TIME: 0.03 s
+	DIMER TIME: 2.41 s
+	G16_NAC.py main: 2.55 s
+	gau_nac() (G16_NAC.py): 0.0 s
+gau_nac prepare 0.01 s
+WFN OVERLAP FORTRAN TOOK 0.13 s
+gau_nac dump 1.11 s
+	gau_nac.worker() (G16_NAC.py): 1.24 s
+	GET_OVERLAP OVERALL TIME (G16_TD.py): 3.86 s
+Orthogonalized [S.T @ S] :
+[[ 1. -0.  0. -0.]
+ [-0.  1. -0. -0.]
+ [ 0. -0.  1. -0.]
+ [-0. -0. -0.  1.]]
+OLD:
+ [[ 9.9999423e-01  3.1630000e-05 -2.7627000e-03  1.9758600e-03]
+ [-3.1480000e-05  1.0000000e+00  4.6190000e-05 -8.7000000e-06]
+ [ 3.2825900e-03 -3.6020000e-05  6.3667563e-01 -7.7112474e-01]
+ [ 8.7241000e-04 -3.0050000e-05  7.7112678e-01  6.3668103e-01]]
+I found a sign error upon phase correcting.
+Index Flip: 0 <--> 3
+NEW:
+ [[ 9.9999423e-01  3.1630000e-05 -2.7627000e-03 -1.9758600e-03]
+ [-3.1480000e-05  1.0000000e+00  4.6190000e-05 -8.7000000e-06]
+ [ 3.2825900e-03 -3.6020000e-05  6.3667563e-01 -7.7112474e-01]
+ [-8.7241000e-04 -3.0050000e-05  7.7112678e-01  6.3668103e-01]]
+[S.T @ S] after sign fix:
+[[ 1.00000e+00  5.00000e-08 -1.34547e-03 -5.06258e-03]
+ [ 5.00000e-08  1.00000e+00 -0.00000e+00 -1.20000e-07]
+ [-1.34547e-03 -0.00000e+00  1.00000e+00  1.09200e-05]
+ [-5.06258e-03 -1.20000e-07  1.09200e-05  1.00000e+00]]
+Orthogonalized [S.T @ S] :
+[[ 1.  0.  0.  0.]
+ [ 0.  1. -0. -0.]
+ [ 0. -0.  1.  0.]
+ [ 0. -0.  0.  1.]]
+[S.T @ S] after sign fix and second orthogonalization:
+[[ 1.  0.  0.  0.]
+ [ 0.  1. -0. -0.]
+ [ 0. -0.  1.  0.]
+ [ 0. -0.  0.  1.]]
+OLD:
+ [[ 9.9999766e-01  3.1600000e-05 -2.0899700e-03  5.5545000e-04]
+ [-3.1500000e-05  1.0000000e+00  4.6170000e-05 -8.7200000e-06]
+ [ 1.7589700e-03 -3.6070000e-05  6.3668051e-01 -7.7112569e-01]
+ [ 1.2579900e-03 -3.0010000e-05  7.7112487e-01  6.3668270e-01]]
+I found a sign error upon phase correcting.
+Index Flip: 1 <--> 2
+NEW:
+ [[ 9.9999766e-01  3.1600000e-05 -2.0899700e-03  5.5545000e-04]
+ [-3.1500000e-05  1.0000000e+00 -4.6170000e-05 -8.7200000e-06]
+ [ 1.7589700e-03  3.6070000e-05  6.3668051e-01 -7.7112569e-01]
+ [ 1.2579900e-03 -3.0010000e-05  7.7112487e-01  6.3668270e-01]]
+[S.T @ S] after sign fix:
+[[ 1.000e+00  1.300e-07  0.000e+00  0.000e+00]
+ [ 1.300e-07  1.000e+00 -4.641e-05 -5.562e-05]
+ [ 0.000e+00 -4.641e-05  1.000e+00  0.000e+00]
+ [ 0.000e+00 -5.562e-05  0.000e+00  1.000e+00]]
+Orthogonalized [S.T @ S] :
+[[ 1. -0. -0.  0.]
+ [-0.  1.  0.  0.]
+ [-0.  0.  1.  0.]
+ [ 0.  0.  0.  1.]]
+[S.T @ S] after sign fix and second orthogonalization:
+[[ 1. -0. -0.  0.]
+ [-0.  1.  0.  0.]
+ [-0.  0.  1.  0.]
+ [ 0.  0.  0.  1.]]
+	GET_NACT OVERALL TIME (G16_TD.py): 0.01 s
+	GET_APPROX NACR OVERALL TIME (G16_TD.py): 0.0 s
+Total QM took 38.18 s.
+Propagation Norm (0):
+1.0
+Propagation Norm (1):
+1.0
+Electronic propagation took 0.00 s.
+Rotation Norm (0):
+1.0
+Rotation Norm (1):
+1.0
+Electronic Norm.: 1.0
+Total MD Step took 38.19 s.
+Submitting electronic structure for step 137.
+	Gaussian terminated normally in 3.30 s. (GS_NEW)
+Starting forces for state 1
+	Gaussian terminated normally in 4.44 s. (TD_NEW_S1)
+Starting forces for state 2
+	Gaussian terminated normally in 4.41 s. (TD_NEW_S2)
+Starting forces for state 3
+	Gaussian terminated normally in 4.43 s. (TD_NEW_S3)
+	Gaussian terminated normally in 14.74 s. (DIMER)
+	TD_NEW_S1 DIM_INFO TIME (BRADEN): 0.08 s
+	TD_NEW_S1 GET_MO TIME: 0.01 s
+	TD_NEW_S1 GET_CI TIME: 0.03 s
+	TD_OLD_S1 GET_MO TIME: 0.01 s
+	TD_OLD_S1 GET_CI TIME: 0.03 s
+	DIMER TIME: 2.39 s
+	G16_NAC.py main: 2.55 s
+	gau_nac() (G16_NAC.py): 0.0 s
+gau_nac prepare 0.01 s
+WFN OVERLAP FORTRAN TOOK 0.13 s
+gau_nac dump 1.15 s
+	gau_nac.worker() (G16_NAC.py): 1.29 s
+	GET_OVERLAP OVERALL TIME (G16_TD.py): 3.89 s
+Orthogonalized [S.T @ S] :
+[[ 1.  0.  0.  0.]
+ [ 0.  1. -0.  0.]
+ [ 0. -0.  1.  0.]
+ [ 0.  0.  0.  1.]]
+OLD:
+ [[ 9.9999787e-01 -1.2905700e-03  1.6114500e-03 -3.8860000e-05]
+ [ 1.7031200e-03  7.4504500e-02 -9.9721921e-01 -1.6458000e-04]
+ [ 1.1669300e-03  9.9721982e-01  7.4506510e-02  2.0657000e-04]
+ [ 3.8900000e-05 -1.9378000e-04 -1.7945000e-04  9.9999996e-01]]
+I found a sign error upon phase correcting.
+Index Flip: 0 <--> 1
+NEW:
+ [[ 9.9999787e-01  1.2905700e-03  1.6114500e-03 -3.8860000e-05]
+ [-1.7031200e-03  7.4504500e-02 -9.9721921e-01 -1.6458000e-04]
+ [ 1.1669300e-03  9.9721982e-01  7.4506510e-02  2.0657000e-04]
+ [ 3.8900000e-05 -1.9378000e-04 -1.7945000e-04  9.9999996e-01]]
+[S.T @ S] after sign fix:
+[[ 1.00000e+00  2.32736e-03  3.39676e-03  5.60000e-07]
+ [ 2.32736e-03  1.00000e+00  4.16000e-06 -1.00000e-07]
+ [ 3.39676e-03  4.16000e-06  1.00000e+00 -0.00000e+00]
+ [ 5.60000e-07 -1.00000e-07 -0.00000e+00  1.00000e+00]]
+Orthogonalized [S.T @ S] :
+[[ 1. -0. -0. -0.]
+ [-0.  1. -0.  0.]
+ [-0. -0.  1. -0.]
+ [-0.  0. -0.  1.]]
+[S.T @ S] after sign fix and second orthogonalization:
+[[ 1. -0. -0. -0.]
+ [-0.  1. -0.  0.]
+ [-0. -0.  1. -0.]
+ [-0.  0. -0.  1.]]
+OLD:
+ [[ 9.9999999e-01  1.2689000e-04 -8.6940000e-05 -3.9140000e-05]
+ [-9.6160000e-05  7.4505750e-02 -9.9722057e-01 -1.6458000e-04]
+ [-1.2005000e-04  9.9722056e-01  7.4505730e-02  2.0662000e-04]
+ [ 3.9150000e-05 -1.9378000e-04 -1.7952000e-04  9.9999996e-01]]
+I found a sign error upon phase correcting.
+Index Flip: 2 <--> 3
+NEW:
+ [[ 9.9999999e-01  1.2689000e-04 -8.6940000e-05 -3.9140000e-05]
+ [-9.6160000e-05  7.4505750e-02 -9.9722057e-01 -1.6458000e-04]
+ [-1.2005000e-04  9.9722056e-01  7.4505730e-02 -2.0662000e-04]
+ [ 3.9150000e-05 -1.9378000e-04  1.7952000e-04  9.9999996e-01]]
+[S.T @ S] after sign fix:
+[[ 1.0000e+00 -0.0000e+00  1.0000e-08  5.0000e-08]
+ [-0.0000e+00  1.0000e+00 -7.0000e-08 -4.1209e-04]
+ [ 1.0000e-08 -7.0000e-08  1.0000e+00  3.2825e-04]
+ [ 5.0000e-08 -4.1209e-04  3.2825e-04  1.0000e+00]]
+Orthogonalized [S.T @ S] :
+[[ 1.  0.  0. -0.]
+ [ 0.  1. -0. -0.]
+ [ 0. -0.  1.  0.]
+ [-0. -0.  0.  1.]]
+[S.T @ S] after sign fix and second orthogonalization:
+[[ 1.  0.  0. -0.]
+ [ 0.  1. -0. -0.]
+ [ 0. -0.  1.  0.]
+ [-0. -0.  0.  1.]]
+	GET_NACT OVERALL TIME (G16_TD.py): 0.01 s
+	GET_APPROX NACR OVERALL TIME (G16_TD.py): 0.0 s
+Total QM took 36.21 s.
+Propagation Norm (0):
+1.0
+Propagation Norm (1):
+1.0
+Electronic propagation took 0.00 s.
+Rotation Norm (0):
+1.0
+Rotation Norm (1):
+1.0
+Electronic Norm.: 1.0
+Total MD Step took 36.22 s.
+Submitting electronic structure for step 138.
+	Gaussian terminated normally in 3.59 s. (GS_NEW)
+Starting forces for state 1
+	Gaussian terminated normally in 5.00 s. (TD_NEW_S1)
+Starting forces for state 2
+	Gaussian terminated normally in 4.87 s. (TD_NEW_S2)
+Starting forces for state 3
+	Gaussian terminated normally in 4.88 s. (TD_NEW_S3)
+	Gaussian terminated normally in 14.83 s. (DIMER)
+	TD_NEW_S1 DIM_INFO TIME (BRADEN): 0.08 s
+	TD_NEW_S1 GET_MO TIME: 0.01 s
+	TD_NEW_S1 GET_CI TIME: 0.03 s
+	TD_OLD_S1 GET_MO TIME: 0.01 s
+	TD_OLD_S1 GET_CI TIME: 0.03 s
+	DIMER TIME: 2.45 s
+	G16_NAC.py main: 2.61 s
+	gau_nac() (G16_NAC.py): 0.0 s
+gau_nac prepare 0.01 s
+WFN OVERLAP FORTRAN TOOK 0.12 s
+gau_nac dump 1.1 s
+	gau_nac.worker() (G16_NAC.py): 1.23 s
+	GET_OVERLAP OVERALL TIME (G16_TD.py): 3.9 s
+Orthogonalized [S.T @ S] :
+[[ 1. -0. -0.  0.]
+ [-0.  1.  0. -0.]
+ [-0.  0.  1. -0.]
+ [ 0. -0. -0.  1.]]
+OLD:
+ [[ 9.9999781e-01 -9.6650000e-04  1.8563400e-03 -5.4940000e-05]
+ [ 8.2512000e-04  9.9720485e-01  7.4711320e-02  1.8117000e-04]
+ [-1.9233500e-03 -7.4709660e-02  9.9720346e-01  1.7517000e-04]
+ [ 5.5130000e-05 -1.6763000e-04 -1.8811000e-04  9.9999997e-01]]
+I found a sign error upon phase correcting.
+Index Flip: 0 <--> 1
+NEW:
+ [[ 9.9999781e-01  9.6650000e-04  1.8563400e-03 -5.4940000e-05]
+ [-8.2512000e-04  9.9720485e-01  7.4711320e-02  1.8117000e-04]
+ [-1.9233500e-03 -7.4709660e-02  9.9720346e-01  1.7517000e-04]
+ [ 5.5130000e-05 -1.6763000e-04 -1.8811000e-04  9.9999997e-01]]
+[S.T @ S] after sign fix:
+[[ 1.0000e+00  2.8737e-04 -1.2329e-04 -3.0000e-07]
+ [ 2.8737e-04  1.0000e+00  3.5900e-06 -1.1000e-07]
+ [-1.2329e-04  3.5900e-06  1.0000e+00 -0.0000e+00]
+ [-3.0000e-07 -1.1000e-07 -0.0000e+00  1.0000e+00]]
+Orthogonalized [S.T @ S] :
+[[ 1.  0. -0. -0.]
+ [ 0.  1.  0. -0.]
+ [-0.  0.  1. -0.]
+ [-0. -0. -0.  1.]]
+[S.T @ S] after sign fix and second orthogonalization:
+[[ 1.  0. -0. -0.]
+ [ 0.  1.  0. -0.]
+ [-0.  0.  1. -0.]
+ [-0. -0. -0.  1.]]
+OLD:
+ [[ 9.9999782e-01  8.2281000e-04  1.9179800e-03 -5.4790000e-05]
+ [-9.6380000e-04  9.9720486e-01  7.4709470e-02  1.8123000e-04]
+ [-1.8511400e-03 -7.4711190e-02  9.9720348e-01  1.7516000e-04]
+ [ 5.5290000e-05 -1.6759000e-04 -1.8811000e-04  9.9999997e-01]]
+I found a sign error upon phase correcting.
+Index Flip: 0 <--> 2
+NEW:
+ [[ 9.9999782e-01  8.2281000e-04 -1.9179800e-03 -5.4790000e-05]
+ [-9.6380000e-04  9.9720486e-01  7.4709470e-02  1.8123000e-04]
+ [ 1.8511400e-03 -7.4711190e-02  9.9720348e-01  1.7516000e-04]
+ [ 5.5290000e-05 -1.6759000e-04 -1.8811000e-04  9.9999997e-01]]
+[S.T @ S] after sign fix:
+[[ 1.0000e+00 -2.7660e-04 -1.4403e-04  6.5000e-07]
+ [-2.7660e-04  1.0000e+00 -3.1600e-06 -0.0000e+00]
+ [-1.4403e-04 -3.1600e-06  1.0000e+00  2.1000e-07]
+ [ 6.5000e-07 -0.0000e+00  2.1000e-07  1.0000e+00]]
+Orthogonalized [S.T @ S] :
+[[ 1.  0.  0.  0.]
+ [ 0.  1. -0. -0.]
+ [ 0. -0.  1. -0.]
+ [ 0. -0. -0.  1.]]
+[S.T @ S] after sign fix and second orthogonalization:
+[[ 1.  0.  0.  0.]
+ [ 0.  1. -0. -0.]
+ [ 0. -0.  1. -0.]
+ [ 0. -0. -0.  1.]]
+OLD:
+ [[ 9.9999783e-01  9.6111000e-04 -1.8459700e-03 -5.5120000e-05]
+ [-8.2050000e-04  9.9720487e-01  7.4710990e-02  1.8122000e-04]
+ [ 1.9126200e-03 -7.4709340e-02  9.9720350e-01  1.7506000e-04]
+ [ 5.4930000e-05 -1.6758000e-04 -1.8821000e-04  9.9999997e-01]]
+I found a sign error upon phase correcting.
+Index Flip: 1 <--> 2
+NEW:
+ [[ 9.9999783e-01  9.6111000e-04 -1.8459700e-03 -5.5120000e-05]
+ [-8.2050000e-04  9.9720487e-01 -7.4710990e-02  1.8122000e-04]
+ [ 1.9126200e-03  7.4709340e-02  9.9720350e-01  1.7506000e-04]
+ [ 5.4930000e-05 -1.6758000e-04 -1.8821000e-04  9.9999997e-01]]
+[S.T @ S] after sign fix:
+[[ 1.0000e+00  2.8578e-04  1.2260e-04  0.0000e+00]
+ [ 2.8578e-04  1.0000e+00 -3.4900e-06  2.6160e-05]
+ [ 1.2260e-04 -3.4900e-06  1.0000e+00 -2.7080e-05]
+ [ 0.0000e+00  2.6160e-05 -2.7080e-05  1.0000e+00]]
+Orthogonalized [S.T @ S] :
+[[ 1.  0.  0. -0.]
+ [ 0.  1. -0. -0.]
+ [ 0. -0.  1. -0.]
+ [-0. -0. -0.  1.]]
+[S.T @ S] after sign fix and second orthogonalization:
+[[ 1.  0.  0. -0.]
+ [ 0.  1. -0. -0.]
+ [ 0. -0.  1. -0.]
+ [-0. -0. -0.  1.]]
+	GET_NACT OVERALL TIME (G16_TD.py): 0.01 s
+	GET_APPROX NACR OVERALL TIME (G16_TD.py): 0.0 s
+Total QM took 38.00 s.
+Propagation Norm (0):
+1.0
+Propagation Norm (1):
+1.0
+Electronic propagation took 0.00 s.
+Rotation Norm (0):
+1.0
+Rotation Norm (1):
+1.0
+Electronic Norm.: 1.0
+Total MD Step took 38.01 s.
+Submitting electronic structure for step 139.
+	Gaussian terminated normally in 3.47 s. (GS_NEW)
+	Gaussian terminated normally in 15.50 s. (DIMER)
+	TD_NEW_S1 DIM_INFO TIME (BRADEN): 0.07 s
+	TD_NEW_S1 GET_MO TIME: 0.01 s
+	TD_NEW_S1 GET_CI TIME: 0.03 s
+	TD_OLD_S1 GET_MO TIME: 0.01 s
+	TD_OLD_S1 GET_CI TIME: 0.04 s
+	DIMER TIME: 2.42 s
+	G16_NAC.py main: 2.59 s
+	gau_nac() (G16_NAC.py): 0.0 s
+gau_nac prepare 0.01 s
+WFN OVERLAP FORTRAN TOOK 0.12 s
+gau_nac dump 1.1 s
+	gau_nac.worker() (G16_NAC.py): 1.23 s
+	GET_OVERLAP OVERALL TIME (G16_TD.py): 3.87 s
+Orthogonalized [S.T @ S] :
+[[ 1. -0.  0. -0.]
+ [-0.  1.  0.  0.]
+ [ 0.  0.  1. -0.]
+ [-0.  0. -0.  1.]]
+OLD:
+ [[ 9.9999739e-01  2.2827600e-03  5.4380000e-05 -6.7260000e-05]
+ [-2.2827500e-03  9.9999739e-01 -9.6510000e-05  5.4070000e-05]
+ [-5.4600000e-05  9.6390000e-05  9.9999999e-01 -5.2000000e-07]
+ [ 6.7390000e-05 -5.3920000e-05  5.3000000e-07  1.0000000e+00]]
+I found a sign error upon phase correcting.
+Index Flip: 0 <--> 2
+NEW:
+ [[ 9.9999739e-01  2.2827600e-03 -5.4380000e-05 -6.7260000e-05]
+ [-2.2827500e-03  9.9999739e-01 -9.6510000e-05  5.4070000e-05]
+ [ 5.4600000e-05  9.6390000e-05  9.9999999e-01 -5.2000000e-07]
+ [ 6.7390000e-05 -5.3920000e-05  5.3000000e-07  1.0000000e+00]]
+[S.T @ S] after sign fix:
+[[ 1.0e+00  1.0e-08  4.4e-07 -0.0e+00]
+ [ 1.0e-08  1.0e+00 -2.5e-07  0.0e+00]
+ [ 4.4e-07 -2.5e-07  1.0e+00  1.0e-08]
+ [-0.0e+00  0.0e+00  1.0e-08  1.0e+00]]
+Orthogonalized [S.T @ S] :
+[[ 1.  0.  0.  0.]
+ [ 0.  1. -0. -0.]
+ [ 0. -0.  1.  0.]
+ [ 0. -0.  0.  1.]]
+[S.T @ S] after sign fix and second orthogonalization:
+[[ 1.  0.  0.  0.]
+ [ 0.  1. -0. -0.]
+ [ 0. -0.  1.  0.]
+ [ 0. -0.  0.  1.]]
+	GET_NACT OVERALL TIME (G16_TD.py): 0.0 s
+	GET_APPROX NACR OVERALL TIME (G16_TD.py): 0.0 s
+Total QM took 36.93 s.
+Propagation Norm (0):
+1.0
+Propagation Norm (1):
+1.0
+Electronic propagation took 0.00 s.
+Rotation Norm (0):
+1.0
+Rotation Norm (1):
+1.0
+Electronic Norm.: 1.0
+Total MD Step took 36.94 s.
+Submitting electronic structure for step 140.
+	Gaussian terminated normally in 3.46 s. (GS_NEW)
+Starting forces for state 1
+	Gaussian terminated normally in 4.94 s. (TD_NEW_S1)
+Starting forces for state 2
+	Gaussian terminated normally in 4.91 s. (TD_NEW_S2)
+Starting forces for state 3
+	Gaussian terminated normally in 4.77 s. (TD_NEW_S3)
+	Gaussian terminated normally in 14.96 s. (DIMER)
+	TD_NEW_S1 DIM_INFO TIME (BRADEN): 0.06 s
+	TD_NEW_S1 GET_MO TIME: 0.01 s
+	TD_NEW_S1 GET_CI TIME: 0.03 s
+	TD_OLD_S1 GET_MO TIME: 0.01 s
+	TD_OLD_S1 GET_CI TIME: 0.04 s
+	DIMER TIME: 2.41 s
+	G16_NAC.py main: 2.57 s
+	gau_nac() (G16_NAC.py): 0.0 s
+gau_nac prepare 0.01 s
+WFN OVERLAP FORTRAN TOOK 0.14 s
+gau_nac dump 1.26 s
+	gau_nac.worker() (G16_NAC.py): 1.41 s
+	GET_OVERLAP OVERALL TIME (G16_TD.py): 4.03 s
+Orthogonalized [S.T @ S] :
+[[ 1.  0. -0.  0.]
+ [ 0.  1. -0. -0.]
+ [-0. -0.  1.  0.]
+ [ 0. -0.  0.  1.]]
+	GET_NACT OVERALL TIME (G16_TD.py): 0.0 s
+	GET_APPROX NACR OVERALL TIME (G16_TD.py): 0.0 s
+Total QM took 38.05 s.
+Propagation Norm (0):
+1.0
+Propagation Norm (1):
+1.0
+Electronic propagation took 0.00 s.
+Rotation Norm (0):
+1.0
+Rotation Norm (1):
+1.0
+Electronic Norm.: 1.0
+Total MD Step took 38.06 s.
+Submitting electronic structure for step 141.
+	Gaussian terminated normally in 3.43 s. (GS_NEW)
+Starting forces for state 1
+	Gaussian terminated normally in 4.44 s. (TD_NEW_S1)
+Starting forces for state 2
+	Gaussian terminated normally in 4.50 s. (TD_NEW_S2)
+Starting forces for state 3
+	Gaussian terminated normally in 4.36 s. (TD_NEW_S3)
+	Gaussian terminated normally in 15.02 s. (DIMER)
+	TD_NEW_S1 DIM_INFO TIME (BRADEN): 0.07 s
+	TD_NEW_S1 GET_MO TIME: 0.01 s
+	TD_NEW_S1 GET_CI TIME: 0.03 s
+	TD_OLD_S1 GET_MO TIME: 0.01 s
+	TD_OLD_S1 GET_CI TIME: 0.04 s
+	DIMER TIME: 2.43 s
+	G16_NAC.py main: 2.59 s
+	gau_nac() (G16_NAC.py): 0.0 s
+gau_nac prepare 0.01 s
+WFN OVERLAP FORTRAN TOOK 0.13 s
+gau_nac dump 1.11 s
+	gau_nac.worker() (G16_NAC.py): 1.26 s
+	GET_OVERLAP OVERALL TIME (G16_TD.py): 3.9 s
+Orthogonalized [S.T @ S] :
+[[ 1. -0. -0. -0.]
+ [-0.  1. -0. -0.]
+ [-0. -0.  1.  0.]
+ [-0. -0.  0.  1.]]
+	GET_NACT OVERALL TIME (G16_TD.py): 0.0 s
+	GET_APPROX NACR OVERALL TIME (G16_TD.py): 0.0 s
+Total QM took 36.61 s.
+Propagation Norm (0):
+1.0
+Propagation Norm (1):
+1.0
+Electronic propagation took 0.00 s.
+Rotation Norm (0):
+1.0
+Rotation Norm (1):
+1.0
+Electronic Norm.: 1.0
+Total MD Step took 36.62 s.
+Submitting electronic structure for step 142.
+	Gaussian terminated normally in 3.27 s. (GS_NEW)
+Starting forces for state 1
+	Gaussian terminated normally in 4.37 s. (TD_NEW_S1)
+Starting forces for state 2
+	Gaussian terminated normally in 4.29 s. (TD_NEW_S2)
+Starting forces for state 3
+	Gaussian terminated normally in 4.37 s. (TD_NEW_S3)
+	Gaussian terminated normally in 14.84 s. (DIMER)
+	TD_NEW_S1 DIM_INFO TIME (BRADEN): 0.06 s
+	TD_NEW_S1 GET_MO TIME: 0.01 s
+	TD_NEW_S1 GET_CI TIME: 0.03 s
+	TD_OLD_S1 GET_MO TIME: 0.01 s
+	TD_OLD_S1 GET_CI TIME: 0.04 s
+	DIMER TIME: 2.39 s
+	G16_NAC.py main: 2.53 s
+	gau_nac() (G16_NAC.py): 0.0 s
+gau_nac prepare 0.01 s
+WFN OVERLAP FORTRAN TOOK 0.12 s
+gau_nac dump 1.11 s
+	gau_nac.worker() (G16_NAC.py): 1.24 s
+	GET_OVERLAP OVERALL TIME (G16_TD.py): 3.83 s
+Orthogonalized [S.T @ S] :
+[[ 1. -0. -0.  0.]
+ [-0.  1.  0.  0.]
+ [-0.  0.  1.  0.]
+ [ 0.  0.  0.  1.]]
+	GET_NACT OVERALL TIME (G16_TD.py): 0.0 s
+	GET_APPROX NACR OVERALL TIME (G16_TD.py): 0.0 s
+Total QM took 35.93 s.
+Propagation Norm (0):
+1.0
+Propagation Norm (1):
+1.0
+Electronic propagation took 0.00 s.
+Rotation Norm (0):
+1.0
+Rotation Norm (1):
+1.0
+Electronic Norm.: 1.0
+Total MD Step took 35.94 s.
+Submitting electronic structure for step 143.
+	Gaussian terminated normally in 3.24 s. (GS_NEW)
+Starting forces for state 1
+	Gaussian terminated normally in 4.65 s. (TD_NEW_S1)
+Starting forces for state 2
+	Gaussian terminated normally in 4.61 s. (TD_NEW_S2)
+Starting forces for state 3
+	Gaussian terminated normally in 4.81 s. (TD_NEW_S3)
+	Gaussian terminated normally in 15.32 s. (DIMER)
+	TD_NEW_S1 DIM_INFO TIME (BRADEN): 0.08 s
+	TD_NEW_S1 GET_MO TIME: 0.01 s
+	TD_NEW_S1 GET_CI TIME: 0.03 s
+	TD_OLD_S1 GET_MO TIME: 0.01 s
+	TD_OLD_S1 GET_CI TIME: 0.04 s
+	DIMER TIME: 2.39 s
+	G16_NAC.py main: 2.56 s
+	gau_nac() (G16_NAC.py): 0.0 s
+gau_nac prepare 0.01 s
+WFN OVERLAP FORTRAN TOOK 0.13 s
+gau_nac dump 1.12 s
+	gau_nac.worker() (G16_NAC.py): 1.25 s
+	GET_OVERLAP OVERALL TIME (G16_TD.py): 3.86 s
+Orthogonalized [S.T @ S] :
+[[ 1. -0. -0.  0.]
+ [-0.  1. -0. -0.]
+ [-0. -0.  1.  0.]
+ [ 0. -0.  0.  1.]]
+	GET_NACT OVERALL TIME (G16_TD.py): 0.0 s
+	GET_APPROX NACR OVERALL TIME (G16_TD.py): 0.0 s
+Total QM took 37.46 s.
+Propagation Norm (0):
+1.0
+Propagation Norm (1):
+1.0
+Electronic propagation took 0.00 s.
+Rotation Norm (0):
+1.0
+Rotation Norm (1):
+1.0
+Electronic Norm.: 1.0
+Total MD Step took 37.47 s.
+Submitting electronic structure for step 144.
+	Gaussian terminated normally in 3.31 s. (GS_NEW)
+Starting forces for state 1
+	Gaussian terminated normally in 4.65 s. (TD_NEW_S1)
+Starting forces for state 2
+	Gaussian terminated normally in 4.42 s. (TD_NEW_S2)
+Starting forces for state 3
+	Gaussian terminated normally in 4.44 s. (TD_NEW_S3)
+	Gaussian terminated normally in 14.99 s. (DIMER)
+	TD_NEW_S1 DIM_INFO TIME (BRADEN): 0.06 s
+	TD_NEW_S1 GET_MO TIME: 0.01 s
+	TD_NEW_S1 GET_CI TIME: 0.03 s
+	TD_OLD_S1 GET_MO TIME: 0.01 s
+	TD_OLD_S1 GET_CI TIME: 0.04 s
+	DIMER TIME: 2.4 s
+	G16_NAC.py main: 2.55 s
+	gau_nac() (G16_NAC.py): 0.0 s
+gau_nac prepare 0.01 s
+WFN OVERLAP FORTRAN TOOK 0.12 s
+gau_nac dump 1.11 s
+	gau_nac.worker() (G16_NAC.py): 1.24 s
+	GET_OVERLAP OVERALL TIME (G16_TD.py): 3.84 s
+Orthogonalized [S.T @ S] :
+[[ 1. -0.  0.  0.]
+ [-0.  1. -0. -0.]
+ [ 0. -0.  1. -0.]
+ [ 0. -0. -0.  1.]]
+OLD:
+ [[ 9.9999976e-01 -6.6795000e-04  7.0410000e-05 -1.4618000e-04]
+ [ 6.6800000e-04  9.9999972e-01 -9.1930000e-05  3.0951000e-04]
+ [-7.0350000e-05  9.1980000e-05  9.9999999e-01  1.7500000e-06]
+ [ 1.4597000e-04 -3.0961000e-04 -1.7100000e-06  9.9999994e-01]]
+I found a sign error upon phase correcting.
+Index Flip: 0 <--> 1
+NEW:
+ [[ 9.9999976e-01  6.6795000e-04  7.0410000e-05 -1.4618000e-04]
+ [-6.6800000e-04  9.9999972e-01 -9.1930000e-05  3.0951000e-04]
+ [-7.0350000e-05  9.1980000e-05  9.9999999e-01  1.7500000e-06]
+ [ 1.4597000e-04 -3.0961000e-04 -1.7100000e-06  9.9999994e-01]]
+[S.T @ S] after sign fix:
+[[ 1.0e+00 -1.0e-07  1.2e-07 -4.1e-07]
+ [-1.0e-07  1.0e+00  9.0e-08 -2.0e-07]
+ [ 1.2e-07  9.0e-08  1.0e+00 -0.0e+00]
+ [-4.1e-07 -2.0e-07 -0.0e+00  1.0e+00]]
+Orthogonalized [S.T @ S] :
+[[ 1. -0.  0.  0.]
+ [-0.  1.  0. -0.]
+ [ 0.  0.  1.  0.]
+ [ 0. -0.  0.  1.]]
+[S.T @ S] after sign fix and second orthogonalization:
+[[ 1. -0.  0.  0.]
+ [-0.  1.  0. -0.]
+ [ 0.  0.  1.  0.]
+ [ 0. -0.  0.  1.]]
+	GET_NACT OVERALL TIME (G16_TD.py): 0.0 s
+	GET_APPROX NACR OVERALL TIME (G16_TD.py): 0.0 s
+Total QM took 36.65 s.
+Propagation Norm (0):
+1.0
+Propagation Norm (1):
+1.0
+Electronic propagation took 0.00 s.
+Rotation Norm (0):
+1.0
+Rotation Norm (1):
+1.0
+Electronic Norm.: 1.0
+Total MD Step took 36.66 s.
+Submitting electronic structure for step 145.
+	Gaussian terminated normally in 3.66 s. (GS_NEW)
+Starting forces for state 1
+	Gaussian terminated normally in 4.46 s. (TD_NEW_S1)
+Starting forces for state 2
+	Gaussian terminated normally in 4.37 s. (TD_NEW_S2)
+Starting forces for state 3
+	Gaussian terminated normally in 5.69 s. (TD_NEW_S3)
+	Gaussian terminated normally in 15.18 s. (DIMER)
+	TD_NEW_S1 DIM_INFO TIME (BRADEN): 0.05 s
+	TD_NEW_S1 GET_MO TIME: 0.01 s
+	TD_NEW_S1 GET_CI TIME: 0.03 s
+	TD_OLD_S1 GET_MO TIME: 0.01 s
+	TD_OLD_S1 GET_CI TIME: 0.04 s
+	DIMER TIME: 2.46 s
+	G16_NAC.py main: 2.61 s
+	gau_nac() (G16_NAC.py): 0.0 s
+gau_nac prepare 0.01 s
+WFN OVERLAP FORTRAN TOOK 0.12 s
+gau_nac dump 1.11 s
+	gau_nac.worker() (G16_NAC.py): 1.24 s
+	GET_OVERLAP OVERALL TIME (G16_TD.py): 3.9 s
+Orthogonalized [S.T @ S] :
+[[ 1.  0.  0.  0.]
+ [ 0.  1.  0.  0.]
+ [ 0.  0.  1. -0.]
+ [ 0.  0. -0.  1.]]
+	GET_NACT OVERALL TIME (G16_TD.py): 0.0 s
+	GET_APPROX NACR OVERALL TIME (G16_TD.py): 0.0 s
+Total QM took 38.26 s.
+Propagation Norm (0):
+1.0
+Propagation Norm (1):
+1.0
+Electronic propagation took 0.00 s.
+Rotation Norm (0):
+1.0
+Rotation Norm (1):
+1.0
+Electronic Norm.: 1.0
+Total MD Step took 38.27 s.
+Submitting electronic structure for step 146.
+	Gaussian terminated normally in 3.30 s. (GS_NEW)
+Starting forces for state 1
+	Gaussian terminated normally in 4.54 s. (TD_NEW_S1)
+Starting forces for state 2
+	Gaussian terminated normally in 4.42 s. (TD_NEW_S2)
+Starting forces for state 3
+	Gaussian terminated normally in 5.44 s. (TD_NEW_S3)
+	Gaussian terminated normally in 15.51 s. (DIMER)
+	TD_NEW_S1 DIM_INFO TIME (BRADEN): 0.06 s
+	TD_NEW_S1 GET_MO TIME: 0.01 s
+	TD_NEW_S1 GET_CI TIME: 0.03 s
+	TD_OLD_S1 GET_MO TIME: 0.01 s
+	TD_OLD_S1 GET_CI TIME: 0.03 s
+	DIMER TIME: 2.4 s
+	G16_NAC.py main: 2.54 s
+	gau_nac() (G16_NAC.py): 0.0 s
+gau_nac prepare 0.01 s
+WFN OVERLAP FORTRAN TOOK 0.13 s
+gau_nac dump 1.11 s
+	gau_nac.worker() (G16_NAC.py): 1.24 s
+	GET_OVERLAP OVERALL TIME (G16_TD.py): 3.84 s
+Orthogonalized [S.T @ S] :
+[[ 1.  0. -0.  0.]
+ [ 0.  1. -0.  0.]
+ [-0. -0.  1.  0.]
+ [ 0.  0.  0.  1.]]
+	GET_NACT OVERALL TIME (G16_TD.py): 0.0 s
+	GET_APPROX NACR OVERALL TIME (G16_TD.py): 0.0 s
+Total QM took 38.03 s.
+Propagation Norm (0):
+1.0
+Propagation Norm (1):
+1.0
+Electronic propagation took 0.00 s.
+Rotation Norm (0):
+1.0
+Rotation Norm (1):
+1.0
+Electronic Norm.: 1.0
+Total MD Step took 38.04 s.
+Submitting electronic structure for step 147.
+	Gaussian terminated normally in 3.35 s. (GS_NEW)
+Starting forces for state 1
+	Gaussian terminated normally in 5.20 s. (TD_NEW_S1)
+Starting forces for state 2
+	Gaussian terminated normally in 5.04 s. (TD_NEW_S2)
+Starting forces for state 3
+	Gaussian terminated normally in 5.41 s. (TD_NEW_S3)
+	Gaussian terminated normally in 14.79 s. (DIMER)
+	TD_NEW_S1 DIM_INFO TIME (BRADEN): 0.07 s
+	TD_NEW_S1 GET_MO TIME: 0.01 s
+	TD_NEW_S1 GET_CI TIME: 0.03 s
+	TD_OLD_S1 GET_MO TIME: 0.01 s
+	TD_OLD_S1 GET_CI TIME: 0.03 s
+	DIMER TIME: 2.4 s
+	G16_NAC.py main: 2.55 s
+	gau_nac() (G16_NAC.py): 0.0 s
+gau_nac prepare 0.01 s
+WFN OVERLAP FORTRAN TOOK 0.12 s
+gau_nac dump 1.11 s
+	gau_nac.worker() (G16_NAC.py): 1.24 s
+	GET_OVERLAP OVERALL TIME (G16_TD.py): 3.84 s
+Orthogonalized [S.T @ S] :
+[[ 1. -0. -0.  0.]
+ [-0.  1. -0. -0.]
+ [-0. -0.  1.  0.]
+ [ 0. -0.  0.  1.]]
+	GET_NACT OVERALL TIME (G16_TD.py): 0.0 s
+	GET_APPROX NACR OVERALL TIME (G16_TD.py): 0.0 s
+Total QM took 38.63 s.
+Propagation Norm (0):
+1.0
+Propagation Norm (1):
+1.0
+Electronic propagation took 0.00 s.
+Rotation Norm (0):
+1.0
+Rotation Norm (1):
+1.0
+Electronic Norm.: 1.0
+Total MD Step took 38.64 s.
+Submitting electronic structure for step 148.
+	Gaussian terminated normally in 3.41 s. (GS_NEW)
+	Gaussian terminated normally in 14.78 s. (DIMER)
+	TD_NEW_S1 DIM_INFO TIME (BRADEN): 0.06 s
+	TD_NEW_S1 GET_MO TIME: 0.01 s
+	TD_NEW_S1 GET_CI TIME: 0.03 s
+	TD_OLD_S1 GET_MO TIME: 0.01 s
+	TD_OLD_S1 GET_CI TIME: 0.03 s
+	DIMER TIME: 2.39 s
+	G16_NAC.py main: 2.53 s
+	gau_nac() (G16_NAC.py): 0.0 s
+gau_nac prepare 0.01 s
+WFN OVERLAP FORTRAN TOOK 0.14 s
+gau_nac dump 1.15 s
+	gau_nac.worker() (G16_NAC.py): 1.3 s
+	GET_OVERLAP OVERALL TIME (G16_TD.py): 3.88 s
+Orthogonalized [S.T @ S] :
+[[ 1.  0.  0. -0.]
+ [ 0.  1.  0.  0.]
+ [ 0.  0.  1. -0.]
+ [-0.  0. -0.  1.]]
+	GET_NACT OVERALL TIME (G16_TD.py): 0.0 s
+	GET_APPROX NACR OVERALL TIME (G16_TD.py): 0.0 s
+Total QM took 36.19 s.
+Propagation Norm (0):
+1.0
+Propagation Norm (1):
+1.0
+Electronic propagation took 0.00 s.
+Rotation Norm (0):
+1.0
+Rotation Norm (1):
+1.0
+Electronic Norm.: 1.0
+Total MD Step took 36.20 s.
+Submitting electronic structure for step 149.
+	Gaussian terminated normally in 3.30 s. (GS_NEW)
+Starting forces for state 1
+	Gaussian terminated normally in 4.59 s. (TD_NEW_S1)
+Starting forces for state 2
+	Gaussian terminated normally in 4.88 s. (TD_NEW_S2)
+Starting forces for state 3
+	Gaussian terminated normally in 5.16 s. (TD_NEW_S3)
+	Gaussian terminated normally in 14.87 s. (DIMER)
+	TD_NEW_S1 DIM_INFO TIME (BRADEN): 0.06 s
+	TD_NEW_S1 GET_MO TIME: 0.01 s
+	TD_NEW_S1 GET_CI TIME: 0.03 s
+	TD_OLD_S1 GET_MO TIME: 0.01 s
+	TD_OLD_S1 GET_CI TIME: 0.03 s
+	DIMER TIME: 2.39 s
+	G16_NAC.py main: 2.53 s
+	gau_nac() (G16_NAC.py): 0.0 s
+gau_nac prepare 0.01 s
+WFN OVERLAP FORTRAN TOOK 0.12 s
+gau_nac dump 1.1 s
+	gau_nac.worker() (G16_NAC.py): 1.23 s
+	GET_OVERLAP OVERALL TIME (G16_TD.py): 3.81 s
+Orthogonalized [S.T @ S] :
+[[ 1.  0.  0. -0.]
+ [ 0.  1.  0.  0.]
+ [ 0.  0.  1. -0.]
+ [-0.  0. -0.  1.]]
+	GET_NACT OVERALL TIME (G16_TD.py): 0.0 s
+	GET_APPROX NACR OVERALL TIME (G16_TD.py): 0.0 s
+Total QM took 37.59 s.
+Propagation Norm (0):
+1.0
+Propagation Norm (1):
+1.0
+Electronic propagation took 0.00 s.
+Rotation Norm (0):
+1.0
+Rotation Norm (1):
+1.0
+Electronic Norm.: 1.0
+Total MD Step took 37.60 s.
+Submitting electronic structure for step 150.
+	Gaussian terminated normally in 3.35 s. (GS_NEW)
+Starting forces for state 1
+	Gaussian terminated normally in 4.61 s. (TD_NEW_S1)
+Starting forces for state 2
+	Gaussian terminated normally in 4.50 s. (TD_NEW_S2)
+Starting forces for state 3
+	Gaussian terminated normally in 5.00 s. (TD_NEW_S3)
+	Gaussian terminated normally in 15.54 s. (DIMER)
+	TD_NEW_S1 DIM_INFO TIME (BRADEN): 0.07 s
+	TD_NEW_S1 GET_MO TIME: 0.01 s
+	TD_NEW_S1 GET_CI TIME: 0.03 s
+	TD_OLD_S1 GET_MO TIME: 0.01 s
+	TD_OLD_S1 GET_CI TIME: 0.03 s
+	DIMER TIME: 2.42 s
+	G16_NAC.py main: 2.57 s
+	gau_nac() (G16_NAC.py): 0.0 s
+gau_nac prepare 0.01 s
+WFN OVERLAP FORTRAN TOOK 0.12 s
+gau_nac dump 1.11 s
+	gau_nac.worker() (G16_NAC.py): 1.24 s
+	GET_OVERLAP OVERALL TIME (G16_TD.py): 3.87 s
+Orthogonalized [S.T @ S] :
+[[ 1. -0. -0. -0.]
+ [-0.  1. -0.  0.]
+ [-0. -0.  1.  0.]
+ [-0.  0.  0.  1.]]
+	GET_NACT OVERALL TIME (G16_TD.py): 0.0 s
+	GET_APPROX NACR OVERALL TIME (G16_TD.py): 0.0 s
+Total QM took 37.85 s.
+Propagation Norm (0):
+1.0
+Propagation Norm (1):
+1.0
+Electronic propagation took 0.00 s.
+Rotation Norm (0):
+1.0
+Rotation Norm (1):
+1.0
+Electronic Norm.: 1.0
+Total MD Step took 37.85 s.

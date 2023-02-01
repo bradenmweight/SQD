@@ -27,7 +27,7 @@ def read():
         if ( len(t) == 2 ):
             
             # Look for NStates
-            if ( t[0].lower() == "nstates" ):
+            if ( t[0].upper() == "nstates".upper() ):
                 try:
                     DYN_PROPERTIES["NStates"] = int( t[1] )
                 except ValueError:
@@ -35,7 +35,7 @@ def read():
                     exit()
 
             # Look for NSteps
-            if ( t[0].lower() == "nsteps" ):
+            if ( t[0].upper() == "nsteps".upper() ):
                 try:
                     DYN_PROPERTIES["NSteps"] = int( t[1] )
                 except ValueError:
@@ -43,7 +43,7 @@ def read():
                     exit()
 
             # Look for ISTATE
-            if ( t[0].lower() == "istate" ):
+            if ( t[0].upper() == "istate".upper() ):
                 try:
                     DYN_PROPERTIES["ISTATE"] = int( t[1] )
                 except ValueError:
@@ -51,17 +51,17 @@ def read():
                     exit()
 
             # Look for FUNCTIONAL
-            if ( t[0].lower() == "FUNCTIONAL".lower() ):
+            if ( t[0].upper() == "FUNCTIONAL".upper() ):
                 DYN_PROPERTIES["FUNCTIONAL"] = t[1].upper()
                 # The accuracy of input is up to the user...scary!
 
             # Look for BASIS
-            if ( t[0].lower() == "BASIS".lower() ):
+            if ( t[0].upper() == "BASIS".upper() ):
                 DYN_PROPERTIES["BASIS_SET"] = t[1].upper()
                 # The accuracy of input is up to the user...scary!
 
             # Look for ISTATE
-            if ( t[0].lower() == "dtI".lower() ):
+            if ( t[0].upper() == "dtI".upper() ):
                 try:
                     DYN_PROPERTIES["dtI"] = float( t[1] ) * 41.341 # 41.341 a.u. / fs
                 except ValueError:
@@ -69,7 +69,7 @@ def read():
                     exit()
             
             # Look for ESTEPS
-            if ( t[0].lower() == "ESTEPS".lower() ):
+            if ( t[0].upper() == "ESTEPS".upper() ):
                 try:
                     DYN_PROPERTIES["ESTEPS"] = int( t[1] )
                 except ValueError:
@@ -77,7 +77,7 @@ def read():
                     exit()
 
             # Look for NCPUS
-            if ( t[0].lower() == "NCPUS_NAMD".lower() ):
+            if ( t[0].upper() == "NCPUS_NAMD".upper() ):
                 try:
                     DYN_PROPERTIES["NCPUS_NAMD"] = int( t[1] )
                 except ValueError:
@@ -85,7 +85,7 @@ def read():
                     exit()
 
             # Look for NCPUS
-            if ( t[0].lower() == "NCPUS_G16".lower() ):
+            if ( t[0].upper() == "NCPUS_G16".upper() ):
                 try:
                     DYN_PROPERTIES["NCPUS_G16"] = int( t[1] )
                 except ValueError:
@@ -93,7 +93,7 @@ def read():
                     exit()
 
             # Look for MEMORY
-            if ( t[0].lower() == "MEMORY".lower() ):
+            if ( t[0].upper() == "MEMORY".upper() ):
                 try:
                     DYN_PROPERTIES["MEMORY"] = int( t[1] )
                 except ValueError:
@@ -101,7 +101,7 @@ def read():
                     exit()
 
             # Look for CHARGE
-            if ( t[0].lower() == "CHARGE".lower() ):
+            if ( t[0].upper() == "CHARGE".upper() ):
                 try:
                     DYN_PROPERTIES["CHARGE"] = int( t[1] )
                 except ValueError:
@@ -109,7 +109,7 @@ def read():
                     exit()
 
             # Look for CHARGE
-            if ( t[0].lower() == "MULTIPLICITY".lower() ):
+            if ( t[0].upper() == "MULTIPLICITY".upper() ):
                 try:
                     DYN_PROPERTIES["MULTIPLICITY"] = int( t[1] )
                 except ValueError:
@@ -117,22 +117,22 @@ def read():
                     exit()
 
             # Look for VELOC
-            if ( t[0].lower() == "VELOC".lower() ):
+            if ( t[0].upper() == "VELOC".upper() ):
                 DYN_PROPERTIES["VELOC"] = t[1].upper()
                 # Later, we will check this input.
 
             # Look for RUN_ELEC_STRUC
-            if ( t[0].lower() == "RUN_ELEC_STRUC".lower() ):
+            if ( t[0].upper() == "RUN_ELEC_STRUC".upper() ):
                 DYN_PROPERTIES["RUN_ELEC_STRUC"] = t[1].upper()
                 # The accuracy of input is up to the user...scary!
 
             # Look for SBATCH_G16
-            if ( t[0].lower() == "SBATCH_G16".lower() ):
+            if ( t[0].upper() == "SBATCH_G16".upper() ):
                 DYN_PROPERTIES["SBATCH_G16"] = t[1] # DO NOT CHANGE CASE
                 # The accuracy of input is up to the user...scary!
 
             # Look for PARALLEL_FORCES
-            if ( t[0].lower() == "PARALLEL_FORCES".lower() ):
+            if ( t[0].upper() == "PARALLEL_FORCES".upper() ):
                 try:
                     DYN_PROPERTIES["PARALLEL_FORCES"] = bool( t[1] )
                 except ValueError:
@@ -140,7 +140,7 @@ def read():
                     exit()
 
             # Look for FORCE_MAP_NORM
-            if ( t[0].lower() == "FORCE_MAP_NORM".lower() ):
+            if ( t[0].upper() == "FORCE_MAP_NORM".upper() ):
                 try:
                     DYN_PROPERTIES["FORCE_MAP_NORM"] = bool( t[1] )
                 except ValueError:
@@ -148,35 +148,35 @@ def read():
                     exit()
 
             # Look for EL_PROP
-            if ( t[0].lower() == "EL_PROP".lower() ):
+            if ( t[0].upper() == "EL_PROP".upper() ):
                 DYN_PROPERTIES["EL_PROP"] = t[1].upper()
                 if ( DYN_PROPERTIES["EL_PROP"] not in ["VV","RK"] ):
                     print("Input for 'EL_PROP' must be either 'VV' (Velocity-Verlet) or 'RK' (Runge-Kutta).")
                     exit()
 
             # Look for NAMD_METHOD
-            if ( t[0].lower() == "NAMD_METHOD".lower() ):
+            if ( t[0].upper() == "NAMD_METHOD".upper() ):
                 DYN_PROPERTIES["NAMD_METHOD"] = t[1].upper()
-                if ( DYN_PROPERTIES["NAMD_METHOD"] not in ["EH","SPINLSC"] ):
-                    print("Input for 'NAMD_METHOD' must be either 'EH' or 'SPINLSC'.")
+                if ( DYN_PROPERTIES["NAMD_METHOD"] not in ["EH","SPINLSC","GFSH"] ):
+                    print("Input for 'NAMD_METHOD' must be either 'EH', 'SPINLSC', or 'GFSH'.")
                     exit()
 
             # Look for MD_ENSEMBLE
-            if ( t[0].lower() == "MD_ENSEMBLE".lower() ):
+            if ( t[0].upper() == "MD_ENSEMBLE".upper() ):
                 DYN_PROPERTIES["MD_ENSEMBLE"] = t[1].upper()
                 if ( DYN_PROPERTIES["MD_ENSEMBLE"] not in ["NVT","NVE"] ):
                     print("Input for 'MD_ENSEMBLE' must be either 'NVT' or 'NVE'.")
                     exit()
 
             # Look for NVT_TYPE
-            if ( t[0].lower() == "NVT_TYPE".lower() ):
+            if ( t[0].upper() == "NVT_TYPE".upper() ):
                 DYN_PROPERTIES["NVT_TYPE"] = t[1].upper()
                 if ( DYN_PROPERTIES["NVT_TYPE"] not in ["LANGEVIN", "RESCALE"] ):
                     print("Input for 'NVT_TYPE' must be 'LANGEVIN' or 'RESCALE'.")
                     exit()
 
             # Look for LANGEVIN_LAMBDA
-            if ( t[0].lower() == "LANGEVIN_LAMBDA".lower() ):
+            if ( t[0].upper() == "LANGEVIN_LAMBDA".upper() ):
                 try:
                     DYN_PROPERTIES["LANGEVIN_LAMBDA"] = float( t[1] )
                 except ValueError:
@@ -185,7 +185,7 @@ def read():
                 assert( DYN_PROPERTIES["LANGEVIN_LAMBDA"] >= 0 ), f"'LANGEVIN_LAMBDA' must be greater than or equal to 0.0: {DYN_PROPERTIES['LANGEVIN_LAMBDA']}"
 
             # Look for RESCALE_FREQ
-            if ( t[0].lower() == "RESCALE_FREQ".lower() ):
+            if ( t[0].upper() == "RESCALE_FREQ".upper() ):
                 try:
                     DYN_PROPERTIES["RESCALE_FREQ"] = int( t[1] )
                 except ValueError:
@@ -195,7 +195,7 @@ def read():
 
 
             # Look for TEMP
-            if ( t[0].lower() == "TEMP".lower() ):
+            if ( t[0].upper() == "TEMP".upper() ):
                 try:
                     DYN_PROPERTIES["TEMP"] = float( t[1] )
                 except ValueError:
@@ -205,7 +205,7 @@ def read():
 
 
             # Look for DATA_SAVE_FREQ
-            if ( t[0].lower() == "DATA_SAVE_FREQ".lower() ):
+            if ( t[0].upper() == "DATA_SAVE_FREQ".upper() ):
                 try:
                     DYN_PROPERTIES["DATA_SAVE_FREQ"] = int( t[1] )
                 except ValueError:
@@ -214,7 +214,7 @@ def read():
 
 
             # Look for DATA_SAVE_FREQ
-            if ( t[0].lower() == "EL_INTERPOLATION".lower() ):
+            if ( t[0].upper() == "EL_INTERPOLATION".upper() ):
                 try:
                     DYN_PROPERTIES["EL_INTERPOLATION"] = bool( t[1] )
                 except ValueError:
@@ -222,7 +222,7 @@ def read():
                     exit()
 
             # Look for DATA_SAVE_FREQ
-            if ( t[0].lower() == "CHECK_TRIVIAL_CROSSING".lower() ):
+            if ( t[0].upper() == "CHECK_TRIVIAL_CROSSING".upper() ):
                 try:
                     DYN_PROPERTIES["CHECK_TRIVIAL_CROSSING"] = bool( t[1] )
                 except ValueError:
@@ -231,7 +231,7 @@ def read():
 
 
             # Look for CPA
-            if ( t[0].lower() == "CPA".lower() ):
+            if ( t[0].upper() == "CPA".upper() ):
                 try:
                     if ( t[1].upper() == "TRUE" ):
                         DYN_PROPERTIES["CPA"] = True
@@ -240,7 +240,9 @@ def read():
                     else:
                         print("Input for 'CPA' must be a boolean. (True or False)")
                         exit()
-
+                except:
+                    print("Something wrong with CPA block in 'read_input.py'")
+                    exit()
         else:
             print( f"Error: Input is wrong at line {count+1}: {line}" )
             print( f"\tToo many '='" )

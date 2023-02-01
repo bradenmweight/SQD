@@ -3,14 +3,28 @@ import numpy as np
 ### NAMD METHODS ###
 import Eh
 import spinLSC
+import GFSH
 
 def get_density_matrix( DYN_PROPERTIES ):
     if ( DYN_PROPERTIES["NAMD_METHOD"] == "EH" ):
         return Eh.get_density_matrix(DYN_PROPERTIES)
     elif ( DYN_PROPERTIES["NAMD_METHOD"] == "SPINLSC" ):
         return spinLSC.get_density_matrix(DYN_PROPERTIES)
+    elif ( DYN_PROPERTIES["NAMD_METHOD"] == "GFSH" ):
+        return GFSH.get_density_matrix(DYN_PROPERTIES)
     else:
         print("NAMD_METHOD not recognized. Quitting.")
+        exit()
+
+def get_Force(DYN_PROPERTIES):
+    if ( DYN_PROPERTIES["NAMD_METHOD"] == "EH" ):
+        return Eh.get_Force(DYN_PROPERTIES)
+    elif ( DYN_PROPERTIES["NAMD_METHOD"] == "SPINLSC" ):
+        return spinLSC.get_Force(DYN_PROPERTIES)
+    elif ( DYN_PROPERTIES["NAMD_METHOD"] == "GFSH" ):
+        return GFSH.get_Force(DYN_PROPERTIES)
+    else:
+        print("No NAMD_METHOD found.")
         exit()
 
 
@@ -42,3 +56,6 @@ def compute_Temperature(DYN_PROPERTIES):
     T = (2/3) * KE / NAtoms * (300 / 0.025) # eV --> K
 
     return T
+
+
+

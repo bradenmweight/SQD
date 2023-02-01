@@ -10831,3 +10831,2043 @@ Submitting electronic structure for step 130.
 Submitted batch job 14486887
 Submitted batch job 14486888
 Submitted batch job 14486889
+Starting forces for state 1
+	Gaussian terminated normally in 7.01 s. (TD_NEW_S1)
+Starting forces for state 2
+	Gaussian terminated normally in 7.12 s. (TD_NEW_S2)
+Starting forces for state 3
+	Gaussian terminated normally in 10.12 s. (TD_NEW_S3)
+Submitted batch job 14486890
+Submitted batch job 14486891
+	Gaussian terminated normally in 5.12 s. (DIMER)
+	TD_NEW_S1 DIM_INFO TIME (BRADEN): 0.05 s
+	TD_NEW_S1 GET_MO TIME: 0.01 s
+	TD_NEW_S1 GET_CI TIME: 0.03 s
+	TD_OLD_S1 GET_MO TIME: 0.01 s
+	TD_OLD_S1 GET_CI TIME: 0.03 s
+	DIMER TIME: 2.22 s
+	G16_NAC.py main: 2.35 s
+	gau_nac() (G16_NAC.py): 0.0 s
+gau_nac prepare 0.0 s
+WFN OVERLAP FORTRAN TOOK 0.13 s
+gau_nac dump 0.99 s
+	gau_nac.worker() (G16_NAC.py): 1.13 s
+	GET_OVERLAP OVERALL TIME (G16_TD.py): 3.51 s
+Orthogonalized [S.T @ S] :
+[[ 1.  0. -0.  0.]
+ [ 0.  1.  0. -0.]
+ [-0.  0.  1.  0.]
+ [ 0. -0.  0.  1.]]
+OLD:
+ [[ 9.9998905e-01 -4.3678500e-03 -7.1294000e-04  1.5227300e-03]
+ [ 4.3749300e-03  9.9998066e-01  2.9516000e-03 -3.2895700e-03]
+ [-1.0273000e-04 -1.0284600e-03  8.7932961e-01  4.7621253e-01]
+ [-1.6596900e-03  4.3055000e-03 -4.7620397e-01  8.7932274e-01]]
+I found a sign error upon phase correcting.
+Index Flip: 0 <--> 1
+NEW:
+ [[ 9.9998905e-01  4.3678500e-03 -7.1294000e-04  1.5227300e-03]
+ [-4.3749300e-03  9.9998066e-01  2.9516000e-03 -3.2895700e-03]
+ [-1.0273000e-04 -1.0284600e-03  8.7932961e-01  4.7621253e-01]
+ [-1.6596900e-03  4.3055000e-03 -4.7620397e-01  8.7932274e-01]]
+[S.T @ S] after sign fix:
+[[ 1.000e+00 -1.408e-05 -2.583e-05  2.878e-05]
+ [-1.408e-05  1.000e+00 -6.230e-06  1.330e-05]
+ [-2.583e-05 -6.230e-06  1.000e+00  0.000e+00]
+ [ 2.878e-05  1.330e-05  0.000e+00  1.000e+00]]
+Orthogonalized [S.T @ S] :
+[[ 1.  0. -0.  0.]
+ [ 0.  1.  0. -0.]
+ [-0.  0.  1. -0.]
+ [ 0. -0. -0.  1.]]
+[S.T @ S] after sign fix and second orthogonalization:
+[[ 1.  0. -0.  0.]
+ [ 0.  1.  0. -0.]
+ [-0.  0.  1. -0.]
+ [ 0. -0. -0.  1.]]
+OLD:
+ [[ 9.9998905e-01  4.3748800e-03 -7.0001000e-04  1.5083100e-03]
+ [-4.3678000e-03  9.9998066e-01  2.9546500e-03 -3.2961600e-03]
+ [-9.8230000e-05 -1.0288900e-03  8.7932960e-01  4.7621254e-01]
+ [-1.6784600e-03  4.2981600e-03 -4.7620398e-01  8.7932274e-01]]
+I found a sign error upon phase correcting.
+Index Flip: 0 <--> 3
+NEW:
+ [[ 9.9998905e-01  4.3748800e-03 -7.0001000e-04 -1.5083100e-03]
+ [-4.3678000e-03  9.9998066e-01  2.9546500e-03 -3.2961600e-03]
+ [-9.8230000e-05 -1.0288900e-03  8.7932960e-01  4.7621254e-01]
+ [ 1.6784600e-03  4.2981600e-03 -4.7620398e-01  8.7932274e-01]]
+[S.T @ S] after sign fix:
+[[ 1.00000e+00  1.44300e-05 -1.59858e-03 -6.47700e-05]
+ [ 1.44300e-05  1.00000e+00  0.00000e+00 -1.32000e-05]
+ [-1.59858e-03  0.00000e+00  1.00000e+00  2.11000e-06]
+ [-6.47700e-05 -1.32000e-05  2.11000e-06  1.00000e+00]]
+Orthogonalized [S.T @ S] :
+[[ 1.  0. -0. -0.]
+ [ 0.  1. -0.  0.]
+ [-0. -0.  1.  0.]
+ [-0.  0.  0.  1.]]
+[S.T @ S] after sign fix and second orthogonalization:
+[[ 1.  0. -0. -0.]
+ [ 0.  1. -0.  0.]
+ [-0. -0.  1.  0.]
+ [-0.  0.  0.  1.]]
+OLD:
+ [[ 9.9998937e-01  4.3676500e-03  9.9270000e-05 -1.4759000e-03]
+ [-4.3727600e-03  9.9998067e-01  2.9511600e-03 -3.2897100e-03]
+ [ 6.2004000e-04 -1.0257600e-03  8.7932988e-01  4.7621164e-01]
+ [ 1.3262800e-03  4.3039500e-03 -4.7620399e-01  8.7932331e-01]]
+I found a sign error upon phase correcting.
+Index Flip: 2 <--> 3
+NEW:
+ [[ 9.9998937e-01  4.3676500e-03  9.9270000e-05 -1.4759000e-03]
+ [-4.3727600e-03  9.9998067e-01  2.9511600e-03 -3.2897100e-03]
+ [ 6.2004000e-04 -1.0257600e-03  8.7932988e-01 -4.7621164e-01]
+ [ 1.3262800e-03  4.3039500e-03  4.7620399e-01  8.7932331e-01]]
+[S.T @ S] after sign fix:
+[[ 1.00000e+00  0.00000e+00  1.26316e-03 -5.90540e-04]
+ [ 0.00000e+00  1.00000e+00  4.09912e-03  9.76950e-04]
+ [ 1.26316e-03  4.09912e-03  1.00000e+00 -1.97100e-05]
+ [-5.90540e-04  9.76950e-04 -1.97100e-05  1.00000e+00]]
+Orthogonalized [S.T @ S] :
+[[ 1.  0. -0. -0.]
+ [ 0.  1.  0.  0.]
+ [-0.  0.  1.  0.]
+ [-0.  0.  0.  1.]]
+[S.T @ S] after sign fix and second orthogonalization:
+[[ 1.  0. -0. -0.]
+ [ 0.  1.  0.  0.]
+ [-0.  0.  1.  0.]
+ [-0.  0.  0.  1.]]
+	GET_NACT OVERALL TIME (G16_TD.py): 0.01 s
+	GET_APPROX NACR OVERALL TIME (G16_TD.py): 0.0 s
+Total QM took 24.98 s.
+Electronic propagation took 0.01 s.
+Electronic Norm.: 1.0
+Population in ACTIVE_STATE (AS = S1) increased. Skipping hop check.
+Using active state forces. F = F(S1)
+Total MD Step took 24.99 s.
+Using active state forces. F = F(S1)
+Submitting electronic structure for step 131.
+	Gaussian terminated normally in 6.23 s. (GS_NEW)
+Submitted batch job 14486892
+Submitted batch job 14486893
+Submitted batch job 14486894
+Starting forces for state 2
+	Gaussian terminated normally in 6.06 s. (TD_NEW_S2)
+Starting forces for state 1
+	Gaussian terminated normally in 7.38 s. (TD_NEW_S1)
+Starting forces for state 3
+	Gaussian terminated normally in 8.01 s. (TD_NEW_S3)
+Submitted batch job 14486895
+Submitted batch job 14486898
+	Gaussian terminated normally in 5.50 s. (DIMER)
+	TD_NEW_S1 DIM_INFO TIME (BRADEN): 0.07 s
+	TD_NEW_S1 GET_MO TIME: 0.01 s
+	TD_NEW_S1 GET_CI TIME: 0.03 s
+	TD_OLD_S1 GET_MO TIME: 0.01 s
+	TD_OLD_S1 GET_CI TIME: 0.03 s
+	DIMER TIME: 2.18 s
+	G16_NAC.py main: 2.33 s
+	gau_nac() (G16_NAC.py): 0.0 s
+gau_nac prepare 0.0 s
+WFN OVERLAP FORTRAN TOOK 0.12 s
+gau_nac dump 1.0 s
+	gau_nac.worker() (G16_NAC.py): 1.13 s
+	GET_OVERLAP OVERALL TIME (G16_TD.py): 3.49 s
+Orthogonalized [S.T @ S] :
+[[ 1. -0.  0.  0.]
+ [-0.  1. -0. -0.]
+ [ 0. -0.  1.  0.]
+ [ 0. -0.  0.  1.]]
+OLD:
+ [[ 0.99997512 -0.00384919 -0.00495828 -0.00321986]
+ [ 0.0039844   0.9997265   0.01890467  0.01317824]
+ [ 0.00530229 -0.02131471  0.53917222  0.84190907]
+ [-0.00240388  0.00882014 -0.84196873  0.53944887]]
+I found a sign error upon phase correcting.
+Index Flip: 0 <--> 1
+NEW:
+ [[ 0.99997512  0.00384919 -0.00495828 -0.00321986]
+ [-0.0039844   0.9997265   0.01890467  0.01317824]
+ [ 0.00530229 -0.02131471  0.53917222  0.84190907]
+ [-0.00240388  0.00882014 -0.84196873  0.53944887]]
+[S.T @ S] after sign fix:
+[[ 1.0000e+00 -2.6844e-04 -1.5065e-04 -1.0501e-04]
+ [-2.6844e-04  1.0000e+00 -3.8170e-05 -2.4790e-05]
+ [-1.5065e-04 -3.8170e-05  1.0000e+00  0.0000e+00]
+ [-1.0501e-04 -2.4790e-05  0.0000e+00  1.0000e+00]]
+Orthogonalized [S.T @ S] :
+[[ 1. -0. -0. -0.]
+ [-0.  1. -0. -0.]
+ [-0. -0.  1.  0.]
+ [-0. -0.  0.  1.]]
+[S.T @ S] after sign fix and second orthogonalization:
+[[ 1. -0. -0. -0.]
+ [-0.  1. -0. -0.]
+ [-0. -0.  1.  0.]
+ [-0. -0.  0.  1.]]
+OLD:
+ [[ 0.99997513  0.00398327 -0.00488288 -0.00316731]
+ [-0.0038481   0.99972652  0.01892346  0.01319043]
+ [ 0.00538425 -0.02129325  0.53917223  0.84190909]
+ [-0.00243779  0.00881043 -0.84196875  0.53944885]]
+I found a sign error upon phase correcting.
+Index Flip: 1 <--> 3
+NEW:
+ [[ 0.99997513  0.00398327 -0.00488288 -0.00316731]
+ [-0.0038481   0.99972652  0.01892346 -0.01319043]
+ [ 0.00538425 -0.02129325  0.53917223  0.84190909]
+ [-0.00243779 -0.00881043 -0.84196875  0.53944885]]
+[S.T @ S] after sign fix:
+[[ 1.000000e+00  4.296000e-05 -0.000000e+00  1.015200e-04]
+ [ 4.296000e-05  1.000000e+00  1.483621e-02 -3.587920e-02]
+ [-0.000000e+00  1.483621e-02  1.000000e+00 -4.992200e-04]
+ [ 1.015200e-04 -3.587920e-02 -4.992200e-04  1.000000e+00]]
+Orthogonalized [S.T @ S] :
+[[ 1. -0.  0. -0.]
+ [-0.  1.  0. -0.]
+ [ 0.  0.  1.  0.]
+ [-0. -0.  0.  1.]]
+[S.T @ S] after sign fix and second orthogonalization:
+[[ 1. -0.  0. -0.]
+ [-0.  1.  0. -0.]
+ [ 0.  0.  1.  0.]
+ [-0. -0.  0.  1.]]
+OLD:
+ [[ 0.9999752   0.00394202 -0.00491275 -0.00314894]
+ [-0.00387028  0.99991499  0.01150801  0.00475317]
+ [ 0.00534161 -0.01018979  0.53941681  0.8419603 ]
+ [-0.0024655   0.00711581 -0.84194593  0.53950936]]
+I found a sign error upon phase correcting.
+Index Flip: 2 <--> 3
+NEW:
+ [[ 0.9999752   0.00394202 -0.00491275 -0.00314894]
+ [-0.00387028  0.99991499  0.01150801  0.00475317]
+ [ 0.00534161 -0.01018979  0.53941681 -0.8419603 ]
+ [-0.0024655   0.00711581  0.84194593  0.53950936]]
+[S.T @ S] after sign fix:
+[[ 1.000000e+00 -0.000000e+00 -4.151640e-03 -8.994840e-03]
+ [-0.000000e+00  1.000000e+00  1.198225e-02  1.715880e-02]
+ [-4.151640e-03  1.198225e-02  1.000000e+00  1.403400e-04]
+ [-8.994840e-03  1.715880e-02  1.403400e-04  1.000000e+00]]
+Orthogonalized [S.T @ S] :
+[[ 1. -0.  0. -0.]
+ [-0.  1.  0. -0.]
+ [ 0.  0.  1. -0.]
+ [-0. -0. -0.  1.]]
+[S.T @ S] after sign fix and second orthogonalization:
+[[ 1. -0.  0. -0.]
+ [-0.  1.  0. -0.]
+ [ 0.  0.  1. -0.]
+ [-0. -0. -0.  1.]]
+	GET_NACT OVERALL TIME (G16_TD.py): 0.01 s
+	GET_APPROX NACR OVERALL TIME (G16_TD.py): 0.0 s
+Total QM took 24.39 s.
+Electronic propagation took 0.01 s.
+Electronic Norm.: 1.0
+SUM_POP_DECREASE = 0.41316817738564193
+j, dP_j, dP_AS, Prob_j: 0 -0.0001811447976315106 2.5984517852239986e-05 -9.092118761826763e-08
+j, dP_j, dP_AS, Prob_j: 2 0.4131681773856417 2.5984517852239986e-05 0.00020737963146142793
+j, dP_j, dP_AS, Prob_j: 3 -0.4129610480701582 2.5984517852239986e-05 -0.00020727566798248425
+HOP PROB: [0.         0.         0.00020738 0.        ]
+RANDOM: 0.0 0.5812275159500406 0.0
+RANDOM: 0.0 0.5812275159500406 0.0
+RANDOM: 0.0 0.5812275159500406 0.00020737963146142793
+Using active state forces. F = F(S1)
+Total MD Step took 24.41 s.
+Using active state forces. F = F(S1)
+Submitting electronic structure for step 132.
+	Gaussian terminated normally in 5.10 s. (GS_NEW)
+Submitted batch job 14486899
+Submitted batch job 14486900
+Submitted batch job 14486901
+Starting forces for state 1
+	Gaussian terminated normally in 7.01 s. (TD_NEW_S1)
+Starting forces for state 2
+	Gaussian terminated normally in 7.09 s. (TD_NEW_S2)
+Starting forces for state 3
+	Gaussian terminated normally in 7.13 s. (TD_NEW_S3)
+Submitted batch job 14486902
+Submitted batch job 14486903
+	Gaussian terminated normally in 5.15 s. (DIMER)
+	TD_NEW_S1 DIM_INFO TIME (BRADEN): 0.06 s
+	TD_NEW_S1 GET_MO TIME: 0.01 s
+	TD_NEW_S1 GET_CI TIME: 0.03 s
+	TD_OLD_S1 GET_MO TIME: 0.01 s
+	TD_OLD_S1 GET_CI TIME: 0.03 s
+	DIMER TIME: 2.2 s
+	G16_NAC.py main: 2.33 s
+	gau_nac() (G16_NAC.py): 0.0 s
+gau_nac prepare 0.0 s
+WFN OVERLAP FORTRAN TOOK 0.12 s
+gau_nac dump 0.98 s
+	gau_nac.worker() (G16_NAC.py): 1.1 s
+	GET_OVERLAP OVERALL TIME (G16_TD.py): 3.46 s
+Orthogonalized [S.T @ S] :
+[[ 1. -0. -0. -0.]
+ [-0.  1.  0.  0.]
+ [-0.  0.  1.  0.]
+ [-0.  0.  0.  1.]]
+OLD:
+ [[ 9.9998638e-01 -3.9701000e-03  3.0773300e-03  1.4175100e-03]
+ [ 3.9927400e-03  9.9996793e-01 -6.8428800e-03 -1.1698900e-03]
+ [-3.0512900e-03  6.8561000e-03  9.9997146e-01  8.6842000e-04]
+ [-1.4101700e-03  1.1695300e-03 -8.8077000e-04  9.9999793e-01]]
+I found a sign error upon phase correcting.
+Index Flip: 0 <--> 1
+NEW:
+ [[ 9.9998638e-01  3.9701000e-03  3.0773300e-03  1.4175100e-03]
+ [-3.9927400e-03  9.9996793e-01 -6.8428800e-03 -1.1698900e-03]
+ [-3.0512900e-03  6.8561000e-03  9.9997146e-01  8.6842000e-04]
+ [-1.4101700e-03  1.1695300e-03 -8.8077000e-04  9.9999793e-01]]
+[S.T @ S] after sign fix:
+[[ 1.000e+00 -4.514e-05  5.464e-05  9.340e-06]
+ [-4.514e-05  1.000e+00  2.443e-05  1.126e-05]
+ [ 5.464e-05  2.443e-05  1.000e+00  0.000e+00]
+ [ 9.340e-06  1.126e-05  0.000e+00  1.000e+00]]
+Orthogonalized [S.T @ S] :
+[[ 1. -0.  0.  0.]
+ [-0.  1.  0.  0.]
+ [ 0.  0.  1.  0.]
+ [ 0.  0.  0.  1.]]
+[S.T @ S] after sign fix and second orthogonalization:
+[[ 1. -0.  0.  0.]
+ [-0.  1.  0.  0.]
+ [ 0.  0.  1.  0.]
+ [ 0.  0.  0.  1.]]
+OLD:
+ [[ 9.9998638e-01  3.9926200e-03  3.0499600e-03  1.4128100e-03]
+ [-3.9699800e-03  9.9996793e-01 -6.8549900e-03 -1.1755000e-03]
+ [-3.0784600e-03  6.8438100e-03  9.9997147e-01  8.6840000e-04]
+ [-1.4147900e-03  1.1638800e-03 -8.8074000e-04  9.9999793e-01]]
+I found a sign error upon phase correcting.
+Index Flip: 0 <--> 2
+NEW:
+ [[ 9.9998638e-01  3.9926200e-03 -3.0499600e-03  1.4128100e-03]
+ [-3.9699800e-03  9.9996793e-01 -6.8549900e-03 -1.1755000e-03]
+ [ 3.0784600e-03  6.8438100e-03  9.9997147e-01  8.6840000e-04]
+ [-1.4147900e-03  1.1638800e-03 -8.8074000e-04  9.9999793e-01]]
+[S.T @ S] after sign fix:
+[[ 1.000e+00  4.214e-05  5.692e-05  5.350e-06]
+ [ 4.214e-05  1.000e+00 -2.435e-05  0.000e+00]
+ [ 5.692e-05 -2.435e-05  1.000e+00 -8.620e-06]
+ [ 5.350e-06  0.000e+00 -8.620e-06  1.000e+00]]
+Orthogonalized [S.T @ S] :
+[[ 1.  0.  0. -0.]
+ [ 0.  1. -0. -0.]
+ [ 0. -0.  1. -0.]
+ [-0. -0. -0.  1.]]
+[S.T @ S] after sign fix and second orthogonalization:
+[[ 1.  0.  0. -0.]
+ [ 0.  1. -0. -0.]
+ [ 0. -0.  1. -0.]
+ [-0. -0. -0.  1.]]
+OLD:
+ [[ 9.9998638e-01  3.9715200e-03 -3.0783600e-03  1.4101300e-03]
+ [-3.9908500e-03  9.9996793e-01 -6.8427000e-03 -1.1755200e-03]
+ [ 3.0498600e-03  6.8559200e-03  9.9997147e-01  8.7270000e-04]
+ [-1.4174600e-03  1.1639000e-03 -8.7638000e-04  9.9999793e-01]]
+I found a sign error upon phase correcting.
+Index Flip: 1 <--> 2
+NEW:
+ [[ 9.9998638e-01  3.9715200e-03 -3.0783600e-03  1.4101300e-03]
+ [-3.9908500e-03  9.9996793e-01  6.8427000e-03 -1.1755200e-03]
+ [ 3.0498600e-03 -6.8559200e-03  9.9997147e-01  8.7270000e-04]
+ [-1.4174600e-03  1.1639000e-03 -8.7638000e-04  9.9999793e-01]]
+[S.T @ S] after sign fix:
+[[ 1.000e+00 -4.182e-05 -5.462e-05 -0.000e+00]
+ [-4.182e-05  1.000e+00 -2.649e-05 -1.197e-05]
+ [-5.462e-05 -2.649e-05  1.000e+00 -1.609e-05]
+ [-0.000e+00 -1.197e-05 -1.609e-05  1.000e+00]]
+Orthogonalized [S.T @ S] :
+[[ 1.  0. -0.  0.]
+ [ 0.  1. -0.  0.]
+ [-0. -0.  1. -0.]
+ [ 0.  0. -0.  1.]]
+[S.T @ S] after sign fix and second orthogonalization:
+[[ 1.  0. -0.  0.]
+ [ 0.  1. -0.  0.]
+ [-0. -0.  1. -0.]
+ [ 0.  0. -0.  1.]]
+OLD:
+ [[ 9.9998638e-01  3.9924000e-03 -3.0509900e-03  1.4101300e-03]
+ [-3.9697600e-03  9.9996793e-01  6.8558300e-03 -1.1694800e-03]
+ [ 3.0770200e-03 -6.8426100e-03  9.9997147e-01  8.8070000e-04]
+ [-1.4174600e-03  1.1698400e-03 -8.6836000e-04  9.9999793e-01]]
+I found a sign error upon phase correcting.
+Index Flip: 2 <--> 3
+NEW:
+ [[ 9.9998638e-01  3.9924000e-03 -3.0509900e-03  1.4101300e-03]
+ [-3.9697600e-03  9.9996793e-01  6.8558300e-03 -1.1694800e-03]
+ [ 3.0770200e-03 -6.8426100e-03  9.9997147e-01 -8.8070000e-04]
+ [-1.4174600e-03  1.1698400e-03  8.6836000e-04  9.9999793e-01]]
+[S.T @ S] after sign fix:
+[[ 1.000e+00  0.000e+00 -2.460e-06 -5.420e-06]
+ [ 0.000e+00  1.000e+00  2.030e-06  1.205e-05]
+ [-2.460e-06  2.030e-06  1.000e+00 -2.464e-05]
+ [-5.420e-06  1.205e-05 -2.464e-05  1.000e+00]]
+Orthogonalized [S.T @ S] :
+[[ 1. -0.  0.  0.]
+ [-0.  1. -0.  0.]
+ [ 0. -0.  1. -0.]
+ [ 0.  0. -0.  1.]]
+[S.T @ S] after sign fix and second orthogonalization:
+[[ 1. -0.  0.  0.]
+ [-0.  1. -0.  0.]
+ [ 0. -0.  1. -0.]
+ [ 0.  0. -0.  1.]]
+	GET_NACT OVERALL TIME (G16_TD.py): 0.01 s
+	GET_APPROX NACR OVERALL TIME (G16_TD.py): 0.0 s
+Total QM took 22.16 s.
+Electronic propagation took 0.01 s.
+Electronic Norm.: 1.0
+SUM_POP_DECREASE = 0.0023916075410607557
+j, dP_j, dP_AS, Prob_j: 0 -0.00013836150902979405 0.001705144352475249 -0.0007874591532470009
+j, dP_j, dP_AS, Prob_j: 2 0.0023916075410609916 0.001705144352475249 0.013611395700935091
+j, dP_j, dP_AS, Prob_j: 3 -0.0005481016795557125 0.001705144352475249 -0.003119420187758
+HOP PROB: [0.        0.        0.0136114 0.       ]
+RANDOM: 0.0 0.5036772698772649 0.0
+RANDOM: 0.0 0.5036772698772649 0.0
+RANDOM: 0.0 0.5036772698772649 0.013611395700935091
+Using active state forces. F = F(S1)
+Total MD Step took 22.17 s.
+Using active state forces. F = F(S1)
+Submitting electronic structure for step 133.
+	Gaussian terminated normally in 4.06 s. (GS_NEW)
+Submitted batch job 14486904
+Submitted batch job 14486905
+Submitted batch job 14486906
+Starting forces for state 3
+	Gaussian terminated normally in 7.01 s. (TD_NEW_S3)
+Starting forces for state 2
+	Gaussian terminated normally in 7.12 s. (TD_NEW_S2)
+Starting forces for state 1
+	Gaussian terminated normally in 10.16 s. (TD_NEW_S1)
+Submitted batch job 14486907
+Submitted batch job 14486908
+	Gaussian terminated normally in 5.96 s. (DIMER)
+	TD_NEW_S1 DIM_INFO TIME (BRADEN): 0.06 s
+	TD_NEW_S1 GET_MO TIME: 0.01 s
+	TD_NEW_S1 GET_CI TIME: 0.03 s
+	TD_OLD_S1 GET_MO TIME: 0.01 s
+	TD_OLD_S1 GET_CI TIME: 0.03 s
+	DIMER TIME: 2.19 s
+	G16_NAC.py main: 2.33 s
+	gau_nac() (G16_NAC.py): 0.0 s
+gau_nac prepare 0.0 s
+WFN OVERLAP FORTRAN TOOK 0.11 s
+gau_nac dump 1.0 s
+	gau_nac.worker() (G16_NAC.py): 1.11 s
+	GET_OVERLAP OVERALL TIME (G16_TD.py): 3.47 s
+Orthogonalized [S.T @ S] :
+[[ 1.  0. -0. -0.]
+ [ 0.  1. -0. -0.]
+ [-0. -0.  1. -0.]
+ [-0. -0. -0.  1.]]
+OLD:
+ [[ 9.9998849e-01 -3.9435400e-03  2.5721700e-03  9.2551000e-04]
+ [ 3.9327100e-03  9.9992620e-01 -1.9480000e-05  1.1495080e-02]
+ [-2.6412400e-03 -8.8603000e-04  9.9681770e-01  7.9666220e-02]
+ [-7.6276000e-04 -1.1457180e-02 -7.9673400e-02  9.9675488e-01]]
+I found a sign error upon phase correcting.
+Index Flip: 0 <--> 1
+NEW:
+ [[ 9.9998849e-01  3.9435400e-03  2.5721700e-03  9.2551000e-04]
+ [-3.9327100e-03  9.9992620e-01 -1.9480000e-05  1.1495080e-02]
+ [-2.6412400e-03 -8.8603000e-04  9.9681770e-01  7.9666220e-02]
+ [-7.6276000e-04 -1.1457180e-02 -7.9673400e-02  9.9675488e-01]]
+[S.T @ S] after sign fix:
+[[ 1.000e+00  2.216e-05  1.500e-07 -9.041e-05]
+ [ 2.216e-05  1.000e+00  2.029e-05  7.300e-06]
+ [ 1.500e-07  2.029e-05  1.000e+00 -0.000e+00]
+ [-9.041e-05  7.300e-06 -0.000e+00  1.000e+00]]
+Orthogonalized [S.T @ S] :
+[[ 1. -0. -0.  0.]
+ [-0.  1.  0. -0.]
+ [-0.  0.  1.  0.]
+ [ 0. -0.  0.  1.]]
+[S.T @ S] after sign fix and second orthogonalization:
+[[ 1. -0. -0.  0.]
+ [-0.  1.  0. -0.]
+ [-0.  0.  1.  0.]
+ [ 0. -0.  0.  1.]]
+OLD:
+ [[ 9.9998849e-01  3.9324300e-03  2.5720500e-03  9.7070000e-04]
+ [-3.9432700e-03  9.9992620e-01 -2.9620000e-05  1.1491260e-02]
+ [-2.6377000e-03 -8.9640000e-04  9.9681771e-01  7.9666100e-02]
+ [-7.1757000e-04 -1.1460000e-02 -7.9673290e-02  9.9675490e-01]]
+I found a sign error upon phase correcting.
+Index Flip: 0 <--> 2
+NEW:
+ [[ 9.9998849e-01  3.9324300e-03 -2.5720500e-03  9.7070000e-04]
+ [-3.9432700e-03  9.9992620e-01 -2.9620000e-05  1.1491260e-02]
+ [ 2.6377000e-03 -8.9640000e-04  9.9681771e-01  7.9666100e-02]
+ [-7.1757000e-04 -1.1460000e-02 -7.9673290e-02  9.9675490e-01]]
+[S.T @ S] after sign fix:
+[[ 1.0000e+00 -4.7300e-06  1.1458e-04  4.2027e-04]
+ [-4.7300e-06  1.0000e+00 -2.0230e-05 -0.0000e+00]
+ [ 1.1458e-04 -2.0230e-05  1.0000e+00 -4.9900e-06]
+ [ 4.2027e-04 -0.0000e+00 -4.9900e-06  1.0000e+00]]
+Orthogonalized [S.T @ S] :
+[[ 1.  0. -0.  0.]
+ [ 0.  1. -0.  0.]
+ [-0. -0.  1.  0.]
+ [ 0.  0.  0.  1.]]
+[S.T @ S] after sign fix and second orthogonalization:
+[[ 1.  0. -0.  0.]
+ [ 0.  1. -0.  0.]
+ [-0. -0.  1.  0.]
+ [ 0.  0.  0.  1.]]
+OLD:
+ [[ 9.9998851e-01  3.9347700e-03 -2.6293000e-03  7.6056000e-04]
+ [-3.9433200e-03  9.9992619e-01 -1.9260000e-05  1.1492080e-02]
+ [ 2.5638500e-03 -8.8631000e-04  9.9681776e-01  7.9668060e-02]
+ [-9.2248000e-04 -1.1460810e-02 -7.9670850e-02  9.9675491e-01]]
+I found a sign error upon phase correcting.
+Index Flip: 1 <--> 2
+NEW:
+ [[ 9.9998851e-01  3.9347700e-03 -2.6293000e-03  7.6056000e-04]
+ [-3.9433200e-03  9.9992619e-01  1.9260000e-05  1.1492080e-02]
+ [ 2.5638500e-03  8.8631000e-04  9.9681776e-01  7.9668060e-02]
+ [-9.2248000e-04 -1.1460810e-02 -7.9670850e-02  9.9675491e-01]]
+[S.T @ S] after sign fix:
+[[ 1.00000e+00  4.54000e-06 -1.50000e-07  0.00000e+00]
+ [ 4.54000e-06  1.00000e+00  1.80549e-03  1.41220e-04]
+ [-1.50000e-07  1.80549e-03  1.00000e+00  4.40000e-07]
+ [ 0.00000e+00  1.41220e-04  4.40000e-07  1.00000e+00]]
+Orthogonalized [S.T @ S] :
+[[ 1.  0. -0.  0.]
+ [ 0.  1.  0.  0.]
+ [-0.  0.  1. -0.]
+ [ 0.  0. -0.  1.]]
+[S.T @ S] after sign fix and second orthogonalization:
+[[ 1.  0. -0.  0.]
+ [ 0.  1.  0.  0.]
+ [-0.  0.  1. -0.]
+ [ 0.  0. -0.  1.]]
+OLD:
+ [[ 9.9998850e-01  3.9348200e-03 -2.6327700e-03  7.6028000e-04]
+ [-3.9455900e-03  9.9992660e-01 -8.8343000e-04  1.1421480e-02]
+ [ 2.5639300e-03 -1.9190000e-05  9.9681817e-01  7.9667870e-02]
+ [-9.2246000e-04 -1.1459280e-02 -7.9660730e-02  9.9675574e-01]]
+I found a sign error upon phase correcting.
+Index Flip: 1 <--> 3
+NEW:
+ [[ 9.9998850e-01  3.9348200e-03 -2.6327700e-03  7.6028000e-04]
+ [-3.9455900e-03  9.9992660e-01 -8.8343000e-04 -1.1421480e-02]
+ [ 2.5639300e-03 -1.9190000e-05  9.9681817e-01  7.9667870e-02]
+ [-9.2246000e-04  1.1459280e-02 -7.9660730e-02  9.9675574e-01]]
+[S.T @ S] after sign fix:
+[[ 1.00000e+00 -2.11400e-05 -0.00000e+00  9.01300e-05]
+ [-2.11400e-05  1.00000e+00 -1.82571e-03  2.93000e-06]
+ [-0.00000e+00 -1.82571e-03  1.00000e+00  2.01800e-05]
+ [ 9.01300e-05  2.93000e-06  2.01800e-05  1.00000e+00]]
+Orthogonalized [S.T @ S] :
+[[ 1. -0. -0. -0.]
+ [-0.  1. -0.  0.]
+ [-0. -0.  1.  0.]
+ [-0.  0.  0.  1.]]
+[S.T @ S] after sign fix and second orthogonalization:
+[[ 1. -0. -0. -0.]
+ [-0.  1. -0.  0.]
+ [-0. -0.  1.  0.]
+ [-0.  0.  0.  1.]]
+OLD:
+ [[ 9.9998851e-01  3.9430000e-03 -2.6291800e-03  7.1524000e-04]
+ [-3.9345100e-03  9.9992702e-01  2.9470000e-05 -1.1422770e-02]
+ [ 2.5603600e-03  8.9067000e-04  9.9681859e-01  7.9657700e-02]
+ [-9.6726000e-04  1.1385090e-02 -7.9660430e-02  9.9675657e-01]]
+I found a sign error upon phase correcting.
+Index Flip: 2 <--> 3
+NEW:
+ [[ 9.9998851e-01  3.9430000e-03 -2.6291800e-03  7.1524000e-04]
+ [-3.9345100e-03  9.9992702e-01  2.9470000e-05 -1.1422770e-02]
+ [ 2.5603600e-03  8.9067000e-04  9.9681859e-01 -7.9657700e-02]
+ [-9.6726000e-04  1.1385090e-02  7.9660430e-02  9.9675657e-01]]
+[S.T @ S] after sign fix:
+[[ 1.00000e+00 -0.00000e+00 -1.54110e-04 -4.07900e-04]
+ [-0.00000e+00  1.00000e+00  1.81388e-03 -1.41900e-04]
+ [-1.54110e-04  1.81388e-03  1.00000e+00 -4.43000e-06]
+ [-4.07900e-04 -1.41900e-04 -4.43000e-06  1.00000e+00]]
+Orthogonalized [S.T @ S] :
+[[ 1. -0. -0. -0.]
+ [-0.  1.  0. -0.]
+ [-0.  0.  1.  0.]
+ [-0. -0.  0.  1.]]
+[S.T @ S] after sign fix and second orthogonalization:
+[[ 1. -0. -0. -0.]
+ [-0.  1.  0. -0.]
+ [-0.  0.  1.  0.]
+ [-0. -0.  0.  1.]]
+	GET_NACT OVERALL TIME (G16_TD.py): 0.01 s
+	GET_APPROX NACR OVERALL TIME (G16_TD.py): 0.0 s
+Total QM took 24.84 s.
+Electronic propagation took 0.01 s.
+Electronic Norm.: 1.0
+Population in ACTIVE_STATE (AS = S1) increased. Skipping hop check.
+Using active state forces. F = F(S1)
+Total MD Step took 24.85 s.
+Using active state forces. F = F(S1)
+Submitting electronic structure for step 134.
+	Gaussian terminated normally in 5.15 s. (GS_NEW)
+Submitted batch job 14486909
+Submitted batch job 14486910
+Submitted batch job 14486911
+Starting forces for state 1
+	Gaussian terminated normally in 6.01 s. (TD_NEW_S1)
+Starting forces for state 3
+	Gaussian terminated normally in 6.18 s. (TD_NEW_S3)
+Starting forces for state 2
+	Gaussian terminated normally in 10.13 s. (TD_NEW_S2)
+Submitted batch job 14486914
+Submitted batch job 14486915
+	Gaussian terminated normally in 5.29 s. (DIMER)
+	TD_NEW_S1 DIM_INFO TIME (BRADEN): 0.05 s
+	TD_NEW_S1 GET_MO TIME: 0.01 s
+	TD_NEW_S1 GET_CI TIME: 0.03 s
+	TD_OLD_S1 GET_MO TIME: 0.01 s
+	TD_OLD_S1 GET_CI TIME: 0.03 s
+	DIMER TIME: 2.22 s
+	G16_NAC.py main: 2.35 s
+	gau_nac() (G16_NAC.py): 0.0 s
+gau_nac prepare 0.0 s
+WFN OVERLAP FORTRAN TOOK 0.12 s
+gau_nac dump 0.99 s
+	gau_nac.worker() (G16_NAC.py): 1.11 s
+	GET_OVERLAP OVERALL TIME (G16_TD.py): 3.49 s
+Orthogonalized [S.T @ S] :
+[[ 1.  0.  0. -0.]
+ [ 0.  1. -0.  0.]
+ [ 0. -0.  1. -0.]
+ [-0.  0. -0.  1.]]
+OLD:
+ [[ 0.99998547 -0.00393619  0.00226422  0.0029055 ]
+ [ 0.00383631  0.99952839  0.00468775  0.03010503]
+ [-0.00242588 -0.0061283   0.9988136   0.04824876]
+ [-0.00290863 -0.02983212 -0.04841779  0.99837733]]
+I found a sign error upon phase correcting.
+Index Flip: 0 <--> 1
+NEW:
+ [[ 0.99998547  0.00393619  0.00226422  0.0029055 ]
+ [-0.00383631  0.99952839  0.00468775  0.03010503]
+ [-0.00242588 -0.0061283   0.9988136   0.04824876]
+ [-0.00290863 -0.02983212 -0.04841779  0.99837733]]
+[S.T @ S] after sign fix:
+[[ 1.0000e+00  2.0327e-04 -3.5970e-05 -2.3098e-04]
+ [ 2.0327e-04  1.0000e+00  1.7820e-05  2.2870e-05]
+ [-3.5970e-05  1.7820e-05  1.0000e+00 -0.0000e+00]
+ [-2.3098e-04  2.2870e-05 -0.0000e+00  1.0000e+00]]
+Orthogonalized [S.T @ S] :
+[[ 1. -0.  0.  0.]
+ [-0.  1. -0. -0.]
+ [ 0. -0.  1. -0.]
+ [ 0. -0. -0.  1.]]
+[S.T @ S] after sign fix and second orthogonalization:
+[[ 1. -0.  0.  0.]
+ [-0.  1. -0. -0.]
+ [ 0. -0.  1. -0.]
+ [ 0. -0. -0.  1.]]
+OLD:
+ [[ 0.99998548  0.0038345   0.00228217  0.00302095]
+ [-0.00393434  0.99952841  0.00467877  0.03009314]
+ [-0.00240172 -0.00613751  0.99881362  0.04824855]
+ [-0.00279116 -0.02984283 -0.04841757  0.99837736]]
+I found a sign error upon phase correcting.
+Index Flip: 0 <--> 2
+NEW:
+ [[ 0.99998548  0.0038345  -0.00228217  0.00302095]
+ [-0.00393434  0.99952841  0.00467877  0.03009314]
+ [ 0.00240172 -0.00613751  0.99881362  0.04824855]
+ [-0.00279116 -0.02984283 -0.04841757  0.99837736]]
+[S.T @ S] after sign fix:
+[[ 1.0000e+00 -2.9480e-05  2.3347e-04  2.3176e-04]
+ [-2.9480e-05  1.0000e+00 -1.7500e-05 -0.0000e+00]
+ [ 2.3347e-04 -1.7500e-05  1.0000e+00 -1.3790e-05]
+ [ 2.3176e-04 -0.0000e+00 -1.3790e-05  1.0000e+00]]
+Orthogonalized [S.T @ S] :
+[[ 1.  0. -0.  0.]
+ [ 0.  1.  0. -0.]
+ [-0.  0.  1.  0.]
+ [ 0. -0.  0.  1.]]
+[S.T @ S] after sign fix and second orthogonalization:
+[[ 1.  0. -0.  0.]
+ [ 0.  1.  0. -0.]
+ [-0.  0.  1.  0.]
+ [ 0. -0.  0.  1.]]
+OLD:
+ [[ 0.99998549  0.00384922 -0.00239885  0.00290506]
+ [-0.00392364  0.99952839  0.00468818  0.03009363]
+ [ 0.00227944 -0.00612874  0.99881364  0.04825518]
+ [-0.00290164 -0.0298433  -0.0484106   0.99837737]]
+I found a sign error upon phase correcting.
+Index Flip: 1 <--> 2
+NEW:
+ [[ 0.99998549  0.00384922 -0.00239885  0.00290506]
+ [-0.00392364  0.99952839 -0.00468818  0.03009363]
+ [ 0.00227944  0.00612874  0.99881364  0.04825518]
+ [-0.00290164 -0.0298433  -0.0484106   0.99837737]]
+[S.T @ S] after sign fix:
+[[ 1.0000e+00  2.7940e-05  3.6790e-05  0.0000e+00]
+ [ 2.7940e-05  1.0000e+00  2.8710e-03  5.9149e-04]
+ [ 3.6790e-05  2.8710e-03  1.0000e+00 -2.8217e-04]
+ [ 0.0000e+00  5.9149e-04 -2.8217e-04  1.0000e+00]]
+Orthogonalized [S.T @ S] :
+[[ 1. -0. -0. -0.]
+ [-0.  1. -0. -0.]
+ [-0. -0.  1. -0.]
+ [-0. -0. -0.  1.]]
+[S.T @ S] after sign fix and second orthogonalization:
+[[ 1. -0. -0. -0.]
+ [-0.  1. -0. -0.]
+ [-0. -0.  1. -0.]
+ [-0. -0. -0.  1.]]
+OLD:
+ [[ 0.99998549  0.00383789 -0.00242233  0.00290358]
+ [-0.00393748  0.99952949 -0.00611875  0.02979706]
+ [ 0.00226101  0.00468057  0.99881475  0.04839493]
+ [-0.00290033 -0.03006943 -0.04822637  0.9983795 ]]
+I found a sign error upon phase correcting.
+Index Flip: 1 <--> 3
+NEW:
+ [[ 0.99998549  0.00383789 -0.00242233  0.00290358]
+ [-0.00393748  0.99952949 -0.00611875 -0.02979706]
+ [ 0.00226101  0.00468057  0.99881475  0.04839493]
+ [-0.00290033  0.03006943 -0.04822637  0.9983795 ]]
+[S.T @ S] after sign fix:
+[[ 1.00000e+00 -1.74420e-04 -0.00000e+00  2.34650e-04]
+ [-1.74420e-04  1.00000e+00 -2.90028e-03  4.75320e-04]
+ [-0.00000e+00 -2.90028e-03  1.00000e+00  3.64640e-04]
+ [ 2.34650e-04  4.75320e-04  3.64640e-04  1.00000e+00]]
+Orthogonalized [S.T @ S] :
+[[ 1. -0.  0. -0.]
+ [-0.  1.  0.  0.]
+ [ 0.  0.  1.  0.]
+ [-0.  0.  0.  1.]]
+[S.T @ S] after sign fix and second orthogonalization:
+[[ 1. -0.  0. -0.]
+ [-0.  1.  0.  0.]
+ [ 0.  0.  1.  0.]
+ [-0.  0.  0.  1.]]
+OLD:
+ [[ 0.99998551  0.00392095 -0.00241708  0.00278575]
+ [-0.00384677  0.99953061 -0.00466379 -0.03003344]
+ [ 0.00225596  0.00611776  0.99881589  0.04821094]
+ [-0.00301489  0.02976164 -0.04836546  0.99838166]]
+I found a sign error upon phase correcting.
+Index Flip: 2 <--> 3
+NEW:
+ [[ 0.99998551  0.00392095 -0.00241708  0.00278575]
+ [-0.00384677  0.99953061 -0.00466379 -0.03003344]
+ [ 0.00225596  0.00611776  0.99881589 -0.04821094]
+ [-0.00301489  0.02976164  0.04836546  0.99838166]]
+[S.T @ S] after sign fix:
+[[ 1.00000e+00 -0.00000e+00 -2.91630e-04 -2.17520e-04]
+ [-0.00000e+00  1.00000e+00  2.87887e-03 -5.89890e-04]
+ [-2.91630e-04  2.87887e-03  1.00000e+00  2.66670e-04]
+ [-2.17520e-04 -5.89890e-04  2.66670e-04  1.00000e+00]]
+Orthogonalized [S.T @ S] :
+[[ 1.  0.  0.  0.]
+ [ 0.  1. -0. -0.]
+ [ 0. -0.  1. -0.]
+ [ 0. -0. -0.  1.]]
+[S.T @ S] after sign fix and second orthogonalization:
+[[ 1.  0.  0.  0.]
+ [ 0.  1. -0. -0.]
+ [ 0. -0.  1. -0.]
+ [ 0. -0. -0.  1.]]
+	GET_NACT OVERALL TIME (G16_TD.py): 0.01 s
+	GET_APPROX NACR OVERALL TIME (G16_TD.py): 0.0 s
+Total QM took 25.19 s.
+Electronic propagation took 0.01 s.
+Electronic Norm.: 1.0
+Population in ACTIVE_STATE (AS = S1) increased. Skipping hop check.
+Using active state forces. F = F(S1)
+Total MD Step took 25.20 s.
+Using active state forces. F = F(S1)
+Submitting electronic structure for step 135.
+	Gaussian terminated normally in 5.07 s. (GS_NEW)
+Submitted batch job 14486916
+Submitted batch job 14486917
+Submitted batch job 14486918
+Starting forces for state 2
+	Gaussian terminated normally in 6.01 s. (TD_NEW_S2)
+Starting forces for state 1
+	Gaussian terminated normally in 7.13 s. (TD_NEW_S1)
+Starting forces for state 3
+	Gaussian terminated normally in 9.10 s. (TD_NEW_S3)
+Submitted batch job 14486919
+Submitted batch job 14486921
+	Gaussian terminated normally in 5.13 s. (DIMER)
+	TD_NEW_S1 DIM_INFO TIME (BRADEN): 0.07 s
+	TD_NEW_S1 GET_MO TIME: 0.01 s
+	TD_NEW_S1 GET_CI TIME: 0.03 s
+	TD_OLD_S1 GET_MO TIME: 0.01 s
+	TD_OLD_S1 GET_CI TIME: 0.03 s
+	DIMER TIME: 2.21 s
+	G16_NAC.py main: 2.35 s
+	gau_nac() (G16_NAC.py): 0.0 s
+gau_nac prepare 0.0 s
+WFN OVERLAP FORTRAN TOOK 0.12 s
+gau_nac dump 0.99 s
+	gau_nac.worker() (G16_NAC.py): 1.11 s
+	GET_OVERLAP OVERALL TIME (G16_TD.py): 3.5 s
+Orthogonalized [S.T @ S] :
+[[ 1.  0.  0. -0.]
+ [ 0.  1. -0.  0.]
+ [ 0. -0.  1. -0.]
+ [-0.  0. -0.  1.]]
+OLD:
+ [[ 9.9999026e-01 -3.9945300e-03  1.8442200e-03 -3.6198000e-04]
+ [ 3.9606300e-03  9.9887442e-01  6.7858200e-03 -4.6777810e-02]
+ [-1.7900600e-03 -1.0026500e-03  9.9247727e-01  1.2241188e-01]
+ [ 7.7304000e-04  4.7253950e-02 -1.2222696e-01  9.9137634e-01]]
+I found a sign error upon phase correcting.
+Index Flip: 0 <--> 1
+NEW:
+ [[ 9.9999026e-01  3.9945300e-03  1.8442200e-03 -3.6198000e-04]
+ [-3.9606300e-03  9.9887442e-01  6.7858200e-03 -4.6777810e-02]
+ [-1.7900600e-03 -1.0026500e-03  9.9247727e-01  1.2241188e-01]
+ [ 7.7304000e-04  4.7253950e-02 -1.2222696e-01  9.9137634e-01]]
+[S.T @ S] after sign fix:
+[[ 1.0000e+00  7.6650e-05 -5.3750e-05  3.7054e-04]
+ [ 7.6650e-05  1.0000e+00  1.4730e-05 -2.8900e-06]
+ [-5.3750e-05  1.4730e-05  1.0000e+00 -0.0000e+00]
+ [ 3.7054e-04 -2.8900e-06 -0.0000e+00  1.0000e+00]]
+Orthogonalized [S.T @ S] :
+[[ 1.  0.  0. -0.]
+ [ 0.  1. -0.  0.]
+ [ 0. -0.  1.  0.]
+ [-0.  0.  0.  1.]]
+[S.T @ S] after sign fix and second orthogonalization:
+[[ 1.  0.  0. -0.]
+ [ 0.  1. -0.  0.]
+ [ 0. -0.  1.  0.]
+ [-0.  0.  0.  1.]]
+OLD:
+ [[ 9.9999027e-01  3.9562000e-03  1.8710700e-03 -5.4724000e-04]
+ [-3.9900600e-03  9.9887445e-01  6.7783500e-03 -4.6775620e-02]
+ [-1.7860300e-03 -1.0097200e-03  9.9247723e-01  1.2241221e-01]
+ [ 5.8427000e-04  4.7256260e-02 -1.2222729e-01  9.9137631e-01]]
+I found a sign error upon phase correcting.
+Index Flip: 0 <--> 2
+NEW:
+ [[ 9.9999027e-01  3.9562000e-03 -1.8710700e-03 -5.4724000e-04]
+ [-3.9900600e-03  9.9887445e-01  6.7783500e-03 -4.6775620e-02]
+ [ 1.7860300e-03 -1.0097200e-03  9.9247723e-01  1.2241221e-01]
+ [ 5.8427000e-04  4.7256260e-02 -1.2222729e-01  9.9137631e-01]]
+[S.T @ S] after sign fix:
+[[ 1.0000e+00 -3.6100e-06 -1.9692e-04  4.3726e-04]
+ [-3.6100e-06  1.0000e+00 -1.4800e-05  0.0000e+00]
+ [-1.9692e-04 -1.4800e-05  1.0000e+00  2.0500e-06]
+ [ 4.3726e-04  0.0000e+00  2.0500e-06  1.0000e+00]]
+Orthogonalized [S.T @ S] :
+[[ 1.  0. -0.  0.]
+ [ 0.  1.  0. -0.]
+ [-0.  0.  1.  0.]
+ [ 0. -0.  0.  1.]]
+[S.T @ S] after sign fix and second orthogonalization:
+[[ 1.  0. -0.  0.]
+ [ 0.  1.  0. -0.]
+ [-0.  0.  1.  0.]
+ [ 0. -0.  0.  1.]]
+OLD:
+ [[ 9.9999030e-01  3.9579900e-03 -1.7725800e-03 -7.6587000e-04]
+ [-3.9773700e-03  9.9887450e-01  6.7854100e-03 -4.6774760e-02]
+ [ 1.8569800e-03 -1.0023700e-03  9.9247728e-01  1.2241078e-01]
+ [ 3.5557000e-04  4.7255360e-02 -1.2222793e-01  9.9137639e-01]]
+I found a sign error upon phase correcting.
+Index Flip: 0 <--> 3
+NEW:
+ [[ 9.9999030e-01  3.9579900e-03 -1.7725800e-03  7.6587000e-04]
+ [-3.9773700e-03  9.9887450e-01  6.7854100e-03 -4.6774760e-02]
+ [ 1.8569800e-03 -1.0023700e-03  9.9247728e-01  1.2241078e-01]
+ [-3.5557000e-04  4.7255360e-02 -1.2222793e-01  9.9137639e-01]]
+[S.T @ S] after sign fix:
+[[ 1.0000e+00 -3.3610e-05  8.6920e-05  8.2671e-04]
+ [-3.3610e-05  1.0000e+00  0.0000e+00  6.0600e-06]
+ [ 8.6920e-05  0.0000e+00  1.0000e+00 -2.7200e-06]
+ [ 8.2671e-04  6.0600e-06 -2.7200e-06  1.0000e+00]]
+Orthogonalized [S.T @ S] :
+[[ 1. -0.  0.  0.]
+ [-0.  1.  0.  0.]
+ [ 0.  0.  1. -0.]
+ [ 0.  0. -0.  1.]]
+[S.T @ S] after sign fix and second orthogonalization:
+[[ 1. -0.  0.  0.]
+ [-0.  1.  0.  0.]
+ [ 0.  0.  1. -0.]
+ [ 0.  0. -0.  1.]]
+OLD:
+ [[ 9.9999039e-01  3.9747900e-03 -1.8160400e-03  3.5250000e-04]
+ [-3.9415400e-03  9.9887457e-01  6.7855100e-03 -4.6776160e-02]
+ [ 1.7632300e-03 -1.0027100e-03  9.9247737e-01  1.2241142e-01]
+ [-7.5926000e-04  4.7252340e-02 -1.2222654e-01  9.9137647e-01]]
+I found a sign error upon phase correcting.
+Index Flip: 1 <--> 2
+NEW:
+ [[ 9.9999039e-01  3.9747900e-03 -1.8160400e-03  3.5250000e-04]
+ [-3.9415400e-03  9.9887457e-01 -6.7855100e-03 -4.6776160e-02]
+ [ 1.7632300e-03  1.0027100e-03  9.9247737e-01  1.2241142e-01]
+ [-7.5926000e-04  4.7252340e-02 -1.2222654e-01  9.9137647e-01]]
+[S.T @ S] after sign fix:
+[[ 1.000000e+00  3.540000e-06  5.349000e-05  0.000000e+00]
+ [ 3.540000e-06  1.000000e+00 -1.156542e-02  2.454900e-04]
+ [ 5.349000e-05 -1.156542e-02  1.000000e+00  6.348000e-04]
+ [ 0.000000e+00  2.454900e-04  6.348000e-04  1.000000e+00]]
+Orthogonalized [S.T @ S] :
+[[ 1. -0. -0. -0.]
+ [-0.  1.  0.  0.]
+ [-0.  0.  1. -0.]
+ [-0.  0. -0.  1.]]
+[S.T @ S] after sign fix and second orthogonalization:
+[[ 1. -0. -0. -0.]
+ [-0.  1.  0.  0.]
+ [-0.  0.  1. -0.]
+ [-0.  0. -0.  1.]]
+OLD:
+ [[ 9.9999043e-01  3.9624400e-03 -1.8200200e-03  3.5260000e-04]
+ [-3.9433600e-03  9.9889134e-01 -9.9411000e-04 -4.6899370e-02]
+ [ 1.7366700e-03  6.7271400e-03  9.9249407e-01  1.2209522e-01]
+ [-7.5607000e-04  4.6423420e-02 -1.2227515e-01  9.9140964e-01]]
+I found a sign error upon phase correcting.
+Index Flip: 2 <--> 3
+NEW:
+ [[ 9.9999043e-01  3.9624400e-03 -1.8200200e-03  3.5260000e-04]
+ [-3.9433600e-03  9.9889134e-01 -9.9411000e-04 -4.6899370e-02]
+ [ 1.7366700e-03  6.7271400e-03  9.9249407e-01 -1.2209522e-01]
+ [-7.5607000e-04  4.6423420e-02  1.2227515e-01  9.9140964e-01]]
+[S.T @ S] after sign fix:
+[[ 1.000000e+00 -0.000000e+00 -1.849000e-04 -4.240800e-04]
+ [-0.000000e+00  1.000000e+00  1.135286e-02 -1.642700e-03]
+ [-1.849000e-04  1.135286e-02  1.000000e+00  9.196000e-05]
+ [-4.240800e-04 -1.642700e-03  9.196000e-05  1.000000e+00]]
+Orthogonalized [S.T @ S] :
+[[ 1.  0. -0. -0.]
+ [ 0.  1.  0. -0.]
+ [-0.  0.  1.  0.]
+ [-0. -0.  0.  1.]]
+[S.T @ S] after sign fix and second orthogonalization:
+[[ 1.  0. -0. -0.]
+ [ 0.  1.  0. -0.]
+ [-0.  0.  1.  0.]
+ [-0. -0.  0.  1.]]
+	GET_NACT OVERALL TIME (G16_TD.py): 0.01 s
+	GET_APPROX NACR OVERALL TIME (G16_TD.py): 0.0 s
+Total QM took 23.97 s.
+Electronic propagation took 0.01 s.
+Electronic Norm.: 1.0
+Population in ACTIVE_STATE (AS = S1) increased. Skipping hop check.
+Using active state forces. F = F(S1)
+Total MD Step took 23.98 s.
+Using active state forces. F = F(S1)
+Submitting electronic structure for step 136.
+	Gaussian terminated normally in 5.14 s. (GS_NEW)
+Submitted batch job 14486922
+Submitted batch job 14486923
+Submitted batch job 14486924
+Starting forces for state 1
+	Gaussian terminated normally in 6.01 s. (TD_NEW_S1)
+Starting forces for state 3
+	Gaussian terminated normally in 8.11 s. (TD_NEW_S3)
+Starting forces for state 2
+	Gaussian terminated normally in 9.10 s. (TD_NEW_S2)
+Submitted batch job 14486925
+Submitted batch job 14486927
+	Gaussian terminated normally in 5.13 s. (DIMER)
+	TD_NEW_S1 DIM_INFO TIME (BRADEN): 0.05 s
+	TD_NEW_S1 GET_MO TIME: 0.01 s
+	TD_NEW_S1 GET_CI TIME: 0.03 s
+	TD_OLD_S1 GET_MO TIME: 0.01 s
+	TD_OLD_S1 GET_CI TIME: 0.03 s
+	DIMER TIME: 2.22 s
+	G16_NAC.py main: 2.34 s
+	gau_nac() (G16_NAC.py): 0.0 s
+gau_nac prepare 0.0 s
+WFN OVERLAP FORTRAN TOOK 0.12 s
+gau_nac dump 1.0 s
+	gau_nac.worker() (G16_NAC.py): 1.13 s
+	GET_OVERLAP OVERALL TIME (G16_TD.py): 3.5 s
+Orthogonalized [S.T @ S] :
+[[ 1. -0. -0. -0.]
+ [-0.  1.  0.  0.]
+ [-0.  0.  1. -0.]
+ [-0.  0. -0.  1.]]
+OLD:
+ [[ 9.9999056e-01 -3.8198200e-03  1.2665700e-03  1.6377900e-03]
+ [ 3.8112900e-03  9.9997076e-01  6.6290100e-03  3.0540000e-05]
+ [-1.3688200e-03 -6.6176900e-03  9.9882949e-01  4.7895550e-02]
+ [-1.5741400e-03  2.9302000e-04 -4.7896800e-02  9.9885101e-01]]
+I found a sign error upon phase correcting.
+Index Flip: 0 <--> 1
+NEW:
+ [[ 9.9999056e-01  3.8198200e-03  1.2665700e-03  1.6377900e-03]
+ [-3.8112900e-03  9.9997076e-01  6.6290100e-03  3.0540000e-05]
+ [-1.3688200e-03 -6.6176900e-03  9.9882949e-01  4.7895550e-02]
+ [-1.5741400e-03  2.9302000e-04 -4.7896800e-02  9.9885101e-01]]
+[S.T @ S] after sign fix:
+[[ 1.000e+00  1.719e-05 -5.053e-05 -2.300e-07]
+ [ 1.719e-05  1.000e+00  9.680e-06  1.251e-05]
+ [-5.053e-05  9.680e-06  1.000e+00 -0.000e+00]
+ [-2.300e-07  1.251e-05 -0.000e+00  1.000e+00]]
+Orthogonalized [S.T @ S] :
+[[ 1.  0.  0.  0.]
+ [ 0.  1. -0.  0.]
+ [ 0. -0.  1.  0.]
+ [ 0.  0.  0.  1.]]
+[S.T @ S] after sign fix and second orthogonalization:
+[[ 1.  0.  0.  0.]
+ [ 0.  1. -0.  0.]
+ [ 0. -0.  1.  0.]
+ [ 0.  0.  0.  1.]]
+OLD:
+ [[ 9.9999056e-01  3.8112000e-03  1.2918100e-03  1.6378800e-03]
+ [-3.8197200e-03  9.9997076e-01  6.6240700e-03  2.4280000e-05]
+ [-1.3435200e-03 -6.6228100e-03  9.9882949e-01  4.7895590e-02]
+ [-1.5752300e-03  2.8701000e-04 -4.7896840e-02  9.9885100e-01]]
+I found a sign error upon phase correcting.
+Index Flip: 0 <--> 2
+NEW:
+ [[ 9.9999056e-01  3.8112000e-03 -1.2918100e-03  1.6378800e-03]
+ [-3.8197200e-03  9.9997076e-01  6.6240700e-03  2.4280000e-05]
+ [ 1.3435200e-03 -6.6228100e-03  9.9882949e-01  4.7895590e-02]
+ [-1.5752300e-03  2.8701000e-04 -4.7896840e-02  9.9885100e-01]]
+[S.T @ S] after sign fix:
+[[ 1.0000e+00 -1.7800e-05  1.0029e-04  1.2870e-04]
+ [-1.7800e-05  1.0000e+00 -9.8500e-06  0.0000e+00]
+ [ 1.0029e-04 -9.8500e-06  1.0000e+00 -4.2300e-06]
+ [ 1.2870e-04  0.0000e+00 -4.2300e-06  1.0000e+00]]
+Orthogonalized [S.T @ S] :
+[[1. 0. 0. 0.]
+ [0. 1. 0. 0.]
+ [0. 0. 1. 0.]
+ [0. 0. 0. 1.]]
+[S.T @ S] after sign fix and second orthogonalization:
+[[1. 0. 0. 0.]
+ [0. 1. 0. 0.]
+ [0. 0. 1. 0.]
+ [0. 0. 0. 1.]]
+OLD:
+ [[ 9.9999057e-01  3.8200900e-03 -1.3419400e-03  1.5735300e-03]
+ [-3.8111600e-03  9.9997076e-01  6.6291900e-03  2.4540000e-05]
+ [ 1.2902900e-03 -6.6178800e-03  9.9882949e-01  4.7897620e-02]
+ [-1.6371000e-03  2.8676000e-04 -4.7894640e-02  9.9885101e-01]]
+I found a sign error upon phase correcting.
+Index Flip: 1 <--> 2
+NEW:
+ [[ 9.9999057e-01  3.8200900e-03 -1.3419400e-03  1.5735300e-03]
+ [-3.8111600e-03  9.9997076e-01 -6.6291900e-03  2.4540000e-05]
+ [ 1.2902900e-03  6.6178800e-03  9.9882949e-01  4.7897620e-02]
+ [-1.6371000e-03  2.8676000e-04 -4.7894640e-02  9.9885101e-01]]
+[S.T @ S] after sign fix:
+[[ 1.0000e+00  1.7080e-05  5.0530e-05  0.0000e+00]
+ [ 1.7080e-05  1.0000e+00 -3.7720e-05  6.3396e-04]
+ [ 5.0530e-05 -3.7720e-05  1.0000e+00 -3.3000e-07]
+ [ 0.0000e+00  6.3396e-04 -3.3000e-07  1.0000e+00]]
+Orthogonalized [S.T @ S] :
+[[ 1. -0. -0. -0.]
+ [-0.  1. -0. -0.]
+ [-0. -0.  1.  0.]
+ [-0. -0.  0.  1.]]
+[S.T @ S] after sign fix and second orthogonalization:
+[[ 1. -0. -0. -0.]
+ [-0.  1. -0. -0.]
+ [-0. -0.  1.  0.]
+ [-0. -0.  0.  1.]]
+OLD:
+ [[ 9.9999057e-01  3.8110300e-03 -1.3671300e-03  1.5723200e-03]
+ [-3.8195300e-03  9.9997081e-01 -6.6102300e-03 -2.9243000e-04]
+ [ 1.2650000e-03  6.6215200e-03  9.9882959e-01  4.7895680e-02]
+ [-1.6358900e-03 -3.0740000e-05 -4.7894440e-02  9.9885106e-01]]
+I found a sign error upon phase correcting.
+Index Flip: 2 <--> 3
+NEW:
+ [[ 9.9999057e-01  3.8110300e-03 -1.3671300e-03  1.5723200e-03]
+ [-3.8195300e-03  9.9997081e-01 -6.6102300e-03 -2.9243000e-04]
+ [ 1.2650000e-03  6.6215200e-03  9.9882959e-01 -4.7895680e-02]
+ [-1.6358900e-03 -3.0740000e-05  4.7894440e-02  9.9885106e-01]]
+[S.T @ S] after sign fix:
+[[ 1.0000e+00 -0.0000e+00 -1.5670e-04 -1.2118e-04]
+ [-0.0000e+00  1.0000e+00 -2.9400e-06 -6.3428e-04]
+ [-1.5670e-04 -2.9400e-06  1.0000e+00 -4.3000e-07]
+ [-1.2118e-04 -6.3428e-04 -4.3000e-07  1.0000e+00]]
+Orthogonalized [S.T @ S] :
+[[ 1. -0. -0. -0.]
+ [-0.  1.  0.  0.]
+ [-0.  0.  1. -0.]
+ [-0.  0. -0.  1.]]
+[S.T @ S] after sign fix and second orthogonalization:
+[[ 1. -0. -0. -0.]
+ [-0.  1.  0.  0.]
+ [-0.  0.  1. -0.]
+ [-0.  0. -0.  1.]]
+	GET_NACT OVERALL TIME (G16_TD.py): 0.01 s
+	GET_APPROX NACR OVERALL TIME (G16_TD.py): 0.0 s
+Total QM took 24.05 s.
+Electronic propagation took 0.01 s.
+Electronic Norm.: 1.0
+Population in ACTIVE_STATE (AS = S1) increased. Skipping hop check.
+Using active state forces. F = F(S1)
+Total MD Step took 24.06 s.
+Using active state forces. F = F(S1)
+Submitting electronic structure for step 137.
+	Gaussian terminated normally in 6.08 s. (GS_NEW)
+Submitted batch job 14486928
+Submitted batch job 14486929
+Submitted batch job 14486930
+Starting forces for state 3
+	Gaussian terminated normally in 5.01 s. (TD_NEW_S3)
+Starting forces for state 2
+	Gaussian terminated normally in 7.22 s. (TD_NEW_S2)
+Starting forces for state 1
+	Gaussian terminated normally in 8.10 s. (TD_NEW_S1)
+Submitted batch job 14486931
+Submitted batch job 14486932
+	Gaussian terminated normally in 5.19 s. (DIMER)
+	TD_NEW_S1 DIM_INFO TIME (BRADEN): 0.06 s
+	TD_NEW_S1 GET_MO TIME: 0.01 s
+	TD_NEW_S1 GET_CI TIME: 0.03 s
+	TD_OLD_S1 GET_MO TIME: 0.01 s
+	TD_OLD_S1 GET_CI TIME: 0.03 s
+	DIMER TIME: 2.19 s
+	G16_NAC.py main: 2.32 s
+	gau_nac() (G16_NAC.py): 0.0 s
+gau_nac prepare 0.0 s
+WFN OVERLAP FORTRAN TOOK 0.12 s
+gau_nac dump 1.04 s
+	gau_nac.worker() (G16_NAC.py): 1.16 s
+	GET_OVERLAP OVERALL TIME (G16_TD.py): 3.51 s
+Orthogonalized [S.T @ S] :
+[[ 1.  0. -0. -0.]
+ [ 0.  1.  0.  0.]
+ [-0.  0.  1. -0.]
+ [-0.  0. -0.  1.]]
+OLD:
+ [[ 9.9999167e-01 -3.7220900e-03  7.5357000e-04  1.4966300e-03]
+ [ 3.7156000e-03  9.9996680e-01  7.2236700e-03  6.3595000e-04]
+ [-8.7803000e-04 -7.2467200e-03  9.9777616e-01  6.6252890e-02]
+ [-1.4439900e-03 -1.5057000e-04 -6.6256940e-02  9.9780154e-01]]
+I found a sign error upon phase correcting.
+Index Flip: 0 <--> 1
+NEW:
+ [[ 9.9999167e-01  3.7220900e-03  7.5357000e-04  1.4966300e-03]
+ [-3.7156000e-03  9.9996680e-01  7.2236700e-03  6.3595000e-04]
+ [-8.7803000e-04 -7.2467200e-03  9.9777616e-01  6.6252890e-02]
+ [-1.4439900e-03 -1.5057000e-04 -6.6256940e-02  9.9780154e-01]]
+[S.T @ S] after sign fix:
+[[ 1.000e+00  1.316e-05 -5.368e-05 -4.730e-06]
+ [ 1.316e-05  1.000e+00  5.610e-06  1.114e-05]
+ [-5.368e-05  5.610e-06  1.000e+00 -0.000e+00]
+ [-4.730e-06  1.114e-05 -0.000e+00  1.000e+00]]
+Orthogonalized [S.T @ S] :
+[[ 1. -0. -0. -0.]
+ [-0.  1. -0. -0.]
+ [-0. -0.  1.  0.]
+ [-0. -0.  0.  1.]]
+[S.T @ S] after sign fix and second orthogonalization:
+[[ 1. -0. -0. -0.]
+ [-0.  1. -0. -0.]
+ [-0. -0.  1.  0.]
+ [-0. -0.  0.  1.]]
+OLD:
+ [[ 9.9999167e-01  3.7155000e-03  7.8040000e-04  1.4989700e-03]
+ [-3.7219900e-03  9.9996680e-01  7.2207700e-03  6.3037000e-04]
+ [-8.5105000e-04 -7.2498800e-03  9.9777616e-01  6.6252930e-02]
+ [-1.4434000e-03 -1.5594000e-04 -6.6256980e-02  9.9780154e-01]]
+I found a sign error upon phase correcting.
+Index Flip: 0 <--> 2
+NEW:
+ [[ 9.9999167e-01  3.7155000e-03 -7.8040000e-04  1.4989700e-03]
+ [-3.7219900e-03  9.9996680e-01  7.2207700e-03  6.3037000e-04]
+ [ 8.5105000e-04 -7.2498800e-03  9.9777616e-01  6.6252930e-02]
+ [-1.4434000e-03 -1.5594000e-04 -6.6256980e-02  9.9780154e-01]]
+[S.T @ S] after sign fix:
+[[ 1.0000e+00 -1.2340e-05  1.3752e-04  1.1277e-04]
+ [-1.2340e-05  1.0000e+00 -5.8000e-06 -0.0000e+00]
+ [ 1.3752e-04 -5.8000e-06  1.0000e+00 -2.3400e-06]
+ [ 1.1277e-04 -0.0000e+00 -2.3400e-06  1.0000e+00]]
+Orthogonalized [S.T @ S] :
+[[ 1.  0. -0. -0.]
+ [ 0.  1. -0. -0.]
+ [-0. -0.  1.  0.]
+ [-0. -0.  0.  1.]]
+[S.T @ S] after sign fix and second orthogonalization:
+[[ 1.  0. -0. -0.]
+ [ 0.  1. -0. -0.]
+ [-0. -0.  1.  0.]
+ [-0. -0.  0.  1.]]
+OLD:
+ [[ 9.9999167e-01  3.7216700e-03 -8.4915000e-04  1.4425900e-03]
+ [-3.7163500e-03  9.9996680e-01  7.2239200e-03  6.3059000e-04]
+ [ 7.7866000e-04 -7.2469800e-03  9.9777617e-01  6.6254050e-02]
+ [-1.4951100e-03 -1.5614000e-04 -6.6255700e-02  9.9780154e-01]]
+I found a sign error upon phase correcting.
+Index Flip: 1 <--> 2
+NEW:
+ [[ 9.9999167e-01  3.7216700e-03 -8.4915000e-04  1.4425900e-03]
+ [-3.7163500e-03  9.9996680e-01 -7.2239200e-03  6.3059000e-04]
+ [ 7.7866000e-04  7.2469800e-03  9.9777617e-01  6.6254050e-02]
+ [-1.4951100e-03 -1.5614000e-04 -6.6255700e-02  9.9780154e-01]]
+[S.T @ S] after sign fix:
+[[ 1.0000e+00  1.1290e-05  5.3690e-05 -0.0000e+00]
+ [ 1.1290e-05  1.0000e+00  1.4370e-05  9.6028e-04]
+ [ 5.3690e-05  1.4370e-05  1.0000e+00 -9.1100e-06]
+ [-0.0000e+00  9.6028e-04 -9.1100e-06  1.0000e+00]]
+Orthogonalized [S.T @ S] :
+[[ 1. -0. -0.  0.]
+ [-0.  1.  0.  0.]
+ [-0.  0.  1.  0.]
+ [ 0.  0.  0.  1.]]
+[S.T @ S] after sign fix and second orthogonalization:
+[[ 1. -0. -0.  0.]
+ [-0.  1.  0.  0.]
+ [-0.  0.  1.  0.]
+ [ 0.  0.  0.  1.]]
+OLD:
+ [[ 9.9999168e-01  3.7153400e-03 -8.7601000e-04  1.4408000e-03]
+ [-3.7218000e-03  9.9996692e-01 -7.2310100e-03  1.5043000e-04]
+ [ 7.5183000e-04  7.2080000e-03  9.9777640e-01  6.6255140e-02]
+ [-1.4933300e-03 -6.3474000e-04 -6.6251110e-02  9.9780166e-01]]
+I found a sign error upon phase correcting.
+Index Flip: 2 <--> 3
+NEW:
+ [[ 9.9999168e-01  3.7153400e-03 -8.7601000e-04  1.4408000e-03]
+ [-3.7218000e-03  9.9996692e-01 -7.2310100e-03  1.5043000e-04]
+ [ 7.5183000e-04  7.2080000e-03  9.9777640e-01 -6.6255140e-02]
+ [-1.4933300e-03 -6.3474000e-04  6.6251110e-02  9.9780166e-01]]
+[S.T @ S] after sign fix:
+[[ 1.0000e+00 -0.0000e+00 -1.9787e-04 -9.9630e-05]
+ [-0.0000e+00  1.0000e+00 -8.4100e-05 -9.5513e-04]
+ [-1.9787e-04 -8.4100e-05  1.0000e+00 -4.7000e-06]
+ [-9.9630e-05 -9.5513e-04 -4.7000e-06  1.0000e+00]]
+Orthogonalized [S.T @ S] :
+[[ 1.  0.  0. -0.]
+ [ 0.  1. -0. -0.]
+ [ 0. -0.  1.  0.]
+ [-0. -0.  0.  1.]]
+[S.T @ S] after sign fix and second orthogonalization:
+[[ 1.  0.  0. -0.]
+ [ 0.  1. -0. -0.]
+ [ 0. -0.  1.  0.]
+ [-0. -0.  0.  1.]]
+	GET_NACT OVERALL TIME (G16_TD.py): 0.01 s
+	GET_APPROX NACR OVERALL TIME (G16_TD.py): 0.0 s
+Total QM took 24.02 s.
+Electronic propagation took 0.01 s.
+Electronic Norm.: 1.0
+Population in ACTIVE_STATE (AS = S1) increased. Skipping hop check.
+Using active state forces. F = F(S1)
+Total MD Step took 24.03 s.
+Using active state forces. F = F(S1)
+Submitting electronic structure for step 138.
+	Gaussian terminated normally in 6.07 s. (GS_NEW)
+Submitted batch job 14486933
+Submitted batch job 14486934
+Submitted batch job 14486935
+Starting forces for state 2
+	Gaussian terminated normally in 7.14 s. (TD_NEW_S2)
+Starting forces for state 3
+	Gaussian terminated normally in 8.01 s. (TD_NEW_S3)
+Starting forces for state 1
+	Gaussian terminated normally in 8.12 s. (TD_NEW_S1)
+Submitted batch job 14486936
+Submitted batch job 14486937
+	Gaussian terminated normally in 4.02 s. (DIMER)
+	TD_NEW_S1 DIM_INFO TIME (BRADEN): 0.09 s
+	TD_NEW_S1 GET_MO TIME: 0.01 s
+	TD_NEW_S1 GET_CI TIME: 0.03 s
+	TD_OLD_S1 GET_MO TIME: 0.01 s
+	TD_OLD_S1 GET_CI TIME: 0.03 s
+	DIMER TIME: 2.21 s
+	G16_NAC.py main: 2.36 s
+	gau_nac() (G16_NAC.py): 0.0 s
+gau_nac prepare 0.0 s
+WFN OVERLAP FORTRAN TOOK 0.12 s
+gau_nac dump 1.02 s
+	gau_nac.worker() (G16_NAC.py): 1.14 s
+	GET_OVERLAP OVERALL TIME (G16_TD.py): 3.53 s
+Orthogonalized [S.T @ S] :
+[[ 1.  0. -0. -0.]
+ [ 0.  1.  0.  0.]
+ [-0.  0.  1. -0.]
+ [-0.  0. -0.  1.]]
+OLD:
+ [[ 9.9999134e-01 -3.7824200e-03 -1.2717100e-03  1.1856400e-03]
+ [ 3.7880600e-03  9.9998020e-01  4.9934400e-03  5.6503000e-04]
+ [ 1.1333300e-03 -5.0289300e-03  9.9539310e-01  9.5739250e-02]
+ [-1.3022600e-03 -7.9430000e-05 -9.5739370e-02  9.9540558e-01]]
+I found a sign error upon phase correcting.
+Index Flip: 0 <--> 1
+NEW:
+ [[ 9.9999134e-01  3.7824200e-03 -1.2717100e-03  1.1856400e-03]
+ [-3.7880600e-03  9.9998020e-01  4.9934400e-03  5.6503000e-04]
+ [ 1.1333300e-03 -5.0289300e-03  9.9539310e-01  9.5739250e-02]
+ [-1.3022600e-03 -7.9430000e-05 -9.5739370e-02  9.9540558e-01]]
+[S.T @ S] after sign fix:
+[[ 1.000e+00 -1.119e-05 -3.783e-05 -4.280e-06]
+ [-1.119e-05  1.000e+00 -9.620e-06  8.970e-06]
+ [-3.783e-05 -9.620e-06  1.000e+00 -0.000e+00]
+ [-4.280e-06  8.970e-06 -0.000e+00  1.000e+00]]
+Orthogonalized [S.T @ S] :
+[[ 1. -0.  0. -0.]
+ [-0.  1.  0. -0.]
+ [ 0.  0.  1.  0.]
+ [-0. -0.  0.  1.]]
+[S.T @ S] after sign fix and second orthogonalization:
+[[ 1. -0.  0. -0.]
+ [-0.  1.  0. -0.]
+ [ 0.  0.  1.  0.]
+ [-0. -0.  0.  1.]]
+OLD:
+ [[ 9.9999134e-01  3.7880000e-03 -1.2527800e-03  1.1877600e-03]
+ [-3.7823600e-03  9.9998020e-01  4.9981800e-03  5.6054000e-04]
+ [ 1.1523300e-03 -5.0245600e-03  9.9539310e-01  9.5739270e-02]
+ [-1.3019400e-03 -8.4370000e-05 -9.5739390e-02  9.9540558e-01]]
+I found a sign error upon phase correcting.
+Index Flip: 1 <--> 2
+NEW:
+ [[ 9.9999134e-01  3.7880000e-03 -1.2527800e-03  1.1877600e-03]
+ [-3.7823600e-03  9.9998020e-01 -4.9981800e-03  5.6054000e-04]
+ [ 1.1523300e-03  5.0245600e-03  9.9539310e-01  9.5739270e-02]
+ [-1.3019400e-03 -8.4370000e-05 -9.5739390e-02  9.9540558e-01]]
+[S.T @ S] after sign fix:
+[[ 1.000e+00  1.158e-05  3.781e-05 -0.000e+00]
+ [ 1.158e-05  1.000e+00  6.660e-06  9.621e-04]
+ [ 3.781e-05  6.660e-06  1.000e+00 -5.600e-06]
+ [-0.000e+00  9.621e-04 -5.600e-06  1.000e+00]]
+Orthogonalized [S.T @ S] :
+[[ 1.  0. -0.  0.]
+ [ 0.  1. -0. -0.]
+ [-0. -0.  1.  0.]
+ [ 0. -0.  0.  1.]]
+[S.T @ S] after sign fix and second orthogonalization:
+[[ 1.  0. -0.  0.]
+ [ 0.  1. -0. -0.]
+ [-0. -0.  1.  0.]
+ [ 0. -0.  0.  1.]]
+OLD:
+ [[ 9.9999134e-01  3.7816500e-03 -1.2716900e-03  1.1859400e-03]
+ [-3.7880600e-03  9.9998031e-01 -5.0014400e-03  7.9480000e-05]
+ [ 1.1334800e-03  4.9751900e-03  9.9539333e-01  9.5739680e-02]
+ [-1.3001300e-03 -5.6288000e-04 -9.5736580e-02  9.9540570e-01]]
+I found a sign error upon phase correcting.
+Index Flip: 2 <--> 3
+NEW:
+ [[ 9.9999134e-01  3.7816500e-03 -1.2716900e-03  1.1859400e-03]
+ [-3.7880600e-03  9.9998031e-01 -5.0014400e-03  7.9480000e-05]
+ [ 1.1334800e-03  4.9751900e-03  9.9539333e-01 -9.5739680e-02]
+ [-1.3001300e-03 -5.6288000e-04  9.5736580e-02  9.9540570e-01]]
+[S.T @ S] after sign fix:
+[[ 1.0000e+00  0.0000e+00 -2.4894e-04 -2.1704e-04]
+ [ 0.0000e+00  1.0000e+00 -1.0778e-04 -9.5265e-04]
+ [-2.4894e-04 -1.0778e-04  1.0000e+00 -3.8100e-06]
+ [-2.1704e-04 -9.5265e-04 -3.8100e-06  1.0000e+00]]
+Orthogonalized [S.T @ S] :
+[[ 1. -0.  0.  0.]
+ [-0.  1.  0.  0.]
+ [ 0.  0.  1. -0.]
+ [ 0.  0. -0.  1.]]
+[S.T @ S] after sign fix and second orthogonalization:
+[[ 1. -0.  0.  0.]
+ [-0.  1.  0.  0.]
+ [ 0.  0.  1. -0.]
+ [ 0.  0. -0.  1.]]
+	GET_NACT OVERALL TIME (G16_TD.py): 0.01 s
+	GET_APPROX NACR OVERALL TIME (G16_TD.py): 0.0 s
+Total QM took 22.88 s.
+Electronic propagation took 0.01 s.
+Electronic Norm.: 1.0
+Population in ACTIVE_STATE (AS = S1) increased. Skipping hop check.
+Using active state forces. F = F(S1)
+Total MD Step took 22.89 s.
+Using active state forces. F = F(S1)
+Submitting electronic structure for step 139.
+	Gaussian terminated normally in 5.05 s. (GS_NEW)
+Submitted batch job 14486938
+Submitted batch job 14486939
+Submitted batch job 14486940
+Starting forces for state 1
+	Gaussian terminated normally in 7.01 s. (TD_NEW_S1)
+Starting forces for state 3
+	Gaussian terminated normally in 7.12 s. (TD_NEW_S3)
+Starting forces for state 2
+	Gaussian terminated normally in 9.29 s. (TD_NEW_S2)
+Submitted batch job 14486942
+Submitted batch job 14486943
+	Gaussian terminated normally in 6.13 s. (DIMER)
+	TD_NEW_S1 DIM_INFO TIME (BRADEN): 0.05 s
+	TD_NEW_S1 GET_MO TIME: 0.01 s
+	TD_NEW_S1 GET_CI TIME: 0.03 s
+	TD_OLD_S1 GET_MO TIME: 0.01 s
+	TD_OLD_S1 GET_CI TIME: 0.03 s
+	DIMER TIME: 2.2 s
+	G16_NAC.py main: 2.32 s
+	gau_nac() (G16_NAC.py): 0.0 s
+gau_nac prepare 0.0 s
+WFN OVERLAP FORTRAN TOOK 0.12 s
+gau_nac dump 1.01 s
+	gau_nac.worker() (G16_NAC.py): 1.14 s
+	GET_OVERLAP OVERALL TIME (G16_TD.py): 3.49 s
+Orthogonalized [S.T @ S] :
+[[ 1.  0. -0. -0.]
+ [ 0.  1.  0.  0.]
+ [-0.  0.  1.  0.]
+ [-0.  0.  0.  1.]]
+OLD:
+ [[ 9.9999291e-01 -3.4284400e-03 -5.4974000e-04  1.4558300e-03]
+ [ 3.4057600e-03  9.9982151e-01  6.2031900e-03  1.7517750e-02]
+ [ 2.8269000e-04 -8.8914000e-03  9.8743755e-01  1.5775913e-01]
+ [-1.5801100e-03 -1.6313770e-02 -1.5788698e-01  9.8732116e-01]]
+I found a sign error upon phase correcting.
+Index Flip: 0 <--> 1
+NEW:
+ [[ 9.9999291e-01  3.4284400e-03 -5.4974000e-04  1.4558300e-03]
+ [-3.4057600e-03  9.9982151e-01  6.2031900e-03  1.7517750e-02]
+ [ 2.8269000e-04 -8.8914000e-03  9.8743755e-01  1.5775913e-01]
+ [-1.5801100e-03 -1.6313770e-02 -1.5788698e-01  9.8732116e-01]]
+[S.T @ S] after sign fix:
+[[ 1.0000e+00  4.6530e-05 -4.2250e-05 -1.1932e-04]
+ [ 4.6530e-05  1.0000e+00 -3.7700e-06  9.9800e-06]
+ [-4.2250e-05 -3.7700e-06  1.0000e+00  0.0000e+00]
+ [-1.1932e-04  9.9800e-06  0.0000e+00  1.0000e+00]]
+Orthogonalized [S.T @ S] :
+[[ 1.  0.  0. -0.]
+ [ 0.  1. -0.  0.]
+ [ 0. -0.  1.  0.]
+ [-0.  0.  0.  1.]]
+[S.T @ S] after sign fix and second orthogonalization:
+[[ 1.  0.  0. -0.]
+ [ 0.  1. -0.  0.]
+ [ 0. -0.  1.  0.]
+ [-0.  0.  0.  1.]]
+OLD:
+ [[ 9.9999291e-01  3.4051600e-03 -5.2861000e-04  1.5154700e-03]
+ [-3.4278400e-03  9.9982151e-01  6.2050000e-03  1.7512550e-02]
+ [ 3.1317000e-04 -8.8903300e-03  9.8743754e-01  1.5775919e-01]
+ [-1.5241600e-03 -1.6318960e-02 -1.5788704e-01  9.8732115e-01]]
+I found a sign error upon phase correcting.
+Index Flip: 1 <--> 2
+NEW:
+ [[ 9.9999291e-01  3.4051600e-03 -5.2861000e-04  1.5154700e-03]
+ [-3.4278400e-03  9.9982151e-01 -6.2050000e-03  1.7512550e-02]
+ [ 3.1317000e-04  8.8903300e-03  9.8743754e-01  1.5775919e-01]
+ [-1.5241600e-03 -1.6318960e-02 -1.5788704e-01  9.8732115e-01]]
+[S.T @ S] after sign fix:
+[[ 1.00000e+00  5.57000e-06  4.25400e-05 -0.00000e+00]
+ [ 5.57000e-06  1.00000e+00  5.14951e-03  2.80506e-03]
+ [ 4.25400e-05  5.14951e-03  1.00000e+00 -2.17330e-04]
+ [-0.00000e+00  2.80506e-03 -2.17330e-04  1.00000e+00]]
+Orthogonalized [S.T @ S] :
+[[ 1. -0. -0. -0.]
+ [-0.  1.  0.  0.]
+ [-0.  0.  1.  0.]
+ [-0.  0.  0.  1.]]
+[S.T @ S] after sign fix and second orthogonalization:
+[[ 1. -0. -0. -0.]
+ [-0.  1.  0.  0.]
+ [-0.  0.  1.  0.]
+ [-0.  0.  0.  1.]]
+OLD:
+ [[ 9.9999292e-01  3.4017400e-03 -5.5847000e-04  1.5106400e-03]
+ [-3.4304100e-03  9.9982583e-01 -8.7775700e-03  1.6109170e-02]
+ [ 2.9215000e-04  6.1264200e-03  9.8744248e-01  1.5785984e-01]
+ [-1.5207600e-03 -1.7297800e-02 -1.5773392e-01  9.8732896e-01]]
+I found a sign error upon phase correcting.
+Index Flip: 2 <--> 3
+NEW:
+ [[ 9.9999292e-01  3.4017400e-03 -5.5847000e-04  1.5106400e-03]
+ [-3.4304100e-03  9.9982583e-01 -8.7775700e-03  1.6109170e-02]
+ [ 2.9215000e-04  6.1264200e-03  9.8744248e-01 -1.5785984e-01]
+ [-1.5207600e-03 -1.7297800e-02  1.5773392e-01  9.8732896e-01]]
+[S.T @ S] after sign fix:
+[[ 1.00000e+00 -0.00000e+00 -4.79750e-04 -9.22400e-05]
+ [-0.00000e+00  1.00000e+00 -5.45690e-03 -1.93423e-03]
+ [-4.79750e-04 -5.45690e-03  1.00000e+00 -2.84490e-04]
+ [-9.22400e-05 -1.93423e-03 -2.84490e-04  1.00000e+00]]
+Orthogonalized [S.T @ S] :
+[[ 1.  0.  0. -0.]
+ [ 0.  1.  0.  0.]
+ [ 0.  0.  1.  0.]
+ [-0.  0.  0.  1.]]
+[S.T @ S] after sign fix and second orthogonalization:
+[[ 1.  0.  0. -0.]
+ [ 0.  1.  0.  0.]
+ [ 0.  0.  1.  0.]
+ [-0.  0.  0.  1.]]
+	GET_NACT OVERALL TIME (G16_TD.py): 0.01 s
+	GET_APPROX NACR OVERALL TIME (G16_TD.py): 0.0 s
+Total QM took 25.02 s.
+Electronic propagation took 0.01 s.
+Electronic Norm.: 1.0
+Population in ACTIVE_STATE (AS = S1) increased. Skipping hop check.
+Using active state forces. F = F(S1)
+Total MD Step took 25.03 s.
+Using active state forces. F = F(S1)
+Submitting electronic structure for step 140.
+	Gaussian terminated normally in 6.07 s. (GS_NEW)
+Submitted batch job 14486944
+Submitted batch job 14486945
+Submitted batch job 14486946
+Starting forces for state 1
+	Gaussian terminated normally in 6.01 s. (TD_NEW_S1)
+Starting forces for state 3
+	Gaussian terminated normally in 6.10 s. (TD_NEW_S3)
+Starting forces for state 2
+	Gaussian terminated normally in 6.13 s. (TD_NEW_S2)
+Submitted batch job 14486947
+Submitted batch job 14486948
+	Gaussian terminated normally in 7.86 s. (DIMER)
+	TD_NEW_S1 DIM_INFO TIME (BRADEN): 0.05 s
+	TD_NEW_S1 GET_MO TIME: 0.01 s
+	TD_NEW_S1 GET_CI TIME: 0.03 s
+	TD_OLD_S1 GET_MO TIME: 0.01 s
+	TD_OLD_S1 GET_CI TIME: 0.03 s
+	DIMER TIME: 2.21 s
+	G16_NAC.py main: 2.33 s
+	gau_nac() (G16_NAC.py): 0.0 s
+gau_nac prepare 0.0 s
+WFN OVERLAP FORTRAN TOOK 0.12 s
+gau_nac dump 1.0 s
+	gau_nac.worker() (G16_NAC.py): 1.13 s
+	GET_OVERLAP OVERALL TIME (G16_TD.py): 3.48 s
+Orthogonalized [S.T @ S] :
+[[ 1. -0. -0.  0.]
+ [-0.  1.  0. -0.]
+ [-0.  0.  1. -0.]
+ [ 0. -0. -0.  1.]]
+OLD:
+ [[ 9.9999240e-01 -2.9982900e-03 -7.4080000e-04  2.3813800e-03]
+ [ 3.0233100e-03  9.9994143e-01  5.3573900e-03 -8.9046000e-03]
+ [ 2.3119000e-04 -3.4372500e-03  9.7913491e-01  2.0318208e-01]
+ [-2.4526900e-03  9.8147600e-03 -2.0313930e-01  9.7909758e-01]]
+I found a sign error upon phase correcting.
+Index Flip: 0 <--> 1
+NEW:
+ [[ 9.9999240e-01  2.9982900e-03 -7.4080000e-04  2.3813800e-03]
+ [-3.0233100e-03  9.9994143e-01  5.3573900e-03 -8.9046000e-03]
+ [ 2.3119000e-04 -3.4372500e-03  9.7913491e-01  2.0318208e-01]
+ [-2.4526900e-03  9.8147600e-03 -2.0313930e-01  9.7909758e-01]]
+[S.T @ S] after sign fix:
+[[ 1.000e+00 -4.973e-05 -3.239e-05  5.384e-05]
+ [-4.973e-05  1.000e+00 -4.440e-06  1.428e-05]
+ [-3.239e-05 -4.440e-06  1.000e+00  0.000e+00]
+ [ 5.384e-05  1.428e-05  0.000e+00  1.000e+00]]
+Orthogonalized [S.T @ S] :
+[[ 1. -0. -0.  0.]
+ [-0.  1.  0.  0.]
+ [-0.  0.  1.  0.]
+ [ 0.  0.  0.  1.]]
+[S.T @ S] after sign fix and second orthogonalization:
+[[ 1. -0. -0.  0.]
+ [-0.  1.  0.  0.]
+ [-0.  0.  1.  0.]
+ [ 0.  0.  0.  1.]]
+OLD:
+ [[ 9.9999240e-01  3.0231400e-03 -7.2460000e-04  2.3544400e-03]
+ [-2.9981200e-03  9.9994143e-01  5.3595600e-03 -8.9116600e-03]
+ [ 2.4149000e-04 -3.4365200e-03  9.7913491e-01  2.0318210e-01]
+ [-2.4820900e-03  9.8072600e-03 -2.0313932e-01  9.7909758e-01]]
+I found a sign error upon phase correcting.
+Index Flip: 1 <--> 2
+NEW:
+ [[ 9.9999240e-01  3.0231400e-03 -7.2460000e-04  2.3544400e-03]
+ [-2.9981200e-03  9.9994143e-01 -5.3595600e-03 -8.9116600e-03]
+ [ 2.4149000e-04  3.4365200e-03  9.7913491e-01  2.0318210e-01]
+ [-2.4820900e-03  9.8072600e-03 -2.0313932e-01  9.7909758e-01]]
+[S.T @ S] after sign fix:
+[[ 1.00000e+00  1.66000e-06  3.21400e-05  0.00000e+00]
+ [ 1.66000e-06  1.00000e+00 -3.98886e-03  1.39648e-03]
+ [ 3.21400e-05 -3.98886e-03  1.00000e+00  9.55300e-05]
+ [ 0.00000e+00  1.39648e-03  9.55300e-05  1.00000e+00]]
+Orthogonalized [S.T @ S] :
+[[ 1. -0. -0.  0.]
+ [-0.  1. -0. -0.]
+ [-0. -0.  1. -0.]
+ [ 0. -0. -0.  1.]]
+[S.T @ S] after sign fix and second orthogonalization:
+[[ 1. -0. -0.  0.]
+ [-0.  1. -0. -0.]
+ [-0. -0.  1. -0.]
+ [ 0. -0. -0.  1.]]
+OLD:
+ [[ 9.9999241e-01  3.0191900e-03 -7.3476000e-04  2.3523700e-03]
+ [-2.9989100e-03  9.9994367e-01 -3.3647200e-03 -9.6097500e-03]
+ [ 2.2575000e-04  5.2475300e-03  9.7913747e-01  2.0313104e-01]
+ [-2.4788300e-03  8.7183700e-03 -2.0316974e-01  9.7910158e-01]]
+I found a sign error upon phase correcting.
+Index Flip: 1 <--> 3
+NEW:
+ [[ 9.9999241e-01  3.0191900e-03 -7.3476000e-04  2.3523700e-03]
+ [-2.9989100e-03  9.9994367e-01 -3.3647200e-03  9.6097500e-03]
+ [ 2.2575000e-04  5.2475300e-03  9.7913747e-01  2.0313104e-01]
+ [-2.4788300e-03 -8.7183700e-03 -2.0316974e-01  9.7910158e-01]]
+[S.T @ S] after sign fix:
+[[ 1.00000e+00  4.32200e-05 -0.00000e+00 -5.76400e-05]
+ [ 4.32200e-05  1.00000e+00  3.54262e-03  2.14608e-03]
+ [-0.00000e+00  3.54262e-03  1.00000e+00 -6.46700e-05]
+ [-5.76400e-05  2.14608e-03 -6.46700e-05  1.00000e+00]]
+Orthogonalized [S.T @ S] :
+[[ 1.  0.  0. -0.]
+ [ 0.  1. -0. -0.]
+ [ 0. -0.  1.  0.]
+ [-0. -0.  0.  1.]]
+[S.T @ S] after sign fix and second orthogonalization:
+[[ 1.  0.  0. -0.]
+ [ 0.  1. -0. -0.]
+ [ 0. -0.  1.  0.]
+ [-0. -0.  0.  1.]]
+OLD:
+ [[ 9.9999241e-01  2.9963300e-03 -7.3997000e-04  2.3779600e-03]
+ [-3.0202900e-03  9.9994581e-01 -5.1356800e-03  8.5364900e-03]
+ [ 2.3156000e-04  3.2951500e-03  9.7913994e-01  2.0316022e-01]
+ [-2.4504000e-03 -9.4091900e-03 -2.0312081e-01  9.7910541e-01]]
+I found a sign error upon phase correcting.
+Index Flip: 2 <--> 3
+NEW:
+ [[ 9.9999241e-01  2.9963300e-03 -7.3997000e-04  2.3779600e-03]
+ [-3.0202900e-03  9.9994581e-01 -5.1356800e-03  8.5364900e-03]
+ [ 2.3156000e-04  3.2951500e-03  9.7913994e-01 -2.0316022e-01]
+ [-2.4504000e-03 -9.4091900e-03  2.0312081e-01  9.7910541e-01]]
+[S.T @ S] after sign fix:
+[[ 1.00000e+00  0.00000e+00 -9.95460e-04 -9.40900e-05]
+ [ 0.00000e+00  1.00000e+00 -3.82241e-03 -1.33889e-03]
+ [-9.95460e-04 -3.82241e-03  1.00000e+00 -9.12000e-05]
+ [-9.40900e-05 -1.33889e-03 -9.12000e-05  1.00000e+00]]
+Orthogonalized [S.T @ S] :
+[[1. 0. 0. 0.]
+ [0. 1. 0. 0.]
+ [0. 0. 1. 0.]
+ [0. 0. 0. 1.]]
+[S.T @ S] after sign fix and second orthogonalization:
+[[1. 0. 0. 0.]
+ [0. 1. 0. 0.]
+ [0. 0. 1. 0.]
+ [0. 0. 0. 1.]]
+	GET_NACT OVERALL TIME (G16_TD.py): 0.01 s
+	GET_APPROX NACR OVERALL TIME (G16_TD.py): 0.0 s
+Total QM took 24.74 s.
+Electronic propagation took 0.01 s.
+Electronic Norm.: 1.0
+Population in ACTIVE_STATE (AS = S1) increased. Skipping hop check.
+Using active state forces. F = F(S1)
+Total MD Step took 24.75 s.
+Using active state forces. F = F(S1)
+Submitting electronic structure for step 141.
+	Gaussian terminated normally in 5.17 s. (GS_NEW)
+Submitted batch job 14486949
+Submitted batch job 14486950
+Submitted batch job 14486951
+Starting forces for state 2
+	Gaussian terminated normally in 8.01 s. (TD_NEW_S2)
+Starting forces for state 3
+	Gaussian terminated normally in 8.19 s. (TD_NEW_S3)
+Starting forces for state 1
+	Gaussian terminated normally in 10.20 s. (TD_NEW_S1)
+Submitted batch job 14486953
+Submitted batch job 14486954
+	Gaussian terminated normally in 6.13 s. (DIMER)
+	TD_NEW_S1 DIM_INFO TIME (BRADEN): 0.06 s
+	TD_NEW_S1 GET_MO TIME: 0.01 s
+	TD_NEW_S1 GET_CI TIME: 0.03 s
+	TD_OLD_S1 GET_MO TIME: 0.01 s
+	TD_OLD_S1 GET_CI TIME: 0.03 s
+	DIMER TIME: 2.23 s
+	G16_NAC.py main: 2.36 s
+	gau_nac() (G16_NAC.py): 0.0 s
+gau_nac prepare 0.0 s
+WFN OVERLAP FORTRAN TOOK 0.12 s
+gau_nac dump 1.02 s
+	gau_nac.worker() (G16_NAC.py): 1.14 s
+	GET_OVERLAP OVERALL TIME (G16_TD.py): 3.53 s
+Orthogonalized [S.T @ S] :
+[[ 1.  0. -0. -0.]
+ [ 0.  1.  0.  0.]
+ [-0.  0.  1. -0.]
+ [-0.  0. -0.  1.]]
+OLD:
+ [[ 9.9999258e-01 -2.9464700e-03  2.4785300e-03  1.4105000e-04]
+ [ 2.9436900e-03  9.9998886e-01  9.1282000e-04  3.5743900e-03]
+ [-2.3901700e-03 -1.1368000e-04  9.7647901e-01 -2.1559921e-01]
+ [-6.8295000e-04 -3.6851300e-03  2.1559631e-01  9.7647539e-01]]
+I found a sign error upon phase correcting.
+Index Flip: 0 <--> 1
+NEW:
+ [[ 9.9999258e-01  2.9464700e-03  2.4785300e-03  1.4105000e-04]
+ [-2.9436900e-03  9.9998886e-01  9.1282000e-04  3.5743900e-03]
+ [-2.3901700e-03 -1.1368000e-04  9.7647901e-01 -2.1559921e-01]
+ [-6.8295000e-04 -3.6851300e-03  2.1559631e-01  9.7647539e-01]]
+[S.T @ S] after sign fix:
+[[ 1.000e+00  5.580e-06 -5.370e-06 -2.104e-05]
+ [ 5.580e-06  1.000e+00  1.461e-05  8.300e-07]
+ [-5.370e-06  1.461e-05  1.000e+00 -0.000e+00]
+ [-2.104e-05  8.300e-07 -0.000e+00  1.000e+00]]
+Orthogonalized [S.T @ S] :
+[[ 1. -0.  0.  0.]
+ [-0.  1. -0. -0.]
+ [ 0. -0.  1.  0.]
+ [ 0. -0.  0.  1.]]
+[S.T @ S] after sign fix and second orthogonalization:
+[[ 1. -0.  0.  0.]
+ [-0.  1. -0. -0.]
+ [ 0. -0.  1.  0.]
+ [ 0. -0.  0.  1.]]
+OLD:
+ [[ 9.9999258e-01  2.9436600e-03  2.4812000e-03  1.5157000e-04]
+ [-2.9464400e-03  9.9998886e-01  9.0551000e-04  3.5739400e-03]
+ [-2.3898200e-03 -1.2071000e-04  9.7647900e-01 -2.1559924e-01]
+ [-6.7209000e-04 -3.6871100e-03  2.1559634e-01  9.7647538e-01]]
+I found a sign error upon phase correcting.
+Index Flip: 0 <--> 2
+NEW:
+ [[ 9.9999258e-01  2.9436600e-03 -2.4812000e-03  1.5157000e-04]
+ [-2.9464400e-03  9.9998886e-01  9.0551000e-04  3.5739400e-03]
+ [ 2.3898200e-03 -1.2071000e-04  9.7647900e-01 -2.1559924e-01]
+ [-6.7209000e-04 -3.6871100e-03  2.1559634e-01  9.7647538e-01]]
+[S.T @ S] after sign fix:
+[[ 1.00000e+00 -5.80000e-07 -2.95140e-04 -1.03049e-03]
+ [-5.80000e-07  1.00000e+00 -1.46100e-05 -0.00000e+00]
+ [-2.95140e-04 -1.46100e-05  1.00000e+00 -7.50000e-07]
+ [-1.03049e-03 -0.00000e+00 -7.50000e-07  1.00000e+00]]
+Orthogonalized [S.T @ S] :
+[[ 1.  0.  0.  0.]
+ [ 0.  1. -0. -0.]
+ [ 0. -0.  1. -0.]
+ [ 0. -0. -0.  1.]]
+[S.T @ S] after sign fix and second orthogonalization:
+[[ 1.  0.  0.  0.]
+ [ 0.  1. -0. -0.]
+ [ 0. -0.  1. -0.]
+ [ 0. -0. -0.  1.]]
+OLD:
+ [[ 9.9999272e-01  2.9439300e-03 -2.3336100e-03  6.6681000e-04]
+ [-2.9441700e-03  9.9998887e-01  9.1238000e-04  3.5724300e-03]
+ [ 2.4228300e-03 -1.1358000e-04  9.7647928e-01 -2.1559761e-01]
+ [-1.3715000e-04 -3.6855400e-03  2.1559670e-01  9.7647553e-01]]
+I found a sign error upon phase correcting.
+Index Flip: 1 <--> 2
+NEW:
+ [[ 9.9999272e-01  2.9439300e-03 -2.3336100e-03  6.6681000e-04]
+ [-2.9441700e-03  9.9998887e-01 -9.1238000e-04  3.5724300e-03]
+ [ 2.4228300e-03  1.1358000e-04  9.7647928e-01 -2.1559761e-01]
+ [-1.3715000e-04 -3.6855400e-03  2.1559670e-01  9.7647553e-01]]
+[S.T @ S] after sign fix:
+[[ 1.00000e+00  5.50000e-07  5.37000e-06  0.00000e+00]
+ [ 5.50000e-07  1.00000e+00 -1.60292e-03 -4.89700e-05]
+ [ 5.37000e-06 -1.60292e-03  1.00000e+00 -6.52000e-06]
+ [ 0.00000e+00 -4.89700e-05 -6.52000e-06  1.00000e+00]]
+Orthogonalized [S.T @ S] :
+[[ 1. -0.  0.  0.]
+ [-0.  1. -0.  0.]
+ [ 0. -0.  1. -0.]
+ [ 0.  0. -0.  1.]]
+[S.T @ S] after sign fix and second orthogonalization:
+[[ 1. -0.  0.  0.]
+ [-0.  1. -0.  0.]
+ [ 0. -0.  1. -0.]
+ [ 0.  0. -0.  1.]]
+	GET_NACT OVERALL TIME (G16_TD.py): 0.01 s
+	GET_APPROX NACR OVERALL TIME (G16_TD.py): 0.0 s
+Total QM took 26.12 s.
+Electronic propagation took 0.01 s.
+Electronic Norm.: 1.0
+Population in ACTIVE_STATE (AS = S1) increased. Skipping hop check.
+Using active state forces. F = F(S1)
+Total MD Step took 26.13 s.
+Using active state forces. F = F(S1)
+Submitting electronic structure for step 142.
+	Gaussian terminated normally in 6.10 s. (GS_NEW)
+Submitted batch job 14486955
+Submitted batch job 14486956
+Submitted batch job 14486957
+Starting forces for state 2
+	Gaussian terminated normally in 7.01 s. (TD_NEW_S2)
+Starting forces for state 1
+	Gaussian terminated normally in 7.47 s. (TD_NEW_S1)
+Starting forces for state 3
+	Gaussian terminated normally in 10.13 s. (TD_NEW_S3)
+Submitted batch job 14486958
+Submitted batch job 14486959
+	Gaussian terminated normally in 5.11 s. (DIMER)
+	TD_NEW_S1 DIM_INFO TIME (BRADEN): 0.07 s
+	TD_NEW_S1 GET_MO TIME: 0.01 s
+	TD_NEW_S1 GET_CI TIME: 0.03 s
+	TD_OLD_S1 GET_MO TIME: 0.01 s
+	TD_OLD_S1 GET_CI TIME: 0.03 s
+	DIMER TIME: 2.2 s
+	G16_NAC.py main: 2.34 s
+	gau_nac() (G16_NAC.py): 0.0 s
+gau_nac prepare 0.0 s
+WFN OVERLAP FORTRAN TOOK 0.12 s
+gau_nac dump 1.0 s
+	gau_nac.worker() (G16_NAC.py): 1.13 s
+	GET_OVERLAP OVERALL TIME (G16_TD.py): 3.5 s
+Orthogonalized [S.T @ S] :
+[[ 1.  0. -0.  0.]
+ [ 0.  1.  0. -0.]
+ [-0.  0.  1.  0.]
+ [ 0. -0.  0.  1.]]
+OLD:
+ [[ 9.9999613e-01 -2.1947400e-03 -1.5557000e-04  1.7047800e-03]
+ [ 2.1886300e-03  9.9998633e-01 -3.4594800e-03  3.2531700e-03]
+ [ 4.0238000e-04  3.8818800e-03  9.9004722e-01 -1.4068144e-01]
+ [-1.6719200e-03 -2.7304500e-03  1.4069295e-01  9.9004810e-01]]
+I found a sign error upon phase correcting.
+Index Flip: 0 <--> 1
+NEW:
+ [[ 9.9999613e-01  2.1947400e-03 -1.5557000e-04  1.7047800e-03]
+ [-2.1886300e-03  9.9998633e-01 -3.4594800e-03  3.2531700e-03]
+ [ 4.0238000e-04  3.8818800e-03  9.9004722e-01 -1.4068144e-01]
+ [-1.6719200e-03 -2.7304500e-03  1.4069295e-01  9.9004810e-01]]
+[S.T @ S] after sign fix:
+[[ 1.000e+00  1.225e-05  1.514e-05 -1.424e-05]
+ [ 1.225e-05  1.000e+00 -6.800e-07  7.480e-06]
+ [ 1.514e-05 -6.800e-07  1.000e+00  0.000e+00]
+ [-1.424e-05  7.480e-06  0.000e+00  1.000e+00]]
+Orthogonalized [S.T @ S] :
+[[ 1.  0. -0.  0.]
+ [ 0.  1.  0. -0.]
+ [-0.  0.  1. -0.]
+ [ 0. -0. -0.  1.]]
+[S.T @ S] after sign fix and second orthogonalization:
+[[ 1.  0. -0.  0.]
+ [ 0.  1.  0. -0.]
+ [-0.  0.  1. -0.]
+ [ 0. -0. -0.  1.]]
+	GET_NACT OVERALL TIME (G16_TD.py): 0.0 s
+	GET_APPROX NACR OVERALL TIME (G16_TD.py): 0.0 s
+Total QM took 26.74 s.
+Electronic propagation took 0.01 s.
+Electronic Norm.: 1.0
+Population in ACTIVE_STATE (AS = S1) increased. Skipping hop check.
+Using active state forces. F = F(S1)
+Total MD Step took 26.75 s.
+Using active state forces. F = F(S1)
+Submitting electronic structure for step 143.
+	Gaussian terminated normally in 5.06 s. (GS_NEW)
+Submitted batch job 14486960
+Submitted batch job 14486961
+Submitted batch job 14486962
+Starting forces for state 1
+	Gaussian terminated normally in 8.01 s. (TD_NEW_S1)
+Starting forces for state 2
+	Gaussian terminated normally in 9.17 s. (TD_NEW_S2)
+Starting forces for state 3
+	Gaussian terminated normally in 9.12 s. (TD_NEW_S3)
+Submitted batch job 14486963
+Submitted batch job 14486965
+	Gaussian terminated normally in 5.83 s. (DIMER)
+	TD_NEW_S1 DIM_INFO TIME (BRADEN): 0.06 s
+	TD_NEW_S1 GET_MO TIME: 0.01 s
+	TD_NEW_S1 GET_CI TIME: 0.03 s
+	TD_OLD_S1 GET_MO TIME: 0.01 s
+	TD_OLD_S1 GET_CI TIME: 0.03 s
+	DIMER TIME: 2.19 s
+	G16_NAC.py main: 2.32 s
+	gau_nac() (G16_NAC.py): 0.0 s
+gau_nac prepare 0.0 s
+WFN OVERLAP FORTRAN TOOK 0.12 s
+gau_nac dump 1.01 s
+	gau_nac.worker() (G16_NAC.py): 1.14 s
+	GET_OVERLAP OVERALL TIME (G16_TD.py): 3.49 s
+Orthogonalized [S.T @ S] :
+[[ 1. -0. -0.  0.]
+ [-0.  1. -0. -0.]
+ [-0. -0.  1. -0.]
+ [ 0. -0. -0.  1.]]
+OLD:
+ [[ 9.9999782e-01 -1.9953400e-03 -9.5720000e-05 -6.1573000e-04]
+ [ 1.9948000e-03  9.9999689e-01 -1.3440200e-03 -6.6343000e-04]
+ [ 4.0430000e-05  1.2762200e-03  9.9564156e-01 -9.3253690e-02]
+ [ 6.2354000e-04  7.8463000e-04  9.3252700e-02  9.9564197e-01]]
+I found a sign error upon phase correcting.
+Index Flip: 0 <--> 1
+NEW:
+ [[ 9.9999782e-01  1.9953400e-03 -9.5720000e-05 -6.1573000e-04]
+ [-1.9948000e-03  9.9999689e-01 -1.3440200e-03 -6.6343000e-04]
+ [ 4.0430000e-05  1.2762200e-03  9.9564156e-01 -9.3253690e-02]
+ [ 6.2354000e-04  7.8463000e-04  9.3252700e-02  9.9564197e-01]]
+[S.T @ S] after sign fix:
+[[ 1.00e+00  1.08e-06  5.36e-06  2.65e-06]
+ [ 1.08e-06  1.00e+00 -3.80e-07 -2.46e-06]
+ [ 5.36e-06 -3.80e-07  1.00e+00 -0.00e+00]
+ [ 2.65e-06 -2.46e-06 -0.00e+00  1.00e+00]]
+Orthogonalized [S.T @ S] :
+[[ 1. -0. -0. -0.]
+ [-0.  1. -0.  0.]
+ [-0. -0.  1. -0.]
+ [-0.  0. -0.  1.]]
+[S.T @ S] after sign fix and second orthogonalization:
+[[ 1. -0. -0. -0.]
+ [-0.  1. -0.  0.]
+ [-0. -0.  1. -0.]
+ [-0.  0. -0.  1.]]
+OLD:
+ [[ 9.9999782e-01  1.9948000e-03 -9.8400000e-05 -6.1705000e-04]
+ [-1.9953300e-03  9.9999689e-01 -1.3438300e-03 -6.6220000e-04]
+ [ 3.7880000e-05  1.2763000e-03  9.9564156e-01 -9.3253690e-02]
+ [ 6.2197000e-04  7.8587000e-04  9.3252700e-02  9.9564197e-01]]
+I found a sign error upon phase correcting.
+Index Flip: 0 <--> 3
+NEW:
+ [[ 9.9999782e-01  1.9948000e-03 -9.8400000e-05  6.1705000e-04]
+ [-1.9953300e-03  9.9999689e-01 -1.3438300e-03 -6.6220000e-04]
+ [ 3.7880000e-05  1.2763000e-03  9.9564156e-01 -9.3253690e-02]
+ [-6.2197000e-04  7.8587000e-04  9.3252700e-02  9.9564197e-01]]
+[S.T @ S] after sign fix:
+[[ 1.00e+00 -9.80e-07 -1.16e-04 -4.42e-06]
+ [-9.80e-07  1.00e+00 -0.00e+00  2.46e-06]
+ [-1.16e-04 -0.00e+00  1.00e+00 -1.20e-07]
+ [-4.42e-06  2.46e-06 -1.20e-07  1.00e+00]]
+Orthogonalized [S.T @ S] :
+[[ 1. -0. -0.  0.]
+ [-0.  1.  0. -0.]
+ [-0.  0.  1. -0.]
+ [ 0. -0. -0.  1.]]
+[S.T @ S] after sign fix and second orthogonalization:
+[[ 1. -0. -0.  0.]
+ [-0.  1.  0. -0.]
+ [-0.  0.  1. -0.]
+ [ 0. -0. -0.  1.]]
+OLD:
+ [[ 9.9999782e-01  1.9952800e-03 -4.0400000e-05  6.1926000e-04]
+ [-1.9949300e-03  9.9999689e-01 -1.3439400e-03 -6.6343000e-04]
+ [ 9.5430000e-05  1.2764100e-03  9.9564156e-01 -9.3253630e-02]
+ [-6.1436000e-04  7.8465000e-04  9.3252720e-02  9.9564197e-01]]
+I found a sign error upon phase correcting.
+Index Flip: 1 <--> 3
+NEW:
+ [[ 9.9999782e-01  1.9952800e-03 -4.0400000e-05  6.1926000e-04]
+ [-1.9949300e-03  9.9999689e-01 -1.3439400e-03  6.6343000e-04]
+ [ 9.5430000e-05  1.2764100e-03  9.9564156e-01 -9.3253630e-02]
+ [-6.1436000e-04 -7.8465000e-04  9.3252720e-02  9.9564197e-01]]
+[S.T @ S] after sign fix:
+[[ 1.0000e+00  9.6000e-07 -0.0000e+00 -2.6500e-06]
+ [ 9.6000e-07  1.0000e+00 -1.4634e-04 -2.3559e-04]
+ [-0.0000e+00 -1.4634e-04  1.0000e+00 -1.7800e-06]
+ [-2.6500e-06 -2.3559e-04 -1.7800e-06  1.0000e+00]]
+Orthogonalized [S.T @ S] :
+[[ 1.  0.  0. -0.]
+ [ 0.  1. -0. -0.]
+ [ 0. -0.  1.  0.]
+ [-0. -0.  0.  1.]]
+[S.T @ S] after sign fix and second orthogonalization:
+[[ 1.  0.  0. -0.]
+ [ 0.  1. -0. -0.]
+ [ 0. -0.  1.  0.]
+ [-0. -0.  0.  1.]]
+	GET_NACT OVERALL TIME (G16_TD.py): 0.01 s
+	GET_APPROX NACR OVERALL TIME (G16_TD.py): 0.0 s
+Total QM took 25.44 s.
+Electronic propagation took 0.01 s.
+Electronic Norm.: 1.0
+Population in ACTIVE_STATE (AS = S1) increased. Skipping hop check.
+Using active state forces. F = F(S1)
+Total MD Step took 25.45 s.
+Using active state forces. F = F(S1)
+Submitting electronic structure for step 144.
+	Gaussian terminated normally in 6.14 s. (GS_NEW)
+Submitted batch job 14486967
+Submitted batch job 14486968
+Submitted batch job 14486969
+Starting forces for state 3
+	Gaussian terminated normally in 6.01 s. (TD_NEW_S3)
+Starting forces for state 2
+	Gaussian terminated normally in 6.09 s. (TD_NEW_S2)
+Starting forces for state 1
+	Gaussian terminated normally in 8.12 s. (TD_NEW_S1)
+Submitted batch job 14486970
+Submitted batch job 14486971
+	Gaussian terminated normally in 5.10 s. (DIMER)
+	TD_NEW_S1 DIM_INFO TIME (BRADEN): 0.06 s
+	TD_NEW_S1 GET_MO TIME: 0.01 s
+	TD_NEW_S1 GET_CI TIME: 0.03 s
+	TD_OLD_S1 GET_MO TIME: 0.01 s
+	TD_OLD_S1 GET_CI TIME: 0.03 s
+	DIMER TIME: 2.19 s
+	G16_NAC.py main: 2.32 s
+	gau_nac() (G16_NAC.py): 0.0 s
+gau_nac prepare 0.0 s
+WFN OVERLAP FORTRAN TOOK 0.12 s
+gau_nac dump 1.0 s
+	gau_nac.worker() (G16_NAC.py): 1.13 s
+	GET_OVERLAP OVERALL TIME (G16_TD.py): 3.48 s
+Orthogonalized [S.T @ S] :
+[[ 1.  0.  0.  0.]
+ [ 0.  1.  0. -0.]
+ [ 0.  0.  1.  0.]
+ [ 0. -0.  0.  1.]]
+OLD:
+ [[ 9.9999624e-01 -1.5460800e-03 -1.9148700e-03 -1.2102900e-03]
+ [ 1.4690300e-03  9.9921180e-01 -3.9668840e-02  1.0337000e-04]
+ [ 1.7880700e-03  3.9298240e-02  9.8958224e-01 -1.3848983e-01]
+ [ 1.4719500e-03  5.3891800e-03  1.3838243e-01  9.9036311e-01]]
+I found a sign error upon phase correcting.
+Index Flip: 0 <--> 1
+NEW:
+ [[ 9.9999624e-01  1.5460800e-03 -1.9148700e-03 -1.2102900e-03]
+ [-1.4690300e-03  9.9921180e-01 -3.9668840e-02  1.0337000e-04]
+ [ 1.7880700e-03  3.9298240e-02  9.8958224e-01 -1.3848983e-01]
+ [ 1.4719500e-03  5.3891800e-03  1.3838243e-01  9.9036311e-01]]
+[S.T @ S] after sign fix:
+[[ 1.0000e+00  1.5640e-04  1.1655e-04 -3.0000e-07]
+ [ 1.5640e-04  1.0000e+00 -5.9200e-06 -3.7400e-06]
+ [ 1.1655e-04 -5.9200e-06  1.0000e+00  0.0000e+00]
+ [-3.0000e-07 -3.7400e-06  0.0000e+00  1.0000e+00]]
+Orthogonalized [S.T @ S] :
+[[ 1. -0.  0. -0.]
+ [-0.  1. -0. -0.]
+ [ 0. -0.  1.  0.]
+ [-0. -0.  0.  1.]]
+[S.T @ S] after sign fix and second orthogonalization:
+[[ 1. -0.  0. -0.]
+ [-0.  1. -0. -0.]
+ [ 0. -0.  1.  0.]
+ [-0. -0.  0.  1.]]
+OLD:
+ [[ 9.9999624e-01  1.4678700e-03 -1.9731400e-03 -1.2101400e-03]
+ [-1.5448600e-03  9.9921180e-01 -3.9665790e-02  1.0524000e-04]
+ [ 1.7273100e-03  3.9300780e-02  9.8958226e-01 -1.3848975e-01]
+ [ 1.4636100e-03  5.3913300e-03  1.3838236e-01  9.9036312e-01]]
+I found a sign error upon phase correcting.
+Index Flip: 0 <--> 3
+NEW:
+ [[ 9.9999624e-01  1.4678700e-03 -1.9731400e-03  1.2101400e-03]
+ [-1.5448600e-03  9.9921180e-01 -3.9665790e-02  1.0524000e-04]
+ [ 1.7273100e-03  3.9300780e-02  9.8958226e-01 -1.3848975e-01]
+ [-1.4636100e-03  5.3913300e-03  1.3838236e-01  9.9036312e-01]]
+[S.T @ S] after sign fix:
+[[ 1.0000e+00 -1.5780e-05 -4.0508e-04 -4.7875e-04]
+ [-1.5780e-05  1.0000e+00 -0.0000e+00  3.5500e-06]
+ [-4.0508e-04 -0.0000e+00  1.0000e+00 -4.7800e-06]
+ [-4.7875e-04  3.5500e-06 -4.7800e-06  1.0000e+00]]
+Orthogonalized [S.T @ S] :
+[[ 1. -0. -0. -0.]
+ [-0.  1.  0.  0.]
+ [-0.  0.  1.  0.]
+ [-0.  0.  0.  1.]]
+[S.T @ S] after sign fix and second orthogonalization:
+[[ 1. -0. -0. -0.]
+ [-0.  1.  0.  0.]
+ [-0.  0.  1.  0.]
+ [-0.  0.  0.  1.]]
+	GET_NACT OVERALL TIME (G16_TD.py): 0.01 s
+	GET_APPROX NACR OVERALL TIME (G16_TD.py): 0.0 s
+Total QM took 24.04 s.
+Electronic propagation took 0.01 s.
+Electronic Norm.: 1.0
+Population in ACTIVE_STATE (AS = S1) increased. Skipping hop check.
+Using active state forces. F = F(S1)
+Total MD Step took 24.05 s.
+Using active state forces. F = F(S1)
+Submitting electronic structure for step 145.
+	Gaussian terminated normally in 5.07 s. (GS_NEW)
+Submitted batch job 14486972
+Submitted batch job 14486973
+Submitted batch job 14486974
+Starting forces for state 2
+	Gaussian terminated normally in 5.01 s. (TD_NEW_S2)
+Starting forces for state 3
+	Gaussian terminated normally in 7.22 s. (TD_NEW_S3)
+Starting forces for state 1
+	Gaussian terminated normally in 10.11 s. (TD_NEW_S1)
+Submitted batch job 14486976

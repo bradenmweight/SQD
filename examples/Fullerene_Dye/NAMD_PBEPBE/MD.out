@@ -1,0 +1,38 @@
+Submitted batch job 14509487
+Submitted batch job 14509516
+MANDATORY INPUT VARIABLES:
+  NStates =
+		 6
+  NSteps =
+		 1000
+  dtI =
+		 0.5 (fs)
+  ESTEPS =
+		 500
+  ISTATE =
+		 4
+  FUNCTIONAL =
+		 PBEPBE
+  BASIS_SET =
+		 STO-3G
+  CHARGE =
+		 0
+  MULTIPLICITY =
+		 1
+  MEMORY =
+		 30 (GB)
+  PARALLEL_FORCES =
+		 True
+  NAMD_METHOD =
+		 EH
+  EL_PROP =
+		 VV
+  MD_ENSEMBLE =
+		 NVE
+  VELOC =
+		 READ
+Input looks good.
+Submitting electronic structure for step 0.
+	Gaussian terminated normally in 578.09 s. (GS_NEW)
+	Gaussian terminated normally in 1655.67 s. (TD_NEW_S1)
+Using CPA forces. F = F(G.S.)

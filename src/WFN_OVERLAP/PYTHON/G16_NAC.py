@@ -10,9 +10,9 @@ import time
 import numpy as np
 
 from read_g16_dimer_ao_overlap import get_AO_Matrix
+from read_g16_mo_data import get_MO_MATRIX
 from gau_nac import gau_nac
 
-#sys.path.append("/scratch/bweight/software/many_molecule_many_mode_NAMD/src/WFN_OVERLAP/PYTHON/Tools/")
 import tools
 
 
@@ -647,7 +647,18 @@ class gau_log_parser():
     
         
         return        
-        
+
+    def __read_write_mo_matrix_BRADEN(self):
+
+        MO_ENERGY, MO_COEFFS = get_MO_MATRIX()
+        file_out=open('mo.dat', 'w')
+        file_out.write('#  MO coefficient (i_MO, j_AO, M_ij)    \n')
+        for i_mo_1 in range(len(MO_ENERGY)) :
+            file_out.write('MO:'+str(i_mo_1+1)+'   '+str(MO_ENERGY[i_mo_1])+'\n')
+            for i_mo_2 in range(len(MO_ENERGY)) :  
+                file_out.write(''+str(i_mo_1+1)+'    '+str(i_mo_2+1)+'    '+ \
+                               str(MO_COEFFS[i_mo_1,i_mo_2])+' \n')            
+        file_out.close()
 
     def __wrt_mo_matrix(self):
         """ wrt done mo matrix in specific format """
@@ -674,14 +685,12 @@ class gau_log_parser():
         """
         close shell and open shell.
         """
-        # init. matrix for mo.
-        self.__init_mo_matrix()
-        
-        # first, check open or close shell imp. later
-        # self.__check_spin()
-        # i/o man.
-        self.__read_mo_matrix()
-        self.__wrt_mo_matrix()
+
+        #self.__init_mo_matrix()
+        #self.__read_mo_matrix()
+        #self.__wrt_mo_matrix()
+
+        self.__read_write_mo_matrix_BRADEN()
         
         return
         
@@ -791,7 +800,7 @@ class gau_log_parser():
                 break
                             
             i_ci_1, i_ci_2, value, flag = self.__assign_ci_parm(line)
-            # print i_ci_1, i_ci_2
+            #print (i_ci_1, flag, i_ci_2, value )
             # the other trans ci vector was zero by default
             if flag == "ia":
                 self.ci['state'][i_state]['trans_ia'][i_ci_1][i_ci_2] = value
@@ -915,6 +924,9 @@ class gau_log_parser():
         n_state = self.dim['n_state']        
         n_index = n_occ*n_vir < 20 and n_occ*n_vir or 20    # max. 20 ci vectors
         self.ci['n_index'] = n_index    # mip value
+        #print(f"We are keeping only the largest {self.ci['n_index']} CI coefficients to compute overlap.")
+        # How do we know 20 is good enough for all systems ? ~BMW
+        # Seems to be good enough to capture >99.999 % for DMABN molecule.
         
 
         #print("CI vector")
@@ -957,9 +969,9 @@ class gau_log_parser():
             norm = 0.0
             for i_index in range(n_index) :
                 norm  =   norm + ci_info_state[i_index]['civector']**2
-            #print("Norm (Saved CI vector):", norm)
+            print(f"The largest {self.ci['n_index']} CI coefficients captures {round(norm)} Slater population.")
 
-            for i_index in range(n_index) :
+            for i_index in range(n_index):
                 file_out.write('S'+str(ci_info_state[i_index]['state'])+'  '+ \
                                 str(ci_info_state[i_index]['civector'])+'    '+ \
                                 str(ci_info_state[i_index]['index_occ'])+'   '+ \
@@ -1090,4 +1102,5 @@ def main(DYN_PROPERTIES):
     return DYN_PROPERTIES
 
 if __name__ == "__main__":
-    main()
+    ao = gau_log_parser()
+    ao.get_mo()

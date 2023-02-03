@@ -70,8 +70,8 @@ def save_data(DYN_PROPERTIES):
         with open("MD_OUTPUT/Population.dat","a") as file01:
             POP = np.real(properties.get_density_matrix( DYN_PROPERTIES )[np.diag_indices(NStates)])
             PSUM = np.sum(POP)
-            AS = DYN_PROPERTIES['ACTIVE_STATE']
             if ( DYN_PROPERTIES['NAMD_METHOD'] in ["GFSH"] ):
+                AS = DYN_PROPERTIES['ACTIVE_STATE']
                 file01.write( f"%d\t%d\t" % (DYN_PROPERTIES['MD_STEP'], AS) +  " ".join(map("{:2.8f}".format,POP )) + "  %2.8f" % (PSUM) + "\n" )
             else:
                 file01.write( f"{DYN_PROPERTIES['MD_STEP']}  " +  " ".join(map("{:2.8f}".format,POP )) + "  %2.8f" % (PSUM) + "\n" )

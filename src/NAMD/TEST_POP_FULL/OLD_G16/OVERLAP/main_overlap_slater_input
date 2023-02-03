@@ -1,0 +1,16 @@
+                        read (*,*)  
+21               read (*,*) n_atom 
+54                 read (*,*) n_ao 
+28               read (*,*) n_ele_alpha 
+28               read (*,*) n_ele_beta 
+                        read (*,*)  
+5               read (*,*) n_state 
+20               read (*,*) n_csf 
+                        read (*,*)  
+1                       read (*,*)  type_input  
+ci_1.dat                read (*,*)  filename_input1  
+ci_2.dat                read (*,*)  filename_input2  
+overlap.dat             read (*,*)  filename_input2  
+                        read (*,*)  
+0                       read (*,*) output_level  
+ci_overlap.dat          read (*,*) filename_output  

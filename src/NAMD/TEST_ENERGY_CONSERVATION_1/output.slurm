@@ -1,2 +1,0 @@
-sbatch: error: slurm_receive_msg: Socket timed out on send/recv operation
-sbatch: error: Batch job submission failed: Socket timed out on send/recv operation

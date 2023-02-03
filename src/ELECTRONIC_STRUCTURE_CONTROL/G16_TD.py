@@ -117,23 +117,23 @@ def generate_inputs(DYN_PROPERTIES):
         # Include one additional excited state even though we only perform NAMD on NStates-1 excied states to converge TD-DFT
         if ( DYN_PROPERTIES["CPA"] == True ):
             if ( FUNCTIONAL in ["DFTB", "DFTBA"] ):
-                #file01.write(f"# {FUNCTIONAL} SCF=XQC TD=(singlets,nstates={NStates},root=1) nosym guess=read\n\n")
+                file01.write(f"# {FUNCTIONAL} SCF=XQC TD=(singlets,nstates={NStates},root=1) nosym IOp(9/40=3) guess=read\n\n")
                 ### WHY IS POP=FULL NEEDED ??? ~BMW  Overlaps are broken if we do not turn on... ###
-                file01.write(f"# {FUNCTIONAL} SCF=XQC TD=(singlets,nstates={NStates},root=1) nosym pop=full guess=read\n\n")
+                #file01.write(f"# {FUNCTIONAL} SCF=XQC TD=(singlets,nstates={NStates},root=1) nosym pop=full guess=read\n\n")
             else:
-                #file01.write(f"# {FUNCTIONAL}/{BASIS_SET} SCF=XQC TD=(singlets,nstates={NStates},root=1) nosym guess=read\n\n")
+                file01.write(f"# {FUNCTIONAL}/{BASIS_SET} SCF=XQC TD=(singlets,nstates={NStates},root=1) nosym IOp(9/40=3) guess=read\n\n")
                 ### WHY IS POP=FULL NEEDED ??? ~BMW  Overlaps are broken if we do not turn on... ###
-                file01.write(f"# {FUNCTIONAL}/{BASIS_SET} SCF=XQC TD=(singlets,Conver=4,nstates={NStates},root=1) nosym pop=full guess=read\n\n") ### MAIN LINE ###
+                #file01.write(f"# {FUNCTIONAL}/{BASIS_SET} SCF=XQC TD=(singlets,Conver=4,nstates={NStates},root=1) nosym pop=full guess=read\n\n") ### MAIN LINE ###
             
         else:
             if ( FUNCTIONAL in ["DFTB", "DFTBA"] ):
-                #file01.write(f"# {FUNCTIONAL} SCF=XQC TD=(singlets,Conver=4,nstates={NStates},root=1) FORCE nosym guess=read\n\n")
+                file01.write(f"# {FUNCTIONAL} SCF=XQC TD=(singlets,Conver=4,nstates={NStates},root=1) FORCE nosym IOp(9/40=3) guess=read\n\n")
                 ### WHY IS POP=FULL NEEDED ??? ~BMW  Overlaps are broken if we do not turn on... ###
-                file01.write(f"# {FUNCTIONAL} SCF=XQC TD=(singlets,Conver=4,nstates={NStates},root=1) FORCE nosym pop=full guess=read\n\n")
+                #file01.write(f"# {FUNCTIONAL} SCF=XQC TD=(singlets,Conver=4,nstates={NStates},root=1) FORCE nosym pop=full guess=read\n\n")
             else:
-                #file01.write(f"# {FUNCTIONAL}/{BASIS_SET} SCF=XQC TD=(singlets,Conver=4,nstates={NStates},root=1) FORCE nosym guess=read\n\n")
+                file01.write(f"# {FUNCTIONAL}/{BASIS_SET} SCF=XQC TD=(singlets,Conver=4,nstates={NStates},root=1) FORCE nosym IOp(9/40=3) guess=read\n\n")
                 ### WHY IS POP=FULL NEEDED ??? ~BMW  Overlaps are broken if we do not turn on... ###
-                file01.write(f"# {FUNCTIONAL}/{BASIS_SET} SCF=XQC TD=(singlets,Conver=4,nstates={NStates},root=1) FORCE nosym pop=full guess=read\n\n") ### MAIN LINE ###
+                #file01.write(f"# {FUNCTIONAL}/{BASIS_SET} SCF=XQC TD=(singlets,Conver=4,nstates={NStates},root=1) FORCE nosym pop=full guess=read\n\n") ### MAIN LINE ###
             
         write_geom(file01,Atom_labels,Atom_coords_new,MD_STEP,CHARGE,MULTIPLICITY)
         if ( FUNCTIONAL in ["DFTB", "DFTBA"] ):
@@ -157,9 +157,11 @@ def generate_inputs(DYN_PROPERTIES):
             ### MAIN LINES ###
             # Add functional and basis set (unless DFTB or DFTBA)
             if ( FUNCTIONAL in ["DFTB", "DFTBA"] ): # TODO ADD TD_CONVERG as input parameter ??? N = 4 is the default for SP, but N=6 is default for FORCE
-                file01.write(f"# {FUNCTIONAL} SCF=XQC TD=(singlets,Conver=4,nstates={NStates},root={state}) FORCE nosym guess=read\n\n")
+                file01.write(f"# {FUNCTIONAL} SCF=XQC TD=(singlets,Conver=4,nstates={NStates},root={state}) FORCE nosym IOp(9/40=3) guess=read\n\n")
+                #file01.write(f"# {FUNCTIONAL} SCF=XQC TD=(singlets,Conver=4,nstates={NStates},root={state}) FORCE nosym guess=read\n\n")
             else:
-                file01.write(f"# {FUNCTIONAL}/{BASIS_SET} SCF=XQC TD=(singlets,Conver=4,nstates={NStates},root={state}) FORCE nosym guess=read\n\n")
+                file01.write(f"# {FUNCTIONAL}/{BASIS_SET} SCF=XQC TD=(singlets,Conver=4,nstates={NStates},root={state}) FORCE nosym IOp(9/40=3) guess=read\n\n")
+                #file01.write(f"# {FUNCTIONAL}/{BASIS_SET} SCF=XQC TD=(singlets,Conver=4,nstates={NStates},root={state}) FORCE nosym guess=read\n\n")
             write_geom(file01,Atom_labels,Atom_coords_new,MD_STEP,CHARGE,MULTIPLICITY)
             if ( FUNCTIONAL in ["DFTB", "DFTBA"] ):
                 file01.write(f"\n@GAUSS_EXEDIR:dftba.prm\n")

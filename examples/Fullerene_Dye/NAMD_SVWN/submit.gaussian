@@ -1,0 +1,20 @@
+#!/bin/bash
+#SBATCH -p exciton -A exciton
+#SBATCH -J FULL_DYE
+#SBATCH -o output.slurm
+#SBATCH -t 12:00:00
+#SBATCH -N 1
+#SBATCH --ntasks-per-node=12
+#SBATCH --mem 30GB
+
+module load gaussian
+
+export OMP_NUM_THREADS=12
+export MKL_NUM_THREADS=12
+
+g16 < geometry.com > geometry.out
+formchk geometry.chk
+
+#python3 ~/Gaussain_scripts/Excited_States/Gen_spectra_gaus16.py
+#../get_dipole_matrix_from_multiwfn.sh
+

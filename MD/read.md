@@ -9,6 +9,8 @@ Create a folder and git clone this repository.
 git clone https://github.com/arkajitmandal/SplitOperator1D 
 ```
 
+$$x^2 + 5x$$
+
 ### Step 2
 Code up the model system in a python file inside the "Model" folder and name it  'modelName.py'.  
 

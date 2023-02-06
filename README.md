@@ -15,7 +15,8 @@
   <img src="https://bradenmweight.github.io/SQD/white.png" width = '250px'>
 </picture>
     <br>
-   <a href = 'https://bradenmweight.github.io/SQD'>Learn More</a>
+   <a href = 'https://bradenmweight.github.io/SQD'>Learn More</a>[DOCS]: <>
+   <a href = 'https://bradenmweight.github.io/SQD/read.html?filename=Documentation.md'>Documentation</a>
 </div>
 
 

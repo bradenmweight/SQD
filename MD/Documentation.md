@@ -1,6 +1,6 @@
 # Documentation for SQD Package
 
-For questions, concerns, or bugs, please send an email to Braden M. Weight (<bweight@ur.rochester.edu>).
+For questions, concerns, or bugs, please send an email to Braden M. Weight (<bweight@ur.rochester.edu>). The relevant parmeters can be found on the [parameters][PARAMETERS] page.
 
 [PARAMETERS]: <https://bradenmweight.github.io/SQD/read.html?filename=Parameters.md>
 
@@ -18,9 +18,12 @@ For questions, concerns, or bugs, please send an email to Braden M. Weight (<bwe
   - [Statistical Ensembles](#statistical-ensembles)
     - [Canonical Ensemble (NVT)](#canonical-ensemble-nvt)
     - [Micro-canonical Ensemble (NVE)](#micro-canonical-ensemble-nve)
+  - [Initialization of Nuclear Velocity](#initialization-of-nuclear-velocity)
+    - [Read from File](#read-from-file)
+    - [Draw from Maxwell-Boltzmann Distribution](#draw-from-maxwell-boltzmann-distribution)
+    - [Set Velocities to Zero](#set-velocities-to-zero)
 
 ## Mixed Quantum-Classical and Semi-classical Dynamics Methods
-The relevant parmeters can be found on the [parameters][PARAMETERS] page.
 ### Ehrenfest
 ### Spin-LSC
 ### Global Flux Surface Hopping
@@ -31,6 +34,10 @@ The relevant parmeters can be found on the [parameters][PARAMETERS] page.
 ## Statistical Ensembles
 ### Canonical Ensemble (NVT)
 ### Micro-canonical Ensemble (NVE)
+## Initialization of Nuclear Velocity
+### Read from File
+### Draw from Maxwell-Boltzmann Distribution
+### Set Velocities to Zero
 
 
 

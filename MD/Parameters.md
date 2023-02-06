@@ -1,6 +1,6 @@
 # List of Parameters for SQD Functionality
 
-[DOCS]: <https://bradenmweight.github.io/SQD/read.html>
+[DOCS]: <https://bradenmweight.github.io/SQD/read.html?filename=Documentation.md>
 
 ## Required Keywords
 | Keyword | Type | Default | Function |
@@ -14,7 +14,7 @@
 | BASIS | str | None | Defines the atom-centered basis set for electronic structure. Must be understood by Gaussian16, *e.g.*, "6-31G*". (TODO: Add functionality for mixed basis as C:3-1G/Fe:LANL2DZ) |
 | CHARGE | int | None | Defines the total charge of the system. |
 | MULTIPLICITY | int | None | Defines the electronic multiplicity of the system. |
-| MEMORY | int | None | Defines the electronic multiplicity of the system. [GB] |
+| MEMORY | int | None | Defines the amount of memory given to Gaussian16 for electronic structure calculations. [GB] |
 | NAMD_METHOD | str | None | Defines the semi-classical or mixed quantum-classical (MQC) quantum dynamics method for the propagation of the electronic and nuclear degrees of freedom. ["EH", "spinLSC", "GFSH"] See [documentation][DOCS] for the description of each of thesde methods. |
 | MD_ENSEMBLE | str | None | Defines the statistical mechanical ensemble for the molecular dyanmics. ["NVE", "NVT"] |
 
@@ -37,3 +37,7 @@
 | LANGEVIN_LAMBDA | float | None | Determines the coupling/friction parameter in classical Langevin molecular dynamics. "NVT_TYPE" must be "LANGEVIN". See [documentation][DOCS] for the description of each of these methods. |
 | TEMP | float | None | Determines the target temperature in canonical ensemble (*i.e.*, NVT) molecular dynamics. See [documentation][DOCS] for the description of each of these methods. |
 | RESCALE_FREQ | int | None | Determines the frequency in which to rescale the nuclear velocities to achieve the target temperature in canonical ensemble (*i.e.*, NVT) molecular dynamics. "NVT_TYPE" must be "RESCALE". See [documentation][DOCS] for the description of each of these methods. |
+| VELOC | str | MB | Determines how the classical nuclear velocities are initialized. ["ZERO","MB","READ"] See [documentation][DOCS] for the description of each of these methods. |
+| DATA_SAVE_FREQ | int | 1 | Determines how often the main data are saved to text files. |
+
+

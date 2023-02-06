@@ -1,6 +1,8 @@
 # Documentation for SQD Package
 
-For questions, concernsm or bugs, please send an email to Braden M. Weight (<bweight@ur.rochester.edu>).
+For questions, concerns, or bugs, please send an email to Braden M. Weight (<bweight@ur.rochester.edu>).
+
+[PARAMETERS]: <https://bradenmweight.github.io/SQD/read.html?filename=Parameters.md>
 
 # Table of Contents
 - [Documentation for SQD Package](#documentation-for-sqd-package)
@@ -10,7 +12,7 @@ For questions, concernsm or bugs, please send an email to Braden M. Weight (<bwe
     - [Spin-LSC](#spin-lsc)
     - [Global Flux Surface Hopping](#global-flux-surface-hopping)
   - [Electronic Time-Propagation](#electronic-time-propagation)
-    - [Quasi-diabatic (Local Diabtic) Propagation](#quasi-diabatic-local-diabtic-propagation)
+    - [Quasi-diabatic (Local Diabatization) Propagation](#quasi-diabatic-local-diabatization-propagation)
     - [Second-order symplectic (Velocity-Verlet-like)](#second-order-symplectic-velocity-verlet-like)
     - [Explicit Fourth-order Runge-Kutta](#explicit-fourth-order-runge-kutta)
   - [Statistical Ensembles](#statistical-ensembles)
@@ -18,11 +20,12 @@ For questions, concernsm or bugs, please send an email to Braden M. Weight (<bwe
     - [Micro-canonical Ensemble (NVE)](#micro-canonical-ensemble-nve)
 
 ## Mixed Quantum-Classical and Semi-classical Dynamics Methods
+The relevant parmeters can be found on the [parameters][PARAMETERS] page.
 ### Ehrenfest
 ### Spin-LSC
 ### Global Flux Surface Hopping
 ## Electronic Time-Propagation
-### Quasi-diabatic (Local Diabtic) Propagation
+### Quasi-diabatic (Local Diabatization) Propagation
 ### Second-order symplectic (Velocity-Verlet-like)
 ### Explicit Fourth-order Runge-Kutta
 ## Statistical Ensembles

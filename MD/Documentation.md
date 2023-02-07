@@ -22,6 +22,7 @@ For questions, concerns, or bugs, please send an email to Braden M. Weight (<bwe
     - [**Read from File**](#read-from-file)
     - [**Draw from Maxwell-Boltzmann Distribution**](#draw-from-maxwell-boltzmann-distribution)
     - [**Set Velocities to Zero**](#set-velocities-to-zero)
+  - [**References**](#references)
 
 ## **Mixed Quantum-Classical and Semi-classical Dynamics Methods**
 ### **Ehrenfest**
@@ -39,7 +40,13 @@ Math looks like this: $S^{\dag} \times z_{\mu} \rightarrow z_{\mu}$
 ### **Read from File**
 ### **Draw from Maxwell-Boltzmann Distribution**
 ### **Set Velocities to Zero**
-
-
-
-
+## **References**
+1. Mark Tuckerman, [Statistical Mechanics: Theory and Molecular Simulation](https://books.google.com/books?id=Lo3Jqc0pgrcC)
+2. Mandal, Yamijala, and Huo, [Quasi-Diabatic Representation for Nonadiabatic Dynamics Propagation](https://pubs.acs.org/doi/10.1021/acs.jctc.7b01178), *J. Chem. Theory Comput.* 2018, 14, 4, 1828–1840 
+3. Mandal, Sandoval, Shakib, and Huo, [Quasi-Diabatic Propagation Scheme for Direct Simulation of Proton-Coupled Electron Transfer Reaction](https://pubs.acs.org/doi/10.1021/acs.jpca.9b00077), *J. Phys. Chem. A* 2019, 123, 12, 2470–2482
+4. Sandoval, Mandal, and Huo, [Symmetric quasi-classical dynamics with quasi-diabatic propagation scheme](https://aip.scitation.org/doi/full/10.1063/1.5036787), *J. Chem. Phys.* 149, 044115 (2018)
+5. Weight, Mandal, and Huo, [Ab initio symmetric quasi-classical approach to investigate molecular Tully models](https://aip.scitation.org/doi/10.1063/5.0061934), *J. Chem. Phys.* 155, 084106 (2021)
+6. Runeson and Richardson, [Spin-mapping approach for nonadiabatic molecular dynamics](https://aip.scitation.org/doi/10.1063/1.5100506), *J. Chem. Phys.* 151, 044119 (2019)
+7. Runeson and Richardson, [Generalized spin mapping for quantum-classical dynamics](https://aip.scitation.org/doi/full/10.1063/1.5143412), *J. Chem. Phys.* 152, 084110 (2020)
+8. Mannouch and Richardson, [A partially linearized spin-mapping approach for nonadiabatic dynamics. I. Derivation of the theory](https://aip.scitation.org/doi/full/10.1063/5.0031168), *J. Chem. Phys.* 153, 194109 (2020)
+9.  Mannouch and Richardson, [A partially linearized spin-mapping approach for nonadiabatic dynamics. II. Analysis and comparison with related approaches](https://aip.scitation.org/doi/full/10.1063/5.0031173), *J. Chem. Phys.* 153, 194110 (2020)

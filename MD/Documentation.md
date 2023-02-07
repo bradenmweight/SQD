@@ -22,6 +22,10 @@ For questions, concerns, or bugs, please send an email to Braden M. Weight (<bwe
     - [**Read from File**](#read-from-file)
     - [**Draw from Maxwell-Boltzmann Distribution**](#draw-from-maxwell-boltzmann-distribution)
     - [**Set Velocities to Zero**](#set-velocities-to-zero)
+  - [**Suggested Workflow**](#suggested-workflow)
+    - [**Ground State Dynamics**](#ground-state-dynamics)
+    - [**Sample Nuclear Distribution**](#sample-nuclear-distribution)
+    - [**Initialize Non-adiabatic Trajectories**](#initialize-non-adiabatic-trajectories)
   - [**References**](#references)
 
 ## **Mixed Quantum-Classical and Semi-classical Dynamics Methods**
@@ -30,7 +34,7 @@ For questions, concerns, or bugs, please send an email to Braden M. Weight (<bwe
 ### **Global Flux Surface Hopping**
 ## **Electronic Time-Propagation**
 ### **Quasi-diabatic (Local Diabatization) Propagation**
-Math looks like this: $S^{\dag} \times z_{\mu} \rightarrow z_{\mu}$
+Math looks like this: $$S^{\dag} \times z_{\mu} \rightarrow z_{\mu}$$
 ### **Second-order symplectic ("Velocity-Verlet-like")**
 ### **Explicit Fourth-order Runge-Kutta**
 ## **Statistical Ensembles**
@@ -40,6 +44,10 @@ Math looks like this: $S^{\dag} \times z_{\mu} \rightarrow z_{\mu}$
 ### **Read from File**
 ### **Draw from Maxwell-Boltzmann Distribution**
 ### **Set Velocities to Zero**
+## **Suggested Workflow**
+### **Ground State Dynamics**
+### **Sample Nuclear Distribution**
+### **Initialize Non-adiabatic Trajectories**
 ## **References**
 1. Mark Tuckerman, [Statistical Mechanics: Theory and Molecular Simulation](https://books.google.com/books?id=Lo3Jqc0pgrcC)
 2. Mandal, Yamijala, and Huo, [Quasi-Diabatic Representation for Nonadiabatic Dynamics Propagation](https://pubs.acs.org/doi/10.1021/acs.jctc.7b01178), *J. Chem. Theory Comput.* 2018, 14, 4, 1828–1840 

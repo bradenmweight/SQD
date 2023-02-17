@@ -82,14 +82,14 @@ def save_data(DYN_PROPERTIES):
             if ( DYN_PROPERTIES['MD_STEP'] == 0 ): 
                 file01.write(f"# Step " + " ".join([f'{j}-{k}' for j in range(NStates) for k in range(j+1,NStates)]) + "\n" )
             RHO = np.real(properties.get_density_matrix( DYN_PROPERTIES ))
-            COH = np.array([RHO[j,k] for j in range(NStates) for k in range(j+1,NStates)]).real
+            COH = np.array([RHO[j,k] for j in range(NStates) for k in range(j+1,NStates)])
             file01.write( f"{DYN_PROPERTIES['MD_STEP']}  " +  " ".join(map("{:2.8f}".format,COH )) + "\n" )
 
         with open("MD_OUTPUT/Coherence_im.dat","a") as file01:
             if ( DYN_PROPERTIES['MD_STEP'] == 0 ): 
                 file01.write(f"# Step " + " ".join([f'{j}-{k}' for j in range(NStates) for k in range(j+1,NStates)]) + "\n" )
-            RHO = np.real(properties.get_density_matrix( DYN_PROPERTIES ))
-            COH = np.array([RHO[j,k] for j in range(NStates) for k in range(j+1,NStates)]).imag
+            RHO = np.imag(properties.get_density_matrix( DYN_PROPERTIES ))
+            COH = np.array([RHO[j,k] for j in range(NStates) for k in range(j+1,NStates)])
             file01.write( f"{DYN_PROPERTIES['MD_STEP']}  " +  " ".join(map("{:2.8f}".format,COH )) + "\n" )
 
         with open("MD_OUTPUT/Overlap.dat","a") as file01:

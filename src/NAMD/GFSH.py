@@ -107,11 +107,12 @@ def propagage_Mapping(DYN_PROPERTIES):
             #      ~ Although, it would be more accurate overall.
             """
 
-            # Linear interpolation betwen t0 and t1
             if ( DYN_PROPERTIES["EL_INTERPOLATION"] ):
+                # Linear interpolation betwen t0 and t1
                 H = Hamt0 + (step)/(ESTEPS) * ( Hamt1 - Hamt0 )
             else:
                 H = Hamt1
+
             # Propagate Imaginary first by dt/2
             Zimag -= 0.5000000 * H @ Zreal * dtE
 
@@ -128,7 +129,10 @@ def propagage_Mapping(DYN_PROPERTIES):
 
         def get_H( step, dt ):
             # Linear interpolation betwen t0 and t1
-            H = Hamt0 + (step + dt/dtE)/(ESTEPS) * ( Hamt1 - Hamt0 )
+            if ( DYN_PROPERTIES["EL_INTERPOLATION"] ):
+                H = Hamt0 + (step)/(ESTEPS) * ( Hamt1 - Hamt0 )
+            else:
+                H = Hamt1
             return H
 
         def f( y, H ):

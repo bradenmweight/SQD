@@ -77,7 +77,7 @@ def rotate_t0_to_t1(S, A): # Recall, we perform TD-DFT with one additional state
         print("Shape of rotating object not correct." )
         print(f"Needs to be either 1D or 2D numpy array. Received {len(A.shape)}D array.")
 
-def rotate_t1_to_t0(S, A): # Recall, we perform TD-DFT with one additional state. Already removed from overlap.
+def rotate_t1_to_t0(S, A): # Recall, we perform TD-DFT with one additional state. Already removed from overlap by this point.
     if ( len(A.shape) == 1 ):
         return S @ A
     elif( len(A.shape) == 2 ):
@@ -151,7 +151,10 @@ def propagage_Mapping(DYN_PROPERTIES):
 
         def get_H( step, dt ):
             # Linear interpolation betwen t0 and t1
-            H = Hamt0 + (step + dt/dtE)/(ESTEPS) * ( Hamt1 - Hamt0 )
+            if ( DYN_PROPERTIES["EL_INTERPOLATION"] ):
+                H = Hamt0 + (step)/(ESTEPS) * ( Hamt1 - Hamt0 )
+            else:
+                H = Hamt1
             return H
 
         def f( y, H ):

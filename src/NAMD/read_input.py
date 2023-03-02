@@ -230,7 +230,7 @@ def read():
                     exit()
 
 
-            # Look for DATA_SAVE_FREQ
+            # Look for CHECK_TRIVIAL_CROSSING
             if ( t[0].upper() == "CHECK_TRIVIAL_CROSSING".upper() ):
                 try:
                     DYN_PROPERTIES["CHECK_TRIVIAL_CROSSING"] = bool( t[1] )
@@ -297,6 +297,9 @@ def read_geom():
         t = line.split()
         Atom_labels.append( t[0] )
         Atom_coords_new[count,:] = np.array([ float(t[1]), float(t[2]), float(t[3]) ]) / 0.529 # Ang -> a.u.
+
+    assert( int(XYZ_File[0]) == len(Atom_labels) ), "Number of atoms incorrect in input XYZ file."
+    assert( int(XYZ_File[0]) == len(Atom_coords_new) ), "Number of atoms incorrect in input XYZ file."
 
     return Atom_labels, Atom_coords_new
 
@@ -541,7 +544,7 @@ def initialize_MD_variables(DYN_PROPERTIES):
     try:
         tmp = DYN_PROPERTIES["FORCE_MAP_NORM"]
     except KeyError:
-        DYN_PROPERTIES["FORCE_MAP_NORM"] = False # Default is not to do classical path approximation
+        DYN_PROPERTIES["FORCE_MAP_NORM"] = False # Default is not to do this. This is for de-bugging purposes.
 
     try:
         tmp = DYN_PROPERTIES["DATA_SAVE_FREQ"]
@@ -553,10 +556,14 @@ def initialize_MD_variables(DYN_PROPERTIES):
     except KeyError:
         DYN_PROPERTIES["EL_INTERPOLATION"] = False # Default is to not perform linear interpolation
 
+    ####################################
+    #### THIS KEYWORK IS NOT TESTED ####
     try:
         tmp = DYN_PROPERTIES["CHECK_TRIVIAL_CROSSING"]
     except KeyError:
         DYN_PROPERTIES["CHECK_TRIVIAL_CROSSING"] = False # Default is not to check for trivial crossings
+    ####################################
+
 
     #if ( DYN_PROPERTIES["FUNCTIONAL"] in ["DFTB", "DFTBA"] ):
     #    try:

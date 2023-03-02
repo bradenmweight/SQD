@@ -213,13 +213,22 @@ def read():
                     exit()
 
 
-            # Look for DATA_SAVE_FREQ
+            # Look for EL_INTERPOLATION
             if ( t[0].upper() == "EL_INTERPOLATION".upper() ):
                 try:
                     DYN_PROPERTIES["EL_INTERPOLATION"] = bool( t[1] )
                 except ValueError:
                     print(f"\t'EL_INTERPOLATION' must be a bool: '{t[1]}'")
                     exit()
+
+            # Look for TDDFT_CONVERG
+            if ( t[0].upper() == "TDDFT_CONVERG".upper() ):
+                try:
+                    DYN_PROPERTIES["TDDFT_CONVERG"] = int( t[1] )
+                except ValueError:
+                    print(f"\t'TDDFT_CONVERG' must be an int: '{t[1]}'")
+                    exit()
+
 
             # Look for DATA_SAVE_FREQ
             if ( t[0].upper() == "CHECK_TRIVIAL_CROSSING".upper() ):
@@ -466,6 +475,11 @@ def initialize_MD_variables(DYN_PROPERTIES):
     except KeyError:
         DYN_PROPERTIES["REMOVE_ANGULAR_VELOCITY"] = True # Default is to remove angular velocity
 
+
+    try:
+        tmp = DYN_PROPERTIES["TDDFT_CONVERG"]
+    except KeyError:
+        DYN_PROPERTIES["TDDFT_CONVERG"] = 4 # Default is to do 10**-N, N = 4
 
     if ( DYN_PROPERTIES["MD_ENSEMBLE"] == "NVT" ):
         

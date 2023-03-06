@@ -27,7 +27,8 @@
 | Keyword | Type | Default | Function |
 | ------ | ------ | ------ | ------ |
 | CPA | bool | False | Determines whether to do the classical path approximation (CPA) for the nuclear forces. |
-| PARALLEL_FORCES | bool | False | Determines whether to parallelize (across excited state) for the calculation of nuclear forces. For example, if there are 5 electronic excited state in the calculation, with "PARALLEL_FORCES = True" and "NCPUS_NAMD  = 5", then SQD will simultaneously run all excited state calculations in parallel, else they will be run in serial.
+| BOMD | bool | False | Determines whether to do the Born-Oppenheimer Molecular Dynamics (BOMD). |
+| PARALLEL_FORCES | bool | False | Determines whether to parallelize (across excited state) for the calculation of nuclear forces. For example, if there are 5 electronic excited states in the calculation, with "PARALLEL_FORCES = True" and "NCPUS_NAMD  = 5", then SQD will simultaneously run all excited state calculations in parallel, else they will be run in serial.
 | NCPUS_NAMD | int | None | Determines the number of CPUs available for excited state parallelization. See "PARALLEL_FORCES". |
 | NCPUS_G16 | int | 1 | Determines the number of CPUs available for Gaussian16 electronic structure calculations. |
 | RUN_ELEC_STRUC | str | USE_CURRENT_NODE | Determines how to submit Gaussian16 electronic structure calculations. ["USE_CURRENT_NODE","SUBMIT_SBATCH"] |
@@ -39,5 +40,10 @@
 | RESCALE_FREQ | int | None | Determines the frequency in which to rescale the nuclear velocities to achieve the target temperature in canonical ensemble (*i.e.*, NVT) molecular dynamics. "NVT_TYPE" must be "RESCALE". See [documentation][DOCS] for the description of each of these methods. |
 | VELOC | str | MB | Determines how the classical nuclear velocities are initialized. ["ZERO","MB","READ"] See [documentation][DOCS] for the description of each of these methods. |
 | DATA_SAVE_FREQ | int | 1 | Determines how often the main data are saved to text files. |
+| TDDFT_CONVERG | int | 4 | Determines the convergence criteria for the RPA amplitudes. CONV = $$10^{-N}$$ |
+| EL_INTERPOLATION | bool | False | Determines whether the electronic Hamiltonian is to be linearly interpolated between nuclear time steps. |
+| REMOVE_COM_MOTION | bool | True | Determines whether to remove COM motion during the trajectory. |
+| REMOVE_ANGULAR_VELOCITY | bool | True | Determines whether to remove angular velocity during the trajectory. |
+
 
 

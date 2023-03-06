@@ -8,9 +8,11 @@ For questions, concerns, or bugs, please send an email to Braden M. Weight (<bwe
 - [Documentation for SQD Package](#documentation-for-sqd-package)
 - [Table of Contents](#table-of-contents)
   - [**Mixed Quantum-Classical and Semi-classical Dynamics Methods**](#mixed-quantum-classical-and-semi-classical-dynamics-methods)
+    - [**Born-Oppenheimer Molecular Dyanmics**](#born-oppenheimer-molecular-dyanmics)
     - [**Ehrenfest**](#ehrenfest)
     - [**Spin-LSC**](#spin-lsc)
     - [**Global Flux Surface Hopping**](#global-flux-surface-hopping)
+    - [**Classical Path Approximation**](#classical-path-approximation)
   - [**Electronic Time-Propagation**](#electronic-time-propagation)
     - [**Quasi-diabatic (Local Diabatization) Propagation**](#quasi-diabatic-local-diabatization-propagation)
     - [**Second-order symplectic ("Velocity-Verlet-like")**](#second-order-symplectic-velocity-verlet-like)
@@ -29,12 +31,17 @@ For questions, concerns, or bugs, please send an email to Braden M. Weight (<bwe
   - [**References**](#references)
 
 ## **Mixed Quantum-Classical and Semi-classical Dynamics Methods**
+### **Born-Oppenheimer Molecular Dyanmics**
+$${\bf F} (t) = \langle S_{INIT} | \boldsymbol{\nabla} \hat{H}_\mathrm{el} | S_{INIT} \rangle $$
 ### **Ehrenfest**
 ### **Spin-LSC**
 ### **Global Flux Surface Hopping**
+### **Classical Path Approximation**
+$${\bf F} (t) = \langle S_{0} | \boldsymbol{\nabla} \hat{H}_\mathrm{el} | S_{0} \rangle $$
 ## **Electronic Time-Propagation**
 ### **Quasi-diabatic (Local Diabatization) Propagation**
-Math looks like this: $$S^{\dag} \times z_{\mu} \rightarrow z_{\mu}$$
+Math looks like this: 
+$$S^{\dag} \times z_{\mu} \rightarrow z_{\mu}$$ 
 ### **Second-order symplectic ("Velocity-Verlet-like")**
 ### **Explicit Fourth-order Runge-Kutta**
 ## **Statistical Ensembles**

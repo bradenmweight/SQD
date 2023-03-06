@@ -1,11 +1,16 @@
 import numpy as np
 from matplotlib import pyplot as plt
+import subprocess as sp
 
-NTRAJ   = 201  # USER INPUT
-dtI     = 0.1  # USER INPUT
-NSTEPS  = 200  # USER INPUT
+NTRAJ   = 101  # USER INPUT
+dtI     = 1.0  # USER INPUT
+NSTEPS  = 1000  # USER INPUT
 
+
+#### DO NOT MODIFY BELOW THIS POINT ####
 TRAJ_DIRS = [ f"TRAJ/traj-{j}/MD_OUTPUT/" for j in range(NTRAJ) ]
+DATA_DIR = "PLOTS_DATA"
+sp.call("mkdir -p PLOTS_DATA",shell=True)
 
 NSTATES = 0
 #NSTEPS  = 0
@@ -15,8 +20,6 @@ good_traj = 0
 for ind, dir in enumerate(TRAJ_DIRS):
     try:
         tmp = np.loadtxt(f"{dir}/Population.dat")[:NSTEPS]
-        print(np.loadtxt(f"{dir}/Population.dat").shape)
-        print(tmp.shape)
     except OSError:
         print(f"No good: {dir}")
         continue
@@ -39,7 +42,7 @@ OUTPOP[:,0] = TIME
 for state in range( NSTATES ):
     OUTPOP[:,state+1] = POP[:,state]
 OUTPOP[:,-1] = np.sum(POP[:,:],axis=-1)
-np.savetxt( f"Population_average-{good_traj}.dat", OUTPOP, fmt="%2.5f" )
+np.savetxt( f"{DATA_DIR}/Population_average-{good_traj}.dat", OUTPOP, fmt="%2.5f" )
 
 # Make simple plot
 
@@ -53,6 +56,6 @@ plt.ylim(0,1.005)
 plt.xlabel("Time (fs)", fontsize=15)
 plt.ylabel("Population", fontsize=15)
 plt.title(f"# of Trajectories: {good_traj}", fontsize=15)
-plt.savefig(f"Population_average-{good_traj}.jpg",dpi=600)
+plt.savefig(f"{DATA_DIR}/Population_average-{good_traj}.jpg",dpi=600)
 
 

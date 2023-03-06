@@ -22,7 +22,7 @@ import G16_TD
 
 # This code with be the main control code for the NAMD.
 # We will make calls to electronic structure and
-#   wavefunction overlaps here, which are hanfled elsewhere.
+#   wavefunction overlaps here, which are handled elsewhere.
 # Additionally, the mixed-quantum classical or semi-classical
 #   dynamics will be handled elsewhere.
 
@@ -100,8 +100,8 @@ def main( ):
         DYN_PROPERTIES = G16_TD.main(DYN_PROPERTIES)
         print( "Total QM took %2.2f s." % (time() - T0) )
 
-        if ( DYN_PROPERTIES["NStates"] >= 2 ):
-            # Propagate electronic DOFs (Interpolated Hamiltonian)
+        if ( DYN_PROPERTIES["NStates"] >= 2 and DYN_PROPERTIES["BOMD"] == False ):
+            # Propagate electronic DOFs
             T0 = time()
             DYN_PROPERTIES = propagage_Mapping(DYN_PROPERTIES)
             print( "Electronic propagation took %2.2f s." % (time() - T0) )
@@ -113,7 +113,7 @@ def main( ):
         DYN_PROPERTIES = nuclear_propagation.Nuclear_V_Step(DYN_PROPERTIES)
 
         # Remove COM motion and angular velocity
-        # Do we need to do this at every step. Probably should at least remove COM.
+        # Do we need to do this at every step ? Probably should at least remove COM.
         # With Wigner-sampled geometries and velocities, this is already done.
         if ( DYN_PROPERTIES["REMOVE_COM_MOTION"] == True ):
             DYN_PROPERTIES = rotation.shift_COM(DYN_PROPERTIES)

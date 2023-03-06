@@ -281,6 +281,21 @@ def read():
     assert( DYN_PROPERTIES["ISTATE"] <= DYN_PROPERTIES["NStates"]-1 ), "ISTATE must be less than the total number of states."
 
 
+    # Tell user what the code thinks it should run. For double checking the intentions.
+    print("Calculation Goal:")
+    if ( NStates == 1 and ISTATE == 0 ): # BOMD in G.S.
+        print( "\tSQD will perform BOMD in the ground (S0) electronic state." )
+        DYN_PROPERTIES["BOMD"] = True
+    elif ( NStates == 1 and ISTATE != 0 ): # BOMD in E.S.
+        print( f"\tSQD will perform BOMD in an excited (S{ISTATE}) electronic state." )
+        DYN_PROPERTIES["BOMD"] = True
+    elif ( NStates >= 2 and ISTATE >= 0 ): # NAMD using multiple electronic state
+        print( f"\tSQD will perform NAMD in using multiple electronic states (S{[j for j in range(NStates)]})." )
+        print( f"\t\tSQD will start in state S{ISTATE}.")
+        DYN_PROPERTIES["BOMD"] = False
+
+
+
     return DYN_PROPERTIES
 
 
@@ -557,7 +572,7 @@ def initialize_MD_variables(DYN_PROPERTIES):
         DYN_PROPERTIES["EL_INTERPOLATION"] = False # Default is to not perform linear interpolation
 
     ####################################
-    #### THIS KEYWORK IS NOT TESTED ####
+    #### THIS KEYWORD IS NOT TESTED ####
     try:
         tmp = DYN_PROPERTIES["CHECK_TRIVIAL_CROSSING"]
     except KeyError:
@@ -580,12 +595,10 @@ def initialize_MD_variables(DYN_PROPERTIES):
 
 
 
-    # TODO
     try:
         tmp = DYN_PROPERTIES["CPA"]
     except KeyError:
         DYN_PROPERTIES["CPA"] = False # Default is not to do classical path approximation
-    #assert( DYN_PROPERTIES["CPA"] == False ), "CPA is not yet implemented. Do not use."
 
 
 

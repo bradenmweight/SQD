@@ -7,6 +7,8 @@ import os
 def read_Gradients(DIAG_GRADIENTS,DYN_PROPERTIES):
 
     NStates = DYN_PROPERTIES["NStates"]
+    BOMD    = DYN_PROPERTIES["BOMD"]
+    ISTATE  = DYN_PROPERTIES["ISTATE"]
 
     def read_FCHK_GRAD(NAtoms):
         lines = open("geometry.fchk","r").readlines()
@@ -25,23 +27,28 @@ def read_Gradients(DIAG_GRADIENTS,DYN_PROPERTIES):
                         break
         return np.array(grads,dtype=float).reshape((NAtoms,3))
 
-    # GS and first ES must to be serial jobs
-    os.chdir("GS_NEW/")
-    DIAG_GRADIENTS[0,:,:] = read_FCHK_GRAD( DYN_PROPERTIES["NAtoms"] )
-    os.chdir("../")
-
     if ( DYN_PROPERTIES["CPA"] == False ):
 
-        if ( NStates >= 2 ):
-            os.chdir("TD_NEW_S1/")
-            DIAG_GRADIENTS[1,:,:] = read_FCHK_GRAD( DYN_PROPERTIES["NAtoms"] )
+        if ( BOMD == True ):
+            if ( ISTATE == 0 ):
+                os.chdir("GS_NEW/")
+                DIAG_GRADIENTS[0,:,:] = read_FCHK_GRAD( DYN_PROPERTIES["NAtoms"] )
+                os.chdir("../")
+            else:
+                os.chdir(f"TD_NEW_S{ISTATE}/")
+                DIAG_GRADIENTS[ISTATE,:,:] = read_FCHK_GRAD( DYN_PROPERTIES["NAtoms"] )
+                os.chdir("../")
+        else:
+
+            os.chdir("GS_NEW/")
+            DIAG_GRADIENTS[0,:,:] = read_FCHK_GRAD( DYN_PROPERTIES["NAtoms"] )
             os.chdir("../")
 
-        if ( NStates >= 3 ):
-            for state in range( 2, NStates ):
-                os.chdir(f"TD_NEW_S{state}/")
-                DIAG_GRADIENTS[state,:,:] = read_FCHK_GRAD( DYN_PROPERTIES["NAtoms"] )
-                os.chdir("../")
+            if ( NStates >= 2 ):
+                for state in range( 1, NStates ):
+                    os.chdir(f"TD_NEW_S{state}/")
+                    DIAG_GRADIENTS[state,:,:] = read_FCHK_GRAD( DYN_PROPERTIES["NAtoms"] )
+                    os.chdir("../")
     
     return DIAG_GRADIENTS
 
@@ -49,6 +56,7 @@ def main(DYN_PROPERTIES):
 
     NStates = DYN_PROPERTIES["NStates"]
     NAtoms  = DYN_PROPERTIES["NAtoms"]
+
 
     DIAG_GRADIENTS = np.zeros(( NStates, NAtoms, 3)) # Diagonal gradients
     read_Gradients(DIAG_GRADIENTS,DYN_PROPERTIES)

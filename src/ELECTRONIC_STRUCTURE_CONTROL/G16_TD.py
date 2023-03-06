@@ -17,36 +17,82 @@ def check_geometry(Atom_labels,Atom_coords_new):
 
     assert ( isinstance(Atom_labels, list) ), "Atoms labels needs to be a list" 
     assert ( isinstance(Atom_labels[0], str) ), "Atoms labels needs to be a list of strings"
-    assert ( isinstance(Atom_coords_new, type(np.array([])) ) ) , "Atoms coordinates need to be numpy array"
+    assert ( isinstance(Atom_coords_new, type(np.array([])) ) ) , "Atom coordinates need to be numpy array"
 
-def clean_directory(NStates, MD_STEP, CPA_FLAG):
+def clean_directory(NStates, MD_STEP, CPA_FLAG, BOMD_FLAG, ISTATE):
 
     if ( MD_STEP == 0 ): sp.call( "rm -rf GS* TD* DIMER OVERLAP" ,shell=True)
 
-    sp.call( "rm -rf GS_OLD" ,shell=True)
-    if ( NStates >= 2 ): sp.call( "rm -rf TD_OLD_S1" ,shell=True)
-    if ( MD_STEP >= 2 and NStates >= 2 ): sp.call( "rm -rf DIMER" ,shell=True)
-    if ( NStates >= 3 ):
-        for state in range( 2, NStates ):
-            sp.call( f"rm -rf TD_OLD_S{state}" ,shell=True)
+    if ( BOMD_FLAG ):
 
-    
-    if ( MD_STEP >= 1 ): 
-        sp.call( "mv GS_NEW GS_OLD" ,shell=True)
-        if ( NStates >= 2 ): sp.call( "mv TD_NEW_S1 TD_OLD_S1" ,shell=True)
-        if ( NStates >= 3 and CPA_FLAG == False ):
-            for state in range( 2, NStates ):
+        if ( ISTATE == 0 and NStates == 1 ):
+            # Remove old-old step
+            sp.call( f"rm -rf GS_OLD" ,shell=True)
+
+            # Move new to old
+            sp.call( f"mv GS_NEW GS_OLD" ,shell=True)
+            
+            # Make fresh directory
+            sp.call( f"mkdir GS_NEW" ,shell=True)
+
+        elif ( ISTATE == 0 and NStates >= 2 ):
+            # Remove old-old step
+            sp.call( f"rm -rf GS_OLD" ,shell=True)
+            states = [j for j in range(1,NStates)] * (not CPA_FLAG) + [1] * (CPA_FLAG)
+            for state in states:
+                sp.call( f"rm -rf TD_OLD_S{state}" ,shell=True)
+            # Move new to old
+            if ( MD_STEP >= 1 ):
+                sp.call( "mv GS_NEW GS_OLD" ,shell=True)
+                states = [j for j in range(1,NStates)] * (not CPA_FLAG) + [1] * (CPA_FLAG)
+                for state in states:
+                    sp.call( f"mv TD_NEW_S{state} TD_OLD_S{state}" ,shell=True)
+            # Make fresh directory
+            sp.call( "mkdir -p GS_NEW" ,shell=True)
+            states = [j for j in range(1,NStates)] * (not CPA_FLAG) + [1] * (CPA_FLAG)
+            for state in states:
+                sp.call( f"mkdir -p TD_NEW_S{state}" ,shell=True)
+
+        elif ( ISTATE != 0 and NStates >= 2 ):
+            # Remove old-old step
+            sp.call( f"rm -rf TD_OLD_S{ISTATE}" ,shell=True)
+            states = [j for j in range(1,NStates)] * (not CPA_FLAG) + [1] * (CPA_FLAG)
+            for state in states:
+                sp.call( f"rm -rf TD_OLD_S{state}" ,shell=True)
+            # Move new to old
+            if ( MD_STEP >= 1 ): 
+                states = [j for j in range(1,NStates)] * (not CPA_FLAG) + [1] * (CPA_FLAG)
+                for state in states:
+                    sp.call( f"mv TD_NEW_S{state} TD_OLD_S{state}" ,shell=True)
+            # Make fresh directory
+            states = [j for j in range(1,NStates)] * (not CPA_FLAG) + [1] * (CPA_FLAG)
+            for state in states:
+                sp.call( f"mkdir -p TD_NEW_S{state}" ,shell=True)
+
+    else:
+
+        # Remove old-old step
+        sp.call( "rm -rf GS_OLD" ,shell=True)
+        if ( NStates >= 2 ): 
+            states = [j for j in range(1,NStates)] * (not CPA_FLAG) + [1] * (CPA_FLAG)
+            for state in states:
+                sp.call( f"rm -rf TD_OLD_S{state}" ,shell=True)
+        if ( MD_STEP >= 2 and NStates >= 2 ): sp.call( "rm -rf DIMER" ,shell=True)
+
+        # Move new to old
+        if ( MD_STEP >= 1 ): 
+            sp.call( "mv GS_NEW GS_OLD" ,shell=True)
+            states = [j for j in range(1,NStates)] * (not CPA_FLAG) + [1] * (CPA_FLAG)
+            for state in states:
                 sp.call( f"mv TD_NEW_S{state} TD_OLD_S{state}" ,shell=True)
 
-    sp.call( "mkdir -p GS_NEW" ,shell=True)
-    if ( NStates >= 2 ): sp.call( "mkdir -p TD_NEW_S1" ,shell=True)
-    if ( MD_STEP >= 1 and NStates >= 2 ): sp.call( "mkdir -p DIMER" ,shell=True)
-
-    if ( NStates >= 3 and CPA_FLAG == False ):
-        for state in range( 2, NStates ):
-            sp.call( f"mkdir -p TD_NEW_S{state}" ,shell=True)
-
-    # ADD DIRECTORY TO KEEP TRACK OF PREVIOUS PHASE INFORMATION. ADD LATER. # TODO
+        # Make fresh directories
+        sp.call( "mkdir -p GS_NEW" ,shell=True)
+        if ( NStates >= 2 ): 
+            states = [j for j in range(1,NStates)] * (not CPA_FLAG) + [1] * (CPA_FLAG)
+            for state in states:
+                sp.call( f"mkdir -p TD_NEW_S{state}" ,shell=True)
+        if ( MD_STEP >= 1 and NStates >= 2 ): sp.call( "mkdir -p DIMER" ,shell=True)
 
 
 def generate_inputs(DYN_PROPERTIES):
@@ -64,6 +110,8 @@ def generate_inputs(DYN_PROPERTIES):
     RUN_ELEC_STRUC  = DYN_PROPERTIES["RUN_ELEC_STRUC"]
     SBATCH_G16      = DYN_PROPERTIES["SBATCH_G16"]
     TDDFT_CONVERG   = DYN_PROPERTIES["TDDFT_CONVERG"]
+    BOMD            = DYN_PROPERTIES["BOMD"]
+    ISTATE          = DYN_PROPERTIES["ISTATE"]
 
 
     def write_header(file01,MEM,NCPUS_G16):
@@ -80,65 +128,80 @@ def generate_inputs(DYN_PROPERTIES):
             coords_dimer = method[1]
             for at in range( len(Atom_labels) ):
                 file01.write( "%s  %2.8f  %2.8f  %2.8f \n" % (Atom_labels[at],coords_dimer[at,0]*0.529,coords_dimer[at,1]*0.529,coords_dimer[at,2]*0.529) )
-        
-    # Ground State for New Geometry
-    os.chdir("GS_NEW/")
-    file01 = open("geometry.com","w")
-    if ( MD_STEP >= 1 ): 
-        file01.write(f"%oldchk=../GS_OLD/geometry.chk\n")
-    write_header(file01,MEM,NCPUS_G16)
-    ### MAIN LINES ###  
-    if ( FUNCTIONAL in ["DFTB", "DFTBA"] ):
-        file01.write(f"# {FUNCTIONAL} SCF=XQC FORCE nosym ")
-    else:
-        file01.write(f"# {FUNCTIONAL}/{BASIS_SET} SCF=XQC FORCE nosym ")
-    
-    if ( MD_STEP >= 1 ):
-        file01.write("guess=read\n\n")
-    else:
-        file01.write("\n\n")
-    write_geom(file01,Atom_labels,Atom_coords_new,MD_STEP,CHARGE,MULTIPLICITY)
-    if ( FUNCTIONAL in ["DFTB", "DFTBA"] ):
-        file01.write(f"\n@GAUSS_EXEDIR:dftba.prm\n")
-    # TODO ADD MIXED BASIS HERE
-    file01.write("\n\n\n\n\n\n\n\n")
-    os.chdir("../")
 
-    # Excited State for New Geometry (Use converged wavefunctions from GS at same geometry)
-    if ( NStates >= 2 ):
-        os.chdir("TD_NEW_S1/")
+    if ( BOMD == True and not (ISTATE == 0 and NStates >= 2) ):
+        if ( ISTATE == 0 ):
+            # Ground State for New Geometry
+            os.chdir("GS_NEW/")
+            file01 = open("geometry.com","w")
+            if ( MD_STEP >= 1 ): 
+                file01.write(f"%oldchk=../GS_OLD/geometry.chk\n")
+            write_header(file01,MEM,NCPUS_G16)
+            ### MAIN LINES ###  
+            if ( FUNCTIONAL in ["DFTB", "DFTBA"] ):
+                file01.write(f"# {FUNCTIONAL} SCF=XQC FORCE nosym ")
+            else:
+                file01.write(f"# {FUNCTIONAL}/{BASIS_SET} SCF=XQC FORCE nosym ")
+            
+            if ( MD_STEP >= 1 ):
+                file01.write("guess=read\n\n")
+            else:
+                file01.write("\n\n")
+            write_geom(file01,Atom_labels,Atom_coords_new,MD_STEP,CHARGE,MULTIPLICITY)
+            if ( FUNCTIONAL in ["DFTB", "DFTBA"] ):
+                file01.write(f"\n@GAUSS_EXEDIR:dftba.prm\n")
+            # TODO ADD MIXED BASIS HERE
+            file01.write("\n\n\n\n\n\n\n\n")
+            os.chdir("../")
+
+
+        elif ( ISTATE != 0 ):
+            # Excited State for New Geometry (Use converged wavefunctions from GS at same geometry)
+            os.chdir(f"TD_NEW_S{ISTATE}/")
+            file01 = open("geometry.com","w")
+            if ( MD_STEP >= 1 ):
+                file01.write(f"%oldchk=../TD_OLD_S{ISTATE}/geometry.chk\n")
+            write_header(file01,MEM,NCPUS_G16)
+            # Add functional and basis set (unless DFTB or DFTBA)
+            # Include one additional excited state even though we only perform NAMD on NStates-1 excied states to converge TD-DFT
+            if ( FUNCTIONAL in ["DFTB", "DFTBA"] ):
+                if ( MD_STEP == 0 ):
+                    file01.write(f"# {FUNCTIONAL} SCF=XQC TD=(singlets,Conver={TDDFT_CONVERG},nstates={NStates},root={ISTATE}) FORCE nosym IOp(9/40=3)\n\n")
+                if ( MD_STEP >= 1 ):
+                    file01.write(f"# {FUNCTIONAL} SCF=XQC TD=(read,singlets,Conver={TDDFT_CONVERG},nstates={NStates},root={ISTATE}) FORCE nosym IOp(9/40=3) guess=read\n\n")
+            else:
+                if ( MD_STEP == 0 ):
+                    file01.write(f"# {FUNCTIONAL}/{BASIS_SET} SCF=XQC TD=(singlets,Conver={TDDFT_CONVERG},nstates={NStates},root={ISTATE}) FORCE nosym IOp(9/40=3)\n\n")
+                if ( MD_STEP >= 1 ):
+                    file01.write(f"# {FUNCTIONAL}/{BASIS_SET} SCF=XQC TD=(read,singlets,Conver={TDDFT_CONVERG},nstates={NStates},root={ISTATE}) FORCE nosym IOp(9/40=3) guess=read\n\n")
+            
+            write_geom(file01,Atom_labels,Atom_coords_new,MD_STEP,CHARGE,MULTIPLICITY)
+            if ( FUNCTIONAL in ["DFTB", "DFTBA"] ):
+                file01.write(f"\n@GAUSS_EXEDIR:dftba.prm\n")
+            # TODO ADD MIXED BASIS HERE
+            file01.write("\n\n\n\n\n\n\n\n")
+            os.chdir("../")
+
+
+
+    else:
+
+        # Ground State for New Geometry
+        os.chdir("GS_NEW/")
         file01 = open("geometry.com","w")
-        if ( MD_STEP == 0 ):
-            file01.write(f"%oldchk=../GS_NEW/geometry.chk\n")
-        elif ( MD_STEP >= 1 ):
-            file01.write(f"%oldchk=../TD_OLD_S1/geometry.chk\n")
+        if ( MD_STEP >= 1 ): 
+            file01.write(f"%oldchk=../GS_OLD/geometry.chk\n")
         write_header(file01,MEM,NCPUS_G16)
-        # Add functional and basis set (unless DFTB or DFTBA)
-        # Include one additional excited state even though we only perform NAMD on NStates-1 excied states to converge TD-DFT
-        if ( DYN_PROPERTIES["CPA"] == True ):
-            if ( FUNCTIONAL in ["DFTB", "DFTBA"] ):
-                if ( MD_STEP == 0 ):
-                    file01.write(f"# {FUNCTIONAL} SCF=XQC TD=(singlets,nstates={NStates},root=1) nosym IOp(9/40=3) guess=read\n\n")
-                elif ( MD_STEP >= 1 ):
-                    file01.write(f"# {FUNCTIONAL} SCF=XQC TD=(read,singlets,nstates={NStates},root=1) nosym IOp(9/40=3) guess=read\n\n")
-            else:
-                if ( MD_STEP == 0 ):
-                    file01.write(f"# {FUNCTIONAL}/{BASIS_SET} SCF=XQC TD=(singlets,nstates={NStates},root=1) nosym IOp(9/40=3) guess=read\n\n")
-                elif ( MD_STEP >= 1 ):
-                    file01.write(f"# {FUNCTIONAL}/{BASIS_SET} SCF=XQC TD=(read,singlets,nstates={NStates},root=1) nosym IOp(9/40=3) guess=read\n\n")
-            
+        ### MAIN LINES ###  
+        if ( FUNCTIONAL in ["DFTB", "DFTBA"] ):
+            file01.write(f"# {FUNCTIONAL} SCF=XQC FORCE nosym ")
         else:
-            if ( FUNCTIONAL in ["DFTB", "DFTBA"] ):
-                if ( MD_STEP == 0 ):
-                    file01.write(f"# {FUNCTIONAL} SCF=XQC TD=(singlets,Conver={TDDFT_CONVERG},nstates={NStates},root=1) FORCE nosym IOp(9/40=3) guess=read\n\n")
-                if ( MD_STEP >= 1 ):
-                    file01.write(f"# {FUNCTIONAL} SCF=XQC TD=(read,singlets,Conver={TDDFT_CONVERG},nstates={NStates},root=1) FORCE nosym IOp(9/40=3) guess=read\n\n")
-            else:
-                if ( MD_STEP == 0 ):
-                    file01.write(f"# {FUNCTIONAL}/{BASIS_SET} SCF=XQC TD=(singlets,Conver={TDDFT_CONVERG},nstates={NStates},root=1) FORCE nosym IOp(9/40=3) guess=read\n\n")
-                if ( MD_STEP >= 1 ):
-                    file01.write(f"# {FUNCTIONAL}/{BASIS_SET} SCF=XQC TD=(read,singlets,Conver={TDDFT_CONVERG},nstates={NStates},root=1) FORCE nosym IOp(9/40=3) guess=read\n\n")
-            
+            file01.write(f"# {FUNCTIONAL}/{BASIS_SET} SCF=XQC FORCE nosym ")
+        
+        if ( MD_STEP >= 1 ):
+            file01.write("guess=read\n\n")
+        else:
+            file01.write("\n\n")
         write_geom(file01,Atom_labels,Atom_coords_new,MD_STEP,CHARGE,MULTIPLICITY)
         if ( FUNCTIONAL in ["DFTB", "DFTBA"] ):
             file01.write(f"\n@GAUSS_EXEDIR:dftba.prm\n")
@@ -146,60 +209,102 @@ def generate_inputs(DYN_PROPERTIES):
         file01.write("\n\n\n\n\n\n\n\n")
         os.chdir("../")
 
-    if ( NStates >= 3 and DYN_PROPERTIES["CPA"] == False ):
-        for state in range( 2, NStates ):
-            # Excited State for New Geometry (Use converged wavefunctions from TD root=1)
-            os.chdir(f"TD_NEW_S{state}/")
+        # Excited State for New Geometry (Use converged wavefunctions from GS at same geometry)
+        if ( NStates >= 2 ):
+            os.chdir("TD_NEW_S1/")
             file01 = open("geometry.com","w")
-            #file01.write(f"%oldchk=../TD_NEW_S1/geometry.chk\n")
             if ( MD_STEP == 0 ):
                 file01.write(f"%oldchk=../GS_NEW/geometry.chk\n")
             elif ( MD_STEP >= 1 ):
                 file01.write(f"%oldchk=../TD_OLD_S1/geometry.chk\n")
             write_header(file01,MEM,NCPUS_G16)
             # Add functional and basis set (unless DFTB or DFTBA)
-            if ( FUNCTIONAL in ["DFTB", "DFTBA"] ):
-                if ( MD_STEP == 0 ):
-                    file01.write(f"# {FUNCTIONAL} SCF=XQC TD=(singlets,Conver={TDDFT_CONVERG},nstates={NStates},root={state}) FORCE nosym IOp(9/40=3) guess=read\n\n")
-                elif ( MD_STEP >= 1 ):
-                    file01.write(f"# {FUNCTIONAL} SCF=XQC TD=(read,singlets,Conver={TDDFT_CONVERG},nstates={NStates},root={state}) FORCE nosym IOp(9/40=3) guess=read\n\n")
+            # Include one additional excited state even though we only perform NAMD on NStates-1 excied states to converge TD-DFT
+            if ( DYN_PROPERTIES["CPA"] == True ):
+                if ( FUNCTIONAL in ["DFTB", "DFTBA"] ):
+                    if ( MD_STEP == 0 ):
+                        file01.write(f"# {FUNCTIONAL} SCF=XQC TD=(singlets,nstates={NStates},root=1) nosym IOp(9/40=3) guess=read\n\n")
+                    elif ( MD_STEP >= 1 ):
+                        file01.write(f"# {FUNCTIONAL} SCF=XQC TD=(read,singlets,nstates={NStates},root=1) nosym IOp(9/40=3) guess=read\n\n")
+                else:
+                    if ( MD_STEP == 0 ):
+                        file01.write(f"# {FUNCTIONAL}/{BASIS_SET} SCF=XQC TD=(singlets,nstates={NStates},root=1) nosym IOp(9/40=3) guess=read\n\n")
+                    elif ( MD_STEP >= 1 ):
+                        file01.write(f"# {FUNCTIONAL}/{BASIS_SET} SCF=XQC TD=(read,singlets,nstates={NStates},root=1) nosym IOp(9/40=3) guess=read\n\n")
+                
             else:
-                if ( MD_STEP == 0 ):
-                    file01.write(f"# {FUNCTIONAL}/{BASIS_SET} SCF=XQC TD=(singlets,Conver={TDDFT_CONVERG},nstates={NStates},root={state}) FORCE nosym IOp(9/40=3) guess=read\n\n")
-                elif ( MD_STEP >= 1 ):
-                    file01.write(f"# {FUNCTIONAL}/{BASIS_SET} SCF=XQC TD=(read,singlets,Conver={TDDFT_CONVERG},nstates={NStates},root={state}) FORCE nosym IOp(9/40=3) guess=read\n\n")
-
+                if ( FUNCTIONAL in ["DFTB", "DFTBA"] ):
+                    if ( MD_STEP == 0 ):
+                        file01.write(f"# {FUNCTIONAL} SCF=XQC TD=(singlets,Conver={TDDFT_CONVERG},nstates={NStates},root=1) FORCE nosym IOp(9/40=3) guess=read\n\n")
+                    if ( MD_STEP >= 1 ):
+                        file01.write(f"# {FUNCTIONAL} SCF=XQC TD=(read,singlets,Conver={TDDFT_CONVERG},nstates={NStates},root=1) FORCE nosym IOp(9/40=3) guess=read\n\n")
+                else:
+                    if ( MD_STEP == 0 ):
+                        file01.write(f"# {FUNCTIONAL}/{BASIS_SET} SCF=XQC TD=(singlets,Conver={TDDFT_CONVERG},nstates={NStates},root=1) FORCE nosym IOp(9/40=3) guess=read\n\n")
+                    if ( MD_STEP >= 1 ):
+                        file01.write(f"# {FUNCTIONAL}/{BASIS_SET} SCF=XQC TD=(read,singlets,Conver={TDDFT_CONVERG},nstates={NStates},root=1) FORCE nosym IOp(9/40=3) guess=read\n\n")
+                
             write_geom(file01,Atom_labels,Atom_coords_new,MD_STEP,CHARGE,MULTIPLICITY)
             if ( FUNCTIONAL in ["DFTB", "DFTBA"] ):
                 file01.write(f"\n@GAUSS_EXEDIR:dftba.prm\n")
             # TODO ADD MIXED BASIS HERE
             file01.write("\n\n\n\n\n\n\n\n")
             os.chdir("../")
-    
-    # Dimer method for atomic orbital overlaps
-    if ( MD_STEP >= 1 and NStates >= 2 ):
-        Atom_coords_old = DYN_PROPERTIES["Atom_coords_old"]
-        os.chdir("DIMER/")
-        file01 = open("geometry.com","w")
-        write_header(file01,MEM,NCPUS_G16)
-        ### MAIN LINES ###
-        # Add functional and basis set (unless DFTB or DFTBA)
-        if ( FUNCTIONAL in ['AM1', 'PM3', 'PM6', 'PM7'] ): # By default, gaussian does not compute AO overlap for semi-empirical Hamiltonians
-            file01.write(f"# {FUNCTIONAL}/{BASIS_SET} IOp(3/41=2000) nosymm iop(2/12=3,3/33=1) guess=only\n\n") ### MAIN LINE ###
-        elif( FUNCTIONAL in ["DFTB", "DFTBA"] ):
-            file01.write(f"# {FUNCTIONAL} IOp(3/41=2000) nosymm iop(2/12=3,3/33=1) guess=only\n\n")
-        else:
-            file01.write(f"# {FUNCTIONAL}/{BASIS_SET} nosymm iop(2/12=3,3/33=1) guess=only\n\n") ### MAIN LINE ###
+
+        if ( NStates >= 3 and DYN_PROPERTIES["CPA"] == False ):
+            for state in range( 2, NStates ):
+                # Excited State for New Geometry (Use converged wavefunctions from TD root=1)
+                os.chdir(f"TD_NEW_S{state}/")
+                file01 = open("geometry.com","w")
+                #file01.write(f"%oldchk=../TD_NEW_S1/geometry.chk\n")
+                if ( MD_STEP == 0 ):
+                    file01.write(f"%oldchk=../GS_NEW/geometry.chk\n")
+                elif ( MD_STEP >= 1 ):
+                    file01.write(f"%oldchk=../TD_OLD_S1/geometry.chk\n")
+                write_header(file01,MEM,NCPUS_G16)
+                # Add functional and basis set (unless DFTB or DFTBA)
+                if ( FUNCTIONAL in ["DFTB", "DFTBA"] ):
+                    if ( MD_STEP == 0 ):
+                        file01.write(f"# {FUNCTIONAL} SCF=XQC TD=(singlets,Conver={TDDFT_CONVERG},nstates={NStates},root={state}) FORCE nosym IOp(9/40=3) guess=read\n\n")
+                    elif ( MD_STEP >= 1 ):
+                        file01.write(f"# {FUNCTIONAL} SCF=XQC TD=(read,singlets,Conver={TDDFT_CONVERG},nstates={NStates},root={state}) FORCE nosym IOp(9/40=3) guess=read\n\n")
+                else:
+                    if ( MD_STEP == 0 ):
+                        file01.write(f"# {FUNCTIONAL}/{BASIS_SET} SCF=XQC TD=(singlets,Conver={TDDFT_CONVERG},nstates={NStates},root={state}) FORCE nosym IOp(9/40=3) guess=read\n\n")
+                    elif ( MD_STEP >= 1 ):
+                        file01.write(f"# {FUNCTIONAL}/{BASIS_SET} SCF=XQC TD=(read,singlets,Conver={TDDFT_CONVERG},nstates={NStates},root={state}) FORCE nosym IOp(9/40=3) guess=read\n\n")
+
+                write_geom(file01,Atom_labels,Atom_coords_new,MD_STEP,CHARGE,MULTIPLICITY)
+                if ( FUNCTIONAL in ["DFTB", "DFTBA"] ):
+                    file01.write(f"\n@GAUSS_EXEDIR:dftba.prm\n")
+                # TODO ADD MIXED BASIS HERE
+                file01.write("\n\n\n\n\n\n\n\n")
+                os.chdir("../")
         
-        write_geom(file01,Atom_labels,Atom_coords_old,MD_STEP,CHARGE,MULTIPLICITY,method=["DIMER",Atom_coords_new])
-        if ( DYN_PROPERTIES["FUNCTIONAL"] in ["DFTB", "DFTBA"] ):
-            file01.write(f"\n@GAUSS_EXEDIR:dftba.prm\n")
-        # TODO ADD MIXED BASIS HERE
-        file01.write("\n\n\n\n\n\n\n\n")
-        os.chdir("../")
+        # Dimer method for atomic orbital overlaps
+        if ( MD_STEP >= 1 and NStates >= 2 and BOMD == False ):
+            Atom_coords_old = DYN_PROPERTIES["Atom_coords_old"]
+            os.chdir("DIMER/")
+            file01 = open("geometry.com","w")
+            write_header(file01,MEM,NCPUS_G16)
+            ### MAIN LINES ###
+            # Add functional and basis set (unless DFTB or DFTBA)
+            if ( FUNCTIONAL in ['AM1', 'PM3', 'PM6', 'PM7'] ): # By default, gaussian does not compute AO overlap for semi-empirical Hamiltonians
+                file01.write(f"# {FUNCTIONAL}/{BASIS_SET} IOp(3/41=2000) nosymm iop(2/12=3,3/33=1) guess=only\n\n") ### MAIN LINE ###
+            elif( FUNCTIONAL in ["DFTB", "DFTBA"] ):
+                file01.write(f"# {FUNCTIONAL} IOp(3/41=2000) nosymm iop(2/12=3,3/33=1) guess=only\n\n")
+            else:
+                file01.write(f"# {FUNCTIONAL}/{BASIS_SET} nosymm iop(2/12=3,3/33=1) guess=only\n\n") ### MAIN LINE ###
+            
+            write_geom(file01,Atom_labels,Atom_coords_old,MD_STEP,CHARGE,MULTIPLICITY,method=["DIMER",Atom_coords_new])
+            if ( DYN_PROPERTIES["FUNCTIONAL"] in ["DFTB", "DFTBA"] ):
+                file01.write(f"\n@GAUSS_EXEDIR:dftba.prm\n")
+            # TODO ADD MIXED BASIS HERE
+            file01.write("\n\n\n\n\n\n\n\n")
+            os.chdir("../")
 
 
-def submit(RUN_ELEC_STRUC, SBATCH_G16, MD_STEP, directory=None):
+def submit(RUN_ELEC_STRUC, SBATCH_G16, MD_STEP, BOMD, ISTATE, directory=None):
     if ( RUN_ELEC_STRUC == "SUBMIT_SBATCH" ):
         sp.call(f"cp {SBATCH_G16} .", shell=True)
         sp.call(f"sbatch {SBATCH_G16.split('/')[-1]}", shell=True)
@@ -246,70 +351,67 @@ def submit(RUN_ELEC_STRUC, SBATCH_G16, MD_STEP, directory=None):
 
 
 def run_ES_FORCE_parallel( inputs ):
-    state, RUN_ELEC_STRUC, SBATCH_G16, MD_STEP = inputs
+    state, RUN_ELEC_STRUC, SBATCH_G16, MD_STEP, BOMD, ISTATE = inputs
     print(f"Starting forces for state {state}")
     os.chdir(f"TD_NEW_S{state}/")
-    submit(RUN_ELEC_STRUC, SBATCH_G16, MD_STEP)
+    submit(RUN_ELEC_STRUC, SBATCH_G16, MD_STEP, BOMD, ISTATE)
     os.chdir("../")
 
-def run_ES_FORCE_serial( NStates, RUN_ELEC_STRUC, SBATCH_G16, MD_STEP, CPA_FLAG ):
+def run_ES_FORCE_serial( NStates, RUN_ELEC_STRUC, SBATCH_G16, MD_STEP, BOMD, ISTATE, CPA_FLAG ):
     
     for state in range( 1, NStates ): # ALL STATES IN SERIAL
         if ( state >= 2 and CPA_FLAG == True ):
             continue
-        os.chdir(f"TD_NEW_S{state}/")
-        submit(RUN_ELEC_STRUC, SBATCH_G16, MD_STEP)
-        os.chdir("../")
+        if ( BOMD == True ):
+            if ( state == ISTATE ):
+                os.chdir(f"TD_NEW_S{state}/")
+                submit(RUN_ELEC_STRUC, SBATCH_G16, MD_STEP, BOMD, ISTATE)
+                os.chdir("../")
+        else:
+            os.chdir(f"TD_NEW_S{state}/")
+            submit(RUN_ELEC_STRUC, SBATCH_G16, MD_STEP, BOMD, ISTATE)
+            os.chdir("../")
 
 def submit_jobs(DYN_PROPERTIES):
     NStates         = DYN_PROPERTIES["NStates"]
     RUN_ELEC_STRUC  = DYN_PROPERTIES["RUN_ELEC_STRUC"]
     SBATCH_G16      = DYN_PROPERTIES["SBATCH_G16"]
     MD_STEP         = DYN_PROPERTIES["MD_STEP"]
+    BOMD            = DYN_PROPERTIES["BOMD"]
+    ISTATE          = DYN_PROPERTIES["ISTATE"]
 
     print(f"Submitting electronic structure for step {MD_STEP}.")
 
-    # GS must a serial job
-    os.chdir("GS_NEW/")
-    submit(RUN_ELEC_STRUC, SBATCH_G16, MD_STEP)
-    os.chdir("../")
-
-    if ( DYN_PROPERTIES["PARALLEL_FORCES"] == True and DYN_PROPERTIES["CPA"] == False ):
-        state_List = [] 
-        #for state in range( 2, NStates ): # Skip force for final excited state. We don't include in NAMD.
-        for state in range( 1, NStates ): # Skip force for final excited state. We don't include in NAMD.
-            state_List.append([ state, RUN_ELEC_STRUC, SBATCH_G16, MD_STEP ])
-        with mp.Pool(processes=DYN_PROPERTIES["NCPUS_NAMD"]) as pool:
-            pool.map(run_ES_FORCE_parallel,state_List)
+    if ( BOMD == True and not (ISTATE == 0 and NStates >= 2) ):
+        if ( ISTATE == 0 ):
+            os.chdir("GS_NEW/")
+            submit(RUN_ELEC_STRUC, SBATCH_G16, MD_STEP, BOMD, ISTATE)
+            os.chdir("../")
+        if ( ISTATE != 0 ):
+            run_ES_FORCE_serial( NStates, RUN_ELEC_STRUC, SBATCH_G16, MD_STEP, BOMD, ISTATE, DYN_PROPERTIES["CPA"] )
     else:
-        run_ES_FORCE_serial( NStates, RUN_ELEC_STRUC, SBATCH_G16, MD_STEP, DYN_PROPERTIES["CPA"] )
 
-
-
-
-    """ # THIS IS FOR PARALLELIZING NSTATES >= 3
-    if ( NStates >= 2 ):
-        os.chdir("TD_NEW_S1/")
-        submit(RUN_ELEC_STRUC, SBATCH_G16, MD_STEP)
+        # GS must a serial job
+        os.chdir("GS_NEW/")
+        submit(RUN_ELEC_STRUC, SBATCH_G16, MD_STEP, BOMD, ISTATE)
         os.chdir("../")
 
-    ### ADD PARALLELIZATION HERE FOR COMPUTING ALL THE EXCITED STATE FORCES IF NSTATES >= 3 ###
-    if ( NStates >= 3 ):
-        if ( DYN_PROPERTIES["PARALLEL_FORCES"] == True ):
+        # Excited State
+        if ( DYN_PROPERTIES["PARALLEL_FORCES"] == True and DYN_PROPERTIES["CPA"] == False ):
             state_List = [] 
-            for state in range( 2, NStates ): # Skip force for final excited state. We don't include in NAMD.
-                state_List.append([ state, RUN_ELEC_STRUC, SBATCH_G16, MD_STEP ])
+            #for state in range( 2, NStates ): # Skip force for final excited state. We don't include in NAMD.
+            for state in range( 1, NStates ): # Skip force for final excited state. We don't include in NAMD.
+                state_List.append([ state, RUN_ELEC_STRUC, SBATCH_G16, MD_STEP, BOMD, ISTATE ])
             with mp.Pool(processes=DYN_PROPERTIES["NCPUS_NAMD"]) as pool:
                 pool.map(run_ES_FORCE_parallel,state_List)
         else:
-            run_ES_FORCE_serial( RUN_ELEC_STRUC, SBATCH_G16, MD_STEP )
-    """
+            run_ES_FORCE_serial( NStates, RUN_ELEC_STRUC, SBATCH_G16, MD_STEP, BOMD, ISTATE, DYN_PROPERTIES["CPA"] )
 
-
-    if ( MD_STEP >= 1 and NStates >= 2 ):
-        os.chdir("DIMER/")
-        submit(RUN_ELEC_STRUC, SBATCH_G16, MD_STEP)
-        os.chdir("../")
+        # DIMER
+        if ( MD_STEP >= 1 and NStates >= 2 and BOMD == False ):
+            os.chdir("DIMER/")
+            submit(RUN_ELEC_STRUC, SBATCH_G16, MD_STEP, BOMD, ISTATE)
+            os.chdir("../")
 
 
 
@@ -538,18 +640,20 @@ def check_for_trivial_crossing(OVERLAP_CORR,DYN_PROPERTIES):
                 
 def main(DYN_PROPERTIES):
 
-    NStates = DYN_PROPERTIES["NStates"] # Total number of electronic states
-    NAtoms = DYN_PROPERTIES["NAtoms"] # Total number of electronic states
-    Atom_labels = DYN_PROPERTIES["Atom_labels"]
+    NStates         = DYN_PROPERTIES["NStates"] # Total number of electronic states
+    NAtoms          = DYN_PROPERTIES["NAtoms"] # Total number of electronic states
+    Atom_labels     = DYN_PROPERTIES["Atom_labels"]
     Atom_coords_new = DYN_PROPERTIES["Atom_coords_new"]
-    MD_STEP = DYN_PROPERTIES["MD_STEP"]
+    MD_STEP         = DYN_PROPERTIES["MD_STEP"]
+    BOMD            = DYN_PROPERTIES["BOMD"]
+    ISTATE          = DYN_PROPERTIES["ISTATE"]
     
     if ( not os.path.exists("G16") ):
         sp.call("mkdir G16", shell=True)
     os.chdir("G16")
     
     check_geometry(Atom_labels,Atom_coords_new)
-    clean_directory(NStates,MD_STEP,DYN_PROPERTIES["CPA"])
+    clean_directory(NStates,MD_STEP,DYN_PROPERTIES["CPA"],DYN_PROPERTIES["BOMD"],ISTATE)
     generate_inputs(DYN_PROPERTIES)
     submit_jobs(DYN_PROPERTIES)
 
@@ -557,7 +661,7 @@ def main(DYN_PROPERTIES):
     DYN_PROPERTIES = get_cartesian_gradients.main(DYN_PROPERTIES)
     DYN_PROPERTIES = get_diagonal_electronic_energies.main(DYN_PROPERTIES)
     if ( MD_STEP >= 1 ):
-        if ( NStates >= 2 ):
+        if ( NStates >= 2 and BOMD == False ):
             T0 = time.time()
             DYN_PROPERTIES = G16_NAC.main(DYN_PROPERTIES) # Provides OVERLAP
             print( f"\tGET_OVERLAP OVERALL TIME (G16_TD.py):", round(time.time() - T0,2), "s" )
@@ -573,6 +677,7 @@ def main(DYN_PROPERTIES):
             DYN_PROPERTIES["OVERLAP_NEW"] = np.zeros(( NStates, NStates ))
             DYN_PROPERTIES["NACR_APPROX_OLD"] = np.zeros(( NStates, NStates, NAtoms, 3 ))
             DYN_PROPERTIES["NACR_APPROX_NEW"] = np.zeros(( NStates, NStates, NAtoms, 3 ))
+            DYN_PROPERTIES["NACT_NEW"] = np.zeros(( NStates, NStates ))
 
     os.chdir("../")
 

@@ -238,6 +238,15 @@ def read():
                     print(f"\t'CHECK_TRIVIAL_CROSSING' must be a bool: '{t[1]}'")
                     exit()
 
+            # Look for BOMD
+            if ( t[0].upper() == "BOMD".upper() ):
+                if ( t[1].upper() == "TRUE" ):
+                    DYN_PROPERTIES["BOMD"] = True
+                elif ( t[1].upper() == "FALSE" ):
+                    DYN_PROPERTIES["BOMD"] = False
+                else:
+                    print("Input for 'BOMD' must be a boolean. (True or False)")
+                    exit()
 
             # Look for CPA
             if ( t[0].upper() == "CPA".upper() ):
@@ -278,22 +287,32 @@ def read():
         print("Input file is missing mandatory entries (see above). Check it.")
         exit()
 
-    assert( DYN_PROPERTIES["ISTATE"] <= DYN_PROPERTIES["NStates"]-1 ), "ISTATE must be less than the total number of states."
+    #assert( DYN_PROPERTIES["ISTATE"] <= DYN_PROPERTIES["NStates"]-1 ), "ISTATE must be less than the total number of states."
 
 
     # Tell user what the code thinks it should run. For double checking the intentions.
     print("Calculation Goal:")
-    if ( NStates == 1 and ISTATE == 0 ): # BOMD in G.S.
-        print( "\tSQD will perform BOMD in the ground (S0) electronic state." )
-        DYN_PROPERTIES["BOMD"] = True
-    elif ( NStates == 1 and ISTATE != 0 ): # BOMD in E.S.
-        print( f"\tSQD will perform BOMD in an excited (S{ISTATE}) electronic state." )
-        DYN_PROPERTIES["BOMD"] = True
-    elif ( NStates >= 2 and ISTATE >= 0 ): # NAMD using multiple electronic state
-        print( f"\tSQD will perform NAMD in using multiple electronic states (S{[j for j in range(NStates)]})." )
-        print( f"\t\tSQD will start in state S{ISTATE}.")
-        DYN_PROPERTIES["BOMD"] = False
-
+    if ( DYN_PROPERTIES["BOMD"] == True ): # BOMD
+        if ( DYN_PROPERTIES["ISTATE"] == 0 ): # BOMD in GS
+            print( "\tSQD will perform BOMD in the ground (S0) electronic state." )
+            if ( DYN_PROPERTIES['NStates'] >= 2 ):
+                print("\nWarning: USER requested multiple electronic states.")
+                print("Warning: We will simply be tracking the excited state energies.")
+                print("Warning: Set NSTATES = 1 for GS BOMD without calculating excited states.\n")
+        if ( DYN_PROPERTIES["ISTATE"] != 0 ): # BOMD in ES
+            print( f"\tSQD will perform BOMD in an excited (S{DYN_PROPERTIES['ISTATE']}) electronic state." )
+            if ( DYN_PROPERTIES['NStates'] > DYN_PROPERTIES['ISTATE']+1 ):
+                print(f"\nWarning: User requested more excited states (NSTATES = {DYN_PROPERTIES['NStates']}) than necessary to perform BOMD in S{DYN_PROPERTIES['ISTATE']}")
+                print(f"Warning: Set NSTATES = {DYN_PROPERTIES['ISTATE']+1} for minimal computation time.\n")
+    else: # BOMD was not manually set
+        if ( DYN_PROPERTIES['NStates'] == 1 and DYN_PROPERTIES['ISTATE'] == 0 ): # BOMD in GS -- implicit
+            print("User requested 1 electronic state and an initial state of S0 --> BOMD in GS")
+            print("\t--> Setting BOMD = True")
+            DYN_PROPERTIES["BOMD"] = True
+        else: # NAMD
+            print( f"\tSQD will perform NAMD in using multiple electronic states")
+            print( "\t\tElectronic states in NAMD:", [ f"S{j}" for j in range(DYN_PROPERTIES['NStates']) ] )
+            print( f"\t\tInitial Electronic State = S{DYN_PROPERTIES['ISTATE']}.")
 
 
     return DYN_PROPERTIES
@@ -301,9 +320,6 @@ def read():
 
 
 def read_geom():
-    """
-    TODO Add checks for XYZ user input
-    """
     XYZ_File = open("geometry_input.xyz","r").readlines()
     NAtoms = int(XYZ_File[0])
     Atom_labels = []
@@ -600,7 +616,16 @@ def initialize_MD_variables(DYN_PROPERTIES):
     except KeyError:
         DYN_PROPERTIES["CPA"] = False # Default is not to do classical path approximation
 
+    try:
+        tmp = DYN_PROPERTIES["BOMD"]
+    except KeyError:
+        DYN_PROPERTIES["BOMD"] = False # Default is not to do BOMD
 
+
+    if ( DYN_PROPERTIES["CPA"] == True and DYN_PROPERTIES["BOMD"] == True ):
+        print("\nError: CPA = True and BOMD = True")
+        print("Error: This does not make sense.\n")
+        exit()
 
     print("Input looks good.")
 

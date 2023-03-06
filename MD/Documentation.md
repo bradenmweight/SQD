@@ -32,7 +32,7 @@ For questions, concerns, or bugs, please send an email to Braden M. Weight (<bwe
 
 ## **Mixed Quantum-Classical and Semi-classical Dynamics Methods**
 ### **Born-Oppenheimer Molecular Dyanmics**
-$${\bf F} (t) = \langle S_{INIT} | \boldsymbol{\nabla} \hat{H}_\mathrm{el} | S_{INIT} \rangle $$
+${\bf F} (t) = \langle S_{INIT} | \boldsymbol{\nabla} \hat{H}_\mathrm{el} | S_{INIT} \rangle $
 ### **Ehrenfest**
 ### **Spin-LSC**
 ### **Global Flux Surface Hopping**

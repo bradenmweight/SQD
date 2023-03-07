@@ -10,3 +10,8 @@
   z-index: -1;
 }
 
+thead, tbody, tfoot, tr, td, th {
+  border-width: 1px;
+  padding: 5px;
+}
+

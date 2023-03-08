@@ -1,7 +1,8 @@
-# List of Parameters for SQD Functionality
+# Example of Various SQD Functionality
 
 [DOCS]:   <https://bradenmweight.github.io/SQD/read.html?filename=Documentation.md>
 [PARAMS]: <https://bradenmweight.github.io/SQD/read.html?filename=Parameters.md>
+
 ## Example Input Scripts
 
 ### BOMD in $S_0$

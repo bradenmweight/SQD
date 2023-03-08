@@ -1,4 +1,4 @@
-# Example of Various SQD Functionality
+# Examples of Various SQD Functionality
 
 [DOCS]:   <https://bradenmweight.github.io/SQD/read.html?filename=Documentation.md>
 [PARAMS]: <https://bradenmweight.github.io/SQD/read.html?filename=Parameters.md>

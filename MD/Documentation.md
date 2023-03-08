@@ -1,8 +1,9 @@
 # Documentation for SQD Package
 
-For questions, concerns, or bugs, please send an email to Braden M. Weight (<bweight@ur.rochester.edu>). The relevant parmeters can be found on the [parameters][PARAMETERS] page.
+For questions, concerns, or bugs, please send an email to Braden M. Weight (<bweight@ur.rochester.edu>). The relevant parmeters and example calculations can be found on the [parameters][PARAMETERS] and [examples][EXAMPLES] pages.
 
 [PARAMETERS]: <https://bradenmweight.github.io/SQD/read.html?filename=Parameters.md>
+[EXAMPLES]: <https://bradenmweight.github.io/SQD/read.html?filename=Examples.md>
 
 # Table of Contents
 - [Documentation for SQD Package](#documentation-for-sqd-package)

@@ -23,8 +23,7 @@ VELOC = ZERO # {ZERO} {MB} {READ} -> read from "input_veloc.xyz", [str]
 NCPUS_G16 = 24 # [int]
 NVT_TYPE = LANGEVIN # LANGEVIN, RESCALE [str]
 LANGEVIN_LAMBDA = 50.0 # meV [float]
-#RESCALE_FREQ = 25 # Steps between rescaling for NVT_TYPE = RESCALE [int]
-TEMP = 300 # K [float]
+TEMP = 300 # Temperature of the thermal bath (K) [float]
 ```
 
 

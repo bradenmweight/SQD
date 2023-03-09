@@ -6,7 +6,7 @@ import properties
 def save_data(DYN_PROPERTIES):
 
     NStates = DYN_PROPERTIES["NStates"]
-    TIME    = round(DYN_PROPERTIES["MD_STEP"] * DYN_PROPERTIES["dtI"],4)
+    TIME    = round(DYN_PROPERTIES["MD_STEP"] * DYN_PROPERTIES["dtI"] / 41.341 ,4) # Print in fs
 
 
     if ( DYN_PROPERTIES["MD_STEP"] == 0 ): 
@@ -15,7 +15,7 @@ def save_data(DYN_PROPERTIES):
 
     with open("MD_OUTPUT/trajectory.xyz","a") as file01:
         file01.write(f"{DYN_PROPERTIES['NAtoms']}\n")
-        file01.write(f"MD Step {DYN_PROPERTIES["MD_STEP"]} Units = [Angstroms]\n")
+        file01.write(f"MD Step {DYN_PROPERTIES['MD_STEP']} Units = [Angstroms]\n")
         Atom_labels = DYN_PROPERTIES["Atom_labels"]
         Atom_coords = DYN_PROPERTIES["Atom_coords_new"] * 0.529 # 0.529 Ang./Bohr
         for count, atom in enumerate( Atom_labels ):
@@ -24,7 +24,7 @@ def save_data(DYN_PROPERTIES):
 
     with open("MD_OUTPUT/velocity.xyz","a") as file01:
         file01.write(f"{DYN_PROPERTIES['NAtoms']}\n")
-        file01.write(f"MD Step {DYN_PROPERTIES["MD_STEP"]} Units = [Angstroms / fs]\n")
+        file01.write(f"MD Step {DYN_PROPERTIES['MD_STEP']} Units = [Angstroms / fs]\n")
         Atom_labels = DYN_PROPERTIES["Atom_labels"]
         Atom_velocs = DYN_PROPERTIES["Atom_velocs_new"] * 0.529 * 41.341 # 0.529 Ang./Bohr, 41.341 a.u. / fs
         for count, atom in enumerate( Atom_labels ):
@@ -68,7 +68,7 @@ def save_data(DYN_PROPERTIES):
                 AS = DYN_PROPERTIES['ACTIVE_STATE']
                 POP     = np.zeros(( NStates ))
                 POP[AS] = 1.0
-                file01.write( f"{TIME}  " +  " ".join(map("{:2.2f}".format,POP )) + "  %2.8f" % (np.sum(POP)) + "\n" )
+                file01.write( f"{TIME}  " +  " ".join(map("{:2.2f}".format,POP )) + "  %2.2f" % (np.sum(POP)) + "\n" )
             else:
                 POP = np.real(properties.get_density_matrix( DYN_PROPERTIES )[np.diag_indices(NStates)])
                 file01.write( f"{TIME}  " +  " ".join(map("{:2.8f}".format,POP )) + "  %2.8f" % (np.sum(POP)) + "\n" )

@@ -20,4 +20,6 @@
    <a href = 'https://bradenmweight.github.io/SQD/read.html?filename=Documentation.md'>Documentation</a>
    <br>
    <a href = 'https://bradenmweight.github.io/SQD/read.html?filename=Parameters.md'>Parameters</a>
+   <br>
+   <a href = 'https://bradenmweight.github.io/SQD/read.html?filename=Examples.md'>Examples</a>
 </div>

@@ -17,6 +17,7 @@ count_good = 0
 def resubmit():
     if ( RESUBMIT_FLAG == True ): 
         print(f"\tResubmitted: TRAJ/traj-{traj}")
+        sp.call("cp ../../submit.SQD .",shell=True)
         sp.call("sbatch submit.SQD",shell=True)
     else:
         print(f"\tFailed: TRAJ/traj-{traj}")
@@ -25,8 +26,8 @@ for traj, path in enumerate(DIRS):
     os.chdir(path)
     #print("/".join(os.getcwd().split("/")[-2:]))
     if ( os.path.exists("MD_OUTPUT/") ):
-        if ( os.path.isfile("MD_OUTPUT/Population.dat") ):
-            POP    = np.loadtxt("MD_OUTPUT/Population.dat")
+        if ( os.path.isfile("MD_OUTPUT/Temperature.dat") ):
+            POP    = np.loadtxt("MD_OUTPUT/Temperature.dat")
             NSTEPS = len(POP)
             if ( traj == 0 ):
                 NSTEPS_REF  = NSTEPS

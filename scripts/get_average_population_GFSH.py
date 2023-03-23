@@ -5,7 +5,7 @@ import os
 
 NTRAJ   = 201  # USER INPUT
 dtI     = 0.1 # USER INPUT
-NSTEPS  = 1500 # USER INPUT
+NSTEPS  = 2500 # USER INPUT
 
 ####### KEEP FALSE UNLESS ABSOLUTELY SURE #######
 resubmit_bad = False
@@ -59,11 +59,12 @@ np.savetxt( f"Population_average-{good_traj}.dat", OUTPOP, fmt="%2.5f" )
 #    plt.plot( TIME, POP_COEFF[:,state], lw=3, label=f"S{state}" )
 #plt.plot( TIME, np.sum(POP_COEFF[:,:],axis=-1), c="black", alpha=0.5, lw=3, label=f"Total" )
 plt.plot( TIME, POP_COEFF[:,2], c='orange', lw=3, label="<COEFF>" )
-plt.plot( TIME, POP_AS[:,2], c='orange', lw=3, label=f"<AS>" )
+#plt.plot( TIME, POP_AS[:,2], c='orange', lw=3, label=f"<AS>" )
 
 plt.legend()
 plt.xlim(0,TIME[-1])
 plt.ylim(0,1.01 )
+plt.title(f"Number of Trajectories: {good_traj}",fontsize=15)
 plt.savefig(f"Population_average-{good_traj}.jpg",dpi=600)
 
 

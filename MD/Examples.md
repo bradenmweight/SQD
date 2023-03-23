@@ -3,11 +3,11 @@
 [DOCS]:   <https://bradenmweight.github.io/SQD/read.html?filename=Documentation.md>
 [PARAMS]: <https://bradenmweight.github.io/SQD/read.html?filename=Parameters.md>
 
-## Example Workflow
-1. Ground State Born-Oppenheimer Dyanmics at Constant Temperature (NVT) [Example 1]
+## Example Workflow for Excited State Non-adiabtic Dynamics
+1. Simulate Ground State Born-Oppenheimer Dyanmics at Constant Temperature (NVT) [Example 1]
 2. Sample Ground State Thermal Distribution (scripts/extract_NVT_inital_conditions.py)
 3. Copy "TRAJ" directory into a new NAMD folder
-4. Populate adn run all trajectories with NAMD.in and submission script (scripts/run_jobs.sh)
+4. Populate and run all trajectories with NAMD.in [Example 3] and submission script (scripts/run_jobs.sh)
 5. Extract results (scripts/get_average_population*, scripts/track_angle_allTRAJ.py, scripts/track_dihedral_angle_allTRAJ.py)
 6. Publish a paper
 
@@ -40,7 +40,7 @@ TEMP            = 300        # Temperature of the thermal bath (K) [float]
 #
 
 
-### BOMD in the First Excited State at Constant Energy (NVE)
+### Example 2: BOMD in the First Excited State at Constant Energy (NVE)
 ```
 # Excited State (S1) BOMD at constant energy (NVE)
 NSTATES         = 1          # Number of states in the calculation [int]
@@ -60,7 +60,7 @@ VELOC           = READ       # Initial values for the nuclear velocities [str]
 NCPUS_G16       = 24         # Number of shared-memory cores for QM calculation [int]
 ```
 
-### NAMD starting in excited state = 2 and Including States = [0,1,2,3,4] in the Dynamics
+### Example 3: NAMD starting in excited state = 2 and Including States = [0,1,2,3,4] in the Dynamics
 ```
 # Non-adiabtic Dynamics (NAMD) starting in (S2) and including S0-S4
 NSTATES         = 5          # Number of states in the calculation [int]
@@ -83,7 +83,7 @@ NCPUS_NAMD      = 3          # NCPUS, Dictates parallization across excited stat
 EL_PROP         = VV         # RK (4th-order explicit Runge-Kutta), VV (second-order symplectic) [str]
 ```
 
-### NAMD (in Classical Path Approximation) starting in excited state = 2 and Including States = [0,1,2,3,4] in the Dynamics
+### Example 4: NAMD (in Classical Path Approximation) starting in excited state = 2 and Including States = [0,1,2,3,4] in the Dynamics
 ```
 # Non-adiabtic Dynamics (NAMD) starting in (S2) and including S0-S4
 NSTATES         = 5          # Number of states in the calculation [int]

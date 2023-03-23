@@ -1,4 +1,5 @@
 import numpy as np
+import subprocess as sp
 
 
 def read():
@@ -289,32 +290,13 @@ def read():
 
     #assert( DYN_PROPERTIES["ISTATE"] <= DYN_PROPERTIES["NStates"]-1 ), "ISTATE must be less than the total number of states."
 
-
-    # Tell user what the code thinks it should run. For double checking the intentions.
-    print("Calculation Goal:")
-    if ( DYN_PROPERTIES["BOMD"] == True ): # BOMD
-        if ( DYN_PROPERTIES["ISTATE"] == 0 ): # BOMD in GS
-            print( "\tSQD will perform BOMD in the ground (S0) electronic state." )
-            if ( DYN_PROPERTIES['NStates'] >= 2 ):
-                print("\nWarning: USER requested multiple electronic states.")
-                print("Warning: We will simply be tracking the excited state energies.")
-                print("Warning: Set NSTATES = 1 for GS BOMD without calculating excited states.\n")
-        if ( DYN_PROPERTIES["ISTATE"] != 0 ): # BOMD in ES
-            print( f"\tSQD will perform BOMD in an excited (S{DYN_PROPERTIES['ISTATE']}) electronic state." )
-            if ( DYN_PROPERTIES['NStates'] > DYN_PROPERTIES['ISTATE']+1 ):
-                print(f"\nWarning: User requested more excited states (NSTATES = {DYN_PROPERTIES['NStates']}) than necessary to perform BOMD in S{DYN_PROPERTIES['ISTATE']}")
-                print(f"Warning: Set NSTATES = {DYN_PROPERTIES['ISTATE']+1} for minimal computation time.\n")
-    else: # BOMD was not manually set
-        if ( DYN_PROPERTIES['NStates'] == 1 and DYN_PROPERTIES['ISTATE'] == 0 ): # BOMD in GS -- implicit
-            print("User requested 1 electronic state and an initial state of S0 --> BOMD in GS")
-            print("\t--> Setting BOMD = True")
-            DYN_PROPERTIES["BOMD"] = True
-        else: # NAMD
-            print( f"\tSQD will perform NAMD in using multiple electronic states")
-            print( "\t\tElectronic states in NAMD:", [ f"S{j}" for j in range(DYN_PROPERTIES['NStates']) ] )
-            print( f"\t\tInitial Electronic State = S{DYN_PROPERTIES['ISTATE']}.")
-
-
+    # Try to read the SQD_HOME path
+    SQD_PATH = sp.check_output("echo $SQD_HOME",shell=True).decode().strip("\n")
+    if ( SQD_PATH == "" ):
+        print("SQD home path is not set.\n\texport SQD_HOME=/absolute/path/to/SQD/")
+        exit()
+    else:
+        DYN_PROPERTIES["SQD_HOME_PATH"] = SQD_PATH
     return DYN_PROPERTIES
 
 
@@ -628,5 +610,46 @@ def initialize_MD_variables(DYN_PROPERTIES):
         exit()
 
     print("Input looks good.")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    # Tell user what the code thinks it should run. For double checking the intentions.
+    print("Calculation Goal:")
+    if ( DYN_PROPERTIES["BOMD"] == True ): # BOMD
+        if ( DYN_PROPERTIES["ISTATE"] == 0 ): # BOMD in GS
+            print( "\tSQD will perform BOMD in the ground (S0) electronic state." )
+            if ( DYN_PROPERTIES['NStates'] >= 2 ):
+                print("\nWarning: USER requested multiple electronic states.")
+                print("Warning: We will simply be tracking the excited state energies.")
+                print("Warning: Set NSTATES = 1 for GS BOMD without calculating excited states.\n")
+        if ( DYN_PROPERTIES["ISTATE"] != 0 ): # BOMD in ES
+            print( f"\tSQD will perform BOMD in an excited (S{DYN_PROPERTIES['ISTATE']}) electronic state." )
+            if ( DYN_PROPERTIES['NStates'] > DYN_PROPERTIES['ISTATE']+1 ):
+                print(f"\nWarning: User requested more excited states (NSTATES = {DYN_PROPERTIES['NStates']}) than necessary to perform BOMD in S{DYN_PROPERTIES['ISTATE']}")
+                print(f"Warning: Set NSTATES = {DYN_PROPERTIES['ISTATE']+1} for minimal computation time.\n")
+    else: # BOMD was not manually set
+        if ( DYN_PROPERTIES['NStates'] == 1 and DYN_PROPERTIES['ISTATE'] == 0 ): # BOMD in GS -- implicit
+            print("User requested 1 electronic state and an initial state of S0 --> BOMD in GS")
+            print("\t--> Setting BOMD = True")
+            DYN_PROPERTIES["BOMD"] = True
+        else: # NAMD
+            print( f"\tSQD will perform NAMD in using multiple electronic states")
+            print( "\t\tElectronic states in NAMD:", [ f"S{j}" for j in range(DYN_PROPERTIES['NStates']) ] )
+            print( f"\t\tInitial Electronic State = S{DYN_PROPERTIES['ISTATE']}.")
+
+
+
 
     return DYN_PROPERTIES

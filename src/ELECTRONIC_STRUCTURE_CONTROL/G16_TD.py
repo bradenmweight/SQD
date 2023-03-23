@@ -9,10 +9,6 @@ import time
 import get_cartesian_gradients
 import get_diagonal_electronic_energies
 
-# HOW TO HANDLE THIS PATH BETTER ?
-sys.path.append("/scratch/bweight/software/SQD/src/WFN_OVERLAP/PYTHON/")
-import G16_NAC
-
 def check_geometry(Atom_labels,Atom_coords_new):
 
     assert ( isinstance(Atom_labels, list) ), "Atoms labels needs to be a list" 
@@ -639,6 +635,10 @@ def check_for_trivial_crossing(OVERLAP_CORR,DYN_PROPERTIES):
 
                 
 def main(DYN_PROPERTIES):
+
+    # HOW TO HANDLE THIS PATH BETTER ?
+    sys.path.append(f"{DYN_PROPERTIES['SQD_HOME_PATH']}/src/WFN_OVERLAP/PYTHON/")
+    import G16_NAC
 
     NStates         = DYN_PROPERTIES["NStates"] # Total number of electronic states
     NAtoms          = DYN_PROPERTIES["NAtoms"] # Total number of electronic states

@@ -8,7 +8,6 @@ import shutil
 import json
 import time
 
-FORTRAN_CI_CODE = "/scratch/bweight/software/many_molecule_many_mode_NAMD/src/WFN_OVERLAP/FORTRAN/main_overlap_slater.exe"
 
 def dump_data(filename, obj):
     """
@@ -175,7 +174,7 @@ class gau_nac:
         call another standalone program to deal with nac.
         """
         #os.system("main_overlap_slater.exe  < main_overlap_slater_input")
-        os.system(f"{FORTRAN_CI_CODE}  < main_overlap_slater_input")
+        os.system(f"{self.DYN_PROPERTIES['FORTRAN_CI_CODE']}  < main_overlap_slater_input")
         return
         
     def dump(self):
@@ -263,6 +262,10 @@ class gau_nac:
         """
         prepare; run; dump; finilize
         """
+        if ( self.DYN_PROPERTIES["MD_STEP"] == 1 ):
+            self.DYN_PROPERTIES["FORTRAN_CI_CODE"] = f"{self.DYN_PROPERTIES['SQD_HOME_PATH']}/src/WFN_OVERLAP/FORTRAN/main_overlap_slater.exe"
+
+
         T0 = time.time()
         self.prepare()
         print("gau_nac prepare", round(time.time() - T0,2), "s")

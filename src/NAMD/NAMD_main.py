@@ -13,11 +13,7 @@ import Eh
 import spinLSC
 import GFSH
 
-# HOW TO HANDLE THESE PATHS BETTER ?
-sys.path.append("/scratch/bweight/software/SQD/src/ELECTRONIC_STRUCTURE_CONTROL/")
-sys.path.append("/scratch/bweight/software/SQD/src/WFN_OVERLAP/PYTHON/")
 
-import G16_TD
 
 
 # This code with be the main control code for the NAMD.
@@ -65,6 +61,11 @@ def main( ):
     DYN_PROPERTIES = read_input.read()
     DYN_PROPERTIES = read_input.initialize_MD_variables(DYN_PROPERTIES)
 
+    # HOW TO HANDLE THESE PATHS BETTER ?
+    sys.path.append(f"{DYN_PROPERTIES['SQD_HOME_PATH']}/src/ELECTRONIC_STRUCTURE_CONTROL/")
+    sys.path.append(f"{DYN_PROPERTIES['SQD_HOME_PATH']}/src/WFN_OVERLAP/PYTHON/")
+
+    import G16_TD
 
     # Remove COM motion and angular velocity
     # Do we need to do this at every step. Probably should at least remove COM.

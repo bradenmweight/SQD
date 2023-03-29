@@ -26,7 +26,11 @@
 
 export SQD_HOME="/scratch/bweight/software/SQD/"
 export SQD_SCRATCH="/local_scratch/$SLURM_JOB_ID/" # Location where electronic structure jobs will be run
-### export SQD_SCRATCH="./" # This location may cause non-Infiniband-connected HPC systems to be slow due to many large I/O operations. Use at discretion of HPC administrators  
+
+# The following location may cause non-Infiniband-connected HPC systems to be slow 
+#   due to many large I/O operations. Use at discretion of HPC administrators.
+### export SQD_SCRATCH="./" 
+ 
 
 echo "Setting paths in slurm:"
 echo "SQD_HOME      = $SQD_HOME"

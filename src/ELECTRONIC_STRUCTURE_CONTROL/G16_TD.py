@@ -73,7 +73,9 @@ def clean_directory(NStates, MD_STEP, CPA_FLAG, BOMD_FLAG, ISTATE):
             states = [j for j in range(1,NStates)] * (not CPA_FLAG) + [1] * (CPA_FLAG)
             for state in states:
                 sp.call( f"rm -rf TD_OLD_S{state}" ,shell=True)
-        if ( MD_STEP >= 2 and NStates >= 2 ): sp.call( "rm -rf DIMER" ,shell=True)
+        if ( MD_STEP >= 2 and NStates >= 2 ): 
+            sp.call( "rm -rf DIMER" ,shell=True)
+            sp.call( "rm -rf OVERLAP" ,shell=True)
 
         # Move new to old
         if ( MD_STEP >= 1 ): 
@@ -306,7 +308,7 @@ def submit(RUN_ELEC_STRUC, SBATCH_G16, MD_STEP, BOMD, ISTATE, directory=None):
         sp.call(f"sbatch {SBATCH_G16.split('/')[-1]}", shell=True)
         t0 = time.time()
         sleep_time = 0
-        sleep_limit = 60 * 20 # 20 minutes, if electronic structure takes longer, we should not do NAMD
+        sleep_limit = 60 * 20 # 20 minutes, if electronic structure takes longer, we should not be doing NAMD
         sleep_check = 1 # Check gaussian output every {} seconds
         while ( True ):
             time.sleep(sleep_check)
@@ -332,7 +334,9 @@ def submit(RUN_ELEC_STRUC, SBATCH_G16, MD_STEP, BOMD, ISTATE, directory=None):
     elif( RUN_ELEC_STRUC == "USE_CURRENT_NODE" ):
         t0 = time.time()
         sp.call(f"g16 < geometry.com > geometry.out", shell=True, stdout=True)
-        #sp.call(f"g16 < geometry.com | tee geometry.out", shell=True, stdout=True)
+
+
+
         check = open("geometry.out","r").readlines()[-1]
         if ( check.split()[:4] == "Normal termination of Gaussian".split() ):
             print("\tGaussian terminated normally in %2.2f s. (%s)" % (time.time() - t0, os.getcwd().split("/")[-1]) )
@@ -340,10 +344,11 @@ def submit(RUN_ELEC_STRUC, SBATCH_G16, MD_STEP, BOMD, ISTATE, directory=None):
         else:
             print(f"\tWARNING! Gaussian did not finish normally in the following directory:\n{os.getcwd()}", )
     elif ( RUN_ELEC_STRUC == "TEST" ):
-        # This is a test. Do nothing 
+        # This is a test. Do nothing intensive.
         print(f"Testing. I will not submit/run electronic structure calculations for step {MD_STEP}.")
     else:
         print(f"Error: 'RUN_ELEC_STRUC' was set to '{RUN_ELEC_STRUC}'. Not sure what to do.")
+        exit()
 
 
 def run_ES_FORCE_parallel( inputs ):
@@ -648,9 +653,11 @@ def main(DYN_PROPERTIES):
     BOMD            = DYN_PROPERTIES["BOMD"]
     ISTATE          = DYN_PROPERTIES["ISTATE"]
     
-    if ( not os.path.exists("G16") ):
-        sp.call("mkdir G16", shell=True)
-    os.chdir("G16")
+    #print("Running Location (GPFS):\n\t", os.getcwd())
+    if ( not os.path.exists(f"{DYN_PROPERTIES['SQD_SCRATCH_PATH']}/G16") ):
+        sp.call(f"mkdir {DYN_PROPERTIES['SQD_SCRATCH_PATH']}/G16", shell=True)
+    os.chdir(f"{DYN_PROPERTIES['SQD_SCRATCH_PATH']}/G16")
+    #print("SCRATCH Location (Node Local):\n\t", os.getcwd())
     
     check_geometry(Atom_labels,Atom_coords_new)
     clean_directory(NStates,MD_STEP,DYN_PROPERTIES["CPA"],DYN_PROPERTIES["BOMD"],ISTATE)
@@ -679,7 +686,7 @@ def main(DYN_PROPERTIES):
             DYN_PROPERTIES["NACR_APPROX_NEW"] = np.zeros(( NStates, NStates, NAtoms, 3 ))
             DYN_PROPERTIES["NACT_NEW"] = np.zeros(( NStates, NStates ))
 
-    os.chdir("../")
+    os.chdir(f"{DYN_PROPERTIES['SQD_RUNNING_DIR']}/")
 
     return DYN_PROPERTIES
 

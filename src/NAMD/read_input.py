@@ -1,6 +1,6 @@
 import numpy as np
 import subprocess as sp
-
+import os
 
 def read():
 
@@ -297,6 +297,20 @@ def read():
         exit()
     else:
         DYN_PROPERTIES["SQD_HOME_PATH"] = SQD_PATH
+
+    # Try to read the SQD_SCRATCH path
+    SQD_SCRATCH = sp.check_output("echo $SQD_SCRATCH",shell=True).decode().strip("\n")
+    if ( SQD_SCRATCH == "" ):
+        print("SQD scratch path is not set.\n\texport SQD_SCRATCH=/absolute/path/to/SQD_SCRATCH/")
+        exit()
+    else:
+        DYN_PROPERTIES["SQD_SCRATCH_PATH"] = SQD_SCRATCH
+    
+    # Save running directory
+    DYN_PROPERTIES["SQD_RUNNING_DIR"] = os.getcwd()
+    
+    
+    
     return DYN_PROPERTIES
 
 

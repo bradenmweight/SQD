@@ -13,6 +13,35 @@
 
 ## Example Input Scripts
 
+### Example 0: SLURM submission script for SQD
+```
+#!/bin/bash
+#SBATCH -p standard
+#SBATCH -J SQD_TEST
+#SBATCH -o output.slurm
+#SBATCH --mem 8GB
+#SBATCH -t 1:00:00
+#SBATCH -N 1
+#SBATCH --ntasks-per-node=4
+
+export SQD_HOME="/scratch/bweight/software/SQD/"
+export SQD_SCRATCH="/local_scratch/$SLURM_JOB_ID/" # Location where electronic structure jobs will be run
+### export SQD_SCRATCH="./" # This location may cause non-Infiniband-connected HPC systems to be slow due to many large I/O operations. Use at discretion of HPC administrators  
+
+echo "Setting paths in slurm:"
+echo "SQD_HOME      = $SQD_HOME"
+echo "SQD_SCRATCH   = $SQD_SCRATCH"
+
+module load gaussian
+module load intel
+
+export OMP_NUM_THREADS=4
+export MKL_NUM_THREADS=4
+
+python3 $SQD_HOME/src/NAMD/NAMD_main.py > MD.out
+```
+
+
 ### Example 1: BOMD in the Ground State with Langevin Bath (NVT)
 ```
 # Ground State (S0) BOMD with Langevin Bath (NVT)

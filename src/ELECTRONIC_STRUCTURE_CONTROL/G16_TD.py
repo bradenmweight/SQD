@@ -654,9 +654,9 @@ def main(DYN_PROPERTIES):
     ISTATE          = DYN_PROPERTIES["ISTATE"]
     
     #print("Running Location (GPFS):\n\t", os.getcwd())
-    if ( not os.path.exists(f"{DYN_PROPERTIES['SQD_SCRATCH_PATH']}/G16") ):
-        sp.call(f"mkdir {DYN_PROPERTIES['SQD_SCRATCH_PATH']}/G16", shell=True)
-    os.chdir(f"{DYN_PROPERTIES['SQD_SCRATCH_PATH']}/G16")
+    if ( not os.path.exists(f"{DYN_PROPERTIES['SQD_SCRATCH_PATH']}/EL_STRUCTURE") ):
+        sp.call(f"mkdir {DYN_PROPERTIES['SQD_SCRATCH_PATH']}/EL_STRUCTURE", shell=True)
+    os.chdir(f"{DYN_PROPERTIES['SQD_SCRATCH_PATH']}/EL_STRUCTURE")
     #print("SCRATCH Location (Node Local):\n\t", os.getcwd())
     
     check_geometry(Atom_labels,Atom_coords_new)

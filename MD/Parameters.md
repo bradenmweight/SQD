@@ -2,6 +2,12 @@
 
 [DOCS]: <https://bradenmweight.github.io/SQD/read.html?filename=Documentation.md>
 
+## Required Paths
+| Path Variable | Type | Default | Function |
+| ------ | ------ | ------ | ------ |
+| SQD_HOME | str | None | This defines the path to the SQD package. At this location, one will find src/ and scripts/ (e.g., export SQD_HOME="/path/to/SQD/")
+| SQD_SCRATCH | str | None | This defines the path to preferred location for the electronic structure calculations. Often, especially on HPC systems not connected via Infiniband, running (and storing the files from) the electronic structure on the node's local memory will drastically reduce the pressure on the HPC system due to many large I/O operations during the SQD job. For the SLURM batch system, an example would be, export SQD_SCRATCH="/local_scratch/$SLURM_JOB_ID/"
+
 ## Required Keywords
 | Keyword | Type | Default | Function |
 | ------ | ------ | ------ | ------ |

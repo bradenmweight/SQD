@@ -126,5 +126,8 @@ def main( ):
 
         print( "Total MD Step took %2.2f s." % (time() - T_STEP_START) )
 
+    # Remove SQD_SCRATCH_PATH
+    sp.call(f"rm -r {DYN_PROPERTIES['SQD_SCRATCH_PATH']}", shell=True)
+
 if ( __name__ == "__main__" ):
     main()

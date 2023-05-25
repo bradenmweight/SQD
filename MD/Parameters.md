@@ -50,6 +50,9 @@
 | EL_INTERPOLATION | bool | False | Determines whether the electronic Hamiltonian is to be linearly interpolated between nuclear time steps. |
 | REMOVE_COM_MOTION | bool | True | Determines whether to remove COM motion during the trajectory. |
 | REMOVE_ANGULAR_VELOCITY | bool | True | Determines whether to remove angular velocity during the trajectory. |
+| PRINT_NACR | bool | False | Determines whether to print the approximate non-adiabatcic coupling vectors (NACR). |
+
+
 
 
 

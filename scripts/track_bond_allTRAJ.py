@@ -9,12 +9,14 @@ import subprocess as sp
 # To change submission details for failed jobs, 
 #          change ./submit.SQD
 
-# SYNTAX: python3 track_angle_allTRAJ.py
+# ASSUMING TRAJ = 0 FINISHED CORRECTLY
+
+# SYNTAX: python3 track_BOND_allTRAJ.py
 
 # USER INPUT
-TRACK_ATOMS = [31,22,23] # 1,2,3,4,...
-NTRAJ       = 201
-dtI         = 1.0 # fs
+TRACK_ATOMS = [1,8] # 1,2,3,4,...
+NTRAJ       = 100
+dtI         = 0.5 # fs
 
 
 #### DO NOT MODIFY BELOW THIS POINT ####
@@ -27,14 +29,18 @@ NATOMS   = 0
 NSTEPS   = 0
 GEOMS    = 0
 TYPES    = []
-ANGLE      = []
+BOND     = []
 bad_traj = 0
 
 for traj, path in enumerate(DIRS):
-    lines = open(f"{path}/trajectory.xyz","r").readlines()
+    try:
+        lines = open(f"{path}/trajectory.xyz","r").readlines()
+    except FileNotFoundError:
+        bad_traj += 1
+        continue
     if ( traj >= 1 and len(lines) < NSTEPS*(NATOMS+2) ):
-        ANGLE = np.delete(ANGLE,traj,axis=0)
-        #print( traj, len(lines), NSTEPS*(NATOMS+2), ANGLE.shape )
+        BOND = np.delete(BOND,traj,axis=0)
+        #print( traj, len(lines), NSTEPS*(NATOMS+2), BOND.shape )
         print(f"Traj = {traj} did not finish properly.")
         bad_traj += 1
         continue
@@ -45,7 +51,7 @@ for traj, path in enumerate(DIRS):
             NATOMS = int(line)
             NSTEPS = len(lines) // (NATOMS+2)
             GEOMS  = np.zeros(( NTRAJ, NSTEPS, NATOMS, 3 ))
-            ANGLE  = np.zeros(( NTRAJ, NSTEPS ))
+            BOND    = np.zeros(( NTRAJ, NSTEPS ))
         if ( (count) % (NATOMS+2) == 0 ):
             for at in range( NATOMS ):
                 if ( step == 0 and traj == 0 ):
@@ -55,41 +61,32 @@ for traj, path in enumerate(DIRS):
 
     if ( traj == 0 ):
         # Say which atom types (and labels) we are trying to track
-        print("\nFinding time-dependent angle for the following atom types (labels):")
+        print("\nFinding time-dependent BOND for the following atom types (labels):")
         print(f"\
 {TYPES[TRACK_ATOMS[0]-1]}({TRACK_ATOMS[0]}) \
-{TYPES[TRACK_ATOMS[1]-1]}({TRACK_ATOMS[1]}) \
-{TYPES[TRACK_ATOMS[2]-1]}({TRACK_ATOMS[2]})")
+{TYPES[TRACK_ATOMS[1]-1]}({TRACK_ATOMS[1]})")
 
     # Extract important atoms for simplicity
-    A_ATOMS        = np.zeros(( NSTEPS, 3, 3 ))
-    A_ATOMS[:,0,:] =  GEOMS[traj-bad_traj,:,TRACK_ATOMS[0]-1,:]
-    A_ATOMS[:,1,:] =  GEOMS[traj-bad_traj,:,TRACK_ATOMS[1]-1,:]
-    A_ATOMS[:,2,:] =  GEOMS[traj-bad_traj,:,TRACK_ATOMS[2]-1,:]
+    B_ATOMS        =  np.zeros(( NSTEPS, 2, 3 ))
+    B_ATOMS[:,0,:] =  GEOMS[traj-bad_traj,:,TRACK_ATOMS[0]-1,:]
+    B_ATOMS[:,1,:] =  GEOMS[traj-bad_traj,:,TRACK_ATOMS[1]-1,:]
 
-    # Calculate the dihedral given by the four atoms
-    for step in range( len(ANGLE[0,:]) ):
-        b10 = A_ATOMS[step,1,:] - A_ATOMS[step,0,:]
-        b21 = A_ATOMS[step,2,:] - A_ATOMS[step,1,:]
+    # Calculate the bond length given by the two atoms
+    #for step in range( len(BOND[0,:]) ):
+    BOND[traj-bad_traj,:] = np.linalg.norm(B_ATOMS[:,1,:] - B_ATOMS[:,0,:],axis=-1)
 
-        norm10 = np.linalg.norm(b10)
-        norm21 = np.linalg.norm(b21)
-
-        cosPHI = np.dot(b10,b21) / norm10 / norm21
-
-        ANGLE[traj,step] = 180 - np.degrees(np.arccos(cosPHI))
 
 # Save average (and error in) dihedral to file
-ANG_AVE = np.average(ANGLE[:,:],axis=0)
-ANG_STD = np.std(ANGLE[:,:],axis=0)
-np.savetxt(f"{DATA_DIR}/ANGLE_AVE_STD_{TRACK_ATOMS[0]}_{TRACK_ATOMS[1]}_{TRACK_ATOMS[2]}.dat", np.c_[ANG_AVE, ANG_STD] )
+BOND_AVE = np.average(BOND,axis=0)
+BOND_STD = np.std(BOND,axis=0)
+np.savetxt(f"{DATA_DIR}/BOND_AVE_STD_{TRACK_ATOMS[0]}_{TRACK_ATOMS[1]}.dat", np.c_[BOND_AVE, BOND_STD] )
 
-# FIND SPECIFIC TRAJECTORIES WITH MAX AND MIN ANGLES FOR VISUALIZATION
+# FIND SPECIFIC TRAJECTORIES WITH MAX AND MIN BONDS FOR VISUALIZATION
 traj_min = [-1,1000]
 traj_max = [-1,-1000]
 for traj in range(NTRAJ-bad_traj):
-    tmp1 = np.min(ANGLE[traj,:])
-    tmp2 = np.max(ANGLE[traj,:])
+    tmp1 = np.min(BOND[traj,:])
+    tmp2 = np.max(BOND[traj,:])
     if ( tmp1 < traj_min[1] ):
         traj_min[0] = traj
         traj_min[1] = tmp1
@@ -97,28 +94,28 @@ for traj in range(NTRAJ-bad_traj):
         traj_max[0] = traj
         traj_max[1] = tmp2
 
-print( f"Minimum dihedral angle trajectory label (DIH) = {traj_min[0]+1} ({round(traj_min[1],2)})" )
-print( f"Maximum dihedral angle trajectory label (DIH) = {traj_max[0]+1} ({round(traj_max[1],2)})" )
+print( f"Minimum BOND trajectory label (DIH) = {traj_min[0]} ({round(traj_min[1],2)})" )
+print( f"Maximum BOND trajectory label (DIH) = {traj_max[0]} ({round(traj_max[1],2)})" )
 
 # Make a plot of the average dihedral for all trajectories
 for traj in range( NTRAJ-bad_traj ):
-    plt.plot( np.arange(NSTEPS)*dtI, ANGLE[traj,:], c='black', lw=2, alpha=0.2 )
-plt.plot( np.arange(NSTEPS)*dtI, ANG_AVE, c='red', lw=3, alpha=0.8 )
+    plt.plot( np.arange(NSTEPS)*dtI, BOND[traj,:], c='black', lw=2, alpha=0.2 )
+plt.plot( np.arange(NSTEPS)*dtI, BOND_AVE, c='red', lw=3, alpha=0.8 )
 plt.xlim(0,(NSTEPS-1)*dtI)
 plt.xlabel("Time (fs)",fontsize=15)
 plt.ylabel(f"\
 {TYPES[TRACK_ATOMS[0]-1]}-\
-{TYPES[TRACK_ATOMS[1]-1]}-\
-{TYPES[TRACK_ATOMS[2]-1]} Angle ($^o$)",fontsize=15)
-plt.savefig(f"{DATA_DIR}/ANGLE_allTRAJ_{TRACK_ATOMS[0]}_{TRACK_ATOMS[1]}_{TRACK_ATOMS[2]}.jpg",dpi=600)
+{TYPES[TRACK_ATOMS[1]-1]} BOND ($\AA$)",fontsize=15)
+plt.title(f"{NTRAJ-bad_traj} Trajectories",fontsize=15)
+plt.savefig(f"{DATA_DIR}/BOND_allTRAJ_{TRACK_ATOMS[0]}_{TRACK_ATOMS[1]}.jpg",dpi=600)
 plt.clf()
 
 
 # Make a density plot of the dihedral
-SIG  = 5 # Gaussian width (degrees)
+SIG  = 0.1 # Gaussian width (degrees)
 MIN  = 0 # Degrees
-MAX  = 360 # Degrees
-NPTS = 500
+MAX  = 10 # Degrees
+NPTS = 100
 cmap = "binary" # "hot_r"
 PLOT_MAX = 1.0
 
@@ -126,13 +123,13 @@ AGRID = np.linspace( MIN,MAX,NPTS  )
 SPEC  = np.zeros(( NPTS, NSTEPS  ))
 
 for pt in range(NPTS):
-    SPEC[pt,:] += np.sum( np.exp( -( AGRID[pt] - ANGLE[:,:] )**2 / 2 / SIG**2 ), axis=0 )
+    SPEC[pt,:] += np.sum( np.exp( -( AGRID[pt] - BOND[:,:] )**2 / 2 / SIG**2 ), axis=0 )
 
 # Normalize to MAX(SPEC) = 1.0
 SPEC /= np.max(SPEC) # /= NTRAJ-bad_traj
 
 # Save 2D data
-np.savetxt(f"{DATA_DIR}/ANGLE_density_{TRACK_ATOMS[0]}_{TRACK_ATOMS[1]}_{TRACK_ATOMS[2]}.dat", SPEC)
+np.savetxt(f"{DATA_DIR}/BOND_density_{TRACK_ATOMS[0]}_{TRACK_ATOMS[1]}.dat", SPEC)
 
 # Remove small values for better coloring
 #MIN_THRESHOLD = 0.1
@@ -146,8 +143,8 @@ plt.colorbar(mpl.cm.ScalarMappable(norm=norm, cmap=cmap),pad=0.01)
 plt.xlabel("Time (fs)",fontsize=15)
 plt.ylabel(f"\
 {TYPES[TRACK_ATOMS[0]-1]}-\
-{TYPES[TRACK_ATOMS[1]-1]}-\
-{TYPES[TRACK_ATOMS[2]-1]} Angle ($^o$)",fontsize=15)
-plt.savefig(f"{DATA_DIR}/ANGLE_density_{TRACK_ATOMS[0]}_{TRACK_ATOMS[1]}_{TRACK_ATOMS[2]}.jpg",dpi=600)
+{TYPES[TRACK_ATOMS[1]-1]} BOND ($\AA$)",fontsize=15)
+plt.title(f"{NTRAJ-bad_traj} Trajectories",fontsize=15)
+plt.savefig(f"{DATA_DIR}/BOND_density_{TRACK_ATOMS[0]}_{TRACK_ATOMS[1]}.jpg",dpi=600)
 plt.clf()
 

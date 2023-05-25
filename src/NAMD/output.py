@@ -117,27 +117,28 @@ def save_data(DYN_PROPERTIES):
                     NACT = np.array([NACT[j,k] for j in range(NStates) for k in range(j,NStates)])
                     file01.write( f"{TIME}  " +  " ".join(map("{:2.8f}".format,NACT )) + "\n" )
 
-            with open("MD_OUTPUT/Overlap_uncorrected.dat","a") as file01:
-                if ( DYN_PROPERTIES['MD_STEP'] == 0 ): 
-                    file01.write(f"# Step " + " ".join([f'{j}-{k}' for j in range(NStates) for k in range(j,NStates)]) + "\n" )
-                if ( DYN_PROPERTIES['MD_STEP'] >= 1 ): 
-                    OVERLAP = DYN_PROPERTIES['OVERLAP_NEW_uncorrected'] * 1.0
-                    OVERLAP = np.array([OVERLAP[j,k] for j in range(NStates) for k in range(j,NStates)])
-                    file01.write( f"{TIME}  " +  " ".join(map("{:2.8f}".format,OVERLAP )) + "\n" )
+            #with open("MD_OUTPUT/Overlap_uncorrected.dat","a") as file01:
+            #    if ( DYN_PROPERTIES['MD_STEP'] == 0 ): 
+            #        file01.write(f"# Step " + " ".join([f'{j}-{k}' for j in range(NStates) for k in range(j,NStates)]) + "\n" )
+            #    if ( DYN_PROPERTIES['MD_STEP'] >= 1 ): 
+            #        OVERLAP = DYN_PROPERTIES['OVERLAP_NEW_uncorrected'] * 1.0
+            #        OVERLAP = np.array([OVERLAP[j,k] for j in range(NStates) for k in range(j,NStates)])
+            #        file01.write( f"{TIME}  " +  " ".join(map("{:2.8f}".format,OVERLAP )) + "\n" )
 
-            with open("MD_OUTPUT/NACT_uncorrected.dat","a") as file01:
-                if ( DYN_PROPERTIES['MD_STEP'] == 0 ): 
-                    file01.write(f"# Step " + " ".join([f'{j}-{k}' for j in range(NStates) for k in range(j,NStates)]) + "\n" )
-                if ( DYN_PROPERTIES['MD_STEP'] >= 1 ): 
-                    NACT = DYN_PROPERTIES['NACT_NEW_uncorrected'] * 27.2114 * 1000 # 1 / a.u.t. --> meV
-                    NACT = np.array([NACT[j,k] for j in range(NStates) for k in range(j,NStates)])
-                    file01.write( f"{TIME}  " +  " ".join(map("{:2.8f}".format,NACT )) + "\n" )
+            #with open("MD_OUTPUT/NACT_uncorrected.dat","a") as file01:
+            #    if ( DYN_PROPERTIES['MD_STEP'] == 0 ): 
+            #        file01.write(f"# Step " + " ".join([f'{j}-{k}' for j in range(NStates) for k in range(j,NStates)]) + "\n" )
+            #    if ( DYN_PROPERTIES['MD_STEP'] >= 1 ): 
+            #        NACT = DYN_PROPERTIES['NACT_NEW_uncorrected'] * 27.2114 * 1000 # 1 / a.u.t. --> meV
+            #        NACT = np.array([NACT[j,k] for j in range(NStates) for k in range(j,NStates)])
+            #        file01.write( f"{TIME}  " +  " ".join(map("{:2.8f}".format,NACT )) + "\n" )
 
-            #with open("MD_OUTPUT/NACR.xyz","a") as file01:
-            #    file01.write(f"{DYN_PROPERTIES['NAtoms']}\n")
-            #    file01.write(f"MD Step {TIME} Units = [1 / Angstroms]\n")
-            #    Atom_labels = DYN_PROPERTIES["Atom_labels"]
-            #    Atom_NACR = DYN_PROPERTIES["NACR_APPROX_NEW"] / 0.529 # 0.529 Ang./Bohr
-            #    for count, atom in enumerate( Atom_labels ):
-            #        file01.write(f"{atom}  " + " ".join(map("{:2.8f}".format,Atom_NACR[count,:]))  + "\n") # Ang / fs
+            if ( DYN_PROPERTIES['PRINT_NACR'] ):
+                with open("MD_OUTPUT/NACR.xyz","a") as file01:
+                    file01.write(f"{DYN_PROPERTIES['NAtoms']}\n")
+                    file01.write(f"MD Step {TIME} Units = [1 / Angstroms]\n")
+                    Atom_labels = DYN_PROPERTIES["Atom_labels"]
+                    Atom_NACR = DYN_PROPERTIES["NACR_APPROX_NEW"] / 0.529 # 0.529 Ang./Bohr
+                    for count, atom in enumerate( Atom_labels ):
+                        file01.write(f"{atom}  " + " ".join(map("{:2.8f}".format,Atom_NACR[count,:]))  + "\n") # Ang / fs
 

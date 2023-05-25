@@ -9,6 +9,8 @@ import time
 import get_cartesian_gradients
 import get_diagonal_electronic_energies
 
+import G16_NAC
+
 def check_geometry(Atom_labels,Atom_coords_new):
 
     assert ( isinstance(Atom_labels, list) ), "Atoms labels needs to be a list" 
@@ -302,7 +304,7 @@ def generate_inputs(DYN_PROPERTIES):
             os.chdir("../")
 
 
-def submit(RUN_ELEC_STRUC, SBATCH_G16, MD_STEP, BOMD, ISTATE, directory=None):
+def submit(RUN_ELEC_STRUC, SBATCH_G16, MD_STEP, BOMD, ISTATE, SQD_SCRATCH_PATH, SQD_RUNNING_DIR, directory=None):
     if ( RUN_ELEC_STRUC == "SUBMIT_SBATCH" ):
         sp.call(f"cp {SBATCH_G16} .", shell=True)
         sp.call(f"sbatch {SBATCH_G16.split('/')[-1]}", shell=True)
@@ -315,6 +317,8 @@ def submit(RUN_ELEC_STRUC, SBATCH_G16, MD_STEP, BOMD, ISTATE, directory=None):
             sleep_time += sleep_check # Add 1 seconds to sleep timer
             if ( sleep_limit > sleep_limit ):
                 print(f"\tWARNING! Gaussian did not finish normally in the following directory:\n{os.getcwd()}", )
+                sp.call(f"cp -r {SQD_SCRATCH_PATH}/EL_STRUCTURE {SQD_RUNNING_DIR}/EL_STRUCTURE__FAILED",shell=True)
+                print(f"Possible Error:\n{open('geometry.out','r').readlines()[-10:]}")
                 exit()
             try:
                 check1 = open("geometry.out","r").readlines()[-1]
@@ -326,9 +330,9 @@ def submit(RUN_ELEC_STRUC, SBATCH_G16, MD_STEP, BOMD, ISTATE, directory=None):
                 sp.call(f"formchk geometry.chk > /dev/null 2>&1", shell=True)
                 break
             elif ( check2.split()[:2] == "Error termination".split() ):
-                print("\tGaussian crashed after %2.2f s. (%s)" % (time.time() - t0, os.getcwd().split("/")[-1]) )
-                error = open("geometry.out","r").readlines()[-5] # Is this where all errors can be found ?
-                print("Looking for possible error:\n", error)
+                print("\n\tGaussian crashed after %2.2f s. (%s)" % (time.time() - t0, os.getcwd().split("/")[-1]) )
+                error = open("geometry.out","r").readlines()[-10] # Is this where all errors can be found ?
+                print("\n\tLooking for possible error:\n", error)
 
 
     elif( RUN_ELEC_STRUC == "USE_CURRENT_NODE" ):
@@ -343,19 +347,22 @@ def submit(RUN_ELEC_STRUC, SBATCH_G16, MD_STEP, BOMD, ISTATE, directory=None):
             sp.call(f"formchk geometry.chk > /dev/null 2>&1", shell=True)
         else:
             print(f"\tWARNING! Gaussian did not finish normally in the following directory:\n{os.getcwd()}", )
+            sp.call(f"cp -r {SQD_SCRATCH_PATH}/EL_STRUCTURE {SQD_RUNNING_DIR}/EL_STRUCTURE__FAILED",shell=True)
+            print(f"Possible Error:\n{openopen('geometry.out','r').readlines()[-10:]}")
+            exit()
     elif ( RUN_ELEC_STRUC == "TEST" ):
         # This is a test. Do nothing intensive.
         print(f"Testing. I will not submit/run electronic structure calculations for step {MD_STEP}.")
     else:
-        print(f"Error: 'RUN_ELEC_STRUC' was set to '{RUN_ELEC_STRUC}'. Not sure what to do.")
+        print(f"Error: 'RUN_ELEC_STRUC' was set to '{RUN_ELEC_STRUC}'. Not sure what to do. Quitting.")
         exit()
 
 
 def run_ES_FORCE_parallel( inputs ):
-    state, RUN_ELEC_STRUC, SBATCH_G16, MD_STEP, BOMD, ISTATE = inputs
+    state, RUN_ELEC_STRUC, SBATCH_G16, MD_STEP, BOMD, ISTATE, SQD_SCRATCH_PATH, SQD_RUNNING_DIR = inputs
     print(f"Starting forces for state {state}")
     os.chdir(f"TD_NEW_S{state}/")
-    submit(RUN_ELEC_STRUC, SBATCH_G16, MD_STEP, BOMD, ISTATE)
+    submit(RUN_ELEC_STRUC, SBATCH_G16, MD_STEP, BOMD, ISTATE, SQD_SCRATCH_PATH, SQD_RUNNING_DIR)
     os.chdir("../")
 
 def run_ES_FORCE_serial( NStates, RUN_ELEC_STRUC, SBATCH_G16, MD_STEP, BOMD, ISTATE, CPA_FLAG ):
@@ -366,27 +373,29 @@ def run_ES_FORCE_serial( NStates, RUN_ELEC_STRUC, SBATCH_G16, MD_STEP, BOMD, IST
         if ( BOMD == True ):
             if ( state == ISTATE ):
                 os.chdir(f"TD_NEW_S{state}/")
-                submit(RUN_ELEC_STRUC, SBATCH_G16, MD_STEP, BOMD, ISTATE)
+                submit(RUN_ELEC_STRUC, SBATCH_G16, MD_STEP, BOMD, ISTATE, SQD_SCRATCH_PATH, SQD_RUNNING_DIR)
                 os.chdir("../")
         else:
             os.chdir(f"TD_NEW_S{state}/")
-            submit(RUN_ELEC_STRUC, SBATCH_G16, MD_STEP, BOMD, ISTATE)
+            submit(RUN_ELEC_STRUC, SBATCH_G16, MD_STEP, BOMD, ISTATE, SQD_SCRATCH_PATH, SQD_RUNNING_DIR)
             os.chdir("../")
 
 def submit_jobs(DYN_PROPERTIES):
-    NStates         = DYN_PROPERTIES["NStates"]
-    RUN_ELEC_STRUC  = DYN_PROPERTIES["RUN_ELEC_STRUC"]
-    SBATCH_G16      = DYN_PROPERTIES["SBATCH_G16"]
-    MD_STEP         = DYN_PROPERTIES["MD_STEP"]
-    BOMD            = DYN_PROPERTIES["BOMD"]
-    ISTATE          = DYN_PROPERTIES["ISTATE"]
-
+    NStates          = DYN_PROPERTIES["NStates"]
+    RUN_ELEC_STRUC   = DYN_PROPERTIES["RUN_ELEC_STRUC"]
+    SBATCH_G16       = DYN_PROPERTIES["SBATCH_G16"]
+    MD_STEP          = DYN_PROPERTIES["MD_STEP"]
+    BOMD             = DYN_PROPERTIES["BOMD"]
+    ISTATE           = DYN_PROPERTIES["ISTATE"]
+    SQD_SCRATCH_PATH = DYN_PROPERTIES['SQD_SCRATCH_PATH']
+    SQD_RUNNING_DIR  = DYN_PROPERTIES["SQD_RUNNING_DIR"]
+    
     print(f"Submitting electronic structure for step {MD_STEP}.")
 
     if ( BOMD == True and not (ISTATE == 0 and NStates >= 2) ):
         if ( ISTATE == 0 ):
             os.chdir("GS_NEW/")
-            submit(RUN_ELEC_STRUC, SBATCH_G16, MD_STEP, BOMD, ISTATE)
+            submit(RUN_ELEC_STRUC, SBATCH_G16, MD_STEP, BOMD, ISTATE, SQD_SCRATCH_PATH, SQD_RUNNING_DIR)
             os.chdir("../")
         if ( ISTATE != 0 ):
             run_ES_FORCE_serial( NStates, RUN_ELEC_STRUC, SBATCH_G16, MD_STEP, BOMD, ISTATE, DYN_PROPERTIES["CPA"] )
@@ -394,7 +403,7 @@ def submit_jobs(DYN_PROPERTIES):
 
         # GS must a serial job
         os.chdir("GS_NEW/")
-        submit(RUN_ELEC_STRUC, SBATCH_G16, MD_STEP, BOMD, ISTATE)
+        submit(RUN_ELEC_STRUC, SBATCH_G16, MD_STEP, BOMD, ISTATE, SQD_SCRATCH_PATH, SQD_RUNNING_DIR)
         os.chdir("../")
 
         # Excited State
@@ -402,7 +411,7 @@ def submit_jobs(DYN_PROPERTIES):
             state_List = [] 
             #for state in range( 2, NStates ): # Skip force for final excited state. We don't include in NAMD.
             for state in range( 1, NStates ): # Skip force for final excited state. We don't include in NAMD.
-                state_List.append([ state, RUN_ELEC_STRUC, SBATCH_G16, MD_STEP, BOMD, ISTATE ])
+                state_List.append([ state, RUN_ELEC_STRUC, SBATCH_G16, MD_STEP, BOMD, ISTATE, SQD_SCRATCH_PATH, SQD_RUNNING_DIR ])
             with mp.Pool(processes=DYN_PROPERTIES["NCPUS_NAMD"]) as pool:
                 pool.map(run_ES_FORCE_parallel,state_List)
         else:
@@ -411,7 +420,7 @@ def submit_jobs(DYN_PROPERTIES):
         # DIMER
         if ( MD_STEP >= 1 and NStates >= 2 and BOMD == False ):
             os.chdir("DIMER/")
-            submit(RUN_ELEC_STRUC, SBATCH_G16, MD_STEP, BOMD, ISTATE)
+            submit(RUN_ELEC_STRUC, SBATCH_G16, MD_STEP, BOMD, ISTATE, SQD_SCRATCH_PATH, SQD_RUNNING_DIR)
             os.chdir("../")
 
 
@@ -442,17 +451,17 @@ def correct_phase(OVERLAP_ORTHO,MD_STEP,S_OLD=None):
                 tmp4 = np.abs(S_OLD[j,k])
                 if ( np.isclose(tmp2,0.0) == False and np.isclose(tmp4,0.0) == False and int(tmp1/tmp2) != int(tmp3/tmp4) ):
                     if ( abs(OVERLAP_corrected[j,k] - S_OLD[j,k]) > 1e-3 ): # This is arbitrary threshold.
-                        print( "OLD:\n", np.round(OVERLAP_corrected,8) )
+                        #print( "OLD:\n", np.round(OVERLAP_corrected,8) )
                         OVERLAP_corrected[j,k] *= -1
                         OVERLAP_corrected[k,j] *= -1
-                        print("I found a sign error upon phase correcting.")
-                        print(f"Index Flip: {j} <--> {k}")
-                        print( "NEW:\n", np.round(OVERLAP_corrected,8) )
-                        print("[S.T @ S] after sign fix:")
-                        print(np.round(OVERLAP_corrected.T @ OVERLAP_corrected,8))
+                        #print("I found a sign error upon phase correcting.")
+                        #print(f"Index Flip: {j} <--> {k}")
+                        #print( "NEW:\n", np.round(OVERLAP_corrected,8) )
+                        #print("[S.T @ S] after sign fix:")
+                        #print(np.round(OVERLAP_corrected.T @ OVERLAP_corrected,8))
                         OVERLAP_corrected = get_Lowdin_SVD(OVERLAP_corrected)
-                        print("[S.T @ S] after sign fix and second orthogonalization:")
-                        print(np.round(OVERLAP_corrected.T @ OVERLAP_corrected,8))
+                        #print("[S.T @ S] after sign fix and second orthogonalization:")
+                        #print(np.round(OVERLAP_corrected.T @ OVERLAP_corrected,8))
 
 
                 
@@ -494,8 +503,8 @@ def get_Lowdin_SVD(OVERLAP):
 
     S_Ortho = U @ VT
 
-    print("Orthogonalized [S.T @ S] :")
-    print(np.round(S_Ortho.T @ S_Ortho,8))
+    #print("Orthogonalized [S.T @ S] :")
+    #print(np.round(S_Ortho.T @ S_Ortho,8))
     #print("Check orthogonalization. S.T @ S")
     #print("Saving to ortho_check.dat")
     #np.savetxt("ortho_check.dat", S_Ortho.T @ S_Ortho, fmt="%1.8f" )
@@ -642,22 +651,21 @@ def check_for_trivial_crossing(OVERLAP_CORR,DYN_PROPERTIES):
 def main(DYN_PROPERTIES):
 
     # HOW TO HANDLE THIS PATH BETTER ?
-    sys.path.append(f"{DYN_PROPERTIES['SQD_HOME_PATH']}/src/WFN_OVERLAP/PYTHON/")
-    import G16_NAC
+    #sys.path.append(f"{DYN_PROPERTIES['SQD_HOME_PATH']}/src/WFN_OVERLAP/PYTHON/")
+    #import G16_NAC
 
-    NStates         = DYN_PROPERTIES["NStates"] # Total number of electronic states
-    NAtoms          = DYN_PROPERTIES["NAtoms"] # Total number of electronic states
-    Atom_labels     = DYN_PROPERTIES["Atom_labels"]
-    Atom_coords_new = DYN_PROPERTIES["Atom_coords_new"]
-    MD_STEP         = DYN_PROPERTIES["MD_STEP"]
-    BOMD            = DYN_PROPERTIES["BOMD"]
-    ISTATE          = DYN_PROPERTIES["ISTATE"]
+    NStates          = DYN_PROPERTIES["NStates"] # Total number of electronic states
+    NAtoms           = DYN_PROPERTIES["NAtoms"] # Total number of electronic states
+    Atom_labels      = DYN_PROPERTIES["Atom_labels"]
+    Atom_coords_new  = DYN_PROPERTIES["Atom_coords_new"]
+    MD_STEP          = DYN_PROPERTIES["MD_STEP"]
+    BOMD             = DYN_PROPERTIES["BOMD"]
+    ISTATE           = DYN_PROPERTIES["ISTATE"]
+    SQD_SCRATCH_PATH = DYN_PROPERTIES['SQD_SCRATCH_PATH']
     
-    #print("Running Location (GPFS):\n\t", os.getcwd())
-    if ( not os.path.exists(f"{DYN_PROPERTIES['SQD_SCRATCH_PATH']}/EL_STRUCTURE") ):
-        sp.call(f"mkdir {DYN_PROPERTIES['SQD_SCRATCH_PATH']}/EL_STRUCTURE", shell=True)
-    os.chdir(f"{DYN_PROPERTIES['SQD_SCRATCH_PATH']}/EL_STRUCTURE")
-    #print("SCRATCH Location (Node Local):\n\t", os.getcwd())
+    if ( not os.path.exists(f"{SQD_SCRATCH_PATH}/EL_STRUCTURE") ):
+        sp.call(f"mkdir {SQD_SCRATCH_PATH}/EL_STRUCTURE", shell=True)
+    os.chdir(f"{SQD_SCRATCH_PATH}/EL_STRUCTURE")
     
     check_geometry(Atom_labels,Atom_coords_new)
     clean_directory(NStates,MD_STEP,DYN_PROPERTIES["CPA"],DYN_PROPERTIES["BOMD"],ISTATE)
@@ -671,14 +679,14 @@ def main(DYN_PROPERTIES):
         if ( NStates >= 2 and BOMD == False ):
             T0 = time.time()
             DYN_PROPERTIES = G16_NAC.main(DYN_PROPERTIES) # Provides OVERLAP
-            print( f"\tGET_OVERLAP OVERALL TIME (G16_TD.py):", round(time.time() - T0,2), "s" )
+            #print( f"\tGET_OVERLAP OVERALL TIME (G16_TD.py):", round(time.time() - T0,2), "s" )
             T0 = time.time()
             DYN_PROPERTIES = calc_NACT(DYN_PROPERTIES) # Provides NACT
-            print( f"\tGET_NACT OVERALL TIME (G16_TD.py):", round(time.time() - T0,2), "s" )
+            #print( f"\tGET_NACT OVERALL TIME (G16_TD.py):", round(time.time() - T0,2), "s" )
             T0 = time.time()
             if ( DYN_PROPERTIES["CPA"] == False ): # Only need NACR for off-diagonal forces, which only come from G.S. in CPA
                 DYN_PROPERTIES = get_approx_NACR(DYN_PROPERTIES) # Provides NACR from NACT and OVERLAP
-            print( f"\tGET_APPROX NACR OVERALL TIME (G16_TD.py):", round(time.time() - T0,2), "s" )
+            #print( f"\tGET_APPROX NACR OVERALL TIME (G16_TD.py):", round(time.time() - T0,2), "s" )
         else:
             DYN_PROPERTIES["OVERLAP_OLD"] = np.zeros(( NStates, NStates ))
             DYN_PROPERTIES["OVERLAP_NEW"] = np.zeros(( NStates, NStates ))

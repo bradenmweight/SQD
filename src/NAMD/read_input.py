@@ -60,6 +60,7 @@ def read():
             if ( t[0].upper() == "BASIS".upper() ):
                 DYN_PROPERTIES["BASIS_SET"] = t[1].upper()
                 # The accuracy of input is up to the user...scary!
+            # TODO -- Add functionality for mixed basis sets
 
             # Look for ISTATE
             if ( t[0].upper() == "dtI".upper() ):
@@ -140,7 +141,7 @@ def read():
                     print("Input for 'PARALLEL_FORCES' must be a boolean. (True or False)")
                     exit()
 
-            # Look for FORCE_MAP_NORM
+            # Look for FORCE_MAP_NORM -- FOR DEBUGGING ONLY
             if ( t[0].upper() == "FORCE_MAP_NORM".upper() ):
                 try:
                     DYN_PROPERTIES["FORCE_MAP_NORM"] = bool( t[1] )
@@ -239,6 +240,14 @@ def read():
                     print(f"\t'CHECK_TRIVIAL_CROSSING' must be a bool: '{t[1]}'")
                     exit()
 
+            # Look for PRINT_NACR
+            if ( t[0].upper() == "PRINT_NACR".upper() ):
+                try:
+                    DYN_PROPERTIES["PRINT_NACR"] = bool( t[1] )
+                except ValueError:
+                    print(f"\t'PRINT_NACR' must be a bool: '{t[1]}'")
+                    exit()
+
             # Look for BOMD
             if ( t[0].upper() == "BOMD".upper() ):
                 if ( t[1].upper() == "TRUE" ):
@@ -279,7 +288,6 @@ def read():
         print( "  CHARGE ="); print("\t\t", DYN_PROPERTIES["CHARGE"] )
         print( "  MULTIPLICITY ="); print("\t\t", DYN_PROPERTIES["MULTIPLICITY"] )
         print( "  MEMORY ="); print("\t\t", DYN_PROPERTIES["MEMORY"], "(GB)" )
-        print( "  PARALLEL_FORCES ="); print("\t\t", DYN_PROPERTIES["PARALLEL_FORCES"] )
         print( "  NAMD_METHOD ="); print("\t\t", DYN_PROPERTIES["NAMD_METHOD"] )
         print( "  EL_PROP ="); print("\t\t", DYN_PROPERTIES["EL_PROP"] )
         print( "  MD_ENSEMBLE ="); print("\t\t", DYN_PROPERTIES["MD_ENSEMBLE"] )
@@ -346,7 +354,7 @@ def read_veloc():
 def set_masses(Atom_labels):
     mass_amu_to_au = 1837/1.007 # au / amu
     masses_amu = \
-{"H":    1.00797,
+{"H":   1.00797,
 "He":	4.00260,
 "Li":	6.941,
 "Be":	9.01218,
@@ -505,6 +513,15 @@ def initialize_MD_variables(DYN_PROPERTIES):
     except KeyError:
         DYN_PROPERTIES["REMOVE_ANGULAR_VELOCITY"] = True # Default is to remove angular velocity
 
+    try:
+        tmp = DYN_PROPERTIES["PARALLEL_FORCES"]
+    except KeyError:
+        DYN_PROPERTIES["PARALLEL_FORCES"] = False # Set to Flase by default
+
+    try:
+        tmp = DYN_PROPERTIES["PRINT_NACR"]
+    except KeyError:
+        DYN_PROPERTIES["PRINT_NACR"] = False # Set to Flase by default -- Large file
 
     try:
         tmp = DYN_PROPERTIES["TDDFT_CONVERG"]
@@ -569,43 +586,9 @@ def initialize_MD_variables(DYN_PROPERTIES):
 
 
     try:
-        tmp = DYN_PROPERTIES["FORCE_MAP_NORM"]
-    except KeyError:
-        DYN_PROPERTIES["FORCE_MAP_NORM"] = False # Default is not to do this. This is for de-bugging purposes.
-
-    try:
         tmp = DYN_PROPERTIES["DATA_SAVE_FREQ"]
     except KeyError:
         DYN_PROPERTIES["DATA_SAVE_FREQ"] = 1 # Default is to save every step. Might make large output files for NVT
-
-    try:
-        tmp = DYN_PROPERTIES["EL_INTERPOLATION"]
-    except KeyError:
-        DYN_PROPERTIES["EL_INTERPOLATION"] = False # Default is to not perform linear interpolation
-
-    ####################################
-    #### THIS KEYWORD IS NOT TESTED ####
-    try:
-        tmp = DYN_PROPERTIES["CHECK_TRIVIAL_CROSSING"]
-    except KeyError:
-        DYN_PROPERTIES["CHECK_TRIVIAL_CROSSING"] = False # Default is not to check for trivial crossings
-    ####################################
-
-
-    #if ( DYN_PROPERTIES["FUNCTIONAL"] in ["DFTB", "DFTBA"] ):
-    #    try:
-    #        tmp = DYN_PROPERTIES["BASIS_SET"]
-    #    except KeyError:
-    #        # For DFTB, we do not use a BASIS_SET definition.
-    #        DYN_PROPERTIES["BASIS_SET"] = None
-    #    if ( DYN_PROPERTIES["BASIS_SET"] != None ):
-    #        # We could also just set to None anyway and continue the calculation. 
-    #        #    The current way, however, keeps the user accountable for what they are doing. I like this. ~BMW
-    #        print("'BASIS_SET' must not be specified for DFTB or DFTBA Hamiltonians.")
-    #        exit()
-            
-
-
 
     try:
         tmp = DYN_PROPERTIES["CPA"]
@@ -622,6 +605,45 @@ def initialize_MD_variables(DYN_PROPERTIES):
         print("\nError: CPA = True and BOMD = True")
         print("Error: This does not make sense.\n")
         exit()
+
+
+    ########################################################################
+    ############## BELOW ARE PRIMARILY FOR DEBUGGING PURPOSES ##############
+    ########################################################################
+
+    try:
+        tmp = DYN_PROPERTIES["FORCE_MAP_NORM"]
+    except KeyError:
+        DYN_PROPERTIES["FORCE_MAP_NORM"] = False # Default is not to do this. This is for de-bugging purposes.
+
+    try:
+        tmp = DYN_PROPERTIES["EL_INTERPOLATION"]
+    except KeyError:
+        DYN_PROPERTIES["EL_INTERPOLATION"] = False # Default is to not perform linear interpolation
+
+
+    ####################################
+    #### THIS KEYWORD IS NOT TESTED AND IS NO LONGER NEEEDED ! ####
+    try:
+        tmp = DYN_PROPERTIES["CHECK_TRIVIAL_CROSSING"]
+    except KeyError:
+        DYN_PROPERTIES["CHECK_TRIVIAL_CROSSING"] = False # Default is not to check for trivial crossings
+    ####################################
+
+    #if ( DYN_PROPERTIES["FUNCTIONAL"] in ["DFTB", "DFTBA"] ):
+    #    try:
+    #        tmp = DYN_PROPERTIES["BASIS_SET"]
+    #    except KeyError:
+    #        # For DFTB, we do not use a BASIS_SET definition.
+    #        DYN_PROPERTIES["BASIS_SET"] = None
+    #    if ( DYN_PROPERTIES["BASIS_SET"] != None ):
+    #        # We could also just set to None anyway and continue the calculation. 
+    #        #    The current way, however, keeps the user accountable for what they are doing. I like this. ~BMW
+    #        print("'BASIS_SET' must not be specified for DFTB or DFTBA Hamiltonians.")
+    #        exit()
+
+
+
 
     print("Input looks good.")
 

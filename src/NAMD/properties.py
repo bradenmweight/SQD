@@ -27,7 +27,6 @@ def get_Force(DYN_PROPERTIES):
         print("No NAMD_METHOD found.")
         exit()
 
-
 def compute_KE(DYN_PROPERTIES):
     KE = 0.0
     for at in range( DYN_PROPERTIES["NAtoms"] ):
@@ -39,6 +38,7 @@ def compute_PE(DYN_PROPERTIES):
     PE = 0.0
     RHO = get_density_matrix(DYN_PROPERTIES)
     if ( DYN_PROPERTIES["NStates"] >= 2 ):
+        # When this is called, we are already rotated to t1 basis (state-dependent energy is diagonal again)
         for state in range( DYN_PROPERTIES["NStates"] ):
             PE += RHO[state,state].real * DYN_PROPERTIES["DIAG_ENERGIES_NEW"][state]
         DYN_PROPERTIES["PE"] = PE

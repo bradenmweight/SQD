@@ -2,9 +2,8 @@ import numpy as np
 from matplotlib import pyplot as plt
 import subprocess as sp
 
-NTRAJ   = 101  # USER INPUT
-dtI     = 1.0  # USER INPUT
-NSTEPS  = 1000  # USER INPUT
+NTRAJ   = 201  # USER INPUT
+NSTEPS  = 600  # USER INPUT
 
 
 #### DO NOT MODIFY BELOW THIS POINT ####
@@ -27,7 +26,7 @@ for ind, dir in enumerate(TRAJ_DIRS):
         #NSTEPS  = len(tmp)
         NSTATES = len(tmp[0])-2 # Not time-step or total population
         POP = np.zeros( (NSTEPS,NSTATES) )
-        TIME[:] = tmp[:,0] * dtI
+        TIME[:] = tmp[:,0]
     if ( len(tmp) < NSTEPS ):
         continue
     POP[:,:] += tmp[:,1:-1]
@@ -47,11 +46,11 @@ np.savetxt( f"{DATA_DIR}/Population_average-{good_traj}.dat", OUTPOP, fmt="%2.5f
 # Make simple plot
 
 for state in range( NSTATES ):
-    plt.plot( TIME, POP[:,state], lw=3, label=f"S{state}" )
+    plt.plot( TIME, POP[:,state], lw=3, label=f"S$_{state}$" )
 plt.plot( TIME, np.sum(POP[:,:],axis=-1), c="black", alpha=0.5, lw=3, label=f"Total" )
 
 plt.legend()
-plt.xlim(0,TIME[-1])
+plt.xlim(0,round(TIME[-1]/50)*50)
 plt.ylim(0,1.005)
 plt.xlabel("Time (fs)", fontsize=15)
 plt.ylabel("Population", fontsize=15)

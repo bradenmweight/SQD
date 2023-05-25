@@ -969,7 +969,10 @@ class gau_log_parser():
             norm = 0.0
             for i_index in range(n_index) :
                 norm  =   norm + ci_info_state[i_index]['civector']**2
-            print(f"The largest {self.ci['n_index']} CI coefficients captures {round(norm)} Slater population.")
+            
+            if ( round(norm) < 0.95 ): # If this runs, we need to inrease from 20 to higher
+                print("\n\nWARNING !!!!")
+                print(f"The largest {self.ci['n_index']} CI coefficients captures {round(norm)} Slater population.\n\n")
 
             for i_index in range(n_index):
                 file_out.write('S'+str(ci_info_state[i_index]['state'])+'  '+ \
@@ -1049,16 +1052,16 @@ def main(DYN_PROPERTIES):
         if ( dir1 == "TD_NEW_S1" ): 
             T0 = time.time()
             ao.get_dim_info_BRADEN(DYN_PROPERTIES)
-            print( f"\t{dir1} DIM_INFO TIME (BRADEN):", round(time.time() - T0,2), "s" )
+            #print( f"\t{dir1} DIM_INFO TIME (BRADEN):", round(time.time() - T0,2), "s" )
             #T0 = time.time()
             #ao.get_dim_info_old()
             #print( f"\t{dir1} DIM_INFO TIME (DEPING):", round(time.time() - T0,2), "s" )
             T0 = time.time()
             ao.get_mo()
-            print( f"\t{dir1} GET_MO TIME:", round(time.time() - T0,2), "s" )
+            #print( f"\t{dir1} GET_MO TIME:", round(time.time() - T0,2), "s" )
             T0 = time.time()
             ao.get_ci_td()
-            print( f"\t{dir1} GET_CI TIME:", round(time.time() - T0,2), "s" )
+            #print( f"\t{dir1} GET_CI TIME:", round(time.time() - T0,2), "s" )
             ao.get_other()
 
         elif ( dir1 in ["TD_OLD_S1"] ):
@@ -1070,10 +1073,10 @@ def main(DYN_PROPERTIES):
             #print( f"\t{dir1} DIM_INFO TIME:", round(time.time() - T0,2), "s" )
             T0 = time.time()
             ao.get_mo()
-            print( f"\t{dir1} GET_MO TIME:", round(time.time() - T0,2), "s" )
+            #print( f"\t{dir1} GET_MO TIME:", round(time.time() - T0,2), "s" )
             T0 = time.time()
             ao.get_ci_td()
-            print( f"\t{dir1} GET_CI TIME:", round(time.time() - T0,2), "s" )
+            #print( f"\t{dir1} GET_CI TIME:", round(time.time() - T0,2), "s" )
             ao.get_other()
 
         elif ( dir1 == "DIMER" ):
@@ -1082,22 +1085,22 @@ def main(DYN_PROPERTIES):
             #ao.check_calc()       
             #ao.get_dim_info_old()
             ao.get_ao_overlap()
-            print( "\tDIMER TIME:", round(time.time() - T0,2), "s" )
+            #print( "\tDIMER TIME:", round(time.time() - T0,2), "s" )
 
 
 
         os.chdir("../")
 
-    print( f"\tG16_NAC.py main:", round(time.time() - T_G16_NAC_START,2), "s" )
+    #print( f"\tG16_NAC.py main:", round(time.time() - T_G16_NAC_START,2), "s" )
 
     sp.call("rm -rf OVERLAP", shell=True)
     sp.call("mkdir OVERLAP", shell=True)
     T0 = time.time()
     n = gau_nac(DYN_PROPERTIES) 
-    print( f"\tgau_nac() (G16_NAC.py):", round(time.time() - T0,2), "s" )
+    #print( f"\tgau_nac() (G16_NAC.py):", round(time.time() - T0,2), "s" )
     T0 = time.time()
     DYN_PROPERTIES = n.worker()
-    print( f"\tgau_nac.worker() (G16_NAC.py):", round(time.time() - T0,2), "s" )
+    #print( f"\tgau_nac.worker() (G16_NAC.py):", round(time.time() - T0,2), "s" )
 
     return DYN_PROPERTIES
 

@@ -83,6 +83,7 @@ def main( ):
         # Get diagonal energies and gradients
     DYN_PROPERTIES = G16_TD.main(DYN_PROPERTIES)
     DYN_PROPERTIES["FORCE_NEW"] = nuclear_propagation.get_Force(DYN_PROPERTIES)
+    
     output.save_data(DYN_PROPERTIES)
 
     # Start main MD loop
@@ -123,6 +124,7 @@ def main( ):
 
         if ( DYN_PROPERTIES["MD_STEP"] % DYN_PROPERTIES["DATA_SAVE_FREQ"]  == 0 ):
             output.save_data(DYN_PROPERTIES)
+
 
         print( "Total MD Step took %2.2f s." % (time() - T_STEP_START) )
 

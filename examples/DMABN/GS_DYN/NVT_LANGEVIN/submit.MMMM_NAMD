@@ -7,7 +7,10 @@
 #SBATCH -N 1
 #SBATCH --ntasks-per-node=24
 
-MAIN_DIR="/scratch/bweight/software/many_molecule_many_mode_NAMD/src/"
+export OMP_NUM_THREADS=24
+export MKL_NUM_THREADS=24
+
+MAIN_DIR="/scratch/bweight/software/SQD/src/"
 
 module load gaussian
 module load intel

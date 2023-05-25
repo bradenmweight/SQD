@@ -268,14 +268,14 @@ class gau_nac:
 
         T0 = time.time()
         self.prepare()
-        print("gau_nac prepare", round(time.time() - T0,2), "s")
+        #print("gau_nac prepare", round(time.time() - T0,2), "s")
         T0 = time.time()
         self.run()
-        print("WFN OVERLAP FORTRAN TOOK", round(time.time() - T0,2), "s")
+        #print("WFN OVERLAP FORTRAN TOOK", round(time.time() - T0,2), "s")
         #self.dump()
         T0 = time.time()
         self.dump_braden()
-        print("gau_nac dump", round(time.time() - T0,2), "s")
+        #print("gau_nac dump", round(time.time() - T0,2), "s")
         os.chdir("../")
         
         return self.DYN_PROPERTIES

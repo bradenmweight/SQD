@@ -48,7 +48,7 @@ def read_Energies(DIAG_ENERGIES,NStates,BOMD,ISTATE):
             DIAG_ENERGIES[count+1] = float( line.split()[4] )/27.2114 + DIAG_ENERGIES[0]
         os.chdir("../")
     
-    print("Energy = ", DIAG_ENERGIES[:])
+    #print("Energy = ", DIAG_ENERGIES[:])
     
 
     return DIAG_ENERGIES

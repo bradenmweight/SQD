@@ -1,8 +1,9 @@
 #!/bin/bash
 
-for n in {5..199}; do 
+for n in {0..50}; do 
     cp NAMD.in TRAJ/traj-${n}/; 
-    cp submit.MMMM_NAMD TRAJ/traj-${n}/; 
+    cp submit.SQD TRAJ/traj-${n}/; 
     cd TRAJ/traj-${n}/; 
-        sbatch submit.MMMM_NAMD ; 
+        rm -rf MD* output.slurm
+        sbatch submit.SQD ; 
         cd ../../; done

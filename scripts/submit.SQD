@@ -1,0 +1,28 @@
+#!/bin/bash
+#SBATCH -p action
+#SBATCH -J BEN_EH
+#SBATCH -o output.slurm
+#SBATCH --mem 2GB
+#SBATCH -t 5-00:00:00
+#SBATCH -N 1
+#SBATCH --ntasks-per-node=2
+
+export SQD_HOME="/scratch/bweight/software/SQD/"
+export SQD_SCRATCH="/local_scratch/$SLURM_JOB_ID/" # Location where electronic structure jobs will be run
+
+echo "Setting paths in slurm:"
+echo "  SQD_HOME      = $SQD_HOME"
+echo "  SQD_SCRATCH   = $SQD_SCRATCH"
+
+module load gaussian
+module load intel
+
+export OMP_NUM_THREADS=1
+export MKL_NUM_THREADS=1
+
+export GAUSS_SCRDIR=/local_scratch/$SLURM_JOB_ID
+
+python3 $SQD_HOME/src/NAMD/NAMD_main.py > MD.out
+
+
+

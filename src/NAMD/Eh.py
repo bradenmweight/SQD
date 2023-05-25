@@ -119,9 +119,9 @@ def propagage_Mapping(DYN_PROPERTIES):
         """
         Propagate with second-order symplectic (Velocity-Verlet-like)
         """
-        print("Propagation Norm (0):")
+        #print("Propagation Norm (0):")
         POP = np.sum((0.500000 * np.outer( np.conjugate(z), z ))[np.diag_indices(len(z))])
-        print(np.real(np.round(POP,8)))
+        #print(np.real(np.round(POP,8)))
         for step in range( ESTEPS ):
             """
             ARK: Do we need linear interpolation ? 
@@ -175,9 +175,9 @@ def propagage_Mapping(DYN_PROPERTIES):
 
     DYN_PROPERTIES["MAPPING_VARS"] = z
 
-    print("Propagation Norm (1):")
+    #print("Propagation Norm (1):")
     POP = np.sum((0.500000 * np.outer( np.conjugate(z), z ))[np.diag_indices(len(z))])
-    print(np.real(np.round(POP,8)))
+    #print(np.real(np.round(POP,8)))
 
     return DYN_PROPERTIES
 
@@ -185,13 +185,13 @@ def rotate_Mapping(DYN_PROPERTIES):
     z = DYN_PROPERTIES["MAPPING_VARS"]
     S = DYN_PROPERTIES["OVERLAP_NEW"]
 
-    print("Rotation Norm (0):")
+    #print("Rotation Norm (0):")
     POP = np.sum((0.500000 * np.outer( np.conjugate(z), z ))[np.diag_indices(len(z))])
-    print(np.real(np.round(POP,8)))
+    #print(np.real(np.round(POP,8)))
     z = rotate_t0_to_t1( S, z )
-    print("Rotation Norm (1):")
+    #print("Rotation Norm (1):")
     POP = np.sum((0.500000 * np.outer( np.conjugate(z), z ))[np.diag_indices(len(z))])
-    print(np.real(np.round(POP,8)))
+    #print(np.real(np.round(POP,8)))
 
     DYN_PROPERTIES["MAPPING_VARS"] = z
     
@@ -207,7 +207,7 @@ def check_Mapping_Normalization(DYN_PROPERTIES):
     z = DYN_PROPERTIES["MAPPING_VARS"]
     POP = np.real(properties.get_density_matrix( DYN_PROPERTIES )[np.diag_indices(DYN_PROPERTIES["NStates"])])
     norm = np.sum( POP )
-    print(f"Electronic Norm.: {np.round(norm,4)}")
+    #print(f"Electronic Norm.: {np.round(norm,4)}")
     if ( abs(1.0 - norm) > 1e-5 and abs(1.0 - norm) < 1e-2 ):
         print(f"Mapping norm is wrong: {np.round(norm,4)} != 1.00000")
     if( abs(1.0 - norm) > 1e-2 ):

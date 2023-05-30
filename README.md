@@ -15,14 +15,13 @@
   <img src="https://bradenmweight.github.io/SQD/white.png" width = '250px'>
 </picture>
     <br>
-   <a href = 'https://bradenmweight.github.io/SQD'>Learn More</a> 
+   <a href = 'https://bradenmweight.github.io/SQD/primary.html'>Learn More</a> 
    <br>
-   <a href = 'https://bradenmweight.github.io/SQD/read.html?filename=Documentation.md'>Documentation</a>
+   <a href = 'https://bradenmweight.github.io/SQD/secondary.html?filename=Documentation.md'>Installation</a>
    <br>
-   <a href = 'https://bradenmweight.github.io/SQD/read.html?filename=Parameters.md'>Parameters</a>
+   <a href = 'https://bradenmweight.github.io/SQD/secondary.html?filename=Documentation.md'>Documentation</a>
    <br>
-   <a href = 'https://bradenmweight.github.io/SQD/read.html?filename=Examples.md'>Examples</a>
+   <a href = 'https://bradenmweight.github.io/SQD/secondary.html?filename=Examples.md'>Examples</a>
+   <br>
+   <a href = 'https://bradenmweight.github.io/SQD/secondary.html?filename=Parameters.md'>Parameters</a>
 </div>
-
-
-

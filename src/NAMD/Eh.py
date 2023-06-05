@@ -10,13 +10,13 @@ def initialize_mapping(DYN_PROPERTIES):
     ISTATE  = DYN_PROPERTIES["ISTATE"]
     #DYN_PROPERTIES["ZPE"] = 0.0 # Ehrenfest has no ZPE 
 
-    """
     ### MMST Style Initialization ###
-    #z = np.zeros(( NStates ), dtype=complex)
-    #z[ISTATE] = 1.0 + 0.0j # Ehrenfest has no electronic sampling
-    """
+    z = np.zeros(( NStates ), dtype=complex)
+    z[ISTATE] = 1.0 + 0.0j # Ehrenfest has no electronic sampling
 
+    """
     ### Spin-mapping Style Initialization ###
+    # Probably we should not do this for Ehrenfest
     Rw = 2*np.sqrt(NStates+1) # Radius of W Sphere
 
     # Initialize mapping radii
@@ -28,7 +28,8 @@ def initialize_mapping(DYN_PROPERTIES):
     for i in range(NStates):
         phi = random.random() * 2 * np.pi # Azimuthal Angle -- Always Random
         z[i] = r[i] * ( np.cos( phi ) + 1j * np.sin( phi ) )
-  
+    """
+
     DYN_PROPERTIES["MAPPING_VARS"] = z
 
     # Check initial density matrix

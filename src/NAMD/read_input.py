@@ -293,7 +293,7 @@ def read():
         print( "  MD_ENSEMBLE ="); print("\t\t", DYN_PROPERTIES["MD_ENSEMBLE"] )
         print( "  VELOC ="); print("\t\t", DYN_PROPERTIES["VELOC"] )
     except KeyError:
-        print("Input file is missing mandatory entries (see above). Check it.")
+        print("Input file is missing a mandatory entry (see above). Check it.")
         exit()
 
     #assert( DYN_PROPERTIES["ISTATE"] <= DYN_PROPERTIES["NStates"]-1 ), "ISTATE must be less than the total number of states."
@@ -676,16 +676,25 @@ def initialize_MD_variables(DYN_PROPERTIES):
                 print(f"\nWarning: User requested more excited states (NSTATES = {DYN_PROPERTIES['NStates']}) than necessary to perform BOMD in S{DYN_PROPERTIES['ISTATE']}")
                 print(f"Warning: Set NSTATES = {DYN_PROPERTIES['ISTATE']+1} for minimal computation time.\n")
     else: # BOMD was not manually set
-        if ( DYN_PROPERTIES['NStates'] == 1 and DYN_PROPERTIES['ISTATE'] == 0 ): # BOMD in GS -- implicit
-            print("User requested 1 electronic state and an initial state of S0 --> BOMD in GS")
-            print("\t--> Setting BOMD = True")
-            DYN_PROPERTIES["BOMD"] = True
-        else: # NAMD
-            print( f"\tSQD will perform NAMD in using multiple electronic states")
-            print( "\t\tElectronic states in NAMD:", [ f"S{j}" for j in range(DYN_PROPERTIES['NStates']) ] )
-            print( f"\t\tInitial Electronic State = S{DYN_PROPERTIES['ISTATE']}.")
-
-
+        if ( DYN_PROPERTIES["CPA"] == False ):
+            if ( DYN_PROPERTIES['NStates'] == 1 and DYN_PROPERTIES['ISTATE'] == 0 ): # BOMD in GS -- implicit
+                print("User requested 1 electronic state and an initial state of S0 --> BOMD in GS")
+                print("\t--> Setting BOMD = True")
+                DYN_PROPERTIES["BOMD"] = True
+            else: # NAMD
+                print( f"\tSQD will perform NAMD in using multiple electronic states")
+                print( "\t\tElectronic states in NAMD:", [ f"S{j}" for j in range(DYN_PROPERTIES['NStates']) ] )
+                print( f"\t\tInitial Electronic State = S{DYN_PROPERTIES['ISTATE']}.")
+        elif ( DYN_PROPERTIES["CPA"] == True ):
+            if ( DYN_PROPERTIES['NStates'] == 1 ): # BOMD in GS -- implicit
+                print( f"WARNING:\n\tUser chose to do CPA but only one state was given." )
+                print( "\tPlease use BOMD keyword for this style of job." )
+                exit()
+            else:
+                print( f"\tSQD will perform NAMD in using multiple electronic states")
+                print( "\t\tElectronic states in NAMD:", [ f"S{j}" for j in range(DYN_PROPERTIES['NStates']) ] )
+                print( f"\t\tInitial Electronic State = S{DYN_PROPERTIES['ISTATE']}.")
+                print( f"\t\tClassical Path Approximation (CPA) for nuclear forces.")
 
 
     return DYN_PROPERTIES

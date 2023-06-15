@@ -365,9 +365,9 @@ def run_ES_FORCE_parallel( inputs ):
     submit(RUN_ELEC_STRUC, SBATCH_G16, MD_STEP, BOMD, ISTATE, SQD_SCRATCH_PATH, SQD_RUNNING_DIR)
     os.chdir("../")
 
-def run_ES_FORCE_serial( NStates, RUN_ELEC_STRUC, SBATCH_G16, MD_STEP, BOMD, ISTATE, CPA_FLAG ):
+def run_ES_FORCE_serial( NStates, RUN_ELEC_STRUC, SBATCH_G16, MD_STEP, BOMD, ISTATE, SQD_SCRATCH_PATH, SQD_RUNNING_DIR, CPA_FLAG ):
     
-    for state in range( 1, NStates ): # ALL STATES IN SERIAL
+    for state in range( 1, NStates ): # ALL EXCITED STATES IN SERIAL
         if ( state >= 2 and CPA_FLAG == True ):
             continue
         if ( BOMD == True ):
@@ -375,7 +375,7 @@ def run_ES_FORCE_serial( NStates, RUN_ELEC_STRUC, SBATCH_G16, MD_STEP, BOMD, IST
                 os.chdir(f"TD_NEW_S{state}/")
                 submit(RUN_ELEC_STRUC, SBATCH_G16, MD_STEP, BOMD, ISTATE, SQD_SCRATCH_PATH, SQD_RUNNING_DIR)
                 os.chdir("../")
-        else:
+        else: # This is run once for CPA to get excited state energies
             os.chdir(f"TD_NEW_S{state}/")
             submit(RUN_ELEC_STRUC, SBATCH_G16, MD_STEP, BOMD, ISTATE, SQD_SCRATCH_PATH, SQD_RUNNING_DIR)
             os.chdir("../")
@@ -398,7 +398,7 @@ def submit_jobs(DYN_PROPERTIES):
             submit(RUN_ELEC_STRUC, SBATCH_G16, MD_STEP, BOMD, ISTATE, SQD_SCRATCH_PATH, SQD_RUNNING_DIR)
             os.chdir("../")
         if ( ISTATE != 0 ):
-            run_ES_FORCE_serial( NStates, RUN_ELEC_STRUC, SBATCH_G16, MD_STEP, BOMD, ISTATE, DYN_PROPERTIES["CPA"] )
+            run_ES_FORCE_serial( NStates, RUN_ELEC_STRUC, SBATCH_G16, MD_STEP, BOMD, ISTATE, SQD_SCRATCH_PATH, SQD_RUNNING_DIR, DYN_PROPERTIES["CPA"] )
     else:
 
         # GS must a serial job
@@ -415,7 +415,7 @@ def submit_jobs(DYN_PROPERTIES):
             with mp.Pool(processes=DYN_PROPERTIES["NCPUS_NAMD"]) as pool:
                 pool.map(run_ES_FORCE_parallel,state_List)
         else:
-            run_ES_FORCE_serial( NStates, RUN_ELEC_STRUC, SBATCH_G16, MD_STEP, BOMD, ISTATE, DYN_PROPERTIES["CPA"] )
+            run_ES_FORCE_serial( NStates, RUN_ELEC_STRUC, SBATCH_G16, MD_STEP, BOMD, ISTATE, SQD_SCRATCH_PATH, SQD_RUNNING_DIR, DYN_PROPERTIES["CPA"] )
 
         # DIMER
         if ( MD_STEP >= 1 and NStates >= 2 and BOMD == False ):

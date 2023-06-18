@@ -202,7 +202,7 @@ def rotate_Mapping(DYN_PROPERTIES):
 
 def get_density_matrix( DYN_PROPERTIES ):
     z = DYN_PROPERTIES["MAPPING_VARS"]
-    return 0.500000 * np.outer( np.conjugate(z), z )
+    return np.outer( np.conjugate(z), z )
 
 def check_Mapping_Normalization(DYN_PROPERTIES):
     z = DYN_PROPERTIES["MAPPING_VARS"]

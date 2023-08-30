@@ -50,6 +50,12 @@ def read_Gradients(DIAG_GRADIENTS,DYN_PROPERTIES):
                     DIAG_GRADIENTS[state,:,:] = read_FCHK_GRAD( DYN_PROPERTIES["NAtoms"] )
                     os.chdir("../")
     
+    elif ( DYN_PROPERTIES["CPA"] == True ):
+        os.chdir("GS_NEW/")
+        DIAG_GRADIENTS[0,:,:] = read_FCHK_GRAD( DYN_PROPERTIES["NAtoms"] )
+        os.chdir("../")
+
+
     return DIAG_GRADIENTS
 
 def main(DYN_PROPERTIES):

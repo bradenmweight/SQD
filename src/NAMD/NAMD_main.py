@@ -55,8 +55,6 @@ def rotate_Mapping(DYN_PROPERTIES):
     if ( DYN_PROPERTIES["NAMD_METHOD"] == "GFSH" ):
         return GFSH.rotate_Mapping(DYN_PROPERTIES)
 
-
-
 def main( ):
     DYN_PROPERTIES = read_input.read()
     DYN_PROPERTIES = read_input.initialize_MD_variables(DYN_PROPERTIES)

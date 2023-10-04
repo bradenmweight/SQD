@@ -177,7 +177,7 @@ def propagage_Mapping(DYN_PROPERTIES):
     DYN_PROPERTIES["MAPPING_VARS"] = z
 
     #print("Propagation Norm (1):")
-    POP = np.sum((0.500000 * np.outer( np.conjugate(z), z ))[np.diag_indices(len(z))])
+    #POP = np.sum((0.500000 * np.outer( np.conjugate(z), z ))[np.diag_indices(len(z))])
     #print(np.real(np.round(POP,8)))
 
     return DYN_PROPERTIES
@@ -187,11 +187,11 @@ def rotate_Mapping(DYN_PROPERTIES):
     S = DYN_PROPERTIES["OVERLAP_NEW"]
 
     #print("Rotation Norm (0):")
-    POP = np.sum((0.500000 * np.outer( np.conjugate(z), z ))[np.diag_indices(len(z))])
+    #POP = np.sum((0.500000 * np.outer( np.conjugate(z), z ))[np.diag_indices(len(z))])
     #print(np.real(np.round(POP,8)))
     z = rotate_t0_to_t1( S, z )
     #print("Rotation Norm (1):")
-    POP = np.sum((0.500000 * np.outer( np.conjugate(z), z ))[np.diag_indices(len(z))])
+    #POP = np.sum((0.500000 * np.outer( np.conjugate(z), z ))[np.diag_indices(len(z))])
     #print(np.real(np.round(POP,8)))
 
     DYN_PROPERTIES["MAPPING_VARS"] = z

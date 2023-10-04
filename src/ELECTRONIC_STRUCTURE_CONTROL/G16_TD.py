@@ -646,8 +646,68 @@ def check_for_trivial_crossing(OVERLAP_CORR,DYN_PROPERTIES):
 
     return OVERLAP_CORR, DYN_PROPERTIES
 
+def reorder_all_properties(FROM_STATE,TO_STATE,DYN_PROPERTIES):
 
-                
+    # ENERGY
+    E = DYN_PROPERTIES["DIAG_ENERGIES_NEW"]
+    TMP           = E[TO_STATE]
+    E[TO_STATE]   = E[FROM_STATE]
+    E[FROM_STATE] = TMP
+    DYN_PROPERTIES["DIAG_ENERGIES_NEW"] = E
+
+    # OVERLAP (ROW OR COLUMN FLIP ??? --> BOTH ~BMW)
+    OVLP = DYN_PROPERTIES["OVERLAP_NEW"]
+    OVLP[TO_STATE,:], OVLP[FROM_STATE,:] = OVLP[FROM_STATE,:], OVLP[TO_STATE,:]
+    OVLP[:,TO_STATE], OVLP[:,FROM_STATE] = OVLP[:,FROM_STATE], OVLP[:,TO_STATE]
+    DYN_PROPERTIES["OVERLAP_NEW"] = OVLP
+
+    # NACT (ROW OR COLUMN FLIP ??? --> BOTH ~BMW)
+    NACT = DYN_PROPERTIES["NACT_NEW"]
+    NACT[TO_STATE,:], NACT[FROM_STATE,:] = NACT[FROM_STATE,:], NACT[TO_STATE,:]
+    NACT[:,TO_STATE], NACT[:,FROM_STATE] = NACT[:,FROM_STATE], NACT[:,TO_STATE]
+    DYN_PROPERTIES["NACT_NEW"] = NACT
+
+    # NACR (ROW OR COLUMN FLIP ??? --> BOTH ~BMW)
+    NACR = DYN_PROPERTIES["NACR_APPROX_NEW"]
+    NACR[TO_STATE,:,:,:], NACR[FROM_STATE,:,:,:] = NACR[FROM_STATE,:,:,:], NACR[TO_STATE,:,:,:]
+    NACR[:,TO_STATE,:,:], NACR[:,FROM_STATE,:,:] = NACR[:,FROM_STATE,:,:], NACR[:,TO_STATE,:,:]
+    DYN_PROPERTIES["NACR_APPROX_NEW"] = NACR
+
+    # Diagonal Gradients
+    GRAD = DYN_PROPERTIES["DIAG_GRADIENTS"]
+    GRAD[TO_STATE,:,:], GRAD[FROM_STATE,:,:] = GRAD[FROM_STATE,:,:], GRAD[TO_STATE,:]
+    DYN_PROPERTIES["DIAG_GRADIENTS"] = GRAD
+
+    # Mapping Variables
+    MAP = DYN_PROPERTIES["MAPPING_VARS"]
+    MAP[TO_STATE], MAP[FROM_STATE] = MAP[FROM_STATE], MAP[TO_STATE]
+    DYN_PROPERTIES["MAPPING_VARS"] = MAP
+
+    return DYN_PROPERTIES
+
+
+
+def check_state_labels(DYN_PROPERTIES):
+    NStates   = DYN_PROPERTIES['NStates']
+    ENERGY    = DYN_PROPERTIES["DIAG_ENERGIES_NEW"] * 1
+    ORDER_OLD = [ j for j in range(NStates) ]
+    ORDER_NEW = [ j for j in range(NStates) ]
+    for j in range( NStates ):
+        for k in range( j+1, NStates ):
+            if ( ENERGY[j] > ENERGY[k] ): # THIS WOULD BE WRONG, IF TRUE, SINCE j < k
+                print("\n\nCORRECTED STATE ORDERING BY ENERGY:")
+                ORDER_NEW[j] = k
+                ORDER_NEW[k] = j
+                TMP          = ENERGY[j]
+                ENERGY[j]    = ENERGY[k]
+                ENERGY[k]    = TMP
+                DYN_PROPERTIES = reorder_all_properties(j,k,DYN_PROPERTIES)
+                print("\tOLD:", ORDER_OLD)
+                print("\tNEW:", ORDER_NEW)
+                print("\tReordering all properties\n\n")
+
+    return DYN_PROPERTIES
+
 def main(DYN_PROPERTIES):
 
     # HOW TO HANDLE THIS PATH BETTER ?
@@ -672,21 +732,15 @@ def main(DYN_PROPERTIES):
     generate_inputs(DYN_PROPERTIES)
     submit_jobs(DYN_PROPERTIES)
 
-
     DYN_PROPERTIES = get_cartesian_gradients.main(DYN_PROPERTIES)
     DYN_PROPERTIES = get_diagonal_electronic_energies.main(DYN_PROPERTIES)
+
     if ( MD_STEP >= 1 ):
         if ( NStates >= 2 and BOMD == False ):
-            T0 = time.time()
             DYN_PROPERTIES = G16_NAC.main(DYN_PROPERTIES) # Provides OVERLAP
-            #print( f"\tGET_OVERLAP OVERALL TIME (G16_TD.py):", round(time.time() - T0,2), "s" )
-            T0 = time.time()
             DYN_PROPERTIES = calc_NACT(DYN_PROPERTIES) # Provides NACT
-            #print( f"\tGET_NACT OVERALL TIME (G16_TD.py):", round(time.time() - T0,2), "s" )
-            T0 = time.time()
             if ( DYN_PROPERTIES["CPA"] == False ): # Only need NACR for off-diagonal forces, which only come from G.S. in CPA
                 DYN_PROPERTIES = get_approx_NACR(DYN_PROPERTIES) # Provides NACR from NACT and OVERLAP
-            #print( f"\tGET_APPROX NACR OVERALL TIME (G16_TD.py):", round(time.time() - T0,2), "s" )
         else:
             DYN_PROPERTIES["OVERLAP_OLD"] = np.zeros(( NStates, NStates ))
             DYN_PROPERTIES["OVERLAP_NEW"] = np.zeros(( NStates, NStates ))
@@ -694,6 +748,8 @@ def main(DYN_PROPERTIES):
             DYN_PROPERTIES["NACR_APPROX_NEW"] = np.zeros(( NStates, NStates, NAtoms, 3 ))
             DYN_PROPERTIES["NACT_NEW"] = np.zeros(( NStates, NStates ))
 
+
+    #DYN_PROPERTIES = check_state_labels(DYN_PROPERTIES) # Sometimes E2 < E1 if overlaps are weird
     os.chdir(f"{DYN_PROPERTIES['SQD_RUNNING_DIR']}/")
 
     return DYN_PROPERTIES

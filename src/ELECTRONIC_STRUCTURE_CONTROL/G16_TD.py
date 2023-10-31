@@ -17,7 +17,16 @@ def check_geometry(Atom_labels,Atom_coords_new):
     assert ( isinstance(Atom_labels[0], str) ), "Atoms labels needs to be a list of strings"
     assert ( isinstance(Atom_coords_new, type(np.array([])) ) ) , "Atom coordinates need to be numpy array"
 
-def clean_directory(NStates, MD_STEP, CPA_FLAG, BOMD_FLAG, ISTATE):
+def clean_directory(NStates, MD_STEP, CPA_FLAG, BOMD_FLAG, ISTATE, DYN_PROPERTIES):
+
+    # #### FOR DEBUGGING ####
+    # if ( MD_STEP == 0 ):
+    #     sp.call( f"mkdir -p {DYN_PROPERTIES['SQD_RUNNING_DIR']}/EL_STRUCTURE",shell=True)
+    # else:
+    #     sp.call( f"cp GS_NEW/geometry.out    {DYN_PROPERTIES['SQD_RUNNING_DIR']}/EL_STRUCTURE/STEP_{MD_STEP}_GS_NEW.out"    ,shell=True)
+    #     sp.call( f"cp TD_NEW_S1/geometry.out {DYN_PROPERTIES['SQD_RUNNING_DIR']}/EL_STRUCTURE/STEP_{MD_STEP}_TD_NEW_S1.out" ,shell=True)
+    #     sp.call( f"cp TD_NEW_S2/geometry.out {DYN_PROPERTIES['SQD_RUNNING_DIR']}/EL_STRUCTURE/STEP_{MD_STEP}_TD_NEW_S2.out" ,shell=True)
+    # #######################
 
     if ( MD_STEP == 0 ): sp.call( "rm -rf GS* TD* DIMER OVERLAP" ,shell=True)
 
@@ -256,11 +265,12 @@ def generate_inputs(DYN_PROPERTIES):
                 # Excited State for New Geometry (Use converged wavefunctions from TD root=1)
                 os.chdir(f"TD_NEW_S{state}/")
                 file01 = open("geometry.com","w")
-                #file01.write(f"%oldchk=../TD_NEW_S1/geometry.chk\n")
-                if ( MD_STEP == 0 ):
-                    file01.write(f"%oldchk=../GS_NEW/geometry.chk\n")
-                elif ( MD_STEP >= 1 ):
-                    file01.write(f"%oldchk=../TD_OLD_S1/geometry.chk\n")
+                # Comment out for debugging energy ordering
+                file01.write(f"%oldchk=../TD_NEW_S1/geometry.chk\n")
+                #if ( MD_STEP == 0 ):
+                file01.write(f"%oldchk=../GS_NEW/geometry.chk\n")
+                #elif ( MD_STEP >= 1 ):
+                #    file01.write(f"%oldchk=../TD_OLD_S1/geometry.chk\n")
                 write_header(file01,MEM,NCPUS_G16)
                 # Add functional and basis set (unless DFTB or DFTBA)
                 if ( FUNCTIONAL in ["DFTB", "DFTBA"] ):
@@ -269,10 +279,10 @@ def generate_inputs(DYN_PROPERTIES):
                     elif ( MD_STEP >= 1 ):
                         file01.write(f"# {FUNCTIONAL} SCF=XQC TD=(read,singlets,Conver={TDDFT_CONVERG},nstates={NStates},root={state}) FORCE nosym IOp(9/40=3) guess=read\n\n")
                 else:
-                    if ( MD_STEP == 0 ):
-                        file01.write(f"# {FUNCTIONAL}/{BASIS_SET} SCF=XQC TD=(singlets,Conver={TDDFT_CONVERG},nstates={NStates},root={state}) FORCE nosym IOp(9/40=3) guess=read\n\n")
-                    elif ( MD_STEP >= 1 ):
-                        file01.write(f"# {FUNCTIONAL}/{BASIS_SET} SCF=XQC TD=(read,singlets,Conver={TDDFT_CONVERG},nstates={NStates},root={state}) FORCE nosym IOp(9/40=3) guess=read\n\n")
+                    #if ( MD_STEP == 0 ):
+                    file01.write(f"# {FUNCTIONAL}/{BASIS_SET} SCF=XQC TD=(singlets,Conver={TDDFT_CONVERG},nstates={NStates},root={state}) FORCE nosym IOp(9/40=3) guess=read\n\n")
+                    #elif ( MD_STEP >= 1 ):
+                    #    file01.write(f"# {FUNCTIONAL}/{BASIS_SET} SCF=XQC TD=(read,singlets,Conver={TDDFT_CONVERG},nstates={NStates},root={state}) FORCE nosym IOp(9/40=3) guess=read\n\n")
 
                 write_geom(file01,Atom_labels,Atom_coords_new,MD_STEP,CHARGE,MULTIPLICITY)
                 if ( FUNCTIONAL in ["DFTB", "DFTBA"] ):
@@ -437,11 +447,18 @@ def correct_phase(OVERLAP_ORTHO,MD_STEP,S_OLD=None):
         f[state] = OVERLAP_ORTHO[state,state] / np.abs(OVERLAP_ORTHO[state,state]) # \pm 1
         #print("Phase Factor f(S%d) = %2.6f" % (state,f[state]))
 
-    OVERLAP_corrected = np.zeros(( NStates, NStates ))
+    #OVERLAP_corrected = np.zeros(( NStates, NStates ))
+    #for j in range( NStates ):
+    #    for k in range( NStates ):
+    #        #OVERLAP_corrected[j,k] = OVERLAP_ORTHO[j,k] * f[k] # or f[j] ? # Here, f* = f since all wavefunctions are real-valued
+    
+    OVERLAP_corrected = OVERLAP_ORTHO * 1.0
     for j in range( NStates ):
-        for k in range( NStates ):
-            OVERLAP_corrected[j,k] = OVERLAP_ORTHO[j,k] * f[k] # or f[j] ? # Here, f* = f since all wavefunctions are real-valued
+        if ( f[j] < 0 ):
+            #OVERLAP_corrected[:,j] *= -1 # DID NOT WORK.
+            OVERLAP_corrected[j,:] *= -1 # or f[j] ? # Here, f* = f since all wavefunctions are real-valued
 
+    """
     if ( MD_STEP >= 3 ):
         for j in range( NStates ):
             for k in range( j+1, NStates ):
@@ -459,10 +476,10 @@ def correct_phase(OVERLAP_ORTHO,MD_STEP,S_OLD=None):
                         #print( "NEW:\n", np.round(OVERLAP_corrected,8) )
                         #print("[S.T @ S] after sign fix:")
                         #print(np.round(OVERLAP_corrected.T @ OVERLAP_corrected,8))
-                        OVERLAP_corrected = get_Lowdin_SVD(OVERLAP_corrected)
+                        #OVERLAP_corrected = get_Lowdin_SVD(OVERLAP_corrected)
                         #print("[S.T @ S] after sign fix and second orthogonalization:")
                         #print(np.round(OVERLAP_corrected.T @ OVERLAP_corrected,8))
-
+    """
 
                 
 
@@ -499,8 +516,8 @@ def get_Lowdin_SVD(OVERLAP):
     S = U @ diag(\lambda_i) @ V.T
     S_Ortho = U @ V.T
     """
-    U, vals, VT = svd(OVERLAP)
 
+    U, vals, VT = svd(OVERLAP)
     S_Ortho = U @ VT
 
     #print("Orthogonalized [S.T @ S] :")
@@ -519,9 +536,17 @@ def calc_NACT(DYN_PROPERTIES):
     """
     OVERLAP = DYN_PROPERTIES["OVERLAP_NEW"]
     dtI     = DYN_PROPERTIES["dtI"]
+    NSTATES = DYN_PROPERTIES["NStates"]
 
     #print("Original Overlap")
     #print(OVERLAP)
+
+    if ( DYN_PROPERTIES["SYMMETRIZE_OVERLAP"] == True ):
+        # M = M1 + M2
+        #M1 = (OVERLAP + OVERLAP.T)/2 # Symmetric part
+        M2 = (OVERLAP - OVERLAP.T)/2 # Assymetric part
+        # Add diagonal parts back in
+        M2 += np.identity(NSTATES) * OVERLAP[np.diag_indices(NSTATES)]
 
     OVERLAP_ORTHO = get_Lowdin_SVD(OVERLAP) * 1.0
     DYN_PROPERTIES["OVERLAP_NEW_uncorrected"] = OVERLAP_ORTHO * 1.0
@@ -542,8 +567,8 @@ def calc_NACT(DYN_PROPERTIES):
     #print("Phase-corrected OVERLAP:")
     #print(OVERLAP_CORR)
 
-    if ( DYN_PROPERTIES["CHECK_TRIVIAL_CROSSING"] == True ):
-        OVERLAP_CORR, DYN_PROPERTIES = check_for_trivial_crossing(OVERLAP_CORR, DYN_PROPERTIES)
+    #if ( DYN_PROPERTIES["CHECK_TRIVIAL_CROSSING"] == True ):
+    #    OVERLAP_CORR, DYN_PROPERTIES = check_for_trivial_crossing(OVERLAP_CORR, DYN_PROPERTIES)
 
     NACT = (OVERLAP_CORR - OVERLAP_CORR.T) / 2 / dtI
 
@@ -641,71 +666,24 @@ def check_for_trivial_crossing(OVERLAP_CORR,DYN_PROPERTIES):
 
                 for PROPERTY in ["MAPPING_VARS", "DIAG_ENERGIES_NEW", "DIAG_GRADIENTS"]:
                     DYN_PROPERTIES[PROPERTY] = flip_row_column( j,k,NStates,DYN_PROPERTIES[PROPERTY] )
-                for key, value in DYN_PROPERTIES.items() :
+                for key, value in DYN_PROPERTIES.items():
                     print (key)
 
     return OVERLAP_CORR, DYN_PROPERTIES
 
-def reorder_all_properties(FROM_STATE,TO_STATE,DYN_PROPERTIES):
+def check_for_S0S1_CI( DYN_PROPERTIES ):
 
-    # ENERGY
-    E = DYN_PROPERTIES["DIAG_ENERGIES_NEW"]
-    TMP           = E[TO_STATE]
-    E[TO_STATE]   = E[FROM_STATE]
-    E[FROM_STATE] = TMP
-    DYN_PROPERTIES["DIAG_ENERGIES_NEW"] = E
-
-    # OVERLAP (ROW OR COLUMN FLIP ??? --> BOTH ~BMW)
-    OVLP = DYN_PROPERTIES["OVERLAP_NEW"]
-    OVLP[TO_STATE,:], OVLP[FROM_STATE,:] = OVLP[FROM_STATE,:], OVLP[TO_STATE,:]
-    OVLP[:,TO_STATE], OVLP[:,FROM_STATE] = OVLP[:,FROM_STATE], OVLP[:,TO_STATE]
-    DYN_PROPERTIES["OVERLAP_NEW"] = OVLP
-
-    # NACT (ROW OR COLUMN FLIP ??? --> BOTH ~BMW)
-    NACT = DYN_PROPERTIES["NACT_NEW"]
-    NACT[TO_STATE,:], NACT[FROM_STATE,:] = NACT[FROM_STATE,:], NACT[TO_STATE,:]
-    NACT[:,TO_STATE], NACT[:,FROM_STATE] = NACT[:,FROM_STATE], NACT[:,TO_STATE]
-    DYN_PROPERTIES["NACT_NEW"] = NACT
-
-    # NACR (ROW OR COLUMN FLIP ??? --> BOTH ~BMW)
-    NACR = DYN_PROPERTIES["NACR_APPROX_NEW"]
-    NACR[TO_STATE,:,:,:], NACR[FROM_STATE,:,:,:] = NACR[FROM_STATE,:,:,:], NACR[TO_STATE,:,:,:]
-    NACR[:,TO_STATE,:,:], NACR[:,FROM_STATE,:,:] = NACR[:,FROM_STATE,:,:], NACR[:,TO_STATE,:,:]
-    DYN_PROPERTIES["NACR_APPROX_NEW"] = NACR
-
-    # Diagonal Gradients
-    GRAD = DYN_PROPERTIES["DIAG_GRADIENTS"]
-    GRAD[TO_STATE,:,:], GRAD[FROM_STATE,:,:] = GRAD[FROM_STATE,:,:], GRAD[TO_STATE,:]
-    DYN_PROPERTIES["DIAG_GRADIENTS"] = GRAD
-
-    # Mapping Variables
-    MAP = DYN_PROPERTIES["MAPPING_VARS"]
-    MAP[TO_STATE], MAP[FROM_STATE] = MAP[FROM_STATE], MAP[TO_STATE]
-    DYN_PROPERTIES["MAPPING_VARS"] = MAP
-
-    return DYN_PROPERTIES
-
-
-
-def check_state_labels(DYN_PROPERTIES):
-    NStates   = DYN_PROPERTIES['NStates']
-    ENERGY    = DYN_PROPERTIES["DIAG_ENERGIES_NEW"] * 1
-    ORDER_OLD = [ j for j in range(NStates) ]
-    ORDER_NEW = [ j for j in range(NStates) ]
-    for j in range( NStates ):
-        for k in range( j+1, NStates ):
-            if ( ENERGY[j] > ENERGY[k] ): # THIS WOULD BE WRONG, IF TRUE, SINCE j < k
-                print("\n\nCORRECTED STATE ORDERING BY ENERGY:")
-                ORDER_NEW[j] = k
-                ORDER_NEW[k] = j
-                TMP          = ENERGY[j]
-                ENERGY[j]    = ENERGY[k]
-                ENERGY[k]    = TMP
-                DYN_PROPERTIES = reorder_all_properties(j,k,DYN_PROPERTIES)
-                print("\tOLD:", ORDER_OLD)
-                print("\tNEW:", ORDER_NEW)
-                print("\tReordering all properties\n\n")
-
+    E       = DYN_PROPERTIES["DIAG_ENERGIES_NEW"] * 27.2114
+    NSTATES = DYN_PROPERTIES["NStates"]
+    
+    for state in range( 1, NSTATES ):
+        if ( abs( E[state] - E[0] ) < 0.1 ): # Arbitrary threshold (eV)
+            # Change settings to BOMD in S0 (GS)
+            DYN_PROPERTIES["BOMD"]            = True
+            DYN_PROPERTIES["ISTATE"]          = 0
+            DYN_PROPERTIES["MAPPING_VARS"]    = np.zeros( (NSTATES), dtype=complex )
+            DYN_PROPERTIES["MAPPING_VARS"][0] = 1 + 0j
+            # Keep the same number of excited states in the calculation
     return DYN_PROPERTIES
 
 def main(DYN_PROPERTIES):
@@ -728,7 +706,7 @@ def main(DYN_PROPERTIES):
     os.chdir(f"{SQD_SCRATCH_PATH}/EL_STRUCTURE")
     
     check_geometry(Atom_labels,Atom_coords_new)
-    clean_directory(NStates,MD_STEP,DYN_PROPERTIES["CPA"],DYN_PROPERTIES["BOMD"],ISTATE)
+    clean_directory(NStates,MD_STEP,DYN_PROPERTIES["CPA"],DYN_PROPERTIES["BOMD"],ISTATE,DYN_PROPERTIES)
     generate_inputs(DYN_PROPERTIES)
     submit_jobs(DYN_PROPERTIES)
 
@@ -748,8 +726,9 @@ def main(DYN_PROPERTIES):
             DYN_PROPERTIES["NACR_APPROX_NEW"] = np.zeros(( NStates, NStates, NAtoms, 3 ))
             DYN_PROPERTIES["NACT_NEW"] = np.zeros(( NStates, NStates ))
 
+    if ( DYN_PROPERTIES["S0S1_CI_FLAG"] == True ): # Check abs(E0 - En)
+        check_for_S0S1_CI( DYN_PROPERTIES )
 
-    #DYN_PROPERTIES = check_state_labels(DYN_PROPERTIES) # Sometimes E2 < E1 if overlaps are weird
     os.chdir(f"{DYN_PROPERTIES['SQD_RUNNING_DIR']}/")
 
     return DYN_PROPERTIES

@@ -258,6 +258,27 @@ def read():
                     print("Input for 'BOMD' must be a boolean. (True or False)")
                     exit()
 
+            # Look for SYMMETRIZE_OVERLAP
+            if ( t[0].upper() == "SYMMETRIZE_OVERLAP".upper() ):
+                if ( t[1].upper() == "TRUE" ):
+                    DYN_PROPERTIES["SYMMETRIZE_OVERLAP"] = True
+                elif ( t[1].upper() == "FALSE" ):
+                    DYN_PROPERTIES["SYMMETRIZE_OVERLAP"] = False
+                else:
+                    print("Input for 'SYMMETRIZE_OVERLAP' must be a boolean. (True or False)")
+                    exit()
+
+            # Look for S0S1_CI_FLAG
+            if ( t[0].upper() == "S0S1_CI_FLAG".upper() ):
+                if ( t[1].upper() == "TRUE" ):
+                    DYN_PROPERTIES["S0S1_CI_FLAG"] = True
+                elif ( t[1].upper() == "FALSE" ):
+                    DYN_PROPERTIES["S0S1_CI_FLAG"] = False
+                else:
+                    print("Input for 'S0S1_CI_FLAG' must be a boolean. (True or False)")
+                    exit()
+
+
             # Look for CPA
             if ( t[0].upper() == "CPA".upper() ):
                 try:
@@ -599,6 +620,16 @@ def initialize_MD_variables(DYN_PROPERTIES):
         tmp = DYN_PROPERTIES["BOMD"]
     except KeyError:
         DYN_PROPERTIES["BOMD"] = False # Default is not to do BOMD
+
+    try:
+        tmp = DYN_PROPERTIES["SYMMETRIZE_OVERLAP"]
+    except KeyError:
+        DYN_PROPERTIES["SYMMETRIZE_OVERLAP"] = True # Default is not to do
+
+    try:
+        tmp = DYN_PROPERTIES["S0S1_CI_FLAG"]
+    except KeyError:
+        DYN_PROPERTIES["S0S1_CI_FLAG"] = False # Default is not to do
 
 
     if ( DYN_PROPERTIES["CPA"] == True and DYN_PROPERTIES["BOMD"] == True ):

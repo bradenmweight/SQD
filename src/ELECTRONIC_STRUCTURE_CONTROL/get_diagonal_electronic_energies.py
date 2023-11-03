@@ -54,6 +54,16 @@ def read_Energies(DIAG_ENERGIES,NStates,BOMD,ISTATE):
     return DIAG_ENERGIES
 
 
+def check_state_labels(ENERGIES):
+    NStates   = len(ENERGIES)
+    ORDER_OLD = [ j for j in range(NStates) ]
+    ORDER_NEW = [ j for j in range(NStates) ]
+    for j in range( NStates ):
+        for k in range( j+1, NStates ):
+            if ( ENERGIES[j] > ENERGIES[k] ): # THIS WOULD BE WRONG, IF TRUE, SINCE j < k
+                ENERGIES[j], ENERGIES[k] = ENERGIES[k], ENERGIES[j]
+    return ENERGIES
+
 def main(DYN_PROPERTIES):
     
     NStates = DYN_PROPERTIES["NStates"]
@@ -63,9 +73,19 @@ def main(DYN_PROPERTIES):
     DIAG_ENERGIES = np.zeros(( NStates )) # Diagonal gradients
     DIAG_ENERGIES = read_Energies(DIAG_ENERGIES,NStates,BOMD,ISTATE)
 
+    DIAG_ENERGIES = check_state_labels( DIAG_ENERGIES )
+
     if ( DYN_PROPERTIES["MD_STEP"] >= 1 ):
         DYN_PROPERTIES["DIAG_ENERGIES_OLD"] = DYN_PROPERTIES["DIAG_ENERGIES_NEW"]
     DYN_PROPERTIES["DIAG_ENERGIES_NEW"] = DIAG_ENERGIES
+
+    # #### FOR DEBUGGING ####
+    # FILE01 = open(f"{DYN_PROPERTIES['SQD_RUNNING_DIR']}/AD_ENERGY.dat","a")
+    # FILE01.write(f"{DYN_PROPERTIES['MD_STEP']}\t")
+    # FILE01.write( "\t".join(map(str,DIAG_ENERGIES)) )
+    # FILE01.write("\n")
+    # FILE01.close()
+    # #######################
 
     return DYN_PROPERTIES
 

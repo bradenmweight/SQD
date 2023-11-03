@@ -7,11 +7,9 @@ import read_input
 import nuclear_propagation
 import output
 import rotation
+from wrappers import *
+import check_S0S1_CI.main as check_S0S1_CI
 
-### NAMD METHODS ###
-import Eh
-import spinLSC
-import GFSH
 
 
 
@@ -22,38 +20,7 @@ import GFSH
 # Additionally, the mixed-quantum classical or semi-classical
 #   dynamics will be handled elsewhere.
 
-def initialize_mapping(DYN_PROPERTIES):
-    """
-    Wrapper for initializing mapping variables
-    """
-    if ( DYN_PROPERTIES["NAMD_METHOD"] == "EH" ):
-        return Eh.initialize_mapping(DYN_PROPERTIES)
-    elif ( DYN_PROPERTIES["NAMD_METHOD"] == "SPINLSC" ):
-        return spinLSC.initialize_mapping(DYN_PROPERTIES)
-    elif ( DYN_PROPERTIES["NAMD_METHOD"] == "GFSH" ):
-        return GFSH.initialize_mapping(DYN_PROPERTIES)
 
-def propagage_Mapping(DYN_PROPERTIES):
-    """
-    Wrapper for electronic propagation
-    """
-    if ( DYN_PROPERTIES["NAMD_METHOD"] == "EH" ):
-        return Eh.propagage_Mapping(DYN_PROPERTIES)
-    elif ( DYN_PROPERTIES["NAMD_METHOD"] == "SPINLSC" ):
-        return spinLSC.propagage_Mapping(DYN_PROPERTIES)
-    elif ( DYN_PROPERTIES["NAMD_METHOD"] == "GFSH" ):
-        return GFSH.propagage_Mapping(DYN_PROPERTIES)
-
-def rotate_Mapping(DYN_PROPERTIES):
-    """
-    Wrapper for the transformation of mapping variables
-    """
-    if ( DYN_PROPERTIES["NAMD_METHOD"] == "EH" ):
-        return Eh.rotate_Mapping(DYN_PROPERTIES)
-    if ( DYN_PROPERTIES["NAMD_METHOD"] == "SPINLSC" ):
-        return spinLSC.rotate_Mapping(DYN_PROPERTIES)
-    if ( DYN_PROPERTIES["NAMD_METHOD"] == "GFSH" ):
-        return GFSH.rotate_Mapping(DYN_PROPERTIES)
 
 def main( ):
     DYN_PROPERTIES = read_input.read()
@@ -100,7 +67,10 @@ def main( ):
         DYN_PROPERTIES = G16_TD.main(DYN_PROPERTIES)
         print( "Total QM took %2.2f s." % (time() - T0) )
 
+        
+        DYN_PROPERTIES = check_S0S1_CI( DYN_PROPERTIES )
         if ( DYN_PROPERTIES["NStates"] >= 2 and DYN_PROPERTIES["BOMD"] == False ):
+
             # Propagate electronic DOFs
             T0 = time()
             DYN_PROPERTIES = propagage_Mapping(DYN_PROPERTIES)

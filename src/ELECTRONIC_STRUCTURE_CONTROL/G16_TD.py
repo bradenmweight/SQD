@@ -671,20 +671,7 @@ def check_for_trivial_crossing(OVERLAP_CORR,DYN_PROPERTIES):
 
     return OVERLAP_CORR, DYN_PROPERTIES
 
-def check_for_S0S1_CI( DYN_PROPERTIES ):
 
-    E       = DYN_PROPERTIES["DIAG_ENERGIES_NEW"] * 27.2114
-    NSTATES = DYN_PROPERTIES["NStates"]
-    
-    for state in range( 1, NSTATES ):
-        if ( abs( E[state] - E[0] ) < 0.1 ): # Arbitrary threshold (eV)
-            # Change settings to BOMD in S0 (GS)
-            DYN_PROPERTIES["BOMD"]            = True
-            DYN_PROPERTIES["ISTATE"]          = 0
-            DYN_PROPERTIES["MAPPING_VARS"]    = np.zeros( (NSTATES), dtype=complex )
-            DYN_PROPERTIES["MAPPING_VARS"][0] = 1 + 0j
-            # Keep the same number of excited states in the calculation
-    return DYN_PROPERTIES
 
 def main(DYN_PROPERTIES):
 
@@ -717,7 +704,7 @@ def main(DYN_PROPERTIES):
         if ( NStates >= 2 and BOMD == False ):
             DYN_PROPERTIES = G16_NAC.main(DYN_PROPERTIES) # Provides OVERLAP
             DYN_PROPERTIES = calc_NACT(DYN_PROPERTIES) # Provides NACT
-            if ( DYN_PROPERTIES["CPA"] == False ): # Only need NACR for off-diagonal forces, which only come from G.S. in CPA
+            if ( DYN_PROPERTIES["CPA"] == False and DYN_PROPERTIES["BOMD"] == False ): # Only need NACR for off-diagonal forces, which only come from G.S. in CPA
                 DYN_PROPERTIES = get_approx_NACR(DYN_PROPERTIES) # Provides NACR from NACT and OVERLAP
         else:
             DYN_PROPERTIES["OVERLAP_OLD"] = np.zeros(( NStates, NStates ))
@@ -725,9 +712,6 @@ def main(DYN_PROPERTIES):
             DYN_PROPERTIES["NACR_APPROX_OLD"] = np.zeros(( NStates, NStates, NAtoms, 3 ))
             DYN_PROPERTIES["NACR_APPROX_NEW"] = np.zeros(( NStates, NStates, NAtoms, 3 ))
             DYN_PROPERTIES["NACT_NEW"] = np.zeros(( NStates, NStates ))
-
-    if ( DYN_PROPERTIES["S0S1_CI_FLAG"] == True ): # Check abs(E0 - En)
-        check_for_S0S1_CI( DYN_PROPERTIES )
 
     os.chdir(f"{DYN_PROPERTIES['SQD_RUNNING_DIR']}/")
 

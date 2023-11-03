@@ -1,6 +1,5 @@
 import numpy as np
 import random
-from check_trivial_crossing import check_state_labels
 
 import properties
 
@@ -27,12 +26,12 @@ def initialize_mapping(DYN_PROPERTIES):
   
 
     # FOR DEBUGGING
-    s = "WARNING!!!!\n"
-    print(s*10)
-    print("Setting mapping variables to fixed initial condition.")
-    print("They are not sampled.")
-    print("This is for debugging only.")
-    print("Not a production run.")
+    # s = "WARNING!!!!\n"
+    # print(s*10)
+    # print("Setting mapping variables to fixed initial condition.")
+    # print("They are not sampled.")
+    # print("This is for debugging only.")
+    # print("Not a production run.")
     # Time = 0
     # z[:] = np.array([-0.40688881, 0.18492792, 0.92347870]) + \
     #   1j * np.array([-0.70788994, -0.79527877, 1.34679388]) 
@@ -118,20 +117,12 @@ def propagage_Mapping(DYN_PROPERTIES):
     Hamt0      = np.diag(Ead_old) 
     Hamt0     -= np.identity(NStates) * E_GS_t0
 
-    # TEST ENERGY LABELS # TODO
-    #DYN_PROPERTIES = check_state_labels(DYN_PROPERTIES) # This will look for trivial crossings
-
     #### t1 Ham in t0 basis ####
     Ead_new    = DYN_PROPERTIES["DIAG_ENERGIES_NEW"]
     Hamt1[:,:] = np.diag(Ead_new)
         
     # TODO Check the direction of this rotation
     Hamt1 = rotate_t1_to_t0( DYN_PROPERTIES["OVERLAP_NEW"] , Hamt1 ) # Rotate to t0 basis
-
-
-
-
-
 
     # Shift by reference energy for mapping evolution
     Hamt1 -= np.identity(NStates) * E_GS_t0 # Subtract t0 reference 'after' rotation to t0 basis

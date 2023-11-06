@@ -8,7 +8,7 @@ import nuclear_propagation
 import output
 import rotation
 from wrappers import *
-import check_S0S1_CI.main as check_S0S1_CI
+from check_S0S1_CI import main as check_S0S1_CI
 
 
 

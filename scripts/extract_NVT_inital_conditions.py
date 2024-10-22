@@ -11,8 +11,8 @@ import os
 
 def get_Globals():
     global N_EQUIL, N_SAVE_EVERY
-    N_EQUIL = 100 # Skip the first {N_EQUIL} step for equilibration
-    N_SAVE_EVERY = 100 # Save every {N_SAVE_EVERY} step after {N_EQUIL} steps
+    N_EQUIL = 40 # Skip the first {N_EQUIL} step for equilibration
+    N_SAVE_EVERY = 2 # Save every {N_SAVE_EVERY} step after {N_EQUIL} steps
 
 def read_XYZ(file01):
     XYZ_File = open(file01,"r").readlines()

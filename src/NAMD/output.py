@@ -65,7 +65,7 @@ def save_data(DYN_PROPERTIES):
 
         with open("MD_OUTPUT/Population.dat","a") as file01:
             if ( DYN_PROPERTIES['NAMD_METHOD'] in ["GFSH"] ):
-                AS = DYN_PROPERTIES['ACTIVE_STATE']
+                AS      = DYN_PROPERTIES['ACTIVE_STATE']
                 POP     = np.zeros(( NStates ))
                 POP[AS] = 1.0
                 file01.write( f"{TIME}  " +  " ".join(map("{:2.2f}".format,POP )) + "  %2.2f" % (np.sum(POP)) + "\n" )

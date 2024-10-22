@@ -347,8 +347,8 @@ def submit(RUN_ELEC_STRUC, SBATCH_G16, MD_STEP, BOMD, ISTATE, SQD_SCRATCH_PATH, 
 
     elif( RUN_ELEC_STRUC == "USE_CURRENT_NODE" ):
         t0 = time.time()
-        sp.call(f"g16 < geometry.com > geometry.out", shell=True, stdout=True)
 
+        sp.call(f"g16 < geometry.com > geometry.out", shell=True, stdout=True)
 
 
         check = open("geometry.out","r").readlines()[-1]
@@ -358,7 +358,7 @@ def submit(RUN_ELEC_STRUC, SBATCH_G16, MD_STEP, BOMD, ISTATE, SQD_SCRATCH_PATH, 
         else:
             print(f"\tWARNING! Gaussian did not finish normally in the following directory:\n{os.getcwd()}", )
             sp.call(f"cp -r {SQD_SCRATCH_PATH}/EL_STRUCTURE {SQD_RUNNING_DIR}/EL_STRUCTURE__FAILED",shell=True)
-            print(f"Possible Error:\n{openopen('geometry.out','r').readlines()[-10:]}")
+            print(f"Possible Error:\n{open('geometry.out','r').readlines()[-10:]}")
             exit()
     elif ( RUN_ELEC_STRUC == "TEST" ):
         # This is a test. Do nothing intensive.
@@ -439,95 +439,164 @@ def submit_jobs(DYN_PROPERTIES):
 
 
 
-def correct_phase(OVERLAP_ORTHO,MD_STEP,S_OLD=None):
-    # Alexey Akimov, J. Phys. Chem. Lett. 2018, 9, 20, 6096–6102
-    NStates = len(OVERLAP_ORTHO)
-    f = np.zeros(( NStates ))
-    for state in range( NStates ):
-        f[state] = OVERLAP_ORTHO[state,state] / np.abs(OVERLAP_ORTHO[state,state]) # \pm 1
-        #print("Phase Factor f(S%d) = %2.6f" % (state,f[state]))
+# def correct_phase(OVERLAP_ORTHO,MD_STEP,S_OLD=None):
+#     # Alexey Akimov, J. Phys. Chem. Lett. 2018, 9, 20, 6096–6102
+#     NStates = len(OVERLAP_ORTHO)
+#     f = np.zeros(( NStates ))
+#     for state in range( NStates ):
+#         f[state] = OVERLAP_ORTHO[state,state] / np.abs(OVERLAP_ORTHO[state,state]) # \pm 1
+#         #print("Phase Factor f(S%d) = %2.6f" % (state,f[state]))
 
-    #OVERLAP_corrected = np.zeros(( NStates, NStates ))
-    #for j in range( NStates ):
-    #    for k in range( NStates ):
-    #        #OVERLAP_corrected[j,k] = OVERLAP_ORTHO[j,k] * f[k] # or f[j] ? # Here, f* = f since all wavefunctions are real-valued
+#     #OVERLAP_corrected = np.zeros(( NStates, NStates ))
+#     #for j in range( NStates ):
+#     #    for k in range( NStates ):
+#     #        #OVERLAP_corrected[j,k] = OVERLAP_ORTHO[j,k] * f[k] # or f[j] ? # Here, f* = f since all wavefunctions are real-valued
     
-    OVERLAP_corrected = OVERLAP_ORTHO * 1.0
-    for j in range( NStates ):
-        if ( f[j] < 0 ):
-            #OVERLAP_corrected[:,j] *= -1 # DID NOT WORK.
-            OVERLAP_corrected[j,:] *= -1 # or f[j] ? # Here, f* = f since all wavefunctions are real-valued
+#     OVERLAP_corrected = OVERLAP_ORTHO * 1.0
+#     for j in range( NStates ):
+#         if ( f[j] < 0 ):
+#             #OVERLAP_corrected[:,j] *= -1 # DID NOT WORK.
+#             OVERLAP_corrected[j,:] *= -1 # or f[j] ? # Here, f* = f since all wavefunctions are real-valued
 
-    """
-    if ( MD_STEP >= 3 ):
-        for j in range( NStates ):
-            for k in range( j+1, NStates ):
-                tmp1 = OVERLAP_corrected[j,k]
-                tmp2 = np.abs(OVERLAP_corrected[j,k])
-                tmp3 = S_OLD[j,k]
-                tmp4 = np.abs(S_OLD[j,k])
-                if ( np.isclose(tmp2,0.0) == False and np.isclose(tmp4,0.0) == False and int(tmp1/tmp2) != int(tmp3/tmp4) ):
-                    if ( abs(OVERLAP_corrected[j,k] - S_OLD[j,k]) > 1e-3 ): # This is arbitrary threshold.
-                        #print( "OLD:\n", np.round(OVERLAP_corrected,8) )
-                        OVERLAP_corrected[j,k] *= -1
-                        OVERLAP_corrected[k,j] *= -1
-                        #print("I found a sign error upon phase correcting.")
-                        #print(f"Index Flip: {j} <--> {k}")
-                        #print( "NEW:\n", np.round(OVERLAP_corrected,8) )
-                        #print("[S.T @ S] after sign fix:")
-                        #print(np.round(OVERLAP_corrected.T @ OVERLAP_corrected,8))
-                        #OVERLAP_corrected = get_Lowdin_SVD(OVERLAP_corrected)
-                        #print("[S.T @ S] after sign fix and second orthogonalization:")
-                        #print(np.round(OVERLAP_corrected.T @ OVERLAP_corrected,8))
-    """
+#     """
+#     if ( MD_STEP >= 3 ):
+#         for j in range( NStates ):
+#             for k in range( j+1, NStates ):
+#                 tmp1 = OVERLAP_corrected[j,k]
+#                 tmp2 = np.abs(OVERLAP_corrected[j,k])
+#                 tmp3 = S_OLD[j,k]
+#                 tmp4 = np.abs(S_OLD[j,k])
+#                 if ( np.isclose(tmp2,0.0) == False and np.isclose(tmp4,0.0) == False and int(tmp1/tmp2) != int(tmp3/tmp4) ):
+#                     if ( abs(OVERLAP_corrected[j,k] - S_OLD[j,k]) > 1e-3 ): # This is arbitrary threshold.
+#                         #print( "OLD:\n", np.round(OVERLAP_corrected,8) )
+#                         OVERLAP_corrected[j,k] *= -1
+#                         OVERLAP_corrected[k,j] *= -1
+#                         #print("I found a sign error upon phase correcting.")
+#                         #print(f"Index Flip: {j} <--> {k}")
+#                         #print( "NEW:\n", np.round(OVERLAP_corrected,8) )
+#                         #print("[S.T @ S] after sign fix:")
+#                         #print(np.round(OVERLAP_corrected.T @ OVERLAP_corrected,8))
+#                         #OVERLAP_corrected = get_Lowdin_SVD(OVERLAP_corrected)
+#                         #print("[S.T @ S] after sign fix and second orthogonalization:")
+#                         #print(np.round(OVERLAP_corrected.T @ OVERLAP_corrected,8))
+#     """
 
                 
 
-    #if ( MD_STEP >= 3 ):
-    #    print("S(t)")
-    #    print(S_OLD)
-    #    print("S(t+dt)")
-    #    print(OVERLAP_corrected)
-    #    print("S(t)^-1 @ S(t+dt):")
-    #    print( np.linalg.inv(S_OLD) @ OVERLAP_corrected )
+#     #if ( MD_STEP >= 3 ):
+#     #    print("S(t)")
+#     #    print(S_OLD)
+#     #    print("S(t+dt)")
+#     #    print(OVERLAP_corrected)
+#     #    print("S(t)^-1 @ S(t+dt):")
+#     #    print( np.linalg.inv(S_OLD) @ OVERLAP_corrected )
 
 
-    """
-    if ( MD_STEP >= 3 ):
-        for j in range( NStates ):
-            for k in range( NStates ):
-                if ( int(f[k]) == -1 and j != k  ):
-                    sign_old = S_OLD[j,k] / np.abs(S_OLD[j,k])
-                    sign_new = OVERLAP_corrected[j,k] / np.abs(OVERLAP_corrected[j,k])
-                    if ( sign_old != sign_new and abs(OVERLAP_corrected[j,k]-S_OLD[j,k]) > 1e-5 ):
-                        print(f"I found a sign issue in OVERLAP.") 
-                        print(f"The sign changed from {sign_old} to {sign_new} with a large magnitude of {abs(OVERLAP_corrected[j,k]-S_OLD[j,k])}")
-                        print(f"I changed the sign of index {j}-{k} to fix at MD step {MD_STEP}.")
-                        OVERLAP_corrected[j,k] *= -1
+#     """
+#     if ( MD_STEP >= 3 ):
+#         for j in range( NStates ):
+#             for k in range( NStates ):
+#                 if ( int(f[k]) == -1 and j != k  ):
+#                     sign_old = S_OLD[j,k] / np.abs(S_OLD[j,k])
+#                     sign_new = OVERLAP_corrected[j,k] / np.abs(OVERLAP_corrected[j,k])
+#                     if ( sign_old != sign_new and abs(OVERLAP_corrected[j,k]-S_OLD[j,k]) > 1e-5 ):
+#                         print(f"I found a sign issue in OVERLAP.") 
+#                         print(f"The sign changed from {sign_old} to {sign_new} with a large magnitude of {abs(OVERLAP_corrected[j,k]-S_OLD[j,k])}")
+#                         print(f"I changed the sign of index {j}-{k} to fix at MD step {MD_STEP}.")
+#                         OVERLAP_corrected[j,k] *= -1
             
-            #print("Phase Corrected S_(%d-%d) = %2.8f" % (j,k,OVERLAP_corrected[j,k]))
-            #print("Phase Non-corrected S_(%d-%d) = %2.8f " % (j,k,OVERLAP_ORTHO[j,k]))
-    """
+#             #print("Phase Corrected S_(%d-%d) = %2.8f" % (j,k,OVERLAP_corrected[j,k]))
+#             #print("Phase Non-corrected S_(%d-%d) = %2.8f " % (j,k,OVERLAP_ORTHO[j,k]))
+#     """
 
-    return OVERLAP_corrected
+#     return OVERLAP_corrected
 
 def get_Lowdin_SVD(OVERLAP):
     """
-    S = U @ diag(\lambda_i) @ V.T
+    S = U @ diag(\\lambda_i) @ V.T
     S_Ortho = U @ V.T
     """
-
     U, vals, VT = svd(OVERLAP)
     S_Ortho = U @ VT
-
-    #print("Orthogonalized [S.T @ S] :")
-    #print(np.round(S_Ortho.T @ S_Ortho,8))
-    #print("Check orthogonalization. S.T @ S")
-    #print("Saving to ortho_check.dat")
-    #np.savetxt("ortho_check.dat", S_Ortho.T @ S_Ortho, fmt="%1.8f" )
-    # It does work. ~BMW
-
     return S_Ortho
+
+# def calc_NACT(DYN_PROPERTIES):
+#     """
+#     Hammes-Schiffer and Tully, J. Chem. Phys., 101, 6, 1994
+#     NACT_{jk} \\approx (<j(t0)|k(t1)> - <j(t1)|k(t0)>) / (2*dt)
+#     """
+#     OVERLAP = DYN_PROPERTIES["OVERLAP_NEW"]
+#     dtI     = DYN_PROPERTIES["dtI"]
+#     NSTATES = DYN_PROPERTIES["NStates"]
+
+
+#     #print("Original Overlap")
+#     #print(OVERLAP)
+
+#     if ( DYN_PROPERTIES["SYMMETRIZE_OVERLAP"] == True ):
+#         # M = M1 + M2
+#         #M1 = (OVERLAP + OVERLAP.T)/2 # Symmetric part
+#         M2 = (OVERLAP - OVERLAP.T)/2 # Assymetric part
+#         # Add diagonal parts back in
+#         M2 += np.identity(NSTATES) * OVERLAP[np.diag_indices(NSTATES)]
+
+#     OVERLAP_ORTHO = get_Lowdin_SVD(OVERLAP) * 1.0
+#     DYN_PROPERTIES["OVERLAP_NEW_uncorrected"] = OVERLAP_ORTHO * 1.0
+
+#     #print("Orthogonalized OVERLAP:")
+#     #print(OVERLAP_ORTHO)
+
+#     # Save uncorrected properties for debugging purposes. Remove later.
+#     NACT_uncorrected = (OVERLAP_ORTHO - OVERLAP_ORTHO.T) / 2 / dtI
+#     DYN_PROPERTIES["NACT_NEW_uncorrected"] = NACT_uncorrected * 1.0
+    
+#     # Correct the phase of the OVERLAP matrix
+#     if ( DYN_PROPERTIES["MD_STEP"] >= 3 ):
+#         OVERLAP_CORR = correct_phase(OVERLAP_ORTHO,DYN_PROPERTIES["MD_STEP"],S_OLD=DYN_PROPERTIES["OVERLAP_OLD"]) * 1.0
+#     else:
+#         OVERLAP_CORR = correct_phase(OVERLAP_ORTHO,DYN_PROPERTIES["MD_STEP"]) * 1.0
+
+#     #print("Phase-corrected OVERLAP:")
+#     #print(OVERLAP_CORR)
+
+#     #if ( DYN_PROPERTIES["CHECK_TRIVIAL_CROSSING"] == True ):
+#     #    OVERLAP_CORR, DYN_PROPERTIES = check_for_trivial_crossing(OVERLAP_CORR, DYN_PROPERTIES)
+
+#     NACT = (OVERLAP_CORR - OVERLAP_CORR.T) / 2 / dtI
+
+
+
+#     if ( DYN_PROPERTIES["MD_STEP"] >= 2 ):
+#         DYN_PROPERTIES["NACT_OLD"] = DYN_PROPERTIES["NACT_NEW"] * 1.0
+#         DYN_PROPERTIES["OVERLAP_OLD"] = DYN_PROPERTIES["OVERLAP_NEW"] * 1.0
+#     DYN_PROPERTIES["NACT_NEW"] = NACT * 1.0
+#     DYN_PROPERTIES["OVERLAP_NEW"] = OVERLAP_CORR * 1.0
+    
+#     return DYN_PROPERTIES
+
+def symmetrize_overlap(OVERLAP):
+    # M = M1 + M2
+    #M1 = (OVERLAP + OVERLAP.T)/2 # Symmetric part
+    M2 = (OVERLAP - OVERLAP.T)/2 # Assymetric part
+    # Add diagonal parts back in
+    OVERLAP = M2 + np.identity(len(OVERLAP)) * OVERLAP[np.diag_indices(len(OVERLAP))]
+    return OVERLAP
+
+def correct_phase(OVERLAP,OLD_OVERLAP):
+    """
+    Correct the phase of the overlap matrix
+    Choose to minimize the change in overlap between sucessive timesteps
+    """
+    dS1 = np.abs(OVERLAP -    OLD_OVERLAP)
+    dS2 = np.abs(OVERLAP - -1*OLD_OVERLAP)
+    TMP = OVERLAP.copy()
+    for j in range( len(OVERLAP) ):
+        for k in range( len(OVERLAP) ):
+            if ( dS1[j,k] > dS2[j,k] ):
+                TMP[j,k] *= -1
+                print("Changed overlap phase:", j,k,OVERLAP[j,k],TMP[j,k])
+    return TMP
+
 
 def calc_NACT(DYN_PROPERTIES):
     """
@@ -538,49 +607,27 @@ def calc_NACT(DYN_PROPERTIES):
     dtI     = DYN_PROPERTIES["dtI"]
     NSTATES = DYN_PROPERTIES["NStates"]
 
-    #print("Original Overlap")
-    #print(OVERLAP)
-
-    if ( DYN_PROPERTIES["SYMMETRIZE_OVERLAP"] == True ):
-        # M = M1 + M2
-        #M1 = (OVERLAP + OVERLAP.T)/2 # Symmetric part
-        M2 = (OVERLAP - OVERLAP.T)/2 # Assymetric part
-        # Add diagonal parts back in
-        M2 += np.identity(NSTATES) * OVERLAP[np.diag_indices(NSTATES)]
-
-    OVERLAP_ORTHO = get_Lowdin_SVD(OVERLAP) * 1.0
-    DYN_PROPERTIES["OVERLAP_NEW_uncorrected"] = OVERLAP_ORTHO * 1.0
-
-    #print("Orthogonalized OVERLAP:")
-    #print(OVERLAP_ORTHO)
-
-    # Save uncorrected properties for debugging purposes. Remove later.
-    NACT_uncorrected = (OVERLAP_ORTHO - OVERLAP_ORTHO.T) / 2 / dtI
-    DYN_PROPERTIES["NACT_NEW_uncorrected"] = NACT_uncorrected * 1.0
-    
-    # Correct the phase of the OVERLAP matrix
+    print( "Before Lowdin OVERLAP\n", OVERLAP )
+    OVERLAP = symmetrize_overlap(OVERLAP) * 1.0 # NACT already becomes symmetric. We want a symmetric overlap for QD-propagation
+    OVERLAP = get_Lowdin_SVD(OVERLAP) * 1.0
+    print( "After Lowdin OVERLAP\n", OVERLAP )
     if ( DYN_PROPERTIES["MD_STEP"] >= 3 ):
-        OVERLAP_CORR = correct_phase(OVERLAP_ORTHO,DYN_PROPERTIES["MD_STEP"],S_OLD=DYN_PROPERTIES["OVERLAP_OLD"]) * 1.0
-    else:
-        OVERLAP_CORR = correct_phase(OVERLAP_ORTHO,DYN_PROPERTIES["MD_STEP"]) * 1.0
+        OVERLAP = correct_phase(OVERLAP,DYN_PROPERTIES["OVERLAP_OLD"])
 
-    #print("Phase-corrected OVERLAP:")
-    #print(OVERLAP_CORR)
-
-    #if ( DYN_PROPERTIES["CHECK_TRIVIAL_CROSSING"] == True ):
-    #    OVERLAP_CORR, DYN_PROPERTIES = check_for_trivial_crossing(OVERLAP_CORR, DYN_PROPERTIES)
-
-    NACT = (OVERLAP_CORR - OVERLAP_CORR.T) / 2 / dtI
-
-
+    NACT = (OVERLAP - OVERLAP.T) / 2 / dtI # SHS Approach
+    # TODO -- Meek and Levine Approach (dx.doi.org/10.1021/jz5009449 | J. Phys. Chem. Lett. 2014, 5, 2351−2356) 
+    #      -- How to implement this for more than 2 electronic states ? Do we \sum_l E_l ?
 
     if ( DYN_PROPERTIES["MD_STEP"] >= 2 ):
         DYN_PROPERTIES["NACT_OLD"] = DYN_PROPERTIES["NACT_NEW"] * 1.0
         DYN_PROPERTIES["OVERLAP_OLD"] = DYN_PROPERTIES["OVERLAP_NEW"] * 1.0
     DYN_PROPERTIES["NACT_NEW"] = NACT * 1.0
-    DYN_PROPERTIES["OVERLAP_NEW"] = OVERLAP_CORR * 1.0
+    DYN_PROPERTIES["OVERLAP_NEW"] = OVERLAP * 1.0
     
+    print( "NACT\n", NACT )
+
     return DYN_PROPERTIES
+
 
 
 def get_approx_NACR( DYN_PROPERTIES ):
@@ -596,8 +643,8 @@ def get_approx_NACR( DYN_PROPERTIES ):
     NACT  = DYN_PROPERTIES["NACT_NEW"]
 
     alpha = np.zeros(( NStates, NStates ))
-    g = np.zeros(( NStates, NStates, NAtoms, 3 ))
-    G = np.zeros(( NStates, NStates, NAtoms, 3 ))
+    g     = np.zeros(( NStates, NStates, NAtoms, 3 ))
+    G     = np.zeros(( NStates, NStates, NAtoms, 3 ))
     
     if ( np.allclose(V, np.zeros((NAtoms,3))) ):
         print("\t Velocities are ZERO. Skipping approximate NACR calculation.")

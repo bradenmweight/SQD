@@ -76,15 +76,12 @@ def main( ):
             DYN_PROPERTIES = propagage_Mapping(DYN_PROPERTIES)
             print( "Electronic propagation took %2.2f s." % (time() - T0) )
 
-            # Rotate electronic DOFs from t0 basis to t1 basis
-            DYN_PROPERTIES = rotate_Mapping(DYN_PROPERTIES)
-
         # Propagate nuclear momenta
         DYN_PROPERTIES = nuclear_propagation.Nuclear_V_Step(DYN_PROPERTIES)
 
         # Remove COM motion and angular velocity
         # Do we need to do this at every step ? Probably should at least remove COM.
-        # With Wigner-sampled geometries and velocities, this is already done.
+        # With Wigner-sampled geometries and velocities, this is already done. Also not yet implemented.
         if ( DYN_PROPERTIES["REMOVE_COM_MOTION"] == True ):
             DYN_PROPERTIES = rotation.shift_COM(DYN_PROPERTIES)
         if ( DYN_PROPERTIES["REMOVE_ANGULAR_VELOCITY"] == True ):

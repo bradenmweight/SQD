@@ -77,18 +77,17 @@ def get_Force(DYN_PROPERTIES):
 
     return F
 
-def rotate_t0_to_t1(S, A): # Recall, we perform TD-DFT with one additional state. Already removed from overlap.
+def rotate_t0_to_t1(S, A):
     if ( len(A.shape) == 1 ):
         return S.T @ A
-        #return S @ A
     elif( len(A.shape) == 2 ):
         return S.T @ A @ S
-        #return S @ A @ S.T
     else:
         print("Shape of rotating object not correct." )
         print(f"Needs to be either 1D or 2D numpy array. Received {len(A.shape)}D array.")
+        exit()
 
-def rotate_t1_to_t0(S, A): # Recall, we perform TD-DFT with one additional state. Already removed from overlap at this point.
+def rotate_t1_to_t0(S, A):
     if ( len(A.shape) == 1 ):
         return S @ A
     elif( len(A.shape) == 2 ):
@@ -96,16 +95,14 @@ def rotate_t1_to_t0(S, A): # Recall, we perform TD-DFT with one additional state
     else:
         print("Shape of rotating object not correct." )
         print(f"Needs to be either 1D or 2D numpy array. Received {len(A.shape)}D array.")
+        exit()
 
 
 def propagage_Mapping(DYN_PROPERTIES):
     NStates = DYN_PROPERTIES["NStates"]
     z       = DYN_PROPERTIES["MAPPING_VARS"]
 
-    Zreal = np.real(z) * 1.0
-    Zimag = np.imag(z) * 1.0
-
-    OVERLAP  = (DYN_PROPERTIES["OVERLAP_NEW"]) # Recall, we perform TD-DFT with one additional state. Already removed.
+    OVERLAP  = DYN_PROPERTIES["OVERLAP_NEW"] # Recall, we perform TD-DFT with one additional state. Already removed.
 
     Hamt0 = np.zeros(( NStates, NStates )) # t0 basis
     Hamt1 = np.zeros(( NStates, NStates )) # t1 basis
@@ -115,33 +112,33 @@ def propagage_Mapping(DYN_PROPERTIES):
     Ead_old    = DYN_PROPERTIES["DIAG_ENERGIES_OLD"]
     E_GS_t0    = Ead_old[0] * 1.0
     Hamt0      = np.diag(Ead_old) 
-    Hamt0     -= np.identity(NStates) * E_GS_t0
+    #Hamt0     -= np.identity(NStates) * E_GS_t0
 
     #### t1 Ham in t0 basis ####
     Ead_new    = DYN_PROPERTIES["DIAG_ENERGIES_NEW"]
     Hamt1[:,:] = np.diag(Ead_new)
-        
-    # TODO Check the direction of this rotation
-    Hamt1 = rotate_t1_to_t0( DYN_PROPERTIES["OVERLAP_NEW"] , Hamt1 ) # Rotate to t0 basis
-
+    Hamt1 = rotate_t1_to_t0( OVERLAP , Hamt1 ) # Rotate to t0 basis
     # Shift by reference energy for mapping evolution
-    Hamt1 -= np.identity(NStates) * E_GS_t0 # Subtract t0 reference 'after' rotation to t0 basis
+    #Hamt1 -= np.identity(NStates) * E_GS_t0 # Subtract t0 reference 'after' rotation to t0 basis
 
     dtE    = DYN_PROPERTIES["dtE"]
     ESTEPS = DYN_PROPERTIES["ESTEPS"]
 
-    if ( DYN_PROPERTIES["EL_PROP"] == "VV" ):
+    if ( DYN_PROPERTIES["EL_PROP"] == "DIAGONAL" ):
+        print("Doing propagation in diagonal representation.")
+        z = rotate_t0_to_t1( OVERLAP, z ) # Rotate to diagonal basis
+        expH = np.exp( -1j * Ead_new * dtE ) # Calculate complex phases
+        z = expH * z # Apply phase
+        # Stay in t1 basis for next step
+
+    elif ( DYN_PROPERTIES["EL_PROP"] == "VV" ):
         """
         Propagate with second-order symplectic (Velocity-Verlet-like)
         """
+        Zreal = np.real(z) * 1.0
+        Zimag = np.imag(z) * 1.0
 
         for step in range( ESTEPS ):
-            """
-            ARK: Do we need linear interpolation ? 
-            # If we ignore it, we can analytically evolve the MVs in the diagonal basis.
-            # BMW, ~ time-saved is probably too small to implement this. 
-            #      ~ Although, it would be more accurate overeall.
-            """
 
             if ( DYN_PROPERTIES["EL_INTERPOLATION"] ):
                 # Linear interpolation betwen t0 and t1
@@ -158,11 +155,12 @@ def propagage_Mapping(DYN_PROPERTIES):
             # Propagate Imaginary final by dt/2
             Zimag -= 0.5000000 * H @ Zreal * dtE
 
+            z = rotate_t0_to_t1( OVERLAP, z )
+
     elif ( DYN_PROPERTIES["EL_PROP"] == "RK" ):
         """
         Propagate with explicit 4th-order Runge-Kutta
         """
-
         def get_H( step, dt ):
             # Linear interpolation betwen t0 and t1
             if ( DYN_PROPERTIES["EL_INTERPOLATION"] ):
@@ -187,21 +185,13 @@ def propagage_Mapping(DYN_PROPERTIES):
 
         z = yt
 
-    DYN_PROPERTIES["MAPPING_VARS"] = z
-
-    return DYN_PROPERTIES
-
-def rotate_Mapping(DYN_PROPERTIES):
-    z = DYN_PROPERTIES["MAPPING_VARS"]
-    S = DYN_PROPERTIES["OVERLAP_NEW"]
-
-    z = rotate_t0_to_t1( S, z )
+        z = rotate_t0_to_t1( OVERLAP, z )
 
     DYN_PROPERTIES["MAPPING_VARS"] = z
-    
     DYN_PROPERTIES = check_Mapping_Normalization(DYN_PROPERTIES)
 
     return DYN_PROPERTIES
+
 
 def get_density_matrix( DYN_PROPERTIES ):
     z = DYN_PROPERTIES["MAPPING_VARS"]
@@ -214,10 +204,9 @@ def check_Mapping_Normalization(DYN_PROPERTIES):
     POP = np.real(properties.get_density_matrix( DYN_PROPERTIES )[np.diag_indices(DYN_PROPERTIES["NStates"])])
     norm = np.sum( POP )
     if ( abs(1.0 - norm) > 1e-5 and abs(1.0 - norm) < 1e-2 ):
-        print(f"Mapping norm is wrong: {np.round(norm,4)} != 1.00000")
+        print("Mapping norm is wrong: %1.5f != 1.00000" % norm)
     if( abs(1.0 - norm) > 1e-2 ):
-        print(f"Electronic Norm.: {np.round(norm,4)}")
-        print(f"ERROR: Mapping norm is VERY wrong: {np.round(norm,4)} != 1.00")
+        print("ERROR: Electronic norm is VERY wrong: %1.5f != 1.00000" % norm)
         print("ERROR: Check if we should renormalize. If not, this trajectory may be trash.")
         if ( DYN_PROPERTIES["FORCE_MAP_NORM"] == True ):
             print("For spin-LSC, the populations can be negative. Is this renormalization okay ?")

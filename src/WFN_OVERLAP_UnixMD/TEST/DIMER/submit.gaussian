@@ -1,0 +1,24 @@
+#!/bin/bash
+#SBATCH -p debug
+#SBATCH -J TEST
+#SBATCH -o output.slurm
+#SBATCH -t 1:00:00
+#SBATCH -N 1
+#SBATCH --ntasks-per-node=12
+#SBATCH --mem 30GB
+
+module load gaussian/16-c01/avx2
+
+export OMP_NUM_THREADS=12
+export MKL_NUM_THREADS=12
+
+# ADD THIS TO ALL GAUSSIAN JOBS
+export GAUSS_SCRDIR=/local_scratch/$SLURM_JOB_ID
+
+g16 < geometry.com > geometry.out
+formchk geometry.chk
+
+#cp ~/Gaussain_scripts/IR_RAMAN_CPHF/get_IR_Raman_SPEC.py .
+#python3 get_IR_Raman_SPEC.py
+
+

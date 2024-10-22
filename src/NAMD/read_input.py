@@ -152,8 +152,8 @@ def read():
             # Look for EL_PROP
             if ( t[0].upper() == "EL_PROP".upper() ):
                 DYN_PROPERTIES["EL_PROP"] = t[1].upper()
-                if ( DYN_PROPERTIES["EL_PROP"] not in ["VV","RK"] ):
-                    print("Input for 'EL_PROP' must be either 'VV' (Velocity-Verlet) or 'RK' (Runge-Kutta).")
+                if ( DYN_PROPERTIES["EL_PROP"] not in ["VV","RK","DIAGONAL"] ):
+                    print("Input for 'EL_PROP' must be either 'VV' (Velocity-Verlet) or 'RK' (Runge-Kutta) or 'DIAGONAL' (propagate in diagonal representation).")
                     exit()
 
             # Look for NAMD_METHOD
@@ -506,13 +506,21 @@ def initialize_MD_variables(DYN_PROPERTIES):
 
     try:
         tmp = DYN_PROPERTIES["RUN_ELEC_STRUC"]
+        if ( DYN_PROPERTIES["RUN_ELEC_STRUC"] == "SUBMIT_SBATCH".upper() ):
+            try:
+                tmp = DYN_PROPERTIES["SBATCH_G16"]
+            except KeyError:
+                print( "SBATCH_G16 needs to be defined if RUN_ELEC_STRUC = 'SUBMIT_SBATCH'." )
+                exit()
+        DYN_PROPERTIES["SBATCH_G16"] = "./"
     except KeyError:
         DYN_PROPERTIES["RUN_ELEC_STRUC"] = "use_current_node".upper()
+        
 
     try:
         tmp = DYN_PROPERTIES["EL_PROP"]
     except KeyError:
-        DYN_PROPERTIES["EL_PROP"] = "VV"
+        DYN_PROPERTIES["EL_PROP"] = "DIAGONAL"
 
     try:
         tmp = DYN_PROPERTIES["NCPUS_NAMD"]
@@ -636,6 +644,9 @@ def initialize_MD_variables(DYN_PROPERTIES):
         print("\nError: CPA = True and BOMD = True")
         print("Error: This does not make sense.\n")
         exit()
+    
+
+    
 
 
     ########################################################################

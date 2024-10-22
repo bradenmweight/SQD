@@ -11,13 +11,11 @@ def main( DYN_PROPERTIES ):
         NSTATES = DYN_PROPERTIES["NStates"]
         
         for state in range( 1, NSTATES ):
-            if ( abs( E[state] - E[0] ) < 0.1 ): # Arbitrary threshold (eV)
+            if ( abs( E[state] - E[0] ) < 0.25 ): # Arbitrary threshold (eV)
                 # Change settings to BOMD in S0 (GS)
                 DYN_PROPERTIES["BOMD"]            = True
                 DYN_PROPERTIES["ISTATE"]          = 0
                 DYN_PROPERTIES                    = initialize_mapping(DYN_PROPERTIES)
-                ###DYN_PROPERTIES["MAPPING_VARS"]    = np.zeros( (NSTATES), dtype=complex )
-                ###DYN_PROPERTIES["MAPPING_VARS"][0] = 1 + 0j
                 # Keep the same number of excited states in the calculation
                 print("WARNING:\n\tFound S0/S1 conical intersection. Starting BOMD in S0.")
                 break

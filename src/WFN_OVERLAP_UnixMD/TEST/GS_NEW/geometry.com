@@ -1,25 +1,17 @@
-%oldchk=../GS_OLD/geometry.chk
+
 %chk=geometry.chk
 %rwf=geometry.rwf
+%mem=1GB
 %nprocshared=1
-%mem=5GB
 
-# WB97XD/STO-3G SCF=XQC FORCE nosym pop=full
+#P B3LYP/cc-pVTZ iop(2/12=3,3/33=1)
 
-MD Step 1000
+TitleMe
 
 0 1
-C  2.74013463  1.87525770  2.08311481 
-H  -1.06507604  -1.03155638  2.48749307 
-H  -1.09272681  -0.68990011  1.54417368 
-C  1.53904851  3.05056607  2.05905601 
-H  1.74189868  3.26331677  3.16784543 
-H  1.55951981  3.73872426  1.25195983 
+H 0.0 0.0 0.0
+F 0.0 0.0 1.5
 
-
-
-
-
-
+                 
 
 

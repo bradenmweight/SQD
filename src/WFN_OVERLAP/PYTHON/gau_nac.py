@@ -7,6 +7,7 @@ import re
 import shutil
 import json
 import time
+import subprocess as sp
 
 
 def dump_data(filename, obj):
@@ -49,7 +50,8 @@ def load_json(filename, encode='utf-8'):
     """        
     json.encoder.FLOAT_REPR = lambda f: format("%.18g" % f)
     fp = open(filename, mode='r')
-    obj = json.load(fp, encoding='utf-8')
+    #obj = json.load(fp, encoding='utf-8')
+    obj = json.load(fp)
     
     return obj     
 
@@ -217,20 +219,21 @@ class gau_nac:
         return
 
     #def finilize(self):
-        """
-        finish the current step & prepare for the following step
-        """
+        #"""
+        #finish the current step & prepare for the following step
+        #"""
         # file man. & back up
         #shutil.copyfile("./qm_result_update.dat", "./qm_results.dat")
         #shutil.copyfile("./qm_results.dat", "../../qm_results.dat")          
         #   Go back to directory of dynamics work
         #os.chdir("../")     
            
-        return
+        #return
 
     def dump_braden(self):
 
         # open & read wf-overlap
+        sp.call("pwd", shell=True)
         f = open('wavefuction_overlap.dat','r') 
         lines = f.readlines()[1:]
         f.close()
@@ -266,14 +269,14 @@ class gau_nac:
             self.DYN_PROPERTIES["FORTRAN_CI_CODE"] = f"{self.DYN_PROPERTIES['SQD_HOME_PATH']}/src/WFN_OVERLAP/FORTRAN/main_overlap_slater.exe"
 
 
-        T0 = time.time()
+        #T0 = time.time()
         self.prepare()
         #print("gau_nac prepare", round(time.time() - T0,2), "s")
-        T0 = time.time()
+        #T0 = time.time()
         self.run()
         #print("WFN OVERLAP FORTRAN TOOK", round(time.time() - T0,2), "s")
         #self.dump()
-        T0 = time.time()
+        #T0 = time.time()
         self.dump_braden()
         #print("gau_nac dump", round(time.time() - T0,2), "s")
         os.chdir("../")

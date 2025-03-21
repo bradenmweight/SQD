@@ -583,20 +583,38 @@ def symmetrize_overlap(OVERLAP):
     OVERLAP = M2 + np.identity(len(OVERLAP)) * OVERLAP[np.diag_indices(len(OVERLAP))]
     return OVERLAP
 
-def correct_phase(OVERLAP,OLD_OVERLAP):
+def correct_phase(OVERLAP,OLD_OVERLAP,TRANS_DIPOLES_OLD,TRANS_DIPOLES_NEW):
     """
     Correct the phase of the overlap matrix
     Choose to minimize the change in overlap between sucessive timesteps
     """
-    dS1 = np.abs(   OVERLAP - OLD_OVERLAP)
-    dS2 = np.abs(-1*OVERLAP - OLD_OVERLAP)
-    TMP = OVERLAP.copy()
+    dS1     = np.abs(    OVERLAP - OLD_OVERLAP)
+    dS2     = np.abs( -1*OVERLAP - OLD_OVERLAP)
+    S_TMP   = OVERLAP.copy()
+    dDIP1   = np.abs(    TRANS_DIPOLES_NEW -    TRANS_DIPOLES_OLD)
+    dDIP2   = np.abs( -1*TRANS_DIPOLES_NEW -    TRANS_DIPOLES_OLD)
+    DIP_TMP = TRANS_DIPOLES_NEW.copy()
+
+    NORM_OLD = np.sqrt( np.einsum("jx,jx->j", TRANS_DIPOLES_OLD, TRANS_DIPOLES_OLD) )
+    NORM_NEW = np.sqrt( np.einsum("jx,jx->j", TRANS_DIPOLES_NEW, TRANS_DIPOLES_NEW) )
+    dot = np.einsum("jx,jx->j", TRANS_DIPOLES_OLD, TRANS_DIPOLES_NEW)
+    angle = np.arccos(dot/(NORM_OLD*NORM_NEW)) * 180/np.pi
     for j in range( len(OVERLAP) ):
-        for k in range( len(OVERLAP) ):
-            if ( dS1[j,k] > dS2[j,k] ): # Flipping sign yields smaller change in overlap
-                TMP[j,k] *= -1
-                #print("Changed overlap phase:", j,k,OVERLAP[j,k],TMP[j,k])
-    return TMP
+        # If angle is larger than 90 degrees, flip the sign of the new transition dipole
+        if ( np.abs(angle[j]) > 90 ):
+            DIP_TMP[j,:] *= -1
+            S_TMP[:,j] *= -1
+
+    # for j in range( len(OVERLAP) ):
+    #     for k in range( len(OVERLAP) ):
+    #         if ( j == 0 and k != 0 ):
+    #         if ( dS1[j,k] > dS2[j,k] ): # Flipping sign yields smaller change in overlap
+    #             S_TMP[j,k] *= -1
+    #             if ( j == 0 and k != 0 ):
+    #                 TRANS_DIPOLES_NEW[k,:] *= -1 # NEED TO CHANGE ALL SIGN-DEPENEDENT OBSERVABLES AS WELL
+    #             elif ( k == 0 and j != 0 ):
+    #                 TRANS_DIPOLES_NEW[j,:] *= -1 # NEED TO CHANGE ALL SIGN-DEPENEDENT OBSERVABLES AS WELL
+    return S_TMP, DIP_TMP
 
 
 def calc_NACT(DYN_PROPERTIES):
@@ -612,8 +630,8 @@ def calc_NACT(DYN_PROPERTIES):
     OVERLAP = symmetrize_overlap(OVERLAP) * 1.0 # NACT already becomes symmetric. We want a symmetric overlap for QD-propagation
     OVERLAP = get_Lowdin_SVD(OVERLAP) * 1.0
     #print( "After Lowdin OVERLAP\n", OVERLAP )
-    if ( DYN_PROPERTIES["MD_STEP"] >= 3 ):
-        OVERLAP = correct_phase(OVERLAP,DYN_PROPERTIES["OVERLAP_OLD"])
+    if ( DYN_PROPERTIES["MD_STEP"] >= 2 ):
+        OVERLAP, DYN_PROPERTIES["TRANS_DIPOLES_NEW"] = correct_phase(OVERLAP,DYN_PROPERTIES["OVERLAP_OLD"],DYN_PROPERTIES["TRANS_DIPOLES_OLD"],DYN_PROPERTIES["TRANS_DIPOLES_NEW"])
 
     NACT = (OVERLAP - OVERLAP.T) / 2 / dtI # SHS Approach
     # TODO -- Meek and Levine Approach (dx.doi.org/10.1021/jz5009449 | J. Phys. Chem. Lett. 2014, 5, 2351−2356) 

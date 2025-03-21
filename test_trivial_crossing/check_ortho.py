@@ -1,0 +1,29 @@
+import numpy as np
+
+
+TO_STATE   = 1
+FROM_STATE = 2
+
+OVERLAP = np.array(
+[[ 0.999, -0.1,  -0.01],
+[ 0.1,  0.909, -0.4],
+[ 0.01,  0.4,  0.909]])
+print ("Original:\n",OVERLAP)
+
+
+OVERLAP[[TO_STATE,FROM_STATE],:] = OVERLAP[[FROM_STATE,TO_STATE],:]
+OVERLAP[:,[TO_STATE,FROM_STATE]] = OVERLAP[:,[FROM_STATE,TO_STATE]]
+
+print ("\nAttempt #1 (WRONG):\n",OVERLAP)
+
+
+OVERLAP = np.array(
+[[ 0.999, -0.1,  -0.01],
+[ 0.1,  0.909, -0.4],
+[ 0.01,  0.4,  0.909]])
+
+OVERLAP[[TO_STATE,FROM_STATE],:] = OVERLAP[[FROM_STATE,TO_STATE],:]
+OVERLAP[:,[TO_STATE,FROM_STATE]] = OVERLAP[:,[FROM_STATE,TO_STATE]]
+OVERLAP[TO_STATE,FROM_STATE], OVERLAP[FROM_STATE,TO_STATE] = OVERLAP[FROM_STATE,TO_STATE], OVERLAP[TO_STATE,FROM_STATE]
+
+print ("\nAttempt #2 (Correct):\n",OVERLAP)

@@ -52,7 +52,7 @@ def save_data(DYN_PROPERTIES):
             if ( NStates >= 2 ):
                 file01.write( f"{TIME}  " +  " ".join(map("{:2.5f}".format,DYN_PROPERTIES["TRANS_DIPOLES_NEW"][:,ind] )) + "\n" )
             else:
-                file01.write( f"{TIME}  {np.round(DYN_PROPERTIES['TRANS_DIPOLES_NEW'][ind],5)}\n" )
+                file01.write( f"{TIME}  {np.round(DYN_PROPERTIES['TRANS_DIPOLES_NEW'][:,ind],5)}\n" )
 
     with open("MD_OUTPUT/Energy.dat","a") as file01:
         DYN_PROPERTIES = properties.compute_KE(DYN_PROPERTIES)

@@ -91,7 +91,7 @@ def main( ):
             output.save_data(DYN_PROPERTIES)
 
 
-        print( "Total MD Step took %2.2f s." % (time() - T_STEP_START) )
+        print( "Total MD Step took %2.2f s.\n\n" % (time() - T_STEP_START) )
 
     # Remove SQD_SCRATCH_PATH
     print("\nRemoving scratch files.")

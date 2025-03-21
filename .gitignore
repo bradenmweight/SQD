@@ -7,7 +7,7 @@ Gau*
 output.slurm
 *cube
 
-examples/
+production/
 MD_OUTPUT/
 G16/
 TRAJ/

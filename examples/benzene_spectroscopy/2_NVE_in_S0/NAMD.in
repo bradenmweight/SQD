@@ -1,0 +1,19 @@
+# Ground State (S0) BOMD with Langevin Bath (NVT)
+NSTATES         = 5          # Number of states in the calculation [int]
+BOMD            = False      # Whether to do Born-Oppenheimer dynamics on ISTATE
+CPA             = True       # Whether to do Classical Path Approximation (Force = GS Force)
+ISTATE          = 0          # Initial electronic state: 0, 1, 2, ... [int]
+NSTEPS          = 100        # Total MD steps [int]
+dtI             = 1.0        # Nuclear time-step (fs) [float]
+FUNCTIONAL      = AM1        # DFT functional or Semi-empirical method [str]
+BASIS           = STO-5G     # Local basis set [str]
+CHARGE          = 0          # System's net charge [int]
+MULTIPLICITY    = 1          # System electronic multiplicity [int]
+MEMORY          = 5          # Memory for Gaussian (GB) [int]
+VELOC           = ZERO       # Initial values for the nuclear velocities [str]
+NCPUS_G16       = 1          # Number of shared-memory cores for QM calculation [int]
+MD_ENSEMBLE     = NVE        # NVE, NVT - Controls thermodynamic ensemble [str]
+# NVT_TYPE        = LANGEVIN   # Lengevin thermostat [str]
+# LANGEVIN_LAMBDA = 50.0       # Coupling strength for Langevin thermostat (meV) [float]
+# TEMP            = 300        # Temperature of the thermal bath (K) [float]
+

@@ -245,13 +245,13 @@ class gau_nac:
             k = int( t[1] ) - 1
             CI_overlap[j,k] = float( t[2] )
         np.savetxt("wavefunction_overlap_MAT.dat", CI_overlap)
-        plt.imshow( np.abs(CI_overlap), origin='lower', cmap="hot_r" )
-        plt.colorbar(pad=0.01)
-        plt.xlabel("Electronic State Index",fontsize=15)
-        plt.ylabel("Electronic State Index",fontsize=15)
-        plt.tight_layout()
-        plt.savefig("wavefunction_overlap_MAT.jpg",dpi=600)
-        plt.clf()
+        # plt.imshow( np.abs(CI_overlap), origin='lower', cmap="hot_r" )
+        # plt.colorbar(pad=0.01)
+        # plt.xlabel("Electronic State Index",fontsize=15)
+        # plt.ylabel("Electronic State Index",fontsize=15)
+        # plt.tight_layout()
+        # plt.savefig("wavefunction_overlap_MAT.jpg",dpi=600)
+        # plt.clf()
  
         # Recall, we compute one additional state in TD-DFT. Do not save it here.
         if ( self.DYN_PROPERTIES["MD_STEP"] >= 2 ):

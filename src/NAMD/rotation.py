@@ -38,10 +38,13 @@ def getAngularVelocity(DYN_PROPERTIES):
     return DYN_PROPERTIES
 
 def remove_rotations(DYN_PROPERTIES):
-    DYN_PROPERTIES = getAngularVelocity(DYN_PROPERTIES)
-    for at in range(DYN_PROPERTIES["NAtoms"]):
-        DYN_PROPERTIES["Atom_velocs_new"][at,:] -= \
-            myCrossProduct(DYN_PROPERTIES["ANG_VEL"][:],DYN_PROPERTIES["Atom_coords_new"][at,:])
+    try:
+        DYN_PROPERTIES = getAngularVelocity(DYN_PROPERTIES)
+        for at in range(DYN_PROPERTIES["NAtoms"]):
+            DYN_PROPERTIES["Atom_velocs_new"][at,:] -= \
+                myCrossProduct(DYN_PROPERTIES["ANG_VEL"][:],DYN_PROPERTIES["Atom_coords_new"][at,:])
+    except np.linalg.LinAlgError :
+        print("Found error when trying to remove rotations. Will not check for rotations.")
     return DYN_PROPERTIES
 
 

@@ -11,7 +11,7 @@ def read():
     for count, line in enumerate(input_lines):
         ### Clean line and Check for comments ###
         t = line.split()
-        if ( len(t) == 0 or line.split()[0] in ["#","!"] ): continue # Check for comment line
+        if ( len(t) == 0 or t[0] in ["#","!"] or "=" not in line ): continue # Check for comment line
         t = [ j.strip() for j in line.split("=") ]
         tnew = []
         for tj in t:
@@ -302,15 +302,12 @@ def read():
         print( "  NStates ="); print("\t\t", DYN_PROPERTIES["NStates"] )
         print( "  NSteps ="); print("\t\t", DYN_PROPERTIES["NSteps"] )
         print( "  dtI ="); print("\t\t", DYN_PROPERTIES["dtI"]/41.341, "(fs)" )
-        print( "  ESTEPS ="); print("\t\t", DYN_PROPERTIES["ESTEPS"] )
         print( "  ISTATE ="); print("\t\t", DYN_PROPERTIES["ISTATE"] )
         print( "  FUNCTIONAL ="); print("\t\t", DYN_PROPERTIES["FUNCTIONAL"] )
         if( DYN_PROPERTIES["FUNCTIONAL"] not in ["DFTB", "DFTBA"] ): print( "  BASIS_SET ="); print("\t\t", DYN_PROPERTIES["BASIS_SET"] )
         print( "  CHARGE ="); print("\t\t", DYN_PROPERTIES["CHARGE"] )
         print( "  MULTIPLICITY ="); print("\t\t", DYN_PROPERTIES["MULTIPLICITY"] )
         print( "  MEMORY ="); print("\t\t", DYN_PROPERTIES["MEMORY"], "(GB)" )
-        print( "  NAMD_METHOD ="); print("\t\t", DYN_PROPERTIES["NAMD_METHOD"] )
-        print( "  EL_PROP ="); print("\t\t", DYN_PROPERTIES["EL_PROP"] )
         print( "  MD_ENSEMBLE ="); print("\t\t", DYN_PROPERTIES["MD_ENSEMBLE"] )
         print( "  VELOC ="); print("\t\t", DYN_PROPERTIES["VELOC"] )
     except KeyError:
@@ -495,26 +492,48 @@ def get_initial_velocs(DYN_PROPERTIES):
 
 def initialize_MD_variables(DYN_PROPERTIES):
     
-    DYN_PROPERTIES["MD_STEP"] = 0    
+    DYN_PROPERTIES["MD_STEP"] = 0
     DYN_PROPERTIES["Atom_labels"], DYN_PROPERTIES["Atom_coords_new"] = read_geom()
-    DYN_PROPERTIES["NAtoms"] = len( DYN_PROPERTIES["Atom_labels"] )
-    DYN_PROPERTIES["MASSES"] = set_masses(DYN_PROPERTIES["Atom_labels"])
-    DYN_PROPERTIES["dtE"]    = DYN_PROPERTIES["dtI"] / DYN_PROPERTIES["ESTEPS"]
+    DYN_PROPERTIES["NAtoms"]          = len( DYN_PROPERTIES["Atom_labels"] )
+    DYN_PROPERTIES["MASSES"]          = set_masses(DYN_PROPERTIES["Atom_labels"])
     DYN_PROPERTIES["Atom_velocs_new"] = get_initial_velocs(DYN_PROPERTIES)
 
-    
+
+
+
+
+    try:
+        tmp = DYN_PROPERTIES["NAMD_METHOD"]
+    except KeyError:
+        DYN_PROPERTIES["NAMD_METHOD"] = "EH"
+        print("NAMD_METHOD not specified. Defaulting to 'EH'.")
+
+    try:
+        tmp = DYN_PROPERTIES["EL_PROP"]
+    except KeyError:
+        DYN_PROPERTIES["EL_PROP"] = "VV"
+        print("EL_PROP not specified. Defaulting to 'VV'.")
+
+    try:
+        tmp = DYN_PROPERTIES["ESTEPS"]
+    except KeyError:
+        DYN_PROPERTIES["ESTEPS"] = 100
+    DYN_PROPERTIES["dtE"]    = DYN_PROPERTIES["dtI"] / DYN_PROPERTIES["ESTEPS"] 
 
     try:
         tmp = DYN_PROPERTIES["RUN_ELEC_STRUC"]
         if ( DYN_PROPERTIES["RUN_ELEC_STRUC"] == "SUBMIT_SBATCH".upper() ):
             try:
                 tmp = DYN_PROPERTIES["SBATCH_G16"]
+                print(tmp)
+                exit()
             except KeyError:
                 print( "SBATCH_G16 needs to be defined if RUN_ELEC_STRUC = 'SUBMIT_SBATCH'." )
                 exit()
         DYN_PROPERTIES["SBATCH_G16"] = "./"
     except KeyError:
         DYN_PROPERTIES["RUN_ELEC_STRUC"] = "use_current_node".upper()
+        DYN_PROPERTIES["SBATCH_G16"] = "./" # Set to dummy value
         
 
     try:

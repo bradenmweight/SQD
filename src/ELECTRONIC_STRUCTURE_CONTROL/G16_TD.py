@@ -8,6 +8,7 @@ import time
 
 import get_cartesian_gradients
 import get_diagonal_electronic_energies
+import get_S0Sn_transition_dipoles
 
 import G16_NAC
 
@@ -117,7 +118,7 @@ def generate_inputs(DYN_PROPERTIES):
     MULTIPLICITY    = DYN_PROPERTIES["MULTIPLICITY"]
     MD_STEP         = DYN_PROPERTIES["MD_STEP"]
     RUN_ELEC_STRUC  = DYN_PROPERTIES["RUN_ELEC_STRUC"]
-    SBATCH_G16      = DYN_PROPERTIES["SBATCH_G16"]
+    #SBATCH_G16      = DYN_PROPERTIES["SBATCH_G16"]
     TDDFT_CONVERG   = DYN_PROPERTIES["TDDFT_CONVERG"]
     BOMD            = DYN_PROPERTIES["BOMD"]
     ISTATE          = DYN_PROPERTIES["ISTATE"]
@@ -587,14 +588,14 @@ def correct_phase(OVERLAP,OLD_OVERLAP):
     Correct the phase of the overlap matrix
     Choose to minimize the change in overlap between sucessive timesteps
     """
-    dS1 = np.abs(OVERLAP -    OLD_OVERLAP)
-    dS2 = np.abs(OVERLAP - -1*OLD_OVERLAP)
+    dS1 = np.abs(   OVERLAP - OLD_OVERLAP)
+    dS2 = np.abs(-1*OVERLAP - OLD_OVERLAP)
     TMP = OVERLAP.copy()
     for j in range( len(OVERLAP) ):
         for k in range( len(OVERLAP) ):
-            if ( dS1[j,k] > dS2[j,k] ):
+            if ( dS1[j,k] > dS2[j,k] ): # Flipping sign yields smaller change in overlap
                 TMP[j,k] *= -1
-                print("Changed overlap phase:", j,k,OVERLAP[j,k],TMP[j,k])
+                #print("Changed overlap phase:", j,k,OVERLAP[j,k],TMP[j,k])
     return TMP
 
 
@@ -607,10 +608,10 @@ def calc_NACT(DYN_PROPERTIES):
     dtI     = DYN_PROPERTIES["dtI"]
     NSTATES = DYN_PROPERTIES["NStates"]
 
-    print( "Before Lowdin OVERLAP\n", OVERLAP )
+    #print( "Before Lowdin OVERLAP\n", OVERLAP )
     OVERLAP = symmetrize_overlap(OVERLAP) * 1.0 # NACT already becomes symmetric. We want a symmetric overlap for QD-propagation
     OVERLAP = get_Lowdin_SVD(OVERLAP) * 1.0
-    print( "After Lowdin OVERLAP\n", OVERLAP )
+    #print( "After Lowdin OVERLAP\n", OVERLAP )
     if ( DYN_PROPERTIES["MD_STEP"] >= 3 ):
         OVERLAP = correct_phase(OVERLAP,DYN_PROPERTIES["OVERLAP_OLD"])
 
@@ -624,7 +625,7 @@ def calc_NACT(DYN_PROPERTIES):
     DYN_PROPERTIES["NACT_NEW"] = NACT * 1.0
     DYN_PROPERTIES["OVERLAP_NEW"] = OVERLAP * 1.0
     
-    print( "NACT\n", NACT )
+    #print( "NACT\n", NACT )
 
     return DYN_PROPERTIES
 
@@ -746,6 +747,7 @@ def main(DYN_PROPERTIES):
 
     DYN_PROPERTIES = get_cartesian_gradients.main(DYN_PROPERTIES)
     DYN_PROPERTIES = get_diagonal_electronic_energies.main(DYN_PROPERTIES)
+    DYN_PROPERTIES = get_S0Sn_transition_dipoles.main(DYN_PROPERTIES)
 
     if ( MD_STEP >= 1 ):
         if ( NStates >= 2 and BOMD == False ):

@@ -45,15 +45,21 @@ def save_data(DYN_PROPERTIES):
         else:
             file01.write( f"{TIME}  {np.round(DYN_PROPERTIES['DIAG_ENERGIES_NEW']*27.2114,8)}\n" )
 
+    for ind,dim in enumerate(["X", "Y", "Z"]):
+        with open(f"MD_OUTPUT/S0_Sn_Dipoles_{dim}.dat","a") as file01:
+            if ( DYN_PROPERTIES["MD_STEP"] == 0 ): 
+                file01.write(f"# Step " + " ".join([f'S0->S{j}' for j in range(NStates)]) + "\n" )
+            if ( NStates >= 2 ):
+                file01.write( f"{TIME}  " +  " ".join(map("{:2.5f}".format,DYN_PROPERTIES["TRANS_DIPOLES_NEW"][:,ind] )) + "\n" )
+            else:
+                file01.write( f"{TIME}  {np.round(DYN_PROPERTIES['TRANS_DIPOLES_NEW'][ind],5)}\n" )
+
     with open("MD_OUTPUT/Energy.dat","a") as file01:
-        
         DYN_PROPERTIES = properties.compute_KE(DYN_PROPERTIES)
         DYN_PROPERTIES = properties.compute_PE(DYN_PROPERTIES)
-
         KE = DYN_PROPERTIES["KE"] * 27.2114
         PE = DYN_PROPERTIES["PE"] * 27.2114
         TE = KE + PE
-
         file01.write(f"{TIME}  " + "%2.6f  %2.6f  %2.6f\n" % (KE,PE,TE))
 
     with open("MD_OUTPUT/Temperature.dat","a") as file01:

@@ -6,6 +6,7 @@ import properties
 """Mannouch and Richardson, J. Chem. Phys. 158, 104111 (2023)"""
 
 def initialize_mapping(DYN_PROPERTIES):
+    assert(False), "MASH NOT WRITTEN YET. DO NOT USE."
 
     NStates = DYN_PROPERTIES["NStates"]
     ISTATE  = DYN_PROPERTIES["ISTATE"]

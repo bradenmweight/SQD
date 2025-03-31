@@ -1,11 +1,14 @@
 #!/bin/bash
 #SBATCH -p reserved --reservation=phuo_20250312
-#SBATCH -J BENZENE
+#SBATCH -J SPEC
 #SBATCH -o output.slurm
 #SBATCH --mem 2GB
 #SBATCH -t 1-00:00:00
 #SBATCH -N 1
 #SBATCH --ntasks-per-node=1
+
+export OMP_NUM_THREADS=1
+export MKL_NUM_THREADS=1
 
 module load gaussian
 module load intel

@@ -47,6 +47,7 @@ ABS_L /= np.max(ABS_L) # NSTEPS * NTRAJ
 plt.plot(EGRID, ABS_G, "-", c="black", lw=3, label="Gaussian")
 plt.plot(EGRID, ABS_L, "-", c="red", lw=2,  label="Lorentzian")
 plt.legend()
+plt.xlim(EMIN,EMAX)
 plt.ylim(0)
 plt.xlabel("Energy (eV)", fontsize=15)
 plt.ylabel("Absorption (Arb. Units)", fontsize=15)

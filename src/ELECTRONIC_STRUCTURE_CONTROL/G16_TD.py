@@ -266,12 +266,7 @@ def generate_inputs(DYN_PROPERTIES):
                 # Excited State for New Geometry (Use converged wavefunctions from TD root=1)
                 os.chdir(f"TD_NEW_S{state}/")
                 file01 = open("geometry.com","w")
-                # Comment out for debugging energy ordering
                 file01.write(f"%oldchk=../TD_NEW_S1/geometry.chk\n")
-                #if ( MD_STEP == 0 ):
-                file01.write(f"%oldchk=../GS_NEW/geometry.chk\n")
-                #elif ( MD_STEP >= 1 ):
-                #    file01.write(f"%oldchk=../TD_OLD_S1/geometry.chk\n")
                 write_header(file01,MEM,NCPUS_G16)
                 # Add functional and basis set (unless DFTB or DFTBA)
                 if ( FUNCTIONAL in ["DFTB", "DFTBA"] ):
@@ -280,10 +275,7 @@ def generate_inputs(DYN_PROPERTIES):
                     elif ( MD_STEP >= 1 ):
                         file01.write(f"# {FUNCTIONAL} SCF=XQC TD=(read,singlets,Conver={TDDFT_CONVERG},nstates={NStates},root={state}) FORCE nosym IOp(9/40=3) guess=read\n\n")
                 else:
-                    #if ( MD_STEP == 0 ):
-                    file01.write(f"# {FUNCTIONAL}/{BASIS_SET} SCF=XQC TD=(singlets,Conver={TDDFT_CONVERG},nstates={NStates},root={state}) FORCE nosym IOp(9/40=3) guess=read\n\n")
-                    #elif ( MD_STEP >= 1 ):
-                    #    file01.write(f"# {FUNCTIONAL}/{BASIS_SET} SCF=XQC TD=(read,singlets,Conver={TDDFT_CONVERG},nstates={NStates},root={state}) FORCE nosym IOp(9/40=3) guess=read\n\n")
+                    file01.write(f"# {FUNCTIONAL}/{BASIS_SET} SCF=XQC TD=(read,singlets,Conver={TDDFT_CONVERG},nstates={NStates},root={state}) FORCE nosym IOp(9/40=3) guess=read\n\n")
 
                 write_geom(file01,Atom_labels,Atom_coords_new,MD_STEP,CHARGE,MULTIPLICITY)
                 if ( FUNCTIONAL in ["DFTB", "DFTBA"] ):
@@ -588,32 +580,23 @@ def correct_phase(OVERLAP,OLD_OVERLAP,TRANS_DIPOLES_OLD,TRANS_DIPOLES_NEW):
     Correct the phase of the overlap matrix
     Choose to minimize the change in overlap between sucessive timesteps
     """
-    dS1     = np.abs(    OVERLAP - OLD_OVERLAP)
-    dS2     = np.abs( -1*OVERLAP - OLD_OVERLAP)
-    S_TMP   = OVERLAP.copy()
-    dDIP1   = np.abs(    TRANS_DIPOLES_NEW -    TRANS_DIPOLES_OLD)
-    dDIP2   = np.abs( -1*TRANS_DIPOLES_NEW -    TRANS_DIPOLES_OLD)
-    DIP_TMP = TRANS_DIPOLES_NEW.copy()
-
+    S_TMP    = OVERLAP.copy()
+    DIP_TMP  = TRANS_DIPOLES_NEW.copy()
     NORM_OLD = np.sqrt( np.einsum("jx,jx->j", TRANS_DIPOLES_OLD, TRANS_DIPOLES_OLD) )
     NORM_NEW = np.sqrt( np.einsum("jx,jx->j", TRANS_DIPOLES_NEW, TRANS_DIPOLES_NEW) )
     dot = np.einsum("jx,jx->j", TRANS_DIPOLES_OLD, TRANS_DIPOLES_NEW)
     angle = np.arccos(dot/(NORM_OLD*NORM_NEW)) * 180/np.pi
     for j in range( len(OVERLAP) ):
-        # If angle is larger than 90 degrees, flip the sign of the new transition dipole
+        # If angle is larger than 90 degrees, flip the sign
         if ( np.abs(angle[j]) > 90 ):
             DIP_TMP[j,:] *= -1
             S_TMP[:,j] *= -1
+            # if ( np.sum(np.sign( -1*OVERLAP[:,j] - OLD_OVERLAP[:,j])) > 0 ):
+            #     S_TMP[:,j] *= -1
+            # else:
+            #     S_TMP[j,:] *= -1
 
-    # for j in range( len(OVERLAP) ):
-    #     for k in range( len(OVERLAP) ):
-    #         if ( j == 0 and k != 0 ):
-    #         if ( dS1[j,k] > dS2[j,k] ): # Flipping sign yields smaller change in overlap
-    #             S_TMP[j,k] *= -1
-    #             if ( j == 0 and k != 0 ):
-    #                 TRANS_DIPOLES_NEW[k,:] *= -1 # NEED TO CHANGE ALL SIGN-DEPENEDENT OBSERVABLES AS WELL
-    #             elif ( k == 0 and j != 0 ):
-    #                 TRANS_DIPOLES_NEW[j,:] *= -1 # NEED TO CHANGE ALL SIGN-DEPENEDENT OBSERVABLES AS WELL
+
     return S_TMP, DIP_TMP
 
 

@@ -14,30 +14,12 @@ def initialize_mapping(DYN_PROPERTIES):
     z = np.zeros(( NStates ), dtype=complex)
     z[ISTATE] = 1.0 + 0.0j # Ehrenfest has no electronic sampling
 
-    """
-    ### Spin-mapping Style Initialization ###
-    # Probably we should not do this for Ehrenfest
-    Rw = 2*np.sqrt(NStates+1) # Radius of W Sphere
-
-    # Initialize mapping radii
-    r = np.zeros(( NStates )) # np.ones(( NStates )) * np.sqrt(gw)
-    r[ISTATE] = np.sqrt( 2 )
-
-    # Set mapping variables
-    z = np.zeros(( NStates ),dtype=complex)
-    for i in range(NStates):
-        phi = random.random() * 2 * np.pi # Azimuthal Angle -- Always Random
-        z[i] = r[i] * ( np.cos( phi ) + 1j * np.sin( phi ) )
-    """
-
     DYN_PROPERTIES["MAPPING_VARS"] = z
 
     # Check initial density matrix
     #RHO = get_density_matrix(DYN_PROPERTIES)
     #print("Initial Density Matrix:")
     #print( RHO )
-
-    
 
     return DYN_PROPERTIES
 
@@ -90,89 +72,15 @@ def rotate_t1_to_t0(S, A): # Recall, we perform TD-DFT with one additional state
 def propagage_Mapping(DYN_PROPERTIES):
     NStates = DYN_PROPERTIES["NStates"]
     z       = DYN_PROPERTIES["MAPPING_VARS"]
+    dtI     = DYN_PROPERTIES["dtI"]
 
-    Zreal = np.real(z) * 1.0
-    Zimag = np.imag(z) * 1.0
+    Ead_old = DYN_PROPERTIES["DIAG_ENERGIES_OLD"] # diag in t0 basis
+    Ead_new = DYN_PROPERTIES["DIAG_ENERGIES_NEW"] # diag in t1 basis
+    OVERLAP = DYN_PROPERTIES["OVERLAP_NEW"]       # <t0|t1>
 
-    OVERLAP  = (DYN_PROPERTIES["OVERLAP_NEW"])
-
-    Hamt0 = np.zeros(( NStates, NStates )) # t0 basis
-    Hamt1 = np.zeros(( NStates, NStates )) # t1 basis
-
-    #### t0 Ham ####
-    Ead_old    = DYN_PROPERTIES["DIAG_ENERGIES_OLD"]
-    E_GS_t0    = Ead_old[0] * 1.0
-    Hamt0[:,:] = np.diag(Ead_old) 
-    Hamt0     -= np.identity(NStates) * E_GS_t0
-
-    #### t1 Ham in t0 basis ####
-    Ead_new    = DYN_PROPERTIES["DIAG_ENERGIES_NEW"]
-    Hamt1[:,:] = np.diag(Ead_new)
-        
-    Hamt1 = rotate_t1_to_t0( DYN_PROPERTIES["OVERLAP_NEW"] , Hamt1 ) # Rotate to t0 basis
-
-    Hamt1 -= np.identity(NStates) * E_GS_t0 # Subtract t0 reference energy 'after' rotation to t0 basis
-
-    dtE    = DYN_PROPERTIES["dtE"]
-    ESTEPS = DYN_PROPERTIES["ESTEPS"]
-
-    if ( DYN_PROPERTIES["EL_PROP"] == "VV" ):
-        """
-        Propagate with second-order symplectic (Velocity-Verlet-like)
-        """
-        #print("Propagation Norm (0):")
-        POP = np.sum((0.500000 * np.outer( np.conjugate(z), z ))[np.diag_indices(len(z))])
-        #print(np.real(np.round(POP,8)))
-        for step in range( ESTEPS ):
-            """
-            ARK: Do we need linear interpolation ? 
-            # If we ignore it, we can analytically evolve the MVs in the diagonal basis.
-            # BMW, ~ time-saved is probably too small to implement this. 
-            #      ~ Although, it would be more accurate overall.
-            """
-
-            # Linear interpolation betwen t0 and t1
-            if ( DYN_PROPERTIES["EL_INTERPOLATION"] ):
-                H = Hamt0 + (step)/(ESTEPS) * ( Hamt1 - Hamt0 )
-            else:
-                H = Hamt1
-            # Propagate Imaginary first by dt/2
-            Zimag -= 0.5000000 * H @ Zreal * dtE
-
-            # Propagate Real by full dt
-            Zreal += H @ Zimag * dtE
-            
-            # Propagate Imaginary final by dt/2
-            Zimag -= 0.5000000 * H @ Zreal * dtE
-
-    elif ( DYN_PROPERTIES["EL_PROP"] == "RK" ):
-        """
-        Propagate with explicit 4th-order Runge-Kutta
-        """
-
-        def get_H( step, dt ):
-            # Linear interpolation betwen t0 and t1
-            if ( DYN_PROPERTIES["EL_INTERPOLATION"] ):
-                H = Hamt0 + (step)/(ESTEPS) * ( Hamt1 - Hamt0 )
-            else:
-                H = Hamt1
-            return H
-
-        def f( y, H ):
-            return -1j * H @ y
-
-        yt = z.copy()
-
-        for step in range( ESTEPS ):
-
-            k1 = f(yt, get_H( step, 0 ))
-            k2 = f(yt + k1*dtE/2, get_H( step, k1*dtE/2 ))
-            k3 = f(yt + k2*dtE/2, get_H( step, k2*dtE/2 ))
-            k4 = f(yt + k3*dtE, get_H( step, k3*dtE ))
-
-            yt += 1/6 * ( k1 + 2*k2 + 2*k3 + k4 ) * dtE
-
-        z = yt
+    # print("Propagating in diagonal basis.")
+    z = rotate_t0_to_t1( OVERLAP, z ) # Transform to t1 basis
+    z = np.exp( -1j * Ead_new * dtI ) * z # Diagonal propagation in t1 basis
 
     DYN_PROPERTIES["MAPPING_VARS"] = z
 

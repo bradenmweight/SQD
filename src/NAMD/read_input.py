@@ -511,13 +511,14 @@ def initialize_MD_variables(DYN_PROPERTIES):
     try:
         tmp = DYN_PROPERTIES["EL_PROP"]
     except KeyError:
-        DYN_PROPERTIES["EL_PROP"] = "VV"
-        print("EL_PROP not specified. Defaulting to 'VV'.")
+        DYN_PROPERTIES["EL_PROP"] = "DIAG"
+        print("EL_PROP not specified. Defaulting to 'DIAG'.")
 
     try:
         tmp = DYN_PROPERTIES["ESTEPS"]
     except KeyError:
         DYN_PROPERTIES["ESTEPS"] = 100
+        print("ESTEPS not specified. Defaulting to 100.")
     DYN_PROPERTIES["dtE"]    = DYN_PROPERTIES["dtI"] / DYN_PROPERTIES["ESTEPS"] 
 
     try:

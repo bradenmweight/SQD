@@ -156,6 +156,7 @@ class gau_nac:
         fileout1.write('                        read (*,*)  \n')
         fileout1.write(''+str(n_state)+'               read (*,*) n_state \n')
         fileout1.write(''+str(n_csf)+'               read (*,*) n_csf \n')
+        print("n_csf", n_csf)
         fileout1.write('                        read (*,*)  \n')
         fileout1.write('1                       read (*,*)  type_input  \n')
         fileout1.write('ci_1.dat                read (*,*)  filename_input1  \n')

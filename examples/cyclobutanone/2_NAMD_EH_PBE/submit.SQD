@@ -1,0 +1,27 @@
+#!/bin/bash
+#SBATCH -p standard #reserved --reservation=phuo_20250312
+#SBATCH -J CHALLENGE
+#SBATCH -o output.slurm
+#SBATCH --mem 5GB
+#SBATCH -t 1-00:00:00
+#SBATCH -N 1
+#SBATCH --ntasks-per-node=4
+
+export OMP_NUM_THREADS=4
+export MKL_NUM_THREADS=4
+
+module load gaussian
+module load intel
+
+export SQD_HOME="/scratch/bweight/software/SQD/"
+export SQD_SCRATCH="./" # "/local_scratch/$SLURM_JOB_ID/" # Location where electronic structure jobs will be run
+export GAUSS_SCRDIR="./" # "/local_scratch/$SLURM_JOB_ID/"
+
+echo "Setting paths in slurm:"
+echo "  SQD_HOME      = $SQD_HOME"
+echo "  SQD_SCRATCH   = $SQD_SCRATCH"
+
+python3 $SQD_HOME/src/NAMD/NAMD_main.py > MD.out
+
+
+

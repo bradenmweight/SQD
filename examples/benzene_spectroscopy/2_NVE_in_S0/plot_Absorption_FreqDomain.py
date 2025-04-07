@@ -2,10 +2,10 @@ import numpy as np
 from matplotlib import pyplot as plt
 
 ## Trajectories
-NTRAJ = 20
+NTRAJ = 200
 
 ## For Plotting
-SIGMA = 0.005 # eV
+SIGMA = 0.0001 # eV
 EMIN  = 4.0 # eV
 EMAX  = 7.0 # eV
 NPTS  = 1000
@@ -45,7 +45,7 @@ ABS_G /= np.max(ABS_G) # NSTEPS * NTRAJ
 ABS_L /= np.max(ABS_L) # NSTEPS * NTRAJ
 
 plt.plot(EGRID, ABS_G, "-", c="black", lw=3, label="Gaussian")
-plt.plot(EGRID, ABS_L, "-", c="red", lw=2,  label="Lorentzian")
+plt.plot(EGRID, ABS_L, "--", c="red", lw=2,  label="Lorentzian")
 plt.legend()
 plt.xlim(EMIN,EMAX)
 plt.ylim(0)

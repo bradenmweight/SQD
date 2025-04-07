@@ -76,8 +76,14 @@ def save_data(DYN_PROPERTIES):
                 POP[AS] = 1.0
                 file01.write( f"{TIME}  " +  " ".join(map("{:2.2f}".format,POP )) + "  %2.2f" % (np.sum(POP)) + "\n" )
             else:
-                POP = np.real(properties.get_density_matrix( DYN_PROPERTIES )[np.diag_indices(NStates)])
+                POP = np.diag( properties.get_density_matrix( DYN_PROPERTIES ) ).real
                 file01.write( f"{TIME}  " +  " ".join(map("{:2.8f}".format,POP )) + "  %2.8f" % (np.sum(POP)) + "\n" )
+
+        with open("MD_OUTPUT/Average_PES.dat","a") as file01:
+            POP     = np.diag( properties.get_density_matrix( DYN_PROPERTIES ) ).real
+            AVE_PES = np.einsum("j,j->", DYN_PROPERTIES["DIAG_ENERGIES_NEW"], POP)
+            file01.write( f"{TIME}  %2.8f\n" % (AVE_PES*27.2114) )
+
 
         if ( DYN_PROPERTIES['NAMD_METHOD'] in ["GFSH"] ):
             with open("MD_OUTPUT/Active_State.dat","a") as file01:

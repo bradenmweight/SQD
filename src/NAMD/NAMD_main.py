@@ -70,7 +70,6 @@ def main( ):
         
         DYN_PROPERTIES = check_S0S1_CI( DYN_PROPERTIES )
         if ( DYN_PROPERTIES["NStates"] >= 2 and DYN_PROPERTIES["BOMD"] == False ):
-
             # Propagate electronic DOFs
             T0 = time()
             DYN_PROPERTIES = propagage_Mapping(DYN_PROPERTIES)

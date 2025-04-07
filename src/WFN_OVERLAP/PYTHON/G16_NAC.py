@@ -922,9 +922,11 @@ class gau_log_parser():
         n_occ = self.dim['nocc_allA']
         n_vir = self.dim['nvir_allA']
         n_state = self.dim['n_state']        
-        n_index = n_occ*n_vir < 20 and n_occ*n_vir or 20    # max. 20 ci vectors
+        n_index = n_occ*n_vir < 2000 and n_occ*n_vir or 2000    # max. 500 ci vectors
+        print("n_occ*n_vir", n_occ*n_vir)
+        print("n_index", n_index)
         self.ci['n_index'] = n_index    # mip value
-        #print(f"We are keeping only the largest {self.ci['n_index']} CI coefficients to compute overlap.")
+        # print(f"We are keeping only the largest {self.ci['n_index']} CI coefficients to compute overlap.")
         # How do we know 20 is good enough for all systems ? ~BMW
         # Seems to be good enough to capture >99.999 % for DMABN molecule.
         
@@ -970,7 +972,8 @@ class gau_log_parser():
             for i_index in range(n_index) :
                 norm  =   norm + ci_info_state[i_index]['civector']**2
             
-            if ( round(norm) < 0.95 ): # If this runs, we need to inrease from 20 to higher
+            print("state, norm", i_state, norm)
+            if ( round(norm) < 0.999 ): # If this runs, we need to increase from 20 to higher
                 print("\n\nWARNING !!!!")
                 print(f"The largest {self.ci['n_index']} CI coefficients captures {round(norm)} Slater population.\n\n")
 

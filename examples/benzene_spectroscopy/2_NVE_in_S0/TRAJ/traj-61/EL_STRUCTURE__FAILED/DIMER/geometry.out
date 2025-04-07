@@ -1,0 +1,4 @@
+ Entering Gaussian System, Link 0=g16
+ Initial command:
+ /software/gaussian/g16-c01/avx2/g16/l1.exe "/local_scratch/28554177/Gau-29281.inp" -scrdir="/local_scratch/28554177/"
+ Entering Link 1 = /software/gaussian/g16-c01/avx2/g16/l1.exe PID=     29291.

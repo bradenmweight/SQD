@@ -1,0 +1,165 @@
+ Entering Gaussian System, Link 0=g16
+ Initial command:
+ /software/gaussian/g16-c01/avx2/g16/l1.exe "/local_scratch/28554171/Gau-28747.inp" -scrdir="/local_scratch/28554171/"
+ Entering Link 1 = /software/gaussian/g16-c01/avx2/g16/l1.exe PID=     28812.
+  
+ Copyright (c) 1988-2019, Gaussian, Inc.  All Rights Reserved.
+  
+ This is part of the Gaussian(R) 16 program.  It is based on
+ the Gaussian(R) 09 system (copyright 2009, Gaussian, Inc.),
+ the Gaussian(R) 03 system (copyright 2003, Gaussian, Inc.),
+ the Gaussian(R) 98 system (copyright 1998, Gaussian, Inc.),
+ the Gaussian(R) 94 system (copyright 1995, Gaussian, Inc.),
+ the Gaussian 92(TM) system (copyright 1992, Gaussian, Inc.),
+ the Gaussian 90(TM) system (copyright 1990, Gaussian, Inc.),
+ the Gaussian 88(TM) system (copyright 1988, Gaussian, Inc.),
+ the Gaussian 86(TM) system (copyright 1986, Carnegie Mellon
+ University), and the Gaussian 82(TM) system (copyright 1983,
+ Carnegie Mellon University). Gaussian is a federally registered
+ trademark of Gaussian, Inc.
+  
+ This software contains proprietary and confidential information,
+ including trade secrets, belonging to Gaussian, Inc.
+  
+ This software is provided under written license and may be
+ used, copied, transmitted, or stored only in accord with that
+ written license.
+  
+ The following legend is applicable only to US Government
+ contracts under FAR:
+  
+                    RESTRICTED RIGHTS LEGEND
+  
+ Use, reproduction and disclosure by the US Government is
+ subject to restrictions as set forth in subparagraphs (a)
+ and (c) of the Commercial Computer Software - Restricted
+ Rights clause in FAR 52.227-19.
+  
+ Gaussian, Inc.
+ 340 Quinnipiac St., Bldg. 40, Wallingford CT 06492
+  
+  
+ ---------------------------------------------------------------
+ Warning -- This program may not be used in any manner that
+ competes with the business of Gaussian, Inc. or will provide
+ assistance to any competitor of Gaussian, Inc.  The licensee
+ of this program is prohibited from giving any competitor of
+ Gaussian, Inc. access to this program.  By using this program,
+ the user acknowledges that Gaussian, Inc. is engaged in the
+ business of creating and licensing software in the field of
+ computational chemistry and represents and warrants to the
+ licensee that it is not a competitor of Gaussian, Inc. and that
+ it will not use this program in any manner prohibited above.
+ ---------------------------------------------------------------
+  
+
+ Cite this work as:
+ Gaussian 16, Revision C.01,
+ M. J. Frisch, G. W. Trucks, H. B. Schlegel, G. E. Scuseria, 
+ M. A. Robb, J. R. Cheeseman, G. Scalmani, V. Barone, 
+ G. A. Petersson, H. Nakatsuji, X. Li, M. Caricato, A. V. Marenich, 
+ J. Bloino, B. G. Janesko, R. Gomperts, B. Mennucci, H. P. Hratchian, 
+ J. V. Ortiz, A. F. Izmaylov, J. L. Sonnenberg, D. Williams-Young, 
+ F. Ding, F. Lipparini, F. Egidi, J. Goings, B. Peng, A. Petrone, 
+ T. Henderson, D. Ranasinghe, V. G. Zakrzewski, J. Gao, N. Rega, 
+ G. Zheng, W. Liang, M. Hada, M. Ehara, K. Toyota, R. Fukuda, 
+ J. Hasegawa, M. Ishida, T. Nakajima, Y. Honda, O. Kitao, H. Nakai, 
+ T. Vreven, K. Throssell, J. A. Montgomery, Jr., J. E. Peralta, 
+ F. Ogliaro, M. J. Bearpark, J. J. Heyd, E. N. Brothers, K. N. Kudin, 
+ V. N. Staroverov, T. A. Keith, R. Kobayashi, J. Normand, 
+ K. Raghavachari, A. P. Rendell, J. C. Burant, S. S. Iyengar, 
+ J. Tomasi, M. Cossi, J. M. Millam, M. Klene, C. Adamo, R. Cammi, 
+ J. W. Ochterski, R. L. Martin, K. Morokuma, O. Farkas, 
+ J. B. Foresman, and D. J. Fox, Gaussian, Inc., Wallingford CT, 2019.
+ 
+ ******************************************
+ Gaussian 16:  ES64L-G16RevC.01  3-Jul-2019
+                21-Mar-2025 
+ ******************************************
+ %oldchk=../TD_OLD_S1/geometry.chk
+ %chk=geometry.chk
+ %nprocshared=1
+ Will use up to    1 processors via shared memory.
+ %mem=2GB
+ Copying data from "../TD_OLD_S1/geometry.chk" to current chk file "geometry.chk"
+ IOpt=  2 FromEx=T IUOpen= 4 IOptOp= 5 NList=   0 IFRang= 0 IUIn= 4 IUOut= 2.
+ ----------------------------------------------------------------------
+ # AM1/STO-5G SCF=XQC TD=(read,singlets,nstates=5,root=1) nosym IOp(9/4
+ 0=3) guess=read
+ ----------------------------------------------------------------------
+ 1/38=1,172=1/1;
+ 2/12=2,15=1,17=6,18=5,40=1/2;
+ 3/5=2,6=5,25=1,41=700000,116=-2/1,2,3,8;
+ 4/5=1,35=1/1;
+ 5/5=2,8=3,13=1,35=1,38=6/2,8;
+ 8/6=1,10=90,107=1,108=5/1;
+ 9/8=1,40=3,41=5,42=1,48=1,49=13,70=2/14;
+ 6/7=2,8=2,9=2,10=2/1;
+ 99/5=1,9=1/99;
+ ----------
+ MD Step 24
+ ----------
+ Symbolic Z-matrix:
+ Charge =  0 Multiplicity = 1
+ C                    -0.7134   -1.2084   -0.02535 
+ C                     0.67525  -1.21923   0.03008 
+ C                     1.40793   0.01411  -0.01281 
+ C                     0.69225   1.22136  -0.00929 
+ C                    -0.67609   1.17591   0.01549 
+ C                    -1.3896    0.01415   0.00999 
+ H                    -1.18899  -2.23145  -0.05753 
+ H                     1.20678  -2.17955   0.08593 
+ H                     2.48698   0.03903  -0.01576 
+ H                     1.20929   2.18684   0.02186 
+ H                    -1.2072    2.16353  -0.03596 
+ H                    -2.47507  -0.06974  -0.08109 
+ 
+                          Input orientation:                          
+ ---------------------------------------------------------------------
+ Center     Atomic      Atomic             Coordinates (Angstroms)
+ Number     Number       Type             X           Y           Z
+ ---------------------------------------------------------------------
+      1          6           0       -0.713397   -1.208395   -0.025346
+      2          6           0        0.675254   -1.219235    0.030081
+      3          6           0        1.407927    0.014107   -0.012813
+      4          6           0        0.692249    1.221361   -0.009289
+      5          6           0       -0.676091    1.175912    0.015488
+      6          6           0       -1.389598    0.014146    0.009987
+      7          1           0       -1.188995   -2.231447   -0.057526
+      8          1           0        1.206778   -2.179550    0.085925
+      9          1           0        2.486976    0.039031   -0.015763
+     10          1           0        1.209287    2.186837    0.021860
+     11          1           0       -1.207199    2.163532   -0.035957
+     12          1           0       -2.475068   -0.069741   -0.081091
+ ---------------------------------------------------------------------
+                    Distance matrix (angstroms):
+                    1          2          3          4          5
+     1  C    0.000000
+     2  C    1.389799   0.000000
+     3  C    2.448404   1.435194   0.000000
+     4  C    2.807101   2.440973   1.403449   0.000000
+     5  C    2.384949   2.750105   2.386152   1.369319   0.000000
+     6  C    1.397534   2.405254   2.797618   2.406622   1.363387
+     7  H    1.128656   2.123128   3.433441   3.932339   3.446520
+     8  H    2.154668   1.099018   2.205072   3.440930   3.848283
+     9  H    3.434902   2.206280   1.079342   2.149184   3.361320
+    10  H    3.902120   3.447692   2.182066   1.095647   2.139313
+    11  H    3.407910   3.871835   3.385180   2.120448   1.122549
+    12  H    2.098363   3.355328   3.884500   3.421111   2.190274
+                    6          7          8          9         10
+     6  C    0.000000
+     7  H    2.255546   0.000000
+     8  H    3.399888   2.400624   0.000000
+     9  H    3.876740   4.320831   2.563464   0.000000
+    10  H    3.387467   5.027851   4.366857   2.499395   0.000000
+    11  H    2.157601   4.395070   4.970363   4.261554   2.417290
+    12  H    1.092509   2.515455   4.246785   4.963666   4.321714
+                   11         12
+    11  H    0.000000
+    12  H    2.568470   0.000000
+ Symmetry turned off by external request.
+ Stoichiometry    C6H6
+ Framework group  C1[X(C6H6)]
+ Deg. of freedom    30
+ Full point group                 C1      NOp   1
+ Rotational constants (GHZ):           5.7999844           5.6041426           2.8516098

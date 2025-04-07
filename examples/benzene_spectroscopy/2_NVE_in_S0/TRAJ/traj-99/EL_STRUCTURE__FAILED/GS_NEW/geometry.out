@@ -1,0 +1,3 @@
+ Entering Gaussian System, Link 0=g16
+ Initial command:
+ /software/gaussian/g16-c01/avx2/g16/l1.exe "/local_scratch/28554215/Gau-36405.inp" -scrdir="/local_scratch/28554215/"

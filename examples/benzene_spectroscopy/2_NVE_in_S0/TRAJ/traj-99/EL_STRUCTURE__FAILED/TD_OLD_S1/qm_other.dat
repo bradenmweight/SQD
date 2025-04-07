@@ -1,0 +1,82 @@
+ Charge=              0.0000 electrons
+ Dipole moment (field-independent basis, Debye):
+    X=             -0.0787    Y=             -0.0374    Z=             -0.0221  Tot=              0.0899
+ N-N= 1.194700258796D+02 E-N=-1.703414358828D+02  KE=-4.782967875627D+01
+
+ Test job not archived.
+ 1\1\GINC-BHC0201\SP\RAM1 TD-Full\STO-5G\C6H6\BWEIGHT\21-Mar-2025\0\\# 
+ AM1/STO-5G SCF=XQC TD=(read,singlets,nstates=5,root=1) nosym IOp(9/40=
+ 3) guess=read\\MD Step 29\\0,1\C,0,-0.70640971,-1.23778796,-0.03070514
+ \C,0,0.70081589,-1.21003193,0.05334183\C,0,1.36016119,0.00560073,-0.01
+ 096885\C,0,0.69847083,1.22661248,-0.00126969\C,0,-0.70856496,1.2394715
+ 4,-0.0047258\C,0,-1.34714144,-0.03017195,0.00873867\H,0,-1.3278966,-2.
+ 18043406,-0.18300767\H,0,1.21543176,-2.19490436,0.14430279\H,0,2.44942
+ 599,0.04278892,-0.04780267\H,0,1.17968592,2.22127516,0.01426964\H,0,-1
+ .27247498,2.14582883,-0.01987854\H,0,-2.48356501,-0.03239513,0.0842734
+ 3\\Version=ES64L-G16RevC.01\HF=0.0460443\RMSD=5.949e-09\PG=C01 [X(C6H6
+ )]\\@
+
+
+ IF YOU WANT TO LEARN FROM THE THEORETICAL PHYSICISTS ABOUT THE
+ METHODS WHICH THEY USE, I ADVISE YOU TO FOLLOW THIS PRINCIPLE VERY STRICTLY:
+ DON'T LISTEN TO THEIR WORDS; PAY ATTENTION, INSTEAD, TO THEIR ACTIONS.
+ -- A.EINSTEIN, 1934
+ Job cpu time:       0 days  0 hours  0 minutes  1.0 seconds.
+ Elapsed time:       0 days  0 hours  0 minutes  0.8 seconds.
+ File lengths (MBytes):  RWF=     34 Int=      0 D2E=      0 Chk=      2 Scr=      1
+ Normal termination of Gaussian 16 at Fri Mar 21 15:03:25 2025.
+------------------------------------------------------------- 
+ Ground to excited state transition densities written to RWF  633
+ Ground to excited state transition electric dipole moments (Au):
+       state          X           Y           Z        Dip. S.      Osc.
+         1         0.0206     -0.0424      0.0011      0.0022      0.0002
+         2         0.1498     -0.1449      0.0582      0.0468      0.0047
+         3         1.4494      0.3196      0.0087      2.2031      0.2863
+         4        -0.3309      1.4633     -0.0226      2.2513      0.2963
+         5         0.2851      0.5752     -0.0332      0.4132      0.0590
+ Ground to excited state transition velocity dipole moments (Au):
+       state          X           Y           Z        Dip. S.      Osc.
+         1        -0.0032      0.0067     -0.0005      0.0001      0.0003
+         2        -0.0368      0.0354     -0.0511      0.0052      0.0229
+         3        -0.4425     -0.1003      0.0165      0.2061      0.7049
+         4         0.1000     -0.4526     -0.0131      0.2150      0.7263
+         5        -0.0953     -0.1930     -0.0371      0.0477      0.1484
+ Ground to excited state transition magnetic dipole moments (Au):
+       state          X           Y           Z
+         1        -0.0028      0.0033      0.0169
+         2         0.0245      0.0163      0.1163
+         3         0.0390     -0.0428      0.0190
+         4         0.0037     -0.0379     -0.0001
+         5        -0.1134      0.0880     -0.0148
+ Ground to excited state transition velocity quadrupole moments (Au):
+       state          XX          YY          ZZ          XY          XZ          YZ
+         1        -0.0011      0.0019     -0.0003     -0.0081      0.0051      0.0011
+         2         0.0034      0.0306     -0.0015     -0.0296     -0.0070      0.0285
+         3         0.0009     -0.0265     -0.0003     -0.0192     -0.0006      0.0111
+         4        -0.0287      0.0199      0.0141      0.0361      0.0409     -0.0087
+         5        -0.0011      0.0221     -0.0059     -0.0097      0.0343      0.0195
+ <0|del|b> * <b|rxdel|0> + <0|del|b> * <b|delr+rdel|0>
+ Rotatory Strengths (R) in cgs (10**-40 erg-esu-cm/Gauss)
+       state          XX          YY          ZZ    R(velocity)    E-M Angle
+         1        -0.0416     -0.0164      0.1738      0.0386       90.00
+         2        -8.4041    -21.9410      1.1090     -9.7454      136.32
+         3         7.6817    -38.9918    -14.4958    -15.2686      117.16
+         4        63.0457     -0.0373     -0.1984     20.9367        6.99
+         5       -15.6174     15.0994    -18.0461     -6.1880      100.28
+ 1/2[<0|r|b>*<b|rxdel|0> + (<0|rxdel|b>*<b|r|0>)*]
+ Rotatory Strengths (R) in cgs (10**-40 erg-esu-cm/Gauss)
+       state          XX          YY          ZZ     R(length)
+         1         0.0413      0.0986     -0.0130      0.0423
+         2        -2.6001      1.6724     -4.7839     -1.9039
+         3       -39.9255      9.6808     -0.1172    -10.1206
+         4         0.8764     39.2258     -0.0009     13.3671
+         5        22.8632    -35.8078     -0.3477     -4.4308
+  1/2[<0|del|b>*<b|r|0> + (<0|r|b>*<b|del|0>)*] (Au)
+       state          X           Y           Z        Dip. S.   Osc.(frdel)
+         1        -0.0001     -0.0003     -0.0000      0.0003      0.0002
+         2        -0.0055     -0.0051     -0.0030      0.0136      0.0091
+         3        -0.6414     -0.0320      0.0001      0.6733      0.4488
+         4        -0.0331     -0.6623      0.0003      0.6951      0.4634
+         5        -0.0272     -0.1110      0.0012      0.1369      0.0913
+
+------------------------------------------------------------- 

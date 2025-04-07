@@ -1,0 +1,20 @@
+{
+  "n_col": 5,
+  "n_state": 6,
+  "norb": 30,
+  "noccA": 15,
+  "noccB": 15,
+  "nvirA": 15,
+  "nvirB": 15,
+  "n_basis": 30,
+  "nocc_allA": 15,
+  "nvir_allA": 15,
+  "nocc_allB": 15,
+  "nvir_allB": 15,
+  "n_atom": 12,
+  "n_active": 30,
+  "neleA": 15,
+  "neleB": 15,
+  "nfixcore": 0,
+  "nfixvir": 0
+}

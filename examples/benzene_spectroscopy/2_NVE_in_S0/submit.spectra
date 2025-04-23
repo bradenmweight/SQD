@@ -1,0 +1,19 @@
+#!/bin/bash
+#SBATCH -p reserved --reservation=phuo_20250312
+#SBATCH -J SPECTRA
+#SBATCH -o output.slurm
+#SBATCH -t 1-00:00:00
+#SBATCH -N 1
+#SBATCH --ntasks=1
+#SBATCH --ntasks-per-node=1
+#SBATCH --cpus-per-task=1
+#SBATCH --mem 4GB
+
+export OMP_NUM_THREADS=1
+export MKL_NUM_THREADS=1
+
+#python3 plot_Absorption_FreqDomain.py
+
+NMOL=$1
+python3 plot_cavity_FreqDomain.py $NMOL
+

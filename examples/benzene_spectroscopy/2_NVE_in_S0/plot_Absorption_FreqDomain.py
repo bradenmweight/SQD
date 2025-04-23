@@ -2,7 +2,7 @@ import numpy as np
 from matplotlib import pyplot as plt
 
 ## Trajectories
-NTRAJ = 200
+NTRAJ = 200 # Number of trajectories
 
 ## For Plotting
 SIGMA = 0.0001 # eV
@@ -35,11 +35,11 @@ ABS_L = np.zeros(NPTS)
 for traj in range(NTRAJ):
     print(f"Working on traj = {traj} of {NTRAJ}.")
     for step in range(NSTEPS):
-        E0n = ENERGY[traj,step,1:] - ENERGY[traj,step,0]
-        dE  = EGRID[:,None] - E0n[None,:]
+        E0n = ENERGY[traj,step,1:] - ENERGY[traj,step,0] # Ground-to-excited energy difference
+        dE  = EGRID[:,None] - E0n[None,:] # Shifted Gaussian/Lorentzian location
         OSC = (2/3) * E0n * np.einsum("jd,jd->j", DIPOLE[traj,step,1:,:], DIPOLE[traj,step,1:,:])
-        ABS_G[:] += np.sum( OSC[None,:] * np.exp(-dE[:,:]**2/2/SIGMA**2), axis=1 )
-        ABS_L[:] += np.sum( OSC[None,:] * SIGMA**2 / (SIGMA**2 + dE[:,:]**2), axis=1 )
+        ABS_G[:] += np.sum( OSC[None,:] * np.exp(-dE[:,:]**2/2/SIGMA**2), axis=1 ) # A Gaussian
+        ABS_L[:] += np.sum( OSC[None,:] * SIGMA**2 / (SIGMA**2 + dE[:,:]**2), axis=1 ) # A Lorentzian
 
 ABS_G /= np.max(ABS_G) # NSTEPS * NTRAJ
 ABS_L /= np.max(ABS_L) # NSTEPS * NTRAJ
@@ -51,6 +51,12 @@ plt.xlim(EMIN,EMAX)
 plt.ylim(0)
 plt.xlabel("Energy (eV)", fontsize=15)
 plt.ylabel("Absorption (Arb. Units)", fontsize=15)
-plt.savefig("Absorption_FreqDomain.jpg", dpi=300)
+plt.savefig("ABS_Bare_FreqDomain.jpg", dpi=300)
 
-
+# Find enegy of max absorption
+max_idx = np.argmax(ABS_G)
+max_energy = EGRID[max_idx]
+print(f"Max Absorption Energy (Gaussian): {max_energy:.4f} eV")
+max_idx = np.argmax(ABS_L)
+max_energy = EGRID[max_idx]
+print(f"Max Absorption Energy (Lorentzian): {max_energy:.4f} eV")
